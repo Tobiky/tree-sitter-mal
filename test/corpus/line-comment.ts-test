@@ -1,0 +1,22 @@
+============
+Line Comment
+============
+
+// #id: "com.example.lang"
+
+//no beginning space
+
+// Multiple lines
+// asset OperatingSystem
+// {
+// [OperatingSystem logic]
+// }
+// 
+// asset Linux
+// {
+// [OperatingSystem + Linux logic]
+// }
+
+------------
+
+(source_file)
