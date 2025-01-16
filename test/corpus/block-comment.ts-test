@@ -1,0 +1,26 @@
+=============
+Block Comment
+=============
+
+/* #id: "com.example.lang" */
+
+/*no spacing*/
+
+/* Newline before end
+*/
+
+/* Multiple lines
+ * asset OperatingSystem
+ * {
+ * [OperatingSystem logic]
+ * }
+ * 
+ * asset Linux
+ * {
+ * [OperatingSystem + Linux logic]
+ * }
+ */
+
+-------------
+
+(source_file)
