@@ -45,7 +45,7 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    extends: (identity))))
+                    extends: (identity)))))
 
 ==========================================
 Empty Extending Abstract Asset Declaration
@@ -63,4 +63,4 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    extends: (identity))))
+                    extends: (identity)))))
