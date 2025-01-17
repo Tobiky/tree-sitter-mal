@@ -71,3 +71,15 @@ Only Comments
 -------------
 
 (source_file)
+
+=========================
+Block comment end cut off
+
+:error
+=========================
+
+/*
+ * This is a block commment
+// */
+
+-------------------------
