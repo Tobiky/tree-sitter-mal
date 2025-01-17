@@ -1,0 +1,10 @@
+==============================
+Empty Associations Declaration
+==============================
+
+associations {}
+
+------------------------------
+
+(source_file
+    (associations_declaration))
