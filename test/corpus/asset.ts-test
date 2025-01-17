@@ -46,3 +46,21 @@ category Test {
         assets: ((asset
                     id: (identity)
                     extends: (identity))))
+
+==========================================
+Empty Extending Abstract Asset Declaration
+==========================================
+
+
+category Test {
+    abstract asset TestAsset extends AnotherTestAsset {}
+}
+
+------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    extends: (identity))))
