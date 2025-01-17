@@ -1,0 +1,11 @@
+==========================
+Empty Category Declaration
+==========================
+
+category System {}
+
+--------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)))
