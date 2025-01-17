@@ -1,0 +1,16 @@
+=======================
+Empty Asset Declaration
+=======================
+
+category Test {
+    asset TestAsset {}
+}
+
+-----------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)))))
+
