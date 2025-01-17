@@ -1,0 +1,27 @@
+=================
+Empty Attack-step
+=================
+
+category Test {
+    asset TestAsset {
+        | orStep
+        & andStep
+        # defenseStep
+        E existenceStep
+        !E nonExistenceStep
+    }
+}
+
+-----------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step id: (identity))
+                            (attack_step id: (identity))
+                            (attack_step id: (identity))
+                            (attack_step id: (identity))
+                            (attack_step id: (identity)))))))
+
