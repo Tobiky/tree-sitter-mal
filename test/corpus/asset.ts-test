@@ -14,3 +14,18 @@ category Test {
         assets: ((asset
                     id: (identity)))))
 
+================================
+Empty Abstract Asset Declaration
+================================
+
+category Test {
+    abstract asset TestAsset {}
+}
+
+--------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)))))
