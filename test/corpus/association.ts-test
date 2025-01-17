@@ -97,3 +97,16 @@ associations {
             right_mult: (multiplicity (star) (star))
             right_field_id: (identity)
             right_id: (identity))))
+
+===============================
+Association Declaration example
+
+Based on
+https://github.com/mal-lang/malcompiler/wiki/MAL-language-specification#association
+===============================
+
+associations {
+    Network [networks] * <-- NetworkAccess --> * [hosts] Host
+}
+
+-------------------------------
