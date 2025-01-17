@@ -110,3 +110,14 @@ associations {
 }
 
 -------------------------------
+
+(source_file
+    (associations_declaration
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star))
+            id: (identity)
+            right_mult: (multiplicity (star))
+            right_field_id: (identity)
+            right_id: (identity))))
