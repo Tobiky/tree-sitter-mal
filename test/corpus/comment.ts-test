@@ -83,3 +83,15 @@ Block comment end cut off
 // */
 
 -------------------------
+
+===========================
+Block comment start cut off
+
+:error
+===========================
+
+// /*
+ * This is a block commment
+ */
+
+---------------------------
