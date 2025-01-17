@@ -29,3 +29,71 @@ associations {
             right_mult: (multiplicity (integer))
             right_field_id: (identity)
             right_id: (identity))))
+
+==========================
+Association Multiplicities
+==========================
+
+associations {
+    LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID
+    LeftID [leftField] * <-- TestLink --> * [rightField] RightID
+    LeftID [leftField] 0..0 <-- TestLink --> 0..0 [rightField] RightID
+    LeftID [leftField] 0..* <-- TestLink --> 0..* [rightField] RightID
+    LeftID [leftField] *..0 <-- TestLink --> *..0 [rightField] RightID
+    LeftID [leftField] *..* <-- TestLink --> *..* [rightField] RightID
+}
+
+--------------------------
+
+
+
+(source_file
+    (associations_declaration
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star))
+            id: (identity)
+            right_mult: (multiplicity (star))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer) (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer) (integer))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer) (star))
+            id: (identity)
+            right_mult: (multiplicity (integer) (star))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star) (integer))
+            id: (identity)
+            right_mult: (multiplicity (star) (integer))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star) (star))
+            id: (identity)
+            right_mult: (multiplicity (star) (star))
+            right_field_id: (identity)
+            right_id: (identity))))
