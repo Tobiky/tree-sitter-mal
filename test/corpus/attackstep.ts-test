@@ -25,3 +25,23 @@ category Test {
                             (attack_step id: (identity))
                             (attack_step id: (identity)))))))
 
+==========================
+Empty Attack-step with Tag
+==========================
+
+category Test {
+    asset TestAsset {
+        | step @ Tag
+    }
+}
+
+--------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                tag: (identity)))))))
