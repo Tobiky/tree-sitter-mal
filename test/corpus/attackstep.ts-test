@@ -45,3 +45,41 @@ category Test {
                     steps: ((attack_step
                                 id: (identity)
                                 tag: (identity)))))))
+
+===========================
+Empty Attack-step with CIAs
+===========================
+
+category Test {
+    asset TestAsset {
+        | oneC {C}
+        | oneI {I}
+        | oneA {A}
+        | multipleCIA {C, I}
+        | multipleCIASurroundingSpace { C, I }
+    }
+}
+
+---------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                cias: ((cia)))
+                            (attack_step
+                                id: (identity)
+                                cias: ((cia)))
+                            (attack_step
+                                id: (identity)
+                                cias: ((cia)))
+                            (attack_step
+                                id: (identity)
+                                cias: ((cia) (cia)))
+                            (attack_step
+                                id: (identity)
+                                cias: ((cia) (cia))))))))
+
