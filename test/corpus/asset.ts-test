@@ -85,3 +85,31 @@ category Test {
                  (asset
                     id: (identity)
                     extends: (identity)))))
+
+======================================
+Empty Asset Declaration with Meta Info
+======================================
+
+category Test {
+    asset TestAsset 
+        newLine info: "Meta on new line" {}
+    asset AnotherTestAsset sameLine info: "Meta on same line" {}
+}
+
+--------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    extends: (identity)
+                    meta: (meta
+                            id: (identity)
+                            info: (string)))
+                 (asset
+                    id: (identity)
+                    extends: (identity)
+                    meta: (meta
+                            id: (identity)
+                            info: (string))))))
