@@ -64,3 +64,24 @@ category Test {
         assets: ((asset
                     id: (identity)
                     extends: (identity)))))
+
+================
+Two Empty Assets
+================
+
+category Test {
+    asset TestAsset {}
+    asset AnotherTestAsset {}
+}
+
+----------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    extends: (identity))
+                 (asset
+                    id: (identity)
+                    extends: (identity)))))
