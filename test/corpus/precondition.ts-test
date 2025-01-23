@@ -20,14 +20,8 @@ category Test {
                     id: (identity)
                     steps: ((attack_step
                                 id: (identity)
-                                meta: ((meta
-                                        id: (identity)
-                                        info: (string))
-                                       (meta
-                                        id: (identity)
-                                        info: (string))))
+                                preconditions: ((asset_expr (identity))))
                             (attack_step
                                 id: (identity)
-                                meta: ((meta
-                                        id: (identity)
-                                        info: (string)))))))))
+                                preconditions: ((asset_expr (identity))
+                                                (asset_expr (identity)))))))))
