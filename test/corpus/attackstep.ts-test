@@ -83,3 +83,90 @@ category Test {
                                 id: (identity)
                                 cias: ((cia) (cia))))))))
 
+====================
+Attack-step with TTC
+====================
+
+category Test {
+    asset TestAsset {
+        | step [ 1 ]
+        | addStep [ 1 + 1 ]
+        | subStep [ 1 - 1 ]
+        | mulStep [ 1 * 1 ]
+        | divStep [ 1 / 1 ]
+        | pwrStep [ 1 ^ 1 ]
+        | factorsOverTerms [ 1 + 1 * 1 ]
+        | powersOverFactors [ 1 * 1 ^ 1 ]
+        | parenthOverPowers [ (1 * 1) ^ 1 ]
+        | distID [ testId ]
+        | distNum [ testId (1) ]
+        | distNums [ testId (1, 2) ]
+    }
+}
+
+--------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                ttc: (ttc_atom (number)))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_atom (number))
+                                        right: (ttc_atom (number))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_atom (number))
+                                        right: (ttc_atom (number))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_atom (number))
+                                        right: (ttc_atom (number))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_atom (number))
+                                        right: (ttc_atom (number))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_atom (number))
+                                        right: (ttc_atom (number))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_atom (number))
+                                        right: (ttc_binop
+                                            left: (ttc_atom (number))
+                                            right: (ttc_atom (number)))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_binop
+                                        left: (ttc_binop
+                                            left: (ttc_atom (number))
+                                            right: (ttc_atom (number)))
+                                        right: (ttc_atom (number))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_atom 
+                                        (ttc_dist
+                                            id: (identity))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_atom 
+                                        (ttc_dist
+                                            id: (identity)
+                                            values: ((number)))))
+                            (attack_step
+                                id: (identity)
+                                ttc: (ttc_atom 
+                                        (ttc_dist
+                                            id: (identity)
+                                            values: ((number) (number))))))))))
