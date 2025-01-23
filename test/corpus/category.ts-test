@@ -16,7 +16,8 @@ Empty Category Declaration with Meta Info
 =========================================
 
 category System 
-    newLine info: "Meta on new line" {}
+    newLine info: "Meta on new line"
+    secondLine info: "Second meta" {}
 category System sameLine info: "Meta on same line" {}
 
 -----------------------------------------
@@ -24,11 +25,14 @@ category System sameLine info: "Meta on same line" {}
 (source_file
     (category_declaration
         id: (identity)
-        meta: (meta
+        meta: ((meta
                 id: (identity)
-                info: (string)))
-    (category_declaration
-        id: (identity)
-        meta: (meta
+                info: (string))
+               (meta
                 id: (identity)
                 info: (string))))
+    (category_declaration
+        id: (identity)
+        meta: ((meta
+                id: (identity)
+                info: (string)))))

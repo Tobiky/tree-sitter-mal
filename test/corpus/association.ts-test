@@ -129,6 +129,7 @@ Association Declaration with Meta Info
 associations {
     LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID
         newLine info: "Meta on new line"
+        secondLine info: "Second meta"
     LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID sameLine info: "Meta on same line"
 }
 
@@ -145,6 +146,9 @@ associations {
             right_field_id: (identity)
             right_id: (identity)
             meta: ((meta
+                    id: (identity)
+                    info: (string))
+                   (meta
                     id: (identity)
                     info: (string))))
         (association

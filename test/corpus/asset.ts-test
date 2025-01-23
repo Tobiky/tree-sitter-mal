@@ -92,7 +92,8 @@ Empty Asset Declaration with Meta Info
 
 category Test {
     asset TestAsset 
-        newLine info: "Meta on new line" {}
+        newLine info: "Meta on new line"
+        secondLine info: "Second meta" {}
     asset AnotherTestAsset sameLine info: "Meta on same line" {}
 }
 
@@ -104,12 +105,15 @@ category Test {
         assets: ((asset
                     id: (identity)
                     extends: (identity)
-                    meta: (meta
+                    meta: ((meta
                             id: (identity)
-                            info: (string)))
+                            info: (string))
+                           (meta
+                            id: (identity)
+                            info: (string))))
                  (asset
                     id: (identity)
                     extends: (identity)
-                    meta: (meta
+                    meta: ((meta
                             id: (identity)
-                            info: (string))))))
+                            info: (string)))))))
