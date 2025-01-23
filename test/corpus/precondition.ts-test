@@ -1,0 +1,33 @@
+=======================================
+Attack-step with identity Pre-condition
+=======================================
+
+category Test {
+    asset TestAsset {
+        | onePrecon
+            <- a
+        | multiplePrecon
+            <- a, b
+    }
+}
+
+---------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                meta: ((meta
+                                        id: (identity)
+                                        info: (string))
+                                       (meta
+                                        id: (identity)
+                                        info: (string))))
+                            (attack_step
+                                id: (identity)
+                                meta: ((meta
+                                        id: (identity)
+                                        info: (string)))))))))
