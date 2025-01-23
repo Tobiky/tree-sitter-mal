@@ -25,9 +25,9 @@ category Test {
                             (attack_step id: (identity))
                             (attack_step id: (identity)))))))
 
-==========================
-Empty Attack-step with Tag
-==========================
+====================
+Attack-step with Tag
+====================
 
 category Test {
     asset TestAsset {
@@ -35,7 +35,7 @@ category Test {
     }
 }
 
---------------------------
+--------------------
 
 (source_file
     (category_declaration
@@ -46,9 +46,9 @@ category Test {
                                 id: (identity)
                                 tag: (identity)))))))
 
-===========================
-Empty Attack-step with CIAs
-===========================
+=====================
+Attack-step with CIAs
+=====================
 
 category Test {
     asset TestAsset {
@@ -60,7 +60,7 @@ category Test {
     }
 }
 
----------------------------
+---------------------
 
 (source_file
     (category_declaration
