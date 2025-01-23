@@ -170,3 +170,37 @@ category Test {
                                         (ttc_dist
                                             id: (identity)
                                             values: ((number) (number))))))))))
+
+=====================
+Attack-step with Meta
+=====================
+
+category Test {
+    asset TestAsset {
+        | step1
+            newLine info: "Meta on new line"
+            secondLine info: "Second meta"
+        | step2 sameLine info: "Meta on same line"
+    }
+}
+
+---------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                meta: ((meta
+                                        id: (identity)
+                                        info: (string))
+                                       (meta
+                                        id: (identity)
+                                        info: (string))))
+                            (attack_step
+                                id: (identity)
+                                meta: ((meta
+                                        id: (identity)
+                                        info: (string)))))))))
