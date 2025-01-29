@@ -25,3 +25,38 @@ category Test {
                                 id: (identity)
                                 preconditions: ((asset_expr (identity))
                                                 (asset_expr (identity)))))))))
+
+-----------------------------------------------------------------
+Attack-step with collection on simple identities in Pre-condition
+-----------------------------------------------------------------
+
+category Test {
+    asset TestAsset {
+        | oneCollect
+            <- a.b
+        | multipleCollect
+            <- a.b.c
+    }
+}
+
+-----------------------------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                preconditions: ((asset_expr 
+                                                    (asset_expr_collect 
+                                                        parent: (identity)
+                                                        child:  (identity)))))
+                            (attack_step
+                                id: (identity)
+                                preconditions: ((asset_expr 
+                                                    (asset_expr_collect 
+                                                        parent: (identity)
+                                                        child:  (asset_expr_collect 
+                                                                    parent: (identity)
+                                                                    child:  (identity)))))))))))
