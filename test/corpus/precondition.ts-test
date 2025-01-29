@@ -60,3 +60,44 @@ category Test {
                                                         child:  (asset_expr_collect 
                                                                     parent: (identity)
                                                                     child:  (identity)))))))))))
+
+===============================================
+Attack-step with set operators in Pre-condition
+===============================================
+
+category Test {
+    asset TestAsset {
+        | union
+            <- a \/ b
+        | intersect
+            <- a /\ b
+        | difference
+            <- a - b
+    }
+}
+
+-----------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                preconditions: ((asset_expr 
+                                                    (asset_expr_setop
+                                                        left: (asset_expr (identity))
+                                                        right: (asset_expr (identity))))))
+                            (attack_step
+                                id: (identity)
+                                preconditions: ((asset_expr 
+                                                    (asset_expr_setop
+                                                        left: (asset_expr (identity))
+                                                        right: (asset_expr (identity))))))
+                            (attack_step
+                                id: (identity)
+                                preconditions: ((asset_expr 
+                                                    (asset_expr_setop
+                                                        left: (asset_expr (identity))
+                                                        right: (asset_expr (identity)))))))))))
