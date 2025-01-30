@@ -68,11 +68,9 @@ Attack-step with set operators in Pre-condition
 category Test {
     asset TestAsset {
         | union
-            <- a \/ b
-        | intersect
-            <- a /\ b
-        | difference
-            <- a - b
+            <- a \/ b,
+               a /\ b,
+               a - b
     }
 }
 
@@ -85,22 +83,15 @@ category Test {
                     id: (identity)
                     steps: ((attack_step
                                 id: (identity)
-                                preconditions: ((asset_expr 
-                                                    (asset_expr_setop
-                                                        left: (asset_expr (identity))
-                                                        right: (asset_expr (identity))))))
-                            (attack_step
-                                id: (identity)
-                                preconditions: ((asset_expr 
-                                                    (asset_expr_setop
-                                                        left: (asset_expr (identity))
-                                                        right: (asset_expr (identity))))))
-                            (attack_step
-                                id: (identity)
-                                preconditions: ((asset_expr 
-                                                    (asset_expr_setop
-                                                        left: (asset_expr (identity))
-                                                        right: (asset_expr (identity)))))))))))
+                                preconditions: ((asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity))))))))))
 
 =====================================================================================================================
 Attack-step with parenthesis, variable substitution, transitive operator, and type asset expressions in Pre-condition
