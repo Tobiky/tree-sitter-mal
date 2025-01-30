@@ -204,3 +204,42 @@ category Test {
                                 meta: ((meta
                                         id: (identity)
                                         info: (string)))))))))
+
+=========================
+Attack-step with Reaching
+=========================
+
+category Test {
+    asset TestAsset {
+        | inherits
+            +> a
+        | inheritsMult
+            +> a, b
+        | leadsTo
+            -> a
+        | leadsToMult
+            -> a, b
+    }
+}
+
+-------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    steps: ((attack_step
+                                id: (identity)
+                                inherits: ((asset_expr (identity))))
+                            (attack_step
+                                id: (identity)
+                                inherits: ((asset_expr (identity))
+                                           (asset_expr (identity))))
+                            (attack_step
+                                id: (identity)
+                                leads_to: ((asset_expr (identity))))
+                            (attack_step
+                                id: (identity)
+                                leads_to: ((asset_expr (identity))
+                                           (asset_expr (identity)))))))))
