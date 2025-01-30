@@ -26,38 +26,6 @@ category Test {
                                 preconditions: ((asset_expr (identity))
                                                 (asset_expr (identity)))))))))
 
-===============================================
-Attack-step with set operators in Pre-condition
-===============================================
-
-category Test {
-    asset TestAsset {
-        | union
-            <- a \/ b,
-               a /\ b,
-               a - b
-    }
-}
-
------------------------------------------------
-
-(source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity)
-                    steps: ((attack_step
-                                id: (identity)
-                                preconditions: ((asset_expr_binop
-                                                     left: (asset_expr_atom (identity))
-                                                     right: (asset_expr_atom (identity)))
-                                                (asset_expr_binop
-                                                     left: (asset_expr_atom (identity))
-                                                     right: (asset_expr_atom (identity)))
-                                                (asset_expr_binop
-                                                     left: (asset_expr_atom (identity))
-                                                     right: (asset_expr_atom (identity))))))))))
-
 ============================================================
 Attack-step with asset expression operators in Pre-condition
 ============================================================
@@ -66,6 +34,9 @@ category Test {
     asset TestAsset {
         | binops
             <- (a),
+                a \/ b,
+                a /\ b,
+                a - b,
                 a.b,
                 a.b.c,
                 a().b,
@@ -85,6 +56,15 @@ category Test {
                     steps: ((attack_step
                                 id: (identity)
                                 preconditions: ((asset_expr_atom (identity))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
                                                 (asset_expr_binop
                                                     left: (asset_expr_atom (identity))
                                                     right: (asset_expr_atom (identity)))
