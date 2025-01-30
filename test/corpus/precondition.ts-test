@@ -58,9 +58,9 @@ category Test {
                                                      left: (asset_expr_atom (identity))
                                                      right: (asset_expr_atom (identity))))))))))
 
-==================================================
-Attack-step with binary operators in Pre-condition
-==================================================
+============================================================
+Attack-step with asset expression operators in Pre-condition
+============================================================
 
 category Test {
     asset TestAsset {
@@ -69,13 +69,13 @@ category Test {
                 a.b,
                 a.b.c,
                 a().b,
+                a*.b,
                 a[Type],
                 a[TypeA][TypeB],
-                a*.b,
     }
 }
 
---------------------------------------------------
+-------------------------------------------------------------
 
 (source_file
     (category_declaration
@@ -99,11 +99,11 @@ category Test {
                                                 (asset_expr_binop
                                                     left: (asset_expr_atom (identity))
                                                     right: (asset_expr_atom (identity)))
-                                                (asset_expr_binop
-                                                    left: (asset_expr_atom (identity))
-                                                    right: (asset_expr_binop
-                                                                left: (asset_expr_atom (identity))
-                                                                right: (asset_expr_atom (identity))))
-                                                (asset_expr_binop
-                                                    left: (asset_expr_atom (identity))
-                                                    right: (asset_expr_atom (identity))))))))))
+                                                (asset_expr_type
+                                                    type_id: (identity)
+                                                    expr: (asset_expr_atom (identity)))
+                                                (asset_expr_type
+                                                    type_id: (identity)
+                                                    expr: (asset_expr_type
+                                                            type_id: (identity)
+                                                            expr: (asset_expr_atom (identity)))))))))))
