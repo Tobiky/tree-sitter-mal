@@ -9,3 +9,6 @@ References
   - [MAL Language Specification](https://github.com/mal-lang/malcompiler/wiki/MAL-language-specification)
 - [MAL Grammar Implementation](https://github.com/mal-lang/mal-toolbox/blob/main/maltoolbox/language/compiler/mal.g4)
 - [MAL Vim Syntax Highlighting](https://github.com/nkakouros-original/mal.vim)
+
+## Usage
+[Install tree sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md) to be able to use this grammar. Then, run `tree-sitter generate` to generate the parser from the grammar and `tree-sitter test` to test the parser, as well as the syntax highlighting and code navigation queries. For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-sitter/cli/index.html).
