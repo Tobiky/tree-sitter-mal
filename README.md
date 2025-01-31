@@ -12,3 +12,5 @@ References
 
 ## Usage
 [Install tree sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md) to be able to use this grammar. Then, run `tree-sitter generate` to generate the parser from the grammar and `tree-sitter test` to test the parser, as well as the syntax highlighting and code navigation queries. For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-sitter/cli/index.html).
+
+To use the highlight through the command line, make sure you have a [config file initialized](https://tree-sitter.github.io/tree-sitter/cli/init-config.html). Then, you can use your own highlighting colors or copy the ones in the repository, specialized for MAL. Lastly, use `tree-sitter highlight` to generate an output, see the [docs](https://tree-sitter.github.io/tree-sitter/cli/highlight.html) for more information.
