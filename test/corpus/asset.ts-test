@@ -80,11 +80,9 @@ category Test {
     (category_declaration
         id: (identity)
         assets: ((asset
-                    id: (identity)
-                    extends: (identity))
+                    id: (identity))
                  (asset
-                    id: (identity)
-                    extends: (identity)))))
+                    id: (identity)))))
 
 ======================================
 Empty Asset Declaration with Meta Info
@@ -103,7 +101,6 @@ category Test {
     (category_declaration
         id: (identity)
         assets: ((asset
-                    id: (identity)
                     extends: (identity)
                     meta: ((meta
                             id: (identity)
@@ -113,7 +110,6 @@ category Test {
                             info: (string))))
                  (asset
                     id: (identity)
-                    extends: (identity)
                     meta: ((meta
                             id: (identity)
                             info: (string)))))))
