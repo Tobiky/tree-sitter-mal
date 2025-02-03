@@ -19,11 +19,11 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    steps: ((attack_step id: (identity))
-                            (attack_step id: (identity))
-                            (attack_step id: (identity))
-                            (attack_step id: (identity))
-                            (attack_step id: (identity)))))))
+                    body: ((attack_step id: (identity))
+                           (attack_step id: (identity))
+                           (attack_step id: (identity))
+                           (attack_step id: (identity))
+                           (attack_step id: (identity)))))))
 
 ====================
 Attack-step with Tag
@@ -42,9 +42,9 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    steps: ((attack_step
-                                id: (identity)
-                                tag: (identity)))))))
+                    body: ((attack_step
+                               id: (identity)
+                               tag: (identity)))))))
 
 =====================
 Attack-step with CIAs
@@ -67,21 +67,21 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    steps: ((attack_step
-                                id: (identity)
-                                cias: ((cia)))
-                            (attack_step
-                                id: (identity)
-                                cias: ((cia)))
-                            (attack_step
-                                id: (identity)
-                                cias: ((cia)))
-                            (attack_step
-                                id: (identity)
-                                cias: ((cia) (cia)))
-                            (attack_step
-                                id: (identity)
-                                cias: ((cia) (cia))))))))
+                    body: ((attack_step
+                               id: (identity)
+                               cias: ((cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia) (cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia) (cia))))))))
 
 ====================
 Attack-step with TTC
@@ -111,65 +111,65 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    steps: ((attack_step
-                                id: (identity)
-                                ttc: (ttc_atom (number)))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_atom (number))
-                                        right: (ttc_atom (number))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_atom (number))
-                                        right: (ttc_atom (number))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_atom (number))
-                                        right: (ttc_atom (number))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_atom (number))
-                                        right: (ttc_atom (number))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_atom (number))
-                                        right: (ttc_atom (number))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_atom (number))
-                                        right: (ttc_binop
-                                            left: (ttc_atom (number))
-                                            right: (ttc_atom (number)))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_binop
-                                        left: (ttc_binop
-                                            left: (ttc_atom (number))
-                                            right: (ttc_atom (number)))
-                                        right: (ttc_atom (number))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_atom 
-                                        (ttc_dist
-                                            id: (identity))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_atom 
-                                        (ttc_dist
-                                            id: (identity)
-                                            values: ((number)))))
-                            (attack_step
-                                id: (identity)
-                                ttc: (ttc_atom 
-                                        (ttc_dist
-                                            id: (identity)
-                                            values: ((number) (number))))))))))
+                    body: ((attack_step
+                               id: (identity)
+                               ttc: (ttc_atom (number)))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_binop
+                                           left: (ttc_atom (number))
+                                           right: (ttc_atom (number)))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_binop
+                                           left: (ttc_atom (number))
+                                           right: (ttc_atom (number)))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_atom 
+                                       (ttc_dist
+                                           id: (identity))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_atom 
+                                       (ttc_dist
+                                           id: (identity)
+                                           values: ((number)))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_atom 
+                                       (ttc_dist
+                                           id: (identity)
+                                           values: ((number) (number))))))))))
 
 =====================
 Attack-step with Meta
@@ -191,19 +191,19 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    steps: ((attack_step
-                                id: (identity)
-                                meta: ((meta
-                                        id: (identity)
-                                        info: (string))
-                                       (meta
-                                        id: (identity)
-                                        info: (string))))
-                            (attack_step
-                                id: (identity)
-                                meta: ((meta
-                                        id: (identity)
-                                        info: (string)))))))))
+                    body: ((attack_step
+                               id: (identity)
+                               meta: ((meta
+                                       id: (identity)
+                                       info: (string))
+                                      (meta
+                                       id: (identity)
+                                       info: (string))))
+                           (attack_step
+                               id: (identity)
+                               meta: ((meta
+                                       id: (identity)
+                                       info: (string)))))))))
 
 =========================
 Attack-step with Reaching
@@ -229,17 +229,17 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    steps: ((attack_step
-                                id: (identity)
-                                inherits: ((asset_expr (identity))))
-                            (attack_step
-                                id: (identity)
-                                inherits: ((asset_expr (identity))
-                                           (asset_expr (identity))))
-                            (attack_step
-                                id: (identity)
-                                leads_to: ((asset_expr (identity))))
-                            (attack_step
-                                id: (identity)
-                                leads_to: ((asset_expr (identity))
-                                           (asset_expr (identity)))))))))
+                    body: ((attack_step
+                               id: (identity)
+                               inherits: ((asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               inherits: ((asset_expr (identity))
+                                          (asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               leads_to: ((asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               leads_to: ((asset_expr (identity))
+                                          (asset_expr (identity)))))))))

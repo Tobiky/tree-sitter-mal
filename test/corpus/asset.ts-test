@@ -101,7 +101,6 @@ category Test {
     (category_declaration
         id: (identity)
         assets: ((asset
-                    extends: (identity)
                     meta: ((meta
                             id: (identity)
                             info: (string))
@@ -131,6 +130,6 @@ category Test {
         id: (identity)
         assets: ((asset
                     id: (identity)
-                    variables: (asset_variable
-                                    name: (identity)
-                                    value: (asset_expr (identity)))))))
+                    body: ((asset_variable
+                            name: (identity)
+                            value: (asset_expr (identity))))))))
