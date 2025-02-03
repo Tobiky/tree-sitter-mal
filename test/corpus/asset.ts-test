@@ -113,3 +113,24 @@ category Test {
                     meta: ((meta
                             id: (identity)
                             info: (string)))))))
+
+===========================================
+Asset declaration with variable declaration
+===========================================
+
+category Test {
+    asset TestAsset {
+        let testVar = identityVal
+    }
+}
+
+-------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    variables: (asset_variable
+                                    name: (identity)
+                                    value: (asset_expr (identity)))))))
