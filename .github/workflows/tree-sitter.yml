@@ -33,10 +33,10 @@ jobs:
           path: |
             ${{ github.workspace }}/src
             ${{ github.workspace }}/mal.so
-          key: build-${{ env.cache-name }}-${{ hashFiles('grammar.js') }}
+          key: ${{ matrix.os }}-build-${{ env.cache-name }}-${{ hashFiles('grammar.js') }}
           restore-keys: |
-            build-${{ env.cache-name }}-
-            build-
+            ${{ matrix.os }}-build-${{ env.cache-name }}-
+            ${{ matrix.os }}-build-
 
       - if: ${{ steps.cache-parser-build.outputs.cache-hit != 'true' }}
         name: Generate and build parser
