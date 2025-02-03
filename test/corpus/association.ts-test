@@ -1,0 +1,165 @@
+==============================
+Empty Associations Declaration
+==============================
+
+associations {}
+
+------------------------------
+
+(source_file
+    (associations_declaration))
+
+==================
+Simple Association
+==================
+
+associations {
+    LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID
+}
+
+------------------
+
+(source_file
+    (associations_declaration
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer))
+            right_field_id: (identity)
+            right_id: (identity))))
+
+==========================
+Association Multiplicities
+==========================
+
+associations {
+    LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID
+    LeftID [leftField] * <-- TestLink --> * [rightField] RightID
+    LeftID [leftField] 0..0 <-- TestLink --> 0..0 [rightField] RightID
+    LeftID [leftField] 0..* <-- TestLink --> 0..* [rightField] RightID
+    LeftID [leftField] *..0 <-- TestLink --> *..0 [rightField] RightID
+    LeftID [leftField] *..* <-- TestLink --> *..* [rightField] RightID
+}
+
+--------------------------
+
+
+
+(source_file
+    (associations_declaration
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star))
+            id: (identity)
+            right_mult: (multiplicity (star))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer) (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer) (integer))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer) (star))
+            id: (identity)
+            right_mult: (multiplicity (integer) (star))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star) (integer))
+            id: (identity)
+            right_mult: (multiplicity (star) (integer))
+            right_field_id: (identity)
+            right_id: (identity))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star) (star))
+            id: (identity)
+            right_mult: (multiplicity (star) (star))
+            right_field_id: (identity)
+            right_id: (identity))))
+
+===============================
+Association Declaration example
+
+Based on
+https://github.com/mal-lang/malcompiler/wiki/MAL-language-specification#association
+===============================
+
+associations {
+    Network [networks] * <-- NetworkAccess --> * [hosts] Host
+}
+
+-------------------------------
+
+(source_file
+    (associations_declaration
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (star))
+            id: (identity)
+            right_mult: (multiplicity (star))
+            right_field_id: (identity)
+            right_id: (identity))))
+
+======================================
+Association Declaration with Meta Info
+======================================
+
+associations {
+    LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID
+        newLine info: "Meta on new line"
+        secondLine info: "Second meta"
+    LeftID [leftField] 0 <-- TestLink --> 0 [rightField] RightID sameLine info: "Meta on same line"
+}
+
+--------------------------------------
+
+(source_file
+    (associations_declaration
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer))
+            right_field_id: (identity)
+            right_id: (identity)
+            meta: ((meta
+                    id: (identity)
+                    info: (string))
+                   (meta
+                    id: (identity)
+                    info: (string))))
+        (association
+            left_id: (identity)
+            left_field_id: (identity)
+            left_mult: (multiplicity (integer))
+            id: (identity)
+            right_mult: (multiplicity (integer))
+            right_field_id: (identity)
+            right_id: (identity)
+            meta: ((meta
+                    id: (identity)
+                    info: (string))))))
+

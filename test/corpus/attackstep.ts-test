@@ -1,0 +1,245 @@
+=================
+Empty Attack-step
+=================
+
+category Test {
+    asset TestAsset {
+        | orStep
+        & andStep
+        # defenseStep
+        E existenceStep
+        !E nonExistenceStep
+    }
+}
+
+-----------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step id: (identity))
+                           (attack_step id: (identity))
+                           (attack_step id: (identity))
+                           (attack_step id: (identity))
+                           (attack_step id: (identity)))))))
+
+====================
+Attack-step with Tag
+====================
+
+category Test {
+    asset TestAsset {
+        | step @ Tag
+    }
+}
+
+--------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                               id: (identity)
+                               tag: (identity)))))))
+
+=====================
+Attack-step with CIAs
+=====================
+
+category Test {
+    asset TestAsset {
+        | oneC {C}
+        | oneI {I}
+        | oneA {A}
+        | multipleCIA {C, I}
+        | multipleCIASurroundingSpace { C, I }
+    }
+}
+
+---------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                               id: (identity)
+                               cias: ((cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia) (cia)))
+                           (attack_step
+                               id: (identity)
+                               cias: ((cia) (cia))))))))
+
+====================
+Attack-step with TTC
+====================
+
+category Test {
+    asset TestAsset {
+        | step [ 1 ]
+        | addStep [ 1 + 1 ]
+        | subStep [ 1 - 1 ]
+        | mulStep [ 1 * 1 ]
+        | divStep [ 1 / 1 ]
+        | pwrStep [ 1 ^ 1 ]
+        | factorsOverTerms [ 1 + 1 * 1 ]
+        | powersOverFactors [ 1 * 1 ^ 1 ]
+        | parenthOverPowers [ (1 * 1) ^ 1 ]
+        | distID [ testId ]
+        | distNum [ testId (1) ]
+        | distNums [ testId (1, 2) ]
+    }
+}
+
+--------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                               id: (identity)
+                               ttc: (ttc_atom (number)))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_atom (number))
+                                       right: (ttc_binop
+                                           left: (ttc_atom (number))
+                                           right: (ttc_atom (number)))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_binop
+                                       left: (ttc_binop
+                                           left: (ttc_atom (number))
+                                           right: (ttc_atom (number)))
+                                       right: (ttc_atom (number))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_atom 
+                                       (ttc_dist
+                                           id: (identity))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_atom 
+                                       (ttc_dist
+                                           id: (identity)
+                                           values: ((number)))))
+                           (attack_step
+                               id: (identity)
+                               ttc: (ttc_atom 
+                                       (ttc_dist
+                                           id: (identity)
+                                           values: ((number) (number))))))))))
+
+=====================
+Attack-step with Meta
+=====================
+
+category Test {
+    asset TestAsset {
+        | step1
+            newLine info: "Meta on new line"
+            secondLine info: "Second meta"
+        | step2 sameLine info: "Meta on same line"
+    }
+}
+
+---------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                               id: (identity)
+                               meta: ((meta
+                                       id: (identity)
+                                       info: (string))
+                                      (meta
+                                       id: (identity)
+                                       info: (string))))
+                           (attack_step
+                               id: (identity)
+                               meta: ((meta
+                                       id: (identity)
+                                       info: (string)))))))))
+
+=========================
+Attack-step with Reaching
+=========================
+
+category Test {
+    asset TestAsset {
+        | inherits
+            +> a
+        | inheritsMult
+            +> a, b
+        | leadsTo
+            -> a
+        | leadsToMult
+            -> a, b
+    }
+}
+
+-------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                               id: (identity)
+                               inherits: ((asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               inherits: ((asset_expr (identity))
+                                          (asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               leads_to: ((asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               leads_to: ((asset_expr (identity))
+                                          (asset_expr (identity)))))))))

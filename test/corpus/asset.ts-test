@@ -1,0 +1,135 @@
+=======================
+Empty Asset Declaration
+=======================
+
+category Test {
+    asset TestAsset {}
+}
+
+-----------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)))))
+
+================================
+Empty Abstract Asset Declaration
+================================
+
+category Test {
+    abstract asset TestAsset {}
+}
+
+--------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)))))
+
+=================================
+Empty Extending Asset Declaration
+=================================
+
+category Test {
+    asset TestAsset extends AnotherTestAsset {}
+}
+
+---------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    extends: (identity)))))
+
+==========================================
+Empty Extending Abstract Asset Declaration
+==========================================
+
+
+category Test {
+    abstract asset TestAsset extends AnotherTestAsset {}
+}
+
+------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    extends: (identity)))))
+
+================
+Two Empty Assets
+================
+
+category Test {
+    asset TestAsset {}
+    asset AnotherTestAsset {}
+}
+
+----------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity))
+                 (asset
+                    id: (identity)))))
+
+======================================
+Empty Asset Declaration with Meta Info
+======================================
+
+category Test {
+    asset TestAsset 
+        newLine info: "Meta on new line"
+        secondLine info: "Second meta" {}
+    asset AnotherTestAsset sameLine info: "Meta on same line" {}
+}
+
+--------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    meta: ((meta
+                            id: (identity)
+                            info: (string))
+                           (meta
+                            id: (identity)
+                            info: (string))))
+                 (asset
+                    id: (identity)
+                    meta: ((meta
+                            id: (identity)
+                            info: (string)))))))
+
+===========================================
+Asset declaration with variable declaration
+===========================================
+
+category Test {
+    asset TestAsset {
+        let testVar = identityVal
+    }
+}
+
+-------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((asset_variable
+                            id: (identity)
+                            value: (asset_expr (identity))))))))

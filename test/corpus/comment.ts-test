@@ -1,0 +1,97 @@
+============
+Line Comment
+============
+
+// #id: "com.example.lang"
+
+//no beginning space
+
+// Multiple lines
+// asset OperatingSystem
+// {
+// [OperatingSystem logic]
+// }
+// 
+// asset Linux
+// {
+// [OperatingSystem + Linux logic]
+// }
+
+------------
+
+(source_file)
+
+=============
+Block Comment
+=============
+
+/* #id: "com.example.lang" */
+
+/*no spacing*/
+
+/* Newline before end
+*/
+
+/* Multiple lines
+ * asset OperatingSystem
+ * {
+ * [OperatingSystem logic]
+ * }
+ * 
+ * asset Linux
+ * {
+ * [OperatingSystem + Linux logic]
+ * }
+ */
+
+-------------
+
+(source_file)
+
+=============
+Only Comments
+=============
+
+// #id: "com.example.lang"
+
+// /* #version: "1.2.3" */
+
+/* // Multiple lines
+ * asset OperatingSystem
+ * {
+ * [OperatingSystem logic]
+ * }
+ * 
+ * asset Linux
+ * {
+ * [OperatingSystem + Linux logic]
+ * }
+ */
+
+-------------
+
+(source_file)
+
+=========================
+Block comment end cut off
+
+:error
+=========================
+
+/*
+ * This is a block commment
+// */
+
+-------------------------
+
+===========================
+Block comment start cut off
+
+:error
+===========================
+
+// /*
+ * This is a block commment
+ */
+
+---------------------------

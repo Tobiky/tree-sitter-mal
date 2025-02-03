@@ -1,0 +1,38 @@
+==========================
+Empty Category Declaration
+==========================
+
+category System {}
+
+--------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)))
+
+
+=========================================
+Empty Category Declaration with Meta Info
+=========================================
+
+category System 
+    newLine info: "Meta on new line"
+    secondLine info: "Second meta" {}
+category System sameLine info: "Meta on same line" {}
+
+-----------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        meta: ((meta
+                id: (identity)
+                info: (string))
+               (meta
+                id: (identity)
+                info: (string))))
+    (category_declaration
+        id: (identity)
+        meta: ((meta
+                id: (identity)
+                info: (string)))))

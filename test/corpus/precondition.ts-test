@@ -1,0 +1,89 @@
+=======================================
+Attack-step with identity Pre-condition
+=======================================
+
+category Test {
+    asset TestAsset {
+        | onePrecon
+            <- a
+        | multiplePrecon
+            <- a, b
+    }
+}
+
+---------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                               id: (identity)
+                               preconditions: ((asset_expr (identity))))
+                           (attack_step
+                               id: (identity)
+                               preconditions: ((asset_expr (identity))
+                                               (asset_expr (identity)))))))))
+
+============================================================
+Attack-step with asset expression operators in Pre-condition
+============================================================
+
+category Test {
+    asset TestAsset {
+        | binops
+            <- (a),
+                a \/ b,
+                a /\ b,
+                a - b,
+                a.b,
+                a.b.c,
+                a().b,
+                a*.b,
+                a[Type],
+                a[TypeA][TypeB],
+    }
+}
+
+-------------------------------------------------------------
+
+(source_file
+    (category_declaration
+        id: (identity)
+        assets: ((asset
+                    id: (identity)
+                    body: ((attack_step
+                                id: (identity)
+                                preconditions: ((asset_expr_atom (identity))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                     left: (asset_expr_atom (identity))
+                                                     right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                    left: (asset_expr_atom (identity))
+                                                    right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                    left: (asset_expr_atom (identity))
+                                                    right: (asset_expr_binop
+                                                                left: (asset_expr_atom (identity))
+                                                                right: (asset_expr_atom (identity))))
+                                                (asset_expr_binop
+                                                    left: (asset_expr_atom (identity))
+                                                    right: (asset_expr_atom (identity)))
+                                                (asset_expr_binop
+                                                    left: (asset_expr_atom (identity))
+                                                    right: (asset_expr_atom (identity)))
+                                                (asset_expr_type
+                                                    type_id: (identity)
+                                                    expr: (asset_expr_atom (identity)))
+                                                (asset_expr_type
+                                                    type_id: (identity)
+                                                    expr: (asset_expr_type
+                                                            type_id: (identity)
+                                                            expr: (asset_expr_atom (identity)))))))))))

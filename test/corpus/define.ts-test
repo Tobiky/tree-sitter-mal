@@ -1,0 +1,71 @@
+==================
+Define Declaration
+==================
+
+#key: "value"
+
+------------------
+
+(source_file
+    (define_declaration
+        id: (identifier)
+        value: (string)))
+
+===========================
+Multiple Define Declaration
+===========================
+
+#key: "value"
+#id: "com.example.lang"
+#version: "1.2.3"
+
+---------------------------
+
+(source_file
+    (define_declaration
+        id: (identifier)
+        value: (string))
+    (define_declaration
+        id: (identifier)
+        value: (string))
+    (define_declaration
+        id: (identifier)
+        value: (string)))
+
+=============================================
+Incorrect identifier fails Define Declaration
+
+Based on grammar regex ([a-zA-Z0-9_]+) for identifiers from 
+https://github.com/mal-lang/mal-toolbox/blob/10100d73a9583cb14458ccf2e5b8d61702f618a1/maltoolbox/language/compiler/mal.g4#L72
+as opposed to the more open/general interpretation of
+https://github.com/mal-lang/malcompiler/blob/b8bf5e803470974b2815862a64b300a18e0dde8b/grammar#L56
+and
+https://github.com/mal-lang/malcompiler/wiki/MAL-language-specification#id
+
+:error
+=============================================
+
+#ökning: "value"
+
+---------------------------------------------
+
+=============================================
+Incorrect value type fails Define Declaration
+
+Based on grammar regex' for non-string patterns (more-or-less other primitives) from
+https://github.com/mal-lang/mal-toolbox/blob/10100d73a9583cb14458ccf2e5b8d61702f618a1/maltoolbox/language/compiler/mal.g4#L65-L72
+Including the non-regular primitives "Risk Types" from
+https://github.com/mal-lang/mal-documentation/wiki/MAL-Code-Examples#risk-type
+
+:error
+=============================================
+
+#key: value
+#key: 123
+#key: 1.23
+#key: {C}
+#key: {I}
+#key: {A}
+#key: {C, I}
+
+---------------------------------------------
