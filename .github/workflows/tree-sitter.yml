@@ -11,3 +11,21 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup environment
+        uses: actions/setup-node@v4
+        with:
+            node-version: latest
+            cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate and build parser
+        run: npx tree-sitter generate --build
+
+      - name: Run tests
+        run: npx tree-sitter test
