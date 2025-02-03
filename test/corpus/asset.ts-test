@@ -131,5 +131,5 @@ category Test {
         assets: ((asset
                     id: (identity)
                     body: ((asset_variable
-                            name: (identity)
+                            id: (identity)
                             value: (asset_expr (identity))))))))
