@@ -15,6 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Ensure GCC
+        run: sudo apt install gcc g++
+        shell: bash
+
       - name: Setup environment
         uses: actions/setup-node@v4
         with:
