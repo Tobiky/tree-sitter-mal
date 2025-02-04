@@ -86,9 +86,6 @@ Block comment end cut off
 
 ===========================
 Block comment start cut off
-
-TODO: Ensure this is errenous. This will error in the JavaScript tree sitter repo that uses the same comment exclusion.
-
 :error
 ===========================
 
