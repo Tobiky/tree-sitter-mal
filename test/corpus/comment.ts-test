@@ -19,7 +19,19 @@ Line Comment
 
 ------------
 
-(source_file)
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment))
 
 =============
 Block Comment
@@ -46,7 +58,11 @@ Block Comment
 
 -------------
 
-(source_file)
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment))
 
 =============
 Only Comments
@@ -70,7 +86,10 @@ Only Comments
 
 -------------
 
-(source_file)
+(source_file
+  (comment)
+  (comment)
+  (comment))
 
 =========================
 Block comment end cut off
@@ -94,3 +113,5 @@ Block comment start cut off
  */
 
 ---------------------------
+
+
