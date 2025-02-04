@@ -41,6 +41,7 @@ module.exports = grammar({
     category_declaration: $ => seq(
       'category',
       field('id', $.identity),
+      field('meta', repeat($.meta)),
       '{',
       '}',
     ),

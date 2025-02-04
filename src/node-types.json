@@ -12,6 +12,16 @@
             "named": true
           }
         ]
+      },
+      "meta": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "meta",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -56,6 +66,32 @@
     }
   },
   {
+    "type": "meta",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "info": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -84,6 +120,10 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "category",
     "named": false
   },
@@ -93,6 +133,10 @@
   },
   {
     "type": "include",
+    "named": false
+  },
+  {
+    "type": "info",
     "named": false
   },
   {

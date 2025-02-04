@@ -90,6 +90,17 @@
           }
         },
         {
+          "type": "FIELD",
+          "name": "meta",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "meta"
+            }
+          }
+        },
+        {
           "type": "STRING",
           "value": "{"
         },
