@@ -50,6 +50,10 @@
         {
           "type": "SYMBOL",
           "name": "include_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "category_declaration"
         }
       ]
     },
@@ -67,6 +71,31 @@
             "type": "SYMBOL",
             "name": "string"
           }
+        }
+      ]
+    },
+    "category_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "category"
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -88,6 +117,13 @@
             "value": "\""
           }
         ]
+      }
+    },
+    "identity": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[a-zA-Z0-9_]+"
       }
     }
   },

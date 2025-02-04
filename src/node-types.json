@@ -1,5 +1,21 @@
 [
   {
+    "type": "category_declaration",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -12,6 +28,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "category_declaration",
+          "named": true
+        },
         {
           "type": "include_declaration",
           "named": true
@@ -64,11 +84,27 @@
     "named": false
   },
   {
+    "type": "category",
+    "named": false
+  },
+  {
+    "type": "identity",
+    "named": true
+  },
+  {
     "type": "include",
     "named": false
   },
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

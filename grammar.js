@@ -30,6 +30,7 @@ module.exports = grammar({
 
     declaration: $ => choice(
       $.include_declaration,
+      $.category_declaration,
     ),
 
     include_declaration: $ => seq(
@@ -37,6 +38,14 @@ module.exports = grammar({
       field('file', $.string)
     ),
 
+    category_declaration: $ => seq(
+      'category',
+      field('id', $.identity),
+      '{',
+      '}',
+    ),
+
     string: _ => token(seq('"', /(?:\\"|[^"])*/, '"')),
+    identity: _ => token(/[a-zA-Z0-9_]+/)
   }
 });
