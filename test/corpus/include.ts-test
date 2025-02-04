@@ -7,8 +7,9 @@ include "file"
 -------------------
 
 (source_file
-    (include_declaration
-        file: (string)))
+    (declaration 
+        (include_declaration
+            file: (string))))
 
 ============================
 Multiple Include Declaration
@@ -21,12 +22,15 @@ include "../other3.mal"
 ----------------------------
 
 (source_file
-    (include_declaration
-        file: (string))
-    (include_declaration
-        file: (string))
-    (include_declaration
-        file: (string)))
+    (declaration
+        (include_declaration
+            file: (string)))
+    (declaration
+        (include_declaration
+            file: (string)))
+    (declaration
+        (include_declaration
+            file: (string))))
 
 ==============================================
 Incorrect value type fails Include Declaration
