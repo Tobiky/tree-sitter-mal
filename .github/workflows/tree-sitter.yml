@@ -22,7 +22,7 @@ jobs:
             cache: 'npm'
 
       - name: Install tree-sitter
-        run: npm i tree-sitter-cli
+        run: npm i -g tree-sitter-cli
 
       - name: Cache parser build
         id: cache-parser-build
@@ -40,7 +40,7 @@ jobs:
 
       - if: ${{ steps.cache-parser-build.outputs.cache-hit != 'true' }}
         name: Generate and build parser
-        run: npx tree-sitter generate --build
+        run: tree-sitter generate --build
 
       - name: Verify parser up-to-date
         uses: tj-actions/verify-changed-files@v20
@@ -51,4 +51,4 @@ jobs:
           files: ${{ github.workspace }}/src
 
       - name: Run tests
-        run: npx tree-sitter test
+        run: tree-sitter test
