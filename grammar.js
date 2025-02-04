@@ -45,6 +45,13 @@ module.exports = grammar({
       '}',
     ),
 
+    meta: $ => seq(
+      field('id', $.identity),
+      'info',
+      ':',
+      field('info', $.string),
+    ),
+
     string: _ => token(seq('"', /(?:\\"|[^"])*/, '"')),
     identity: _ => token(/[a-zA-Z0-9_]+/)
   }
