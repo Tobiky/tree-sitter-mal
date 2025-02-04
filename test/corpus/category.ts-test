@@ -27,15 +27,15 @@ category System sameLine info: "Meta on same line" {}
     (declaration
          (category_declaration
             id: (identity)
-            meta: ((meta
-                        id: (identity)
-                        info: (string))
-                   (meta
-                        id: (identity)
-                        info: (string)))))
+            meta: (meta
+                    id: (identity)
+                    info: (string))
+            meta: (meta
+                    id: (identity)
+                    info: (string))))
     (declaration
         (category_declaration
             id: (identity)
-            meta: ((meta
-                        id: (identity)
-                        info: (string))))))
+            meta: (meta
+                    id: (identity)
+                    info: (string)))))
