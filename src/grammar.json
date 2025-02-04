@@ -5,8 +5,54 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "STRING",
-        "value": "hello"
+        "type": "SYMBOL",
+        "name": "declaration"
+      }
+    },
+    "declaration": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "include_declaration"
+        }
+      ]
+    },
+    "include_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "include"
+        },
+        {
+          "type": "FIELD",
+          "name": "file",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        }
+      ]
+    },
+    "string": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "\""
+          },
+          {
+            "type": "PATTERN",
+            "value": "(?:\\\\\"|[^\"])*"
+          },
+          {
+            "type": "STRING",
+            "value": "\""
+          }
+        ]
       }
     }
   },

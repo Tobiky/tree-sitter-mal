@@ -1,12 +1,57 @@
 [
   {
+    "type": "declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "include_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "include_declaration",
+    "named": true,
+    "fields": {
+      "file": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "declaration",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "hello",
+    "type": "include",
     "named": false
+  },
+  {
+    "type": "string",
+    "named": true
   }
 ]

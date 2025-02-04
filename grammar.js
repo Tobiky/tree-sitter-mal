@@ -24,6 +24,17 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat("hello")
+    source_file: $ => repeat($.declaration),
+
+    declaration: $ => choice(
+      $.include_declaration,
+    ),
+
+    include_declaration: $ => seq(
+      'include',
+      field('file', $.string)
+    ),
+
+    string: _ => token(seq('"', /(?:\\"|[^"])*/, '"')),
   }
 });
