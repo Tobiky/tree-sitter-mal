@@ -74,8 +74,6 @@ Only Comments
 
 =========================
 Block comment end cut off
-
-:error
 =========================
 
 /*
@@ -84,8 +82,12 @@ Block comment end cut off
 
 -------------------------
 
+(source_file)
+
 ===========================
 Block comment start cut off
+
+TODO: Ensure this is errenous. This will error in the JavaScript tree sitter repo that uses the same comment exclusion.
 
 :error
 ===========================
