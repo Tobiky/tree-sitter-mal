@@ -10,8 +10,20 @@
 module.exports = grammar({
   name: "mal",
 
+  extras: $ => [
+    /[ \t\r\n]+/,
+    // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
+    choice(
+      seq('//', /[^\r\n\u2028\u2029]*/),
+      seq(
+        '/*',
+        /[^*]*\*+([^/*][^*]*\*+)*/,
+        '/',
+      ),
+    ),
+  ],
+
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
+    source_file: $ => repeat("hello")
   }
 });
