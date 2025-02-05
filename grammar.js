@@ -31,6 +31,7 @@ module.exports = grammar({
     declaration: $ => choice(
       $.include_declaration,
       $.category_declaration,
+      $.define_declaration,
     ),
 
     include_declaration: $ => seq(
@@ -44,6 +45,13 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
       '{',
       '}',
+    ),
+
+    define_declaration: $ => seq(
+      '#',
+      field('id', $.identity),
+      ':',
+      field('value', $.string)
     ),
 
     meta: $ => seq(

@@ -38,10 +38,40 @@
           "named": true
         },
         {
+          "type": "define_declaration",
+          "named": true
+        },
+        {
           "type": "include_declaration",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "define_declaration",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -101,6 +131,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "#",
+    "named": false
   },
   {
     "type": ":",
