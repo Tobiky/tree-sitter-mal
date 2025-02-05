@@ -26,11 +26,6 @@
     }
   },
   {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "declaration",
     "named": true,
     "fields": {},
@@ -108,24 +103,16 @@
     }
   },
   {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "/*",
-    "named": false
-  },
-  {
-    "type": "//",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
   {
     "type": "category",
     "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
   },
   {
     "type": "identity",

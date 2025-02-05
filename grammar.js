@@ -19,14 +19,14 @@ module.exports = grammar({
     source_file: $ => repeat($.declaration),
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
-    comment: _ => choice(
+    comment: _ => token(choice(
       seq('//', /[^\r\n\u2028\u2029]*/),
       seq(
         '/*',
         /[^*]*\*+([^/*][^*]*\*+)*/,
         '/',
       ),
-    ),
+    )),
 
     declaration: $ => choice(
       $.include_declaration,

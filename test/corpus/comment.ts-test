@@ -101,7 +101,8 @@ Block comment end cut off
 
 -------------------------
 
-(source_file)
+(source_file
+  (comment))
 
 ===========================
 Block comment start cut off
