@@ -7,9 +7,10 @@ Define Declaration
 ------------------
 
 (source_file
+  (declaration
     (define_declaration
-        id: (identifier)
-        value: (string)))
+      id: (identity)
+      value: (string))))
 
 ===========================
 Multiple Define Declaration
@@ -22,15 +23,18 @@ Multiple Define Declaration
 ---------------------------
 
 (source_file
+  (declaration
     (define_declaration
-        id: (identifier)
-        value: (string))
+      id: (identity)
+      value: (string)))
+  (declaration
     (define_declaration
-        id: (identifier)
-        value: (string))
+      id: (identity)
+      value: (string)))
+  (declaration
     (define_declaration
-        id: (identifier)
-        value: (string)))
+      id: (identity)
+      value: (string))))
 
 =============================================
 Incorrect identifier fails Define Declaration
@@ -40,6 +44,8 @@ Incorrect identifier fails Define Declaration
 #ökning: "value"
 
 ---------------------------------------------
+
+
 
 =============================================
 Incorrect value type fails Define Declaration
@@ -55,3 +61,5 @@ Incorrect value type fails Define Declaration
 #key: {C, I}
 
 ---------------------------------------------
+
+
