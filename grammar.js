@@ -63,7 +63,19 @@ module.exports = grammar({
       field('extends', optional(seq('extends', $.identity))),
       field('meta', repeat($.meta)),
       '{',
+      field('body', repeat($.attack_step)),
       '}',
+    ),
+
+    attack_step: $ => seq(
+      field('step_type', choice(
+        '|',
+        '&',
+        '#',
+        'E',
+        '!E',
+      )),
+      field('id', $.identity),
     ),
 
     define_declaration: $ => seq(

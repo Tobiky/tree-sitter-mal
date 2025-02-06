@@ -206,8 +206,61 @@
           "value": "{"
         },
         {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "attack_step"
+            }
+          }
+        },
+        {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "attack_step": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "step_type",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "|"
+              },
+              {
+                "type": "STRING",
+                "value": "&"
+              },
+              {
+                "type": "STRING",
+                "value": "#"
+              },
+              {
+                "type": "STRING",
+                "value": "E"
+              },
+              {
+                "type": "STRING",
+                "value": "!E"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
         }
       ]
     },

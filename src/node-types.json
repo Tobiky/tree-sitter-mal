@@ -3,6 +3,16 @@
     "type": "asset",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "attack_step",
+            "named": true
+          }
+        ]
+      },
       "extends": {
         "multiple": true,
         "required": false,
@@ -138,6 +148,48 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "attack_step",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "step_type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "!E",
+            "named": false
+          },
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "&",
+            "named": false
+          },
+          {
+            "type": "E",
+            "named": false
+          },
+          {
+            "type": "|",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -345,7 +397,15 @@
     }
   },
   {
+    "type": "!E",
+    "named": false
+  },
+  {
     "type": "#",
+    "named": false
+  },
+  {
+    "type": "&",
     "named": false
   },
   {
@@ -362,6 +422,10 @@
   },
   {
     "type": "<--",
+    "named": false
+  },
+  {
+    "type": "E",
     "named": false
   },
   {
@@ -422,6 +486,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {
