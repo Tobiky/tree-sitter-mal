@@ -12,8 +12,8 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
-                        id: (identity))))))
+            assets: (asset
+                        id: (identity)))))
 
 ================================
 Empty Abstract Asset Declaration
@@ -29,8 +29,8 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
-                        id: (identity))))))
+            assets: (asset
+                        id: (identity)))))
 
 =================================
 Empty Extending Asset Declaration
@@ -46,9 +46,9 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
+            assets: (asset
                         id: (identity)
-                        extends: (identity))))))
+                        extends: (identity)))))
 
 ==========================================
 Empty Extending Abstract Asset Declaration
@@ -65,9 +65,9 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
+            assets: (asset
                         id: (identity)
-                        extends: (identity))))))
+                        extends: (identity)))))
 
 ================
 Two Empty Assets
@@ -84,10 +84,10 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
+            assets: (asset
                         id: (identity))
-                     (asset
-                        id: (identity))))))
+            assets: (asset
+                        id: (identity)))))
 
 ======================================
 Empty Asset Declaration with Meta Info
@@ -106,18 +106,18 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
-                        meta: ((meta
+            assets: (asset
+                        meta: (meta
                                 id: (identity)
                                 info: (string))
-                               (meta
+                        meta: (meta
                                 id: (identity)
-                                info: (string))))
-                     (asset
-                        id: (identity)
-                        meta: ((meta
-                                id: (identity)
-                                info: (string))))))))
+                                info: (string)))
+            assets: (asset
+                         id: (identity)
+                         meta: (meta
+                                 id: (identity)
+                                 info: (string))))))
 
 ===========================================
 Asset declaration with variable declaration
@@ -135,8 +135,8 @@ category Test {
     (declaration
         (category_declaration
             id: (identity)
-            assets: ((asset
+            assets: (asset
                         id: (identity)
-                        body: ((asset_variable
+                        body: (asset_variable
                                 id: (identity)
-                                value: (asset_expr (identity)))))))))
+                                value: (asset_expr (identity)))))))
