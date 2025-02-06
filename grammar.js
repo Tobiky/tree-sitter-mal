@@ -87,6 +87,7 @@ module.exports = grammar({
         '}',
       ))),
       optional(seq('[', field('ttc', $._ttc), ']')),
+      field('meta', repeat($.meta)),
     ),
 
     // No use in being known since there is only one place these can occur.

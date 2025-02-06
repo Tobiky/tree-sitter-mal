@@ -186,6 +186,16 @@
           }
         ]
       },
+      "meta": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "meta",
+            "named": true
+          }
+        ]
+      },
       "step_type": {
         "multiple": false,
         "required": true,
