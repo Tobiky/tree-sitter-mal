@@ -1,5 +1,45 @@
 [
   {
+    "type": "asset",
+    "named": true,
+    "fields": {
+      "extends": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "extends",
+            "named": false
+          },
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "meta": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "meta",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "association",
     "named": true,
     "fields": {
@@ -104,6 +144,16 @@
     "type": "category_declaration",
     "named": true,
     "fields": {
+      "assets": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "asset",
+            "named": true
+          }
+        ]
+      },
       "id": {
         "multiple": false,
         "required": true,
@@ -323,6 +373,14 @@
     "named": false
   },
   {
+    "type": "abstract",
+    "named": false
+  },
+  {
+    "type": "asset",
+    "named": false
+  },
+  {
     "type": "associations",
     "named": false
   },
@@ -333,6 +391,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "extends",
+    "named": false
   },
   {
     "type": "identity",
