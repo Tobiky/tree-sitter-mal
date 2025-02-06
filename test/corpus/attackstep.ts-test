@@ -78,20 +78,20 @@ category Test {
         body: (attack_step
           id: (identity)
           cias: (cia))
-        (attack_step
+        body: (attack_step
           id: (identity)
           cias: (cia))
-        (attack_step
+        body: (attack_step
           id: (identity)
           cias: (cia))
-        (attack_step
+        body: (attack_step
           id: (identity)
           cias: (cia)
-          (cia))
-        (attack_step
+          cias: (cia))
+        body: (attack_step
           id: (identity)
           cias: (cia)
-          (cia))))))
+          cias: (cia))))))
 
 ====================
 Attack-step with TTC
