@@ -189,6 +189,20 @@
             "named": false
           }
         ]
+      },
+      "tag": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -422,6 +436,10 @@
   },
   {
     "type": "<--",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {

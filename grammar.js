@@ -76,6 +76,7 @@ module.exports = grammar({
         '!E',
       )),
       field('id', $.identity),
+      optional(field('tag', seq('@', $.identity))),
     ),
 
     define_declaration: $ => seq(
