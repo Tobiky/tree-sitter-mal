@@ -9,10 +9,11 @@ category Test {
 -----------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity)))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        id: (identity))))))
 
 ================================
 Empty Abstract Asset Declaration
@@ -25,10 +26,11 @@ category Test {
 --------------------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity)))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        id: (identity))))))
 
 =================================
 Empty Extending Asset Declaration
@@ -41,11 +43,12 @@ category Test {
 ---------------------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity)
-                    extends: (identity)))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        id: (identity)
+                        extends: (identity))))))
 
 ==========================================
 Empty Extending Abstract Asset Declaration
@@ -59,11 +62,12 @@ category Test {
 ------------------------------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity)
-                    extends: (identity)))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        id: (identity)
+                        extends: (identity))))))
 
 ================
 Two Empty Assets
@@ -77,12 +81,13 @@ category Test {
 ----------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity))
-                 (asset
-                    id: (identity)))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        id: (identity))
+                     (asset
+                        id: (identity))))))
 
 ======================================
 Empty Asset Declaration with Meta Info
@@ -98,20 +103,21 @@ category Test {
 --------------------------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    meta: ((meta
-                            id: (identity)
-                            info: (string))
-                           (meta
-                            id: (identity)
-                            info: (string))))
-                 (asset
-                    id: (identity)
-                    meta: ((meta
-                            id: (identity)
-                            info: (string)))))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        meta: ((meta
+                                id: (identity)
+                                info: (string))
+                               (meta
+                                id: (identity)
+                                info: (string))))
+                     (asset
+                        id: (identity)
+                        meta: ((meta
+                                id: (identity)
+                                info: (string))))))))
 
 ===========================================
 Asset declaration with variable declaration
@@ -126,10 +132,11 @@ category Test {
 -------------------------------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        assets: ((asset
-                    id: (identity)
-                    body: ((asset_variable
-                            id: (identity)
-                            value: (asset_expr (identity))))))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: ((asset
+                        id: (identity)
+                        body: ((asset_variable
+                                id: (identity)
+                                value: (asset_expr (identity)))))))))
