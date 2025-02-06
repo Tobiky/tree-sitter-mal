@@ -1,0 +1,21 @@
+=============================================
+Variable declaration with identity expression
+=============================================
+
+category Test {
+    asset TestAsset {
+        let testVar = identityVal
+    }
+}
+
+---------------------------------------------
+
+(source_file
+    (declaration
+        (category_declaration
+            id: (identity)
+            assets: (asset
+                        id: (identity)
+                        body: (asset_variable
+                                id: (identity)
+                                value: (asset_expr (identity)))))))
