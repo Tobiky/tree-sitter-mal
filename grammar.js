@@ -77,6 +77,11 @@ module.exports = grammar({
       )),
       field('id', $.identity),
       optional(field('tag', seq('@', $.identity))),
+      optional(field('cias', seq(
+        '{',
+        commaSep1($.cia),
+        '}',
+      )))
     ),
 
     define_declaration: $ => seq(
@@ -135,5 +140,17 @@ module.exports = grammar({
     identity: _ => token(/[a-zA-Z0-9_]+/),
 
     star: _ => token('*'),
-  }
+    cia: _ => token(/[CIA]/)
+  },
 });
+
+/**
+ * Creates a rule to match one or more of the rules separated by a comma
+ *
+ * @param {Rule} rule
+ *
+ * @returns {SeqRule}
+ */
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
+}

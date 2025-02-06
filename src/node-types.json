@@ -154,6 +154,28 @@
     "type": "attack_step",
     "named": true,
     "fields": {
+      "cias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "cia",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      },
       "id": {
         "multiple": false,
         "required": true,
@@ -423,6 +445,10 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": "-->",
     "named": false
   },
@@ -469,6 +495,10 @@
   {
     "type": "category",
     "named": false
+  },
+  {
+    "type": "cia",
+    "named": true
   },
   {
     "type": "comment",
