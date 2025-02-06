@@ -15,6 +15,13 @@ module.exports = grammar({
     $.comment,
   ],
 
+  word: $ => $.identity,
+
+  conflicts: $ => [
+    // FIXME: Conflict at end of association when there shouldn't be one
+    [$.association]
+  ],
+
   rules: {
     source_file: $ => repeat($.declaration),
 
@@ -32,6 +39,7 @@ module.exports = grammar({
       $.include_declaration,
       $.category_declaration,
       $.define_declaration,
+      $.associations_declaration,
     ),
 
     include_declaration: $ => seq(
@@ -54,6 +62,43 @@ module.exports = grammar({
       field('value', $.string)
     ),
 
+    associations_declaration: $ => seq(
+      'associations',
+      '{',
+      repeat($.association),
+      '}',
+    ),
+
+    association: $ => seq(
+      field('left_id', $.identity),
+      '[', field('left_field_id', $.identity), ']',
+      field('left_mult', $.multiplicity),
+      '<--',
+      field('id', $.identity),
+      '-->',
+      field('right_mult', $.multiplicity),
+      '[', field('right_field_id', $.identity), ']',
+      field('right_id', $.identity),
+      field('meta', repeat($.meta)),
+    ),
+
+    multiplicity: $ => choice(
+      $._multiplicity_atom,
+      $.multiplicity_range,
+    ),
+
+    _multiplicity_atom: $ => choice(
+      $.integer,
+      $.star,
+    ),
+
+    multiplicity_range: $ => seq(
+      field('start', $._multiplicity_atom),
+      '..',
+      field('end', $._multiplicity_atom),
+    ),
+
+
     meta: $ => seq(
       field('id', $.identity),
       'info',
@@ -62,6 +107,9 @@ module.exports = grammar({
     ),
 
     string: _ => token(seq('"', /(?:\\"|[^"])*/, '"')),
-    identity: _ => token(/[a-zA-Z0-9_]+/)
+    integer: _ => token(/[0-9]+/),
+    identity: _ => token(/[a-zA-Z0-9_]+/),
+
+    star: _ => token('*'),
   }
 });

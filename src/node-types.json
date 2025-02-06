@@ -1,5 +1,106 @@
 [
   {
+    "type": "association",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "left_field_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "left_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "left_mult": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "multiplicity",
+            "named": true
+          }
+        ]
+      },
+      "meta": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "meta",
+            "named": true
+          }
+        ]
+      },
+      "right_field_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "right_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "right_mult": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "multiplicity",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "associations_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "association",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "category_declaration",
     "named": true,
     "fields": {
@@ -33,6 +134,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "associations_declaration",
+          "named": true
+        },
         {
           "type": "category_declaration",
           "named": true
@@ -117,6 +222,63 @@
     }
   },
   {
+    "type": "multiplicity",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "multiplicity_range",
+          "named": true
+        },
+        {
+          "type": "star",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multiplicity_range",
+    "named": true,
+    "fields": {
+      "end": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "star",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "star",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -137,7 +299,31 @@
     "named": false
   },
   {
+    "type": "-->",
+    "named": false
+  },
+  {
+    "type": "..",
+    "named": false
+  },
+  {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "<--",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "associations",
     "named": false
   },
   {
@@ -159,6 +345,14 @@
   {
     "type": "info",
     "named": false
+  },
+  {
+    "type": "integer",
+    "named": true
+  },
+  {
+    "type": "star",
+    "named": true
   },
   {
     "type": "string",

@@ -1,6 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "mal",
+  "word": "identity",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -61,6 +62,10 @@
         {
           "type": "SYMBOL",
           "name": "define_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "associations_declaration"
         }
       ]
     },
@@ -146,6 +151,177 @@
         }
       ]
     },
+    "associations_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "associations"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "association"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "association": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "left_id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "left_field_id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "FIELD",
+          "name": "left_mult",
+          "content": {
+            "type": "SYMBOL",
+            "name": "multiplicity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "<--"
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "-->"
+        },
+        {
+          "type": "FIELD",
+          "name": "right_mult",
+          "content": {
+            "type": "SYMBOL",
+            "name": "multiplicity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "right_field_id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "FIELD",
+          "name": "right_id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "meta",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "meta"
+            }
+          }
+        }
+      ]
+    },
+    "multiplicity": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_multiplicity_atom"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "multiplicity_range"
+        }
+      ]
+    },
+    "_multiplicity_atom": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "star"
+        }
+      ]
+    },
+    "multiplicity_range": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "start",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_multiplicity_atom"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ".."
+        },
+        {
+          "type": "FIELD",
+          "name": "end",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_multiplicity_atom"
+          }
+        }
+      ]
+    },
     "meta": {
       "type": "SEQ",
       "members": [
@@ -195,11 +371,25 @@
         ]
       }
     },
+    "integer": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[0-9]+"
+      }
+    },
     "identity": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
         "value": "[a-zA-Z0-9_]+"
+      }
+    },
+    "star": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "*"
       }
     }
   },
@@ -213,7 +403,11 @@
       "name": "comment"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "association"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],
