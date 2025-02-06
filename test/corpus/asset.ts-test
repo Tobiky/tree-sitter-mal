@@ -107,6 +107,7 @@ category Test {
         (category_declaration
             id: (identity)
             assets: (asset
+                        id: (identity)
                         meta: (meta
                                 id: (identity)
                                 info: (string))
