@@ -22,6 +22,10 @@ module.exports = grammar({
     [$.association]
   ],
 
+  precedences: $ => [
+    [ 'binary_exp', 'binary_mul', 'binary_plus', ]
+  ],
+
   rules: {
     source_file: $ => repeat($.declaration),
 
@@ -81,7 +85,47 @@ module.exports = grammar({
         '{',
         commaSep1($.cia),
         '}',
-      )))
+      ))),
+      optional(seq('[', field('ttc', $._ttc), ']')),
+    ),
+
+    // No use in being known since there is only one place these can occur.
+    // Might want to bring forward for the sake of querrying.
+    _ttc: $ => choice(
+      $._ttc_parenthesized,
+      $.ttc_primary,
+      $.ttc_binop,
+    ),
+
+    _ttc_parenthesized: $ => seq('(', $._ttc, ')'),
+
+    ttc_primary: $ => choice(
+      $.integer,
+      $.identity,
+      $.ttc_distribution,
+    ),
+
+    ttc_distribution: $ => seq(
+      field('id', $.identity),
+      '(',
+      field('values', commaSep1($.integer)),
+      ')',
+    ),
+
+    ttc_binop: $ => choice(
+      ...[
+        ['+', 'binary_plus'],
+        ['-', 'binary_plus'],
+        ['*', 'binary_mul'],
+        ['/', 'binary_mul'],
+        ['^', 'binary_exp', 'right'],
+      ].map(([operator, precedence, associativity]) =>
+        (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
+          field('left', $._ttc),
+          field('operator', operator),
+          field('right', $._ttc),
+        )),
+      )
     ),
 
     define_declaration: $ => seq(
