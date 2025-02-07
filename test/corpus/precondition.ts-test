@@ -55,59 +55,63 @@ category Test {
 -------------------------------------------------------------
 
 (source_file
-  (category_declaration
-    id: (identity)
-    assets: ((asset
+  (declaration
+    (category_declaration
       id: (identity)
-      body: ((attack_step
+      assets: (asset
         id: (identity)
-        preconditions: ((asset_expr_atom
-          (identity))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_atom
-            (identity)))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_atom
-            (identity)))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_atom
-            (identity)))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_atom
-            (identity)))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_binop
-            left: (asset_expr_atom
+        body: (attack_step
+          id: (identity)
+          preconditions: (preconditions
+            condition: (asset_expr_primary
               (identity))
-            right: (asset_expr_atom
-              (identity))))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_atom
-            (identity)))
-        (asset_expr_binop
-          left: (asset_expr_atom
-            (identity))
-          right: (asset_expr_atom
-            (identity)))
-        (asset_expr_type
-          type_id: (identity)
-          expr: (asset_expr_atom
-            (identity)))
-        (asset_expr_type
-          type_id: (identity)
-          expr: (asset_expr_type
-            type_id: (identity)
-            expr: (asset_expr_atom
-              (identity))))))))
+            condition: (asset_expr_binop
+              left: (asset_expr_primary
+                (identity))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_binop
+              left: (asset_expr_primary
+                (identity))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_binop
+              left: (asset_expr_primary
+                (identity))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_binop
+              left: (asset_expr_primary
+                (identity))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_binop
+              left: (asset_expr_binop
+                left: (asset_expr_primary
+                  (identity))
+                right: (asset_expr_primary
+                  (identity)))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_binop
+              left: (asset_expr_primary
+                (asset_variable_substitution
+                  id: (identity)))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_binop
+              left: (asset_expr_unop
+                expression: (asset_expr_primary
+                  (identity)))
+              right: (asset_expr_primary
+                (identity)))
+            condition: (asset_expr_type
+              expression: (asset_expr_primary
+                (identity))
+              type_id: (identity))
+            condition: (asset_expr_type
+              expression: (asset_expr_type
+                expression: (asset_expr_primary
+                  (identity))
+                type_id: (identity))
+              type_id: (identity))))))))
