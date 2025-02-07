@@ -88,6 +88,18 @@ module.exports = grammar({
       ))),
       optional(seq('[', field('ttc', $._ttc), ']')),
       field('meta', repeat($.meta)),
+      optional(field('preconditions', $.preconditions)),
+      optional(field('reaches', $.reaching)),
+    ),
+
+    preconditions: $ => seq(
+      '<-', 
+      field('condition', commaSep1($._asset_expr))
+    ),
+
+    reaching: $ => seq(
+        field('operator', choice('+>', '->')),
+        field('reaches', commaSep1($._asset_expr))
     ),
 
     // No use in being known since there is only one place these can occur.
@@ -125,6 +137,65 @@ module.exports = grammar({
           field('left', $._ttc),
           field('operator', operator),
           field('right', $._ttc),
+        )),
+      )
+    ),
+
+    _asset_expr: $ => choice(
+      $._asset_expr_parenthesized,
+      $.asset_expr_primary,
+      $.asset_expr_binop,
+      $.asset_expr_unop,
+      $.asset_expr_type,
+    ),
+
+    _asset_expr_parenthesized: $ => seq(
+      '(',
+      $._asset_expr,
+      ')',
+    ),
+
+    asset_expr_primary: $ => choice(
+      $.identity,
+      $.asset_variable_substitution
+    ),
+
+    asset_variable_substitution: $ => seq(
+      field('id', $.identity),
+      '(',
+      ')',
+    ),
+
+    asset_expr_type: $ => prec.left('binary_exp', seq(
+      field('expression', $._asset_expr),
+      '[',
+      field('type_id', $.identity),
+      ']',
+    )),
+
+    asset_expr_binop: $ => choice(
+      ...[
+        ['\\/', 'binary_plus'],
+        ['/\\', 'binary_mul'],
+        ['-', 'binary_mul'],
+        ['.', 'binary_exp'],
+      ].map(([operator, precedence, associativity]) =>
+        (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
+          field('left', $._asset_expr),
+          field('operator', operator),
+          field('right', $._asset_expr),
+        )),
+      )
+    ),
+
+    asset_expr_unop: $ => choice(
+      ...[
+        // For now only one unary operator so use binary precedences
+        ['*', 'binary_exp'],
+      ].map(([operator, precedence, associativity]) =>
+        (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
+          field('expression', $._asset_expr),
+          field('operator', operator),
         )),
       )
     ),

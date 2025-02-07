@@ -50,6 +50,221 @@
     }
   },
   {
+    "type": "asset_expr_binop",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "/\\",
+            "named": false
+          },
+          {
+            "type": "\\/",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "asset_expr_primary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "asset_variable_substitution",
+          "named": true
+        },
+        {
+          "type": "identity",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "asset_expr_type",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          }
+        ]
+      },
+      "type_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "asset_expr_unop",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "*",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "asset_variable_substitution",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "association",
     "named": true,
     "fields": {
@@ -192,6 +407,26 @@
         "types": [
           {
             "type": "meta",
+            "named": true
+          }
+        ]
+      },
+      "preconditions": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "preconditions",
+            "named": true
+          }
+        ]
+      },
+      "reaches": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "reaching",
             "named": true
           }
         ]
@@ -449,6 +684,100 @@
     }
   },
   {
+    "type": "preconditions",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "reaching",
+    "named": true,
+    "fields": {
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+>",
+            "named": false
+          },
+          {
+            "type": "->",
+            "named": false
+          }
+        ]
+      },
+      "reaches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -627,6 +956,10 @@
     "named": false
   },
   {
+    "type": "+>",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
@@ -639,6 +972,14 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
     "type": "..",
     "named": false
   },
@@ -647,7 +988,15 @@
     "named": false
   },
   {
+    "type": "/\\",
+    "named": false
+  },
+  {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "<-",
     "named": false
   },
   {
@@ -664,6 +1013,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\/",
     "named": false
   },
   {
