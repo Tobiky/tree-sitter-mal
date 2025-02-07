@@ -48,7 +48,7 @@ category Test {
                 a().b,
                 a*.b,
                 a[Type],
-                a[TypeA][TypeB],
+                a[TypeA][TypeB]
     }
 }
 
