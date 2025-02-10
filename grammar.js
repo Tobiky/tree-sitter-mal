@@ -67,8 +67,15 @@ module.exports = grammar({
       field('extends', optional(seq('extends', $.identity))),
       field('meta', repeat($.meta)),
       '{',
-      field('body', repeat($.attack_step)),
+      field('body', repeat(choice($.attack_step, $.asset_variable))),
       '}',
+    ),
+
+    asset_variable: $ => seq(
+      'let',
+      field('id', $.identity),
+      '=',
+      field('value', $._asset_expr),
     ),
 
     attack_step: $ => seq(

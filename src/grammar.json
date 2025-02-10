@@ -211,14 +211,52 @@
           "content": {
             "type": "REPEAT",
             "content": {
-              "type": "SYMBOL",
-              "name": "attack_step"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "attack_step"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "asset_variable"
+                }
+              ]
             }
           }
         },
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "asset_variable": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "let"
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identity"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_asset_expr"
+          }
         }
       ]
     },

@@ -8,6 +8,10 @@
         "required": false,
         "types": [
           {
+            "type": "asset_variable",
+            "named": true
+          },
+          {
             "type": "attack_step",
             "named": true
           }
@@ -243,6 +247,52 @@
           {
             "type": "*",
             "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "asset_variable",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_primary",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
           }
         ]
       }
@@ -1004,6 +1054,10 @@
     "named": false
   },
   {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
   },
@@ -1070,6 +1124,10 @@
   {
     "type": "integer",
     "named": true
+  },
+  {
+    "type": "let",
+    "named": false
   },
   {
     "type": "string",
