@@ -271,21 +271,25 @@ category Test {
         id: (identity)
         body: (attack_step
           id: (identity)
-          inherits: (asset_expr
-            (identity))
-          (attack_step
-            id: (identity)
-            inherits: (asset_expr
+          reaches: (reaching
+            reaches: (asset_expr_primary
+              (identity))))
+        body: (attack_step
+          id: (identity)
+          reaches: (reaching
+            reaches: (asset_expr_primary
               (identity))
-            (asset_expr
-              (identity)))
-          (attack_step
-            id: (identity)
-            leads_to: (asset_expr
-              (identity)))
-          (attack_step
-            id: (identity)
-            leads_to: (asset_expr
+            reaches: (asset_expr_primary
+              (identity))))
+        body: (attack_step
+          id: (identity)
+          reaches: (reaching
+            reaches: (asset_expr_primary
+              (identity))))
+        body: (attack_step
+          id: (identity)
+          reaches: (reaching
+            reaches: (asset_expr_primary
               (identity))
-            (asset_expr
+            reaches: (asset_expr_primary
               (identity))))))))
