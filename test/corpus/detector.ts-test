@@ -26,3 +26,33 @@ category Test {
                 (detector_context_asset
                     id: (identity)
                     label: (identity))))))))))))
+
+===========================
+Detector with Detector Name
+===========================
+
+category Test {
+    asset TestAsset {
+        | detector ! a.b.c (a a_label)
+    }
+}
+
+---------------------------
+
+(source_file
+  (declaration
+    (category_declaration
+      id: (identity)
+      assets: (asset
+        id: (identity)
+        body: (attack_step
+          id: (identity)
+          detector: (detector
+            name: (detector_name
+                (identity)
+                (identity)
+                (identity))
+            context: (detector_context
+                (detector_context_asset
+                    id: (identity)
+                    label: (identity))))))))))))
