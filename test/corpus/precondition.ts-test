@@ -21,12 +21,12 @@ category Test {
         id: (identity)
         body: (attack_step
           id: (identity)
-          precondition: (precondition
+          preconditions: (preconditions
             condition: (asset_expr_primary
               (identity))))
         body: (attack_step
           id: (identity)
-          precondition: (precondition
+          preconditions: (preconditions
             condition: (asset_expr_primary
               (identity))
             condition: (asset_expr_primary
