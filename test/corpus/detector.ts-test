@@ -83,3 +83,31 @@ category Test {
                     id: (identity)
                     label: (identity)))
             type: (identity)))))))
+
+=================
+Detector with TTC
+=================
+
+category Test {
+    asset TestAsset {
+        | detector ! (a a_label) [ 1 ]
+    }
+}
+
+-----------------
+
+(source_file
+  (declaration
+    (category_declaration
+      id: (identity)
+      assets: (asset
+        id: (identity)
+        body: (attack_step
+          id: (identity)
+          detector: (detector
+            context: (detector_context
+                (detector_context_asset
+                    id: (identity)
+                    label: (identity)))
+            ttc: (ttc_primary
+                (integer))))))))
