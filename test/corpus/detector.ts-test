@@ -25,7 +25,7 @@ category Test {
                     label: (identity))
                 (detector_context_asset
                     id: (identity)
-                    label: (identity))))))))))))
+                    label: (identity)))))))))
 
 ===========================
 Detector with Detector Name
@@ -55,4 +55,4 @@ category Test {
             context: (detector_context
                 (detector_context_asset
                     id: (identity)
-                    label: (identity))))))))))))
+                    label: (identity)))))))))
