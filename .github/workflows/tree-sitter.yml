@@ -16,13 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: actions/setup-node@v4
-        with:
-            node-version: latest
-            cache: 'npm'
-
-      - name: Install tree-sitter
-        run: npm i tree-sitter-cli
+        uses: tree-sitter/setup-action@v2
 
       - name: Cache parser build
         id: cache-parser-build
@@ -40,7 +34,7 @@ jobs:
 
       - if: ${{ steps.cache-parser-build.outputs.cache-hit != 'true' }}
         name: Generate and build parser
-        run: npx tree-sitter generate --build
+        run: tree-sitter generate --build
 
       - name: Verify parser up-to-date
         uses: tj-actions/verify-changed-files@v20
@@ -51,4 +45,4 @@ jobs:
           files: ${{ github.workspace }}/src
 
       - name: Run tests
-        run: npx tree-sitter test
+        run: tree-sitter test
