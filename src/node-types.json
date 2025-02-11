@@ -668,6 +668,28 @@
           }
         ]
       },
+      "ttc": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "ttc_binop",
+            "named": true
+          },
+          {
+            "type": "ttc_primary",
+            "named": true
+          }
+        ]
+      },
       "type": {
         "multiple": false,
         "required": false,

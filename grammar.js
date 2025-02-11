@@ -108,6 +108,7 @@ module.exports = grammar({
       optional(field('name', $.detector_name)),
       field('context', $.detector_context),
       optional(field('type', $.identity)),
+      optional(seq('[', field('ttc', $._ttc), ']')),
     ),
 
     detector_name: $ => sep1($.identity, '.'),
