@@ -441,6 +441,16 @@
           }
         ]
       },
+      "detector": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "detector",
+            "named": true
+          }
+        ]
+      },
       "id": {
         "multiple": false,
         "required": true,
@@ -628,6 +638,63 @@
         "types": [
           {
             "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "detector",
+    "named": true,
+    "fields": {
+      "context": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "detector_context",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "detector_context",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "detector_context_asset",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "detector_context_asset",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
+      },
+      "label": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identity",
             "named": true
           }
         ]
@@ -978,6 +1045,10 @@
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
     "type": "!E",
     "named": false
   },
@@ -1035,6 +1106,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "//!",
     "named": false
   },
   {

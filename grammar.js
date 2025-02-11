@@ -30,14 +30,16 @@ module.exports = grammar({
     source_file: $ => repeat($.declaration),
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
-    comment: _ => token(choice(
+    // Additionally, set 0 precidence so behavior can be overwritten when necessary.
+    // For example: Detectors have //! accepted as part of backwards compatability.
+    comment: _ => token(prec(0, choice(
       seq('//', /[^\r\n\u2028\u2029]*/),
       seq(
         '/*',
         /[^*]*\*+([^/*][^*]*\*+)*/,
         '/',
       ),
-    )),
+    ))),
 
     declaration: $ => choice(
       $.include_declaration,
@@ -95,8 +97,26 @@ module.exports = grammar({
       ))),
       optional(seq('[', field('ttc', $._ttc), ']')),
       field('meta', repeat($.meta)),
+      optional(field('detector', $.detector)),
       optional(field('preconditions', $.preconditions)),
       optional(field('reaches', $.reaching)),
+    ),
+
+    detector: $ => seq(
+      // Increase //! precidence to overrule comments
+      choice('!', token(prec(1, '//!'))),
+      field('context', $.detector_context),
+    ),
+
+    detector_context: $ => seq(
+      '(',
+      commaSep1($.detector_context_asset),
+      ')',
+    ),
+
+    detector_context_asset: $ => seq(
+      field('id', $.identity),
+      field('label', $.identity),
     ),
 
     preconditions: $ => seq(
