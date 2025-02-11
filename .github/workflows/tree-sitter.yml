@@ -25,8 +25,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ${{ github.workspace }}/src
-            ${{ github.workspace }}/mal.so
+            ./src
+            ./mal.so
           key: ${{ matrix.os }}-build-${{ env.cache-name }}-${{ hashFiles('grammar.js') }}
           restore-keys: |
             ${{ matrix.os }}-build-${{ env.cache-name }}-
@@ -42,7 +42,7 @@ jobs:
         with:
           fail-if-changed: true
           fail-message: Parser is not up-to-date with grammar.
-          files: ${{ github.workspace }}/src
+          files: ./src
 
       - name: Run tests
         run: tree-sitter test
