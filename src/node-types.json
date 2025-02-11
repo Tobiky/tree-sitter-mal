@@ -532,23 +532,11 @@
         ]
       },
       "ttc": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "ttc_binop",
-            "named": true
-          },
-          {
-            "type": "ttc_primary",
+            "type": "ttc",
             "named": true
           }
         ]
@@ -669,23 +657,11 @@
         ]
       },
       "ttc": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "ttc_binop",
-            "named": true
-          },
-          {
-            "type": "ttc_primary",
+            "type": "ttc",
             "named": true
           }
         ]
@@ -971,6 +947,25 @@
     "type": "star",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "ttc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ttc_binop",
+          "named": true
+        },
+        {
+          "type": "ttc_primary",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "ttc_binop",

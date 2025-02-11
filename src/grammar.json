@@ -383,25 +383,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "["
-                },
-                {
-                  "type": "FIELD",
-                  "name": "ttc",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_ttc"
-                  }
-                },
-                {
-                  "type": "STRING",
-                  "value": "]"
-                }
-              ]
+              "type": "FIELD",
+              "name": "ttc",
+              "content": {
+                "type": "SYMBOL",
+                "name": "ttc"
+              }
             },
             {
               "type": "BLANK"
@@ -536,25 +523,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "["
-                },
-                {
-                  "type": "FIELD",
-                  "name": "ttc",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_ttc"
-                  }
-                },
-                {
-                  "type": "STRING",
-                  "value": "]"
-                }
-              ]
+              "type": "FIELD",
+              "name": "ttc",
+              "content": {
+                "type": "SYMBOL",
+                "name": "ttc"
+              }
             },
             {
               "type": "BLANK"
@@ -736,7 +710,24 @@
         }
       ]
     },
-    "_ttc": {
+    "ttc": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_ttc_expr"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "_ttc_expr": {
       "type": "CHOICE",
       "members": [
         {
@@ -762,7 +753,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_ttc"
+          "name": "_ttc_expr"
         },
         {
           "type": "STRING",
@@ -851,7 +842,7 @@
                 "name": "left",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               },
               {
@@ -867,7 +858,7 @@
                 "name": "right",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               }
             ]
@@ -884,7 +875,7 @@
                 "name": "left",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               },
               {
@@ -900,7 +891,7 @@
                 "name": "right",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               }
             ]
@@ -917,7 +908,7 @@
                 "name": "left",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               },
               {
@@ -933,7 +924,7 @@
                 "name": "right",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               }
             ]
@@ -950,7 +941,7 @@
                 "name": "left",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               },
               {
@@ -966,7 +957,7 @@
                 "name": "right",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               }
             ]
@@ -983,7 +974,7 @@
                 "name": "left",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               },
               {
@@ -999,7 +990,7 @@
                 "name": "right",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_ttc"
+                  "name": "_ttc_expr"
                 }
               }
             ]

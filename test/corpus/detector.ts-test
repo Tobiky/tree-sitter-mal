@@ -20,12 +20,12 @@ category Test {
           id: (identity)
           detector: (detector
             context: (detector_context
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity))
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity)))))))))
+              (detector_context_asset
+                id: (identity)
+                label: (identity))
+              (detector_context_asset
+                id: (identity)
+                label: (identity)))))))))
 
 ==========================
 Commented Minimal Detector
@@ -49,12 +49,12 @@ category Test {
           id: (identity)
           detector: (detector
             context: (detector_context
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity))
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity)))))))))
+              (detector_context_asset
+                id: (identity)
+                label: (identity))
+              (detector_context_asset
+                id: (identity)
+                label: (identity)))))))))
 
 ===========================
 Detector with Detector Name
@@ -78,13 +78,13 @@ category Test {
           id: (identity)
           detector: (detector
             name: (detector_name
-                (identity)
-                (identity)
-                (identity))
+              (identity)
+              (identity)
+              (identity))
             context: (detector_context
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity)))))))))
+              (detector_context_asset
+                id: (identity)
+                label: (identity)))))))))
 
 ===========================
 Detector with Detector Type
@@ -108,9 +108,9 @@ category Test {
           id: (identity)
           detector: (detector
             context: (detector_context
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity)))
+              (detector_context_asset
+                id: (identity)
+                label: (identity)))
             type: (identity)))))))
 
 =================
@@ -135,8 +135,9 @@ category Test {
           id: (identity)
           detector: (detector
             context: (detector_context
-                (detector_context_asset
-                    id: (identity)
-                    label: (identity)))
-            ttc: (ttc_primary
-                (integer))))))))
+              (detector_context_asset
+                id: (identity)
+                label: (identity)))
+            ttc: (ttc
+              (ttc_primary
+                (integer)))))))))

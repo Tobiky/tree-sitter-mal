@@ -95,7 +95,7 @@ module.exports = grammar({
         commaSep1($.cia),
         '}',
       ))),
-      optional(seq('[', field('ttc', $._ttc), ']')),
+      optional(field('ttc', $.ttc)),
       field('meta', repeat($.meta)),
       optional(field('detector', $.detector)),
       optional(field('preconditions', $.preconditions)),
@@ -108,7 +108,7 @@ module.exports = grammar({
       optional(field('name', $.detector_name)),
       field('context', $.detector_context),
       optional(field('type', $.identity)),
-      optional(seq('[', field('ttc', $._ttc), ']')),
+      optional(field('ttc', $.ttc)),
     ),
 
     detector_name: $ => sep1($.identity, '.'),
@@ -134,15 +134,22 @@ module.exports = grammar({
         field('reaches', commaSep1($._asset_expr))
     ),
 
+
+    ttc: $ => seq(
+      '[',
+      $._ttc_expr,
+      ']',
+    ),
+
     // No use in being known since there is only one place these can occur.
     // Might want to bring forward for the sake of querrying.
-    _ttc: $ => choice(
+    _ttc_expr: $ => choice(
       $._ttc_parenthesized,
       $.ttc_primary,
       $.ttc_binop,
     ),
 
-    _ttc_parenthesized: $ => seq('(', $._ttc, ')'),
+    _ttc_parenthesized: $ => seq('(', $._ttc_expr, ')'),
 
     ttc_primary: $ => choice(
       $.integer,
@@ -166,9 +173,9 @@ module.exports = grammar({
         ['^', 'binary_exp', 'right'],
       ].map(([operator, precedence, associativity]) =>
         (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
-          field('left', $._ttc),
+          field('left', $._ttc_expr),
           field('operator', operator),
-          field('right', $._ttc),
+          field('right', $._ttc_expr),
         )),
       )
     ),

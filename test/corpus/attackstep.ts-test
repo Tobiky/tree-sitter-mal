@@ -124,90 +124,102 @@ category Test {
         id: (identity)
         body: (attack_step
           id: (identity)
-          ttc: (ttc_primary
-            (integer)))
-        body: (attack_step
-          id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_primary
+          ttc: (ttc
+            (ttc_primary
               (integer))))
         body: (attack_step
           id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_primary
-              (integer))))
-        body: (attack_step
-          id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_primary
-              (integer))))
-        body: (attack_step
-          id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_primary
-              (integer))))
-        body: (attack_step
-          id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_primary
-              (integer))))
-        body: (attack_step
-          id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_binop
+          ttc: (ttc
+            (ttc_binop
               left: (ttc_primary
                 (integer))
               right: (ttc_primary
                 (integer)))))
         body: (attack_step
           id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_primary
-              (integer))
-            right: (ttc_binop
+          ttc: (ttc
+            (ttc_binop
               left: (ttc_primary
                 (integer))
               right: (ttc_primary
                 (integer)))))
         body: (attack_step
           id: (identity)
-          ttc: (ttc_binop
-            left: (ttc_binop
+          ttc: (ttc
+            (ttc_binop
               left: (ttc_primary
                 (integer))
               right: (ttc_primary
-                (integer)))
-            right: (ttc_primary
-              (integer))))
+                (integer)))))
         body: (attack_step
           id: (identity)
-          ttc: (ttc_primary
-            (identity)))
+          ttc: (ttc
+            (ttc_binop
+              left: (ttc_primary
+                (integer))
+              right: (ttc_primary
+                (integer)))))
         body: (attack_step
           id: (identity)
-          ttc: (ttc_primary
-            (ttc_distribution
-              id: (identity)
-              values: (integer))))
+          ttc: (ttc
+            (ttc_binop
+              left: (ttc_primary
+                (integer))
+              right: (ttc_primary
+                (integer)))))
         body: (attack_step
           id: (identity)
-          ttc: (ttc_primary
-            (ttc_distribution
-              id: (identity)
-              values: (integer)
-              values: (integer))))))))
+          ttc: (ttc
+            (ttc_binop
+              left: (ttc_primary
+                (integer))
+              right: (ttc_binop
+                left: (ttc_primary
+                  (integer))
+                right: (ttc_primary
+                  (integer))))))
+        body: (attack_step
+          id: (identity)
+          ttc: (ttc
+            (ttc_binop
+              left: (ttc_primary
+                (integer))
+              right: (ttc_binop
+                left: (ttc_primary
+                  (integer))
+                right: (ttc_primary
+                  (integer))))))
+        body: (attack_step
+          id: (identity)
+          ttc: (ttc
+            (ttc_binop
+              left: (ttc_binop
+                left: (ttc_primary
+                  (integer))
+                right: (ttc_primary
+                  (integer)))
+              right: (ttc_primary
+                (integer)))))
+        body: (attack_step
+          id: (identity)
+          ttc: (ttc
+            (ttc_primary
+              (identity))))
+        body: (attack_step
+          id: (identity)
+          ttc: (ttc
+            (ttc_primary
+              (ttc_distribution
+                id: (identity)
+                values: (integer)))))
+        body: (attack_step
+          id: (identity)
+          ttc: (ttc
+            (ttc_primary
+              (ttc_distribution
+                id: (identity)
+                values: (integer)
+                values: (integer)))))))))
 
 =====================
 Attack-step with Meta
@@ -231,18 +243,18 @@ category Test {
       assets: (asset
         id: (identity)
         body: (attack_step
+          id: (identity)
+          meta: (meta
             id: (identity)
-            meta: (meta
-                id: (identity)
-                info: (string))
-            meta: (meta
-                id: (identity)
-                info: (string)))
+            info: (string))
+          meta: (meta
+            id: (identity)
+            info: (string)))
         body: (attack_step
+          id: (identity)
+          meta: (meta
             id: (identity)
-            meta: (meta
-                id: (identity)
-                info: (string)))))))
+            info: (string)))))))
 
 =========================
 Attack-step with Reaching
