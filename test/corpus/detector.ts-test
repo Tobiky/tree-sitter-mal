@@ -92,7 +92,7 @@ Detector with Detector Type
 
 category Test {
     asset TestAsset {
-        | detector ! (a a_label, b b_label)
+        | detector ! (a a_label, b b_label) type
     }
 }
 
