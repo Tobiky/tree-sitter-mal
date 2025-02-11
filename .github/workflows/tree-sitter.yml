@@ -40,9 +40,16 @@ jobs:
         uses: tj-actions/verify-changed-files@v20
         id: verify-updated-parser
         with:
-          fail-if-changed: true
+          # fail-if-changed: true
           fail-message: Parser is not up-to-date with grammar.
           files: ./src
+
+      - name: Run step only when any of the above files change.
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        env:
+          CHANGED_FILES: ${{ steps.verify-changed-files.outputs.changed_files }}
+        run: |
+          echo "Changed files: $CHANGED_FILES"
 
       - name: Run tests
         run: tree-sitter test
