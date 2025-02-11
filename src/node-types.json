@@ -657,6 +657,16 @@
             "named": true
           }
         ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "detector_name",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -699,6 +709,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "detector_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identity",
+          "named": true
+        }
+      ]
     }
   },
   {

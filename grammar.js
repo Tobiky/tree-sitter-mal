@@ -105,8 +105,11 @@ module.exports = grammar({
     detector: $ => seq(
       // Increase //! precidence to overrule comments
       choice('!', token(prec(1, '//!'))),
+      optional(field('name', $.detector_name)),
       field('context', $.detector_context),
     ),
+
+    detector_name: $ => sep1($.identity, '.'),
 
     detector_context: $ => seq(
       '(',
