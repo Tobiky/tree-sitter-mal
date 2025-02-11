@@ -667,6 +667,16 @@
             "named": true
           }
         ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identity",
+            "named": true
+          }
+        ]
       }
     }
   },

@@ -107,6 +107,7 @@ module.exports = grammar({
       choice('!', token(prec(1, '//!'))),
       optional(field('name', $.detector_name)),
       field('context', $.detector_context),
+      optional(field('type', $.identity)),
     ),
 
     detector_name: $ => sep1($.identity, '.'),
