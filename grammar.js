@@ -288,6 +288,18 @@ module.exports = grammar({
 });
 
 /**
+ * Creates a rule to match one or more of the rules separated by a given token.
+ *
+ * @param {Rule} rule
+ * @param {Token} token
+ *
+ * @returns {SeqRule}
+ */
+function sep1(rule, token) {
+  return seq(rule, repeat(seq(token, rule)));
+}
+
+/**
  * Creates a rule to match one or more of the rules separated by a comma
  *
  * @param {Rule} rule
@@ -295,5 +307,5 @@ module.exports = grammar({
  * @returns {SeqRule}
  */
 function commaSep1(rule) {
-  return seq(rule, repeat(seq(',', rule)));
+  return sep1(rule, ',');
 }
