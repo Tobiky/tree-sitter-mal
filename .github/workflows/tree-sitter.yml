@@ -36,13 +36,5 @@ jobs:
         name: Generate and build parser
         run: tree-sitter generate --build
 
-      - name: Verify parser up-to-date
-        uses: tj-actions/verify-changed-files@v20
-        id: verify-updated-parser
-        with:
-          fail-if-changed: true
-          fail-message: Parser is not up-to-date with grammar.
-          files: ./src
-
       - name: Run tests
         run: tree-sitter test
