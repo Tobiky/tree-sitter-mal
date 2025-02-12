@@ -42,7 +42,6 @@ jobs:
         with:
           # fail-if-changed: true
           fail-message: Parser is not up-to-date with grammar.
-          files: ./src
 
       - name: Run step only when any of the above files change.
         if: steps.verify-updated-parser.outputs.files_changed == 'true'
