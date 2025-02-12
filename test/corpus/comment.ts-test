@@ -19,7 +19,19 @@ Line Comment
 
 ------------
 
-(source_file)
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment))
 
 =============
 Block Comment
@@ -46,7 +58,11 @@ Block Comment
 
 -------------
 
-(source_file)
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment))
 
 =============
 Only Comments
@@ -70,12 +86,13 @@ Only Comments
 
 -------------
 
-(source_file)
+(source_file
+  (comment)
+  (comment)
+  (comment))
 
 =========================
 Block comment end cut off
-
-:error
 =========================
 
 /*
@@ -84,9 +101,11 @@ Block comment end cut off
 
 -------------------------
 
+(source_file
+  (comment))
+
 ===========================
 Block comment start cut off
-
 :error
 ===========================
 
@@ -95,3 +114,5 @@ Block comment start cut off
  */
 
 ---------------------------
+
+

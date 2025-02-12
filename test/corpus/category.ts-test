@@ -7,8 +7,9 @@ category System {}
 --------------------------
 
 (source_file
+ (declaration
     (category_declaration
-        id: (identity)))
+        id: (identity))))
 
 
 =========================================
@@ -23,16 +24,18 @@ category System sameLine info: "Meta on same line" {}
 -----------------------------------------
 
 (source_file
-    (category_declaration
-        id: (identity)
-        meta: ((meta
-                id: (identity)
-                info: (string))
-               (meta
-                id: (identity)
-                info: (string))))
-    (category_declaration
-        id: (identity)
-        meta: ((meta
-                id: (identity)
-                info: (string)))))
+    (declaration
+         (category_declaration
+            id: (identity)
+            meta: (meta
+                    id: (identity)
+                    info: (string))
+            meta: (meta
+                    id: (identity)
+                    info: (string))))
+    (declaration
+        (category_declaration
+            id: (identity)
+            meta: (meta
+                    id: (identity)
+                    info: (string)))))

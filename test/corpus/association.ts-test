@@ -7,7 +7,8 @@ associations {}
 ------------------------------
 
 (source_file
-    (associations_declaration))
+  (declaration
+    (associations_declaration)))
 
 ==================
 Simple Association
@@ -20,15 +21,18 @@ associations {
 ------------------
 
 (source_file
+  (declaration
     (associations_declaration
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (integer))
-            id: (identity)
-            right_mult: (multiplicity (integer))
-            right_field_id: (identity)
-            right_id: (identity))))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (integer))
+        id: (identity)
+        right_mult: (multiplicity
+          (integer))
+        right_field_id: (identity)
+        right_id: (identity)))))
 
 ==========================
 Association Multiplicities
@@ -45,64 +49,88 @@ associations {
 
 --------------------------
 
-
-
 (source_file
+  (declaration
     (associations_declaration
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (integer))
-            id: (identity)
-            right_mult: (multiplicity (integer))
-            right_field_id: (identity)
-            right_id: (identity))
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (star))
-            id: (identity)
-            right_mult: (multiplicity (star))
-            right_field_id: (identity)
-            right_id: (identity))
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (integer) (integer))
-            id: (identity)
-            right_mult: (multiplicity (integer) (integer))
-            right_field_id: (identity)
-            right_id: (identity))
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (integer) (star))
-            id: (identity)
-            right_mult: (multiplicity (integer) (star))
-            right_field_id: (identity)
-            right_id: (identity))
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (star) (integer))
-            id: (identity)
-            right_mult: (multiplicity (star) (integer))
-            right_field_id: (identity)
-            right_id: (identity))
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (star) (star))
-            id: (identity)
-            right_mult: (multiplicity (star) (star))
-            right_field_id: (identity)
-            right_id: (identity))))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (integer))
+        id: (identity)
+        right_mult: (multiplicity
+          (integer))
+        right_field_id: (identity)
+        right_id: (identity))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (star))
+        id: (identity)
+        right_mult: (multiplicity
+          (star))
+        right_field_id: (identity)
+        right_id: (identity))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (multiplicity_range
+            start: (integer)
+            end: (integer)))
+        id: (identity)
+        right_mult: (multiplicity
+          (multiplicity_range
+            start: (integer)
+            end: (integer)))
+        right_field_id: (identity)
+        right_id: (identity))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (multiplicity_range
+            start: (integer)
+            end: (star)))
+        id: (identity)
+        right_mult: (multiplicity
+          (multiplicity_range
+            start: (integer)
+            end: (star)))
+        right_field_id: (identity)
+        right_id: (identity))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (multiplicity_range
+            start: (star)
+            end: (integer)))
+        id: (identity)
+        right_mult: (multiplicity
+          (multiplicity_range
+            start: (star)
+            end: (integer)))
+        right_field_id: (identity)
+        right_id: (identity))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (multiplicity_range
+            start: (star)
+            end: (star)))
+        id: (identity)
+        right_mult: (multiplicity
+          (multiplicity_range
+            start: (star)
+            end: (star)))
+        right_field_id: (identity)
+        right_id: (identity)))))
 
 ===============================
 Association Declaration example
-
-Based on
-https://github.com/mal-lang/malcompiler/wiki/MAL-language-specification#association
 ===============================
 
 associations {
@@ -112,15 +140,18 @@ associations {
 -------------------------------
 
 (source_file
+  (declaration
     (associations_declaration
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (star))
-            id: (identity)
-            right_mult: (multiplicity (star))
-            right_field_id: (identity)
-            right_id: (identity))))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (star))
+        id: (identity)
+        right_mult: (multiplicity
+          (star))
+        right_field_id: (identity)
+        right_id: (identity)))))
 
 ======================================
 Association Declaration with Meta Info
@@ -136,30 +167,34 @@ associations {
 --------------------------------------
 
 (source_file
+  (declaration
     (associations_declaration
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (integer))
-            id: (identity)
-            right_mult: (multiplicity (integer))
-            right_field_id: (identity)
-            right_id: (identity)
-            meta: ((meta
-                    id: (identity)
-                    info: (string))
-                   (meta
-                    id: (identity)
-                    info: (string))))
-        (association
-            left_id: (identity)
-            left_field_id: (identity)
-            left_mult: (multiplicity (integer))
-            id: (identity)
-            right_mult: (multiplicity (integer))
-            right_field_id: (identity)
-            right_id: (identity)
-            meta: ((meta
-                    id: (identity)
-                    info: (string))))))
-
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (integer))
+        id: (identity)
+        right_mult: (multiplicity
+          (integer))
+        right_field_id: (identity)
+        right_id: (identity)
+        meta: (meta
+          id: (identity)
+          info: (string))
+        meta: (meta
+          id: (identity)
+          info: (string)))
+      (association
+        left_id: (identity)
+        left_field_id: (identity)
+        left_mult: (multiplicity
+          (integer))
+        id: (identity)
+        right_mult: (multiplicity
+          (integer))
+        right_field_id: (identity)
+        right_id: (identity)
+        meta: (meta
+          id: (identity)
+          info: (string))))))

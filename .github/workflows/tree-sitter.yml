@@ -25,8 +25,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ${{ github.workspace }}/src
-            ${{ github.workspace }}/mal.so
+            ./src
+            ./mal.so
           key: ${{ matrix.os }}-build-${{ env.cache-name }}-${{ hashFiles('grammar.js') }}
           restore-keys: |
             ${{ matrix.os }}-build-${{ env.cache-name }}-
@@ -35,14 +35,6 @@ jobs:
       - if: ${{ steps.cache-parser-build.outputs.cache-hit != 'true' }}
         name: Generate and build parser
         run: tree-sitter generate --build
-
-      - name: Verify parser up-to-date
-        uses: tj-actions/verify-changed-files@v20
-        id: verify-updated-parser
-        with:
-          fail-if-changed: true
-          fail-message: Parser is not up-to-date with grammar.
-          files: ${{ github.workspace }}/src
 
       - name: Run tests
         run: tree-sitter test

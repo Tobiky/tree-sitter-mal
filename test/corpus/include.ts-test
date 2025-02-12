@@ -7,8 +7,9 @@ include "file"
 -------------------
 
 (source_file
-    (include_declaration
-        file: (string)))
+    (declaration 
+        (include_declaration
+            file: (string))))
 
 ============================
 Multiple Include Declaration
@@ -21,21 +22,18 @@ include "../other3.mal"
 ----------------------------
 
 (source_file
-    (include_declaration
-        file: (string))
-    (include_declaration
-        file: (string))
-    (include_declaration
-        file: (string)))
+    (declaration
+        (include_declaration
+            file: (string)))
+    (declaration
+        (include_declaration
+            file: (string)))
+    (declaration
+        (include_declaration
+            file: (string))))
 
 ==============================================
 Incorrect value type fails Include Declaration
-
-Based on grammar regex' for non-string patterns (more-or-less other primitives) from
-https://github.com/mal-lang/mal-toolbox/blob/10100d73a9583cb14458ccf2e5b8d61702f618a1/maltoolbox/language/compiler/mal.g4#L65-L72
-Including the non-regular primitives "Risk Types" from
-https://github.com/mal-lang/mal-documentation/wiki/MAL-Code-Examples#risk-type
-
 :error
 ==============================================
 
