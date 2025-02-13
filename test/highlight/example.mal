@@ -14,41 +14,109 @@
  * limitations under the License.
  */
 #id: "org.mal-lang.examplelang"
+//   ^^^^^^^^^^^^^^^^^^^^^^^^^^ string
 #version: "1.0.0"
+//        ^^^^^^^ string
 
 category System {
+// <- keyword
+//              ^ punctuation.bracket
   asset Network {
+    // <- keyword
+    //          ^ punctuation.bracket
     | access
+    // <- operator
       -> hosts.connect
+    // ^ operator
+    //        ^ operator
   }
+  // <- punctuation.bracket
 
   asset Host {
+    // <- keyword
+    //       ^ punctuation.bracket
     | connect
+    // <- operator
       -> access
+    // ^ operator
     | authenticate
+    // <- operator
       -> access
+    // ^ operator
     | guessPassword
+    // <- operator
       -> guessedPassword
+    // ^ operator
     | guessedPassword [Exponential(0.02)]
+    // <- operator
+    //                 ^^^^^^^^^^^ function
+    //                             ^^^^ number
       -> authenticate
+    // ^ operator
     & access
+    // <- operator
   }
+  // <- punctuation.bracket
 
   asset User {
+    // <- keyword
+    //       ^ punctuation.bracket
     | attemptPhishing
+    // <- operator
       -> phish
+    // ^ operator
     | phish [Exponential(0.1)]
+    //       ^^^^^^^^^^^ function
+    // <- operator
+    //                   ^^^ number
       -> passwords.obtain
+    // ^ operator
+    //            ^ operator
   }
+  // <- punctuation.bracket
 
   asset Password {
+    // <- keyword
+    //           ^ punctuation.bracket
     | obtain
+    // <- operator
       -> host.authenticate
+    // ^ operator
+    //       ^ operator
   }
+  // <- punctuation.bracket
 }
+// <- punctuation.bracket
 
 associations {
+  // <- keyword
+  //         ^ punctuation.bracket
   Network [networks] * <-- NetworkAccess --> * [hosts] Host
+  //      ^ punctuation.bracket
+  //               ^ punctuation.bracket
+  //                 ^ number
+  //                   ^^^ operator
+  //                                     ^^^ operator
+  //                                         ^ number
+  //                                           ^ punctuation.bracket
+  //                                                 ^ punctuation.bracket
   Host [host] 1 <-- Credentials --> * [passwords] Password
+  //   ^ punctuation.bracket
+  //        ^ punctuation.bracket
+  //          ^ number
+  //            ^^^ operator
+  //                            ^^^ operator
+  //                                ^ number
+  //                                  ^ punctuation.bracket
+  //                                            ^ punctuation.bracket
   User [user] 1 <-- Credentials --> * [passwords] Password
+  //   ^ punctuation.bracket
+  //        ^ punctuation.bracket
+  //          ^ number
+  //            ^^^ operator
+  //                            ^^^ operator
+  //                                ^ number
+  //                                  ^ punctuation.bracket
+  //                                            ^ punctuation.bracket
 }
+// <- punctuation.bracket
