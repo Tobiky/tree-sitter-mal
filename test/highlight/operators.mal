@@ -1,0 +1,66 @@
+category Cat {
+    asset Tail {
+        | a <- pre, condition
+        // <- operator
+        //  ^^ operator
+        //        ^ punctuation.delimiter
+        & b -> leads_to
+        // <- operator
+        //  ^^ operator
+        # c +> inherits
+        // <- operator
+        //  ^^ operator
+        E d
+        // <- operator
+        !E e
+        // <- operator
+    }
+
+    asset Paw {
+        | a <- a /\ b,
+        // <- operator
+        //  ^^ operator
+        //       ^^ operator
+        //           ^ punctuation.delimiter
+               a \/ b,
+        //       ^^ operator
+        //           ^ punctuation.delimiter
+               a - b,
+        //       ^ operator
+        //          ^ punctuation.delimiter
+               a.b,
+        //      ^ operator
+        //        ^ punctuation.delimiter
+               a*
+        //      ^ operator
+        | b ! detector
+        //  ^ operator
+        | c //! detector
+        //  ^^^ operator
+        | d [ 1 + 1 ]
+        //      ^ operator
+        | e [ 1 - 1 ]
+        //      ^ operator
+        | f [ 1 * 1 ]
+        //      ^ operator
+        | g [ 1 / 1 ]
+        //      ^ operator
+        | h [ 1 ^ 1 ]
+        //      ^ operator
+    }
+}
+
+associations {
+  Network [networks] * <-- NetworkAccess --> * [hosts] Host
+  //                   ^^^ operator
+  //                                     ^^^ operator
+  Network [networks] *..1 <-- NetworkAccess --> *..1 [hosts] Host
+  //                 ^ number
+  //                  ^^ operator
+  //                    ^ number
+  //                      ^^^ operator
+  //                                        ^^^ operator
+  //                                            ^ number
+  //                                             ^^ operator
+  //                                               ^ number
+}
