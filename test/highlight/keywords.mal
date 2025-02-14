@@ -1,0 +1,36 @@
+include "./file"
+// <- keyword
+
+category System {
+  //            ^ punctuation.bracket
+  // <- keyword
+  asset Network {
+    //          ^ punctuation.bracket
+    // <- keyword
+    let connection = hosts.connect
+    // <- keyword
+    //                    ^ operator
+  }
+  // <- punctuation.bracket
+
+  abstract asset Computer {}
+  // <- keyword
+  //       ^^^^^ keyword
+  //                      ^^ punctuation.bracket
+
+  abstract asset LocalNetwork extends Network {}
+  // <- keyword
+  //       ^^^^^ keyword
+  //                          ^^^^^^^ keyword
+  //                                          ^^ punctuation.bracket
+
+  asset Laptop extends Computer {}
+  // <- keyword
+  //           ^^^^^^^ keyword
+  //                            ^^ punctuation.bracket
+}
+// <- punctuation.bracket
+
+associations {}
+// <- keyword
+//           ^^ punctuation.bracket
