@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 #id: "org.mal-lang.examplelang"
+// <- operator
+ // <- constant
 //   ^^^^^^^^^^^^^^^^^^^^^^^^^^ string
 #version: "1.0.0"
+// <- operator
+ // <- constant
 //        ^^^^^^^ string
 
 category System {
@@ -49,8 +53,11 @@ category System {
     // ^ operator
     | guessedPassword [Exponential(0.02)]
     // <- operator
+    //                ^ punctuation.bracket
     //                 ^^^^^^^^^^^ function
+    //                            ^ punctuation.bracket
     //                             ^^^^ number
+    //                                 ^^ punctuation.bracket
       -> authenticate
     // ^ operator
     & access
@@ -66,9 +73,12 @@ category System {
       -> phish
     // ^ operator
     | phish [Exponential(0.1)]
-    //       ^^^^^^^^^^^ function
     // <- operator
+    //      ^ punctuation.bracket
+    //       ^^^^^^^^^^^ function
+    //                  ^ punctuation.bracket
     //                   ^^^ number
+    //                      ^^ punctuation.bracket
       -> passwords.obtain
     // ^ operator
     //            ^ operator
