@@ -1,0 +1,13 @@
+category Cat 
+    metaInfo info: "value"
+    // <- attribute
+    //           ^ punctuation.delimiter
+{
+    asset Tail {
+        | a ! d.e (context label) detectorType [1]
+        //     ^ punctuation.delimiter
+        //        ^ punctuation.bracket
+        //                                     ^ punctuation.bracket
+        //                                       ^ punctuation.bracket
+    }
+}
