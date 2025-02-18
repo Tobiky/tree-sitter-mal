@@ -736,7 +736,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ttc_primary"
+          "name": "_ttc_primary"
         },
         {
           "type": "SYMBOL",
@@ -761,7 +761,7 @@
         }
       ]
     },
-    "ttc_primary": {
+    "_ttc_primary": {
       "type": "CHOICE",
       "members": [
         {
@@ -1007,7 +1007,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "asset_expr_primary"
+          "name": "_asset_expr_primary"
         },
         {
           "type": "SYMBOL",
@@ -1040,7 +1040,7 @@
         }
       ]
     },
-    "asset_expr_primary": {
+    "_asset_expr_primary": {
       "type": "CHOICE",
       "members": [
         {

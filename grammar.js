@@ -145,13 +145,13 @@ module.exports = grammar({
     // Might want to bring forward for the sake of querrying.
     _ttc_expr: $ => choice(
       $._ttc_parenthesized,
-      $.ttc_primary,
+      $._ttc_primary,
       $.ttc_binop,
     ),
 
     _ttc_parenthesized: $ => seq('(', $._ttc_expr, ')'),
 
-    ttc_primary: $ => choice(
+    _ttc_primary: $ => choice(
       $.integer,
       $.identity,
       $.ttc_distribution,
@@ -182,7 +182,7 @@ module.exports = grammar({
 
     _asset_expr: $ => choice(
       $._asset_expr_parenthesized,
-      $.asset_expr_primary,
+      $._asset_expr_primary,
       $.asset_expr_binop,
       $.asset_expr_unop,
       $.asset_expr_type,
@@ -194,7 +194,7 @@ module.exports = grammar({
       ')',
     ),
 
-    asset_expr_primary: $ => choice(
+    _asset_expr_primary: $ => choice(
       $.identity,
       $.asset_variable_substitution
     ),
