@@ -1,9 +1,12 @@
 include "./file"
 // <- keyword
 
-category System {
-  //            ^ punctuation.bracket
-  // <- keyword
+category System 
+// <- keyword
+    metaInfo info: "value"
+    //       ^^^^ keyword
+{
+// <- punctuation.bracket
   asset Network {
     //          ^ punctuation.bracket
     // <- keyword
