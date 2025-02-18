@@ -97,7 +97,7 @@ module.exports = grammar({
       optional(field('tag', seq('@', $.identity))),
       optional(field('cias', seq(
         '{',
-        commaSep1($.cia),
+        $.cias,
         '}',
       ))),
       optional(field('ttc', $.ttc)),
@@ -106,6 +106,8 @@ module.exports = grammar({
       optional(field('preconditions', $.preconditions)),
       optional(field('reaches', $.reaching)),
     ),
+
+    cias: $ => commaSep1($.cia),
 
     // Detector for attack steps
     detector: $ => seq(
