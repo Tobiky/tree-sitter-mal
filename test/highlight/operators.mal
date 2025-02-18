@@ -33,9 +33,9 @@ category Cat {
         //        ^ punctuation.delimiter
                a*
         //      ^ operator
-        | b ! detector
+        | b ! (detector context)
         //  ^ operator
-        | c //! detector
+        | c //! (detector context)
         //  ^^^ operator
         | d [ 1 + 1 ]
         //      ^ operator
