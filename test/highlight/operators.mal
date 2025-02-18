@@ -47,6 +47,8 @@ category Cat {
         //      ^ operator
         | h [ 1 ^ 1 ]
         //      ^ operator
+        | j @ tag
+        //  ^ operator
     }
 }
 
