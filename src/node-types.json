@@ -4,15 +4,11 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "asset_variable",
-            "named": true
-          },
-          {
-            "type": "attack_step",
+            "type": "asset_definition",
             "named": true
           }
         ]
@@ -47,6 +43,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "asset_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "asset_variable",
+          "named": true
+        },
+        {
+          "type": "attack_step",
+          "named": true
+        }
+      ]
     }
   },
   {
