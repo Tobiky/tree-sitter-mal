@@ -159,7 +159,7 @@ module.exports = grammar({
     _ttc_parenthesized: $ => seq('(', $._ttc_expr, ')'),
 
     _ttc_primary: $ => choice(
-      $.integer,
+      $._number,
       $.identity,
       $.ttc_distribution,
     ),
@@ -167,7 +167,7 @@ module.exports = grammar({
     ttc_distribution: $ => seq(
       field('id', $.identity),
       '(',
-      field('values', commaSep1($.integer)),
+      field('values', commaSep1($._number)),
       ')',
     ),
 
@@ -304,7 +304,9 @@ module.exports = grammar({
 
     // Primitives/Primaries/Atoms
     string: _ => token(seq('"', /(?:\\"|[^"])*/, '"')),
+    _number: $ => choice($.integer, $.float),
     integer: _ => token(/[0-9]+/),
+    float: _ => token(/(:?[0-9]+(:?[.][0-9]*)?|[.][0-9]+)/),
     identity: _ => token(/[a-zA-Z0-9_]+/),
 
     star: _ => token('*'),
