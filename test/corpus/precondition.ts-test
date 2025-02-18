@@ -17,7 +17,7 @@ category Test {
   (declaration
     (category_declaration
       id: (identity)
-      assets: (asset
+      assets: (asset_declaration
         id: (identity)
         body: (attack_step
           id: (identity)
@@ -55,7 +55,7 @@ category Test {
   (declaration
     (category_declaration
       id: (identity)
-      assets: (asset
+      assets: (asset_declaration
         id: (identity)
         body: (attack_step
           id: (identity)

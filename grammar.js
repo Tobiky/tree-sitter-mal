@@ -58,12 +58,12 @@ module.exports = grammar({
       field('id', $.identity),
       field('meta', repeat($.meta)),
       '{',
-      field('assets', repeat($.asset)),
+      field('assets', repeat($.asset_declaration)),
       '}',
     ),
 
     // An asset for a category
-    asset: $ => seq(
+    asset_declaration: $ => seq(
       optional(alias('abstract', 'abstract')),
       'asset',
       field('id', $.identity),

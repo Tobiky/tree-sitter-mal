@@ -65,7 +65,7 @@ enum ts_symbol_identifiers {
   sym_declaration = 47,
   sym_include_declaration = 48,
   sym_category_declaration = 49,
-  sym_asset = 50,
+  sym_asset_declaration = 50,
   sym_asset_variable = 51,
   sym_attack_step = 52,
   sym_detector = 53,
@@ -99,7 +99,7 @@ enum ts_symbol_identifiers {
   aux_sym_source_file_repeat1 = 81,
   aux_sym_category_declaration_repeat1 = 82,
   aux_sym_category_declaration_repeat2 = 83,
-  aux_sym_asset_repeat1 = 84,
+  aux_sym_asset_declaration_repeat1 = 84,
   aux_sym_attack_step_repeat1 = 85,
   aux_sym_detector_name_repeat1 = 86,
   aux_sym_detector_context_repeat1 = 87,
@@ -159,7 +159,7 @@ static const char * const ts_symbol_names[] = {
   [sym_declaration] = "declaration",
   [sym_include_declaration] = "include_declaration",
   [sym_category_declaration] = "category_declaration",
-  [sym_asset] = "asset",
+  [sym_asset_declaration] = "asset_declaration",
   [sym_asset_variable] = "asset_variable",
   [sym_attack_step] = "attack_step",
   [sym_detector] = "detector",
@@ -193,7 +193,7 @@ static const char * const ts_symbol_names[] = {
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
   [aux_sym_category_declaration_repeat1] = "category_declaration_repeat1",
   [aux_sym_category_declaration_repeat2] = "category_declaration_repeat2",
-  [aux_sym_asset_repeat1] = "asset_repeat1",
+  [aux_sym_asset_declaration_repeat1] = "asset_declaration_repeat1",
   [aux_sym_attack_step_repeat1] = "attack_step_repeat1",
   [aux_sym_detector_name_repeat1] = "detector_name_repeat1",
   [aux_sym_detector_context_repeat1] = "detector_context_repeat1",
@@ -253,7 +253,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_declaration] = sym_declaration,
   [sym_include_declaration] = sym_include_declaration,
   [sym_category_declaration] = sym_category_declaration,
-  [sym_asset] = sym_asset,
+  [sym_asset_declaration] = sym_asset_declaration,
   [sym_asset_variable] = sym_asset_variable,
   [sym_attack_step] = sym_attack_step,
   [sym_detector] = sym_detector,
@@ -287,7 +287,7 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym_source_file_repeat1] = aux_sym_source_file_repeat1,
   [aux_sym_category_declaration_repeat1] = aux_sym_category_declaration_repeat1,
   [aux_sym_category_declaration_repeat2] = aux_sym_category_declaration_repeat2,
-  [aux_sym_asset_repeat1] = aux_sym_asset_repeat1,
+  [aux_sym_asset_declaration_repeat1] = aux_sym_asset_declaration_repeat1,
   [aux_sym_attack_step_repeat1] = aux_sym_attack_step_repeat1,
   [aux_sym_detector_name_repeat1] = aux_sym_detector_name_repeat1,
   [aux_sym_detector_context_repeat1] = aux_sym_detector_context_repeat1,
@@ -497,7 +497,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_asset] = {
+  [sym_asset_declaration] = {
     .visible = true,
     .named = true,
   },
@@ -633,7 +633,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
-  [aux_sym_asset_repeat1] = {
+  [aux_sym_asset_declaration_repeat1] = {
     .visible = false,
     .named = false,
   },
@@ -756,224 +756,224 @@ static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [15] = {.index = 28, .length = 3},
   [16] = {.index = 31, .length = 3},
   [17] = {.index = 34, .length = 3},
-  [18] = {.index = 37, .length = 3},
-  [19] = {.index = 40, .length = 3},
-  [20] = {.index = 43, .length = 2},
-  [21] = {.index = 45, .length = 3},
-  [22] = {.index = 48, .length = 3},
-  [23] = {.index = 51, .length = 4},
-  [24] = {.index = 55, .length = 1},
-  [25] = {.index = 56, .length = 1},
-  [26] = {.index = 57, .length = 2},
-  [27] = {.index = 59, .length = 4},
-  [28] = {.index = 63, .length = 4},
-  [29] = {.index = 67, .length = 4},
-  [30] = {.index = 71, .length = 4},
-  [31] = {.index = 75, .length = 4},
-  [32] = {.index = 79, .length = 4},
-  [33] = {.index = 83, .length = 4},
-  [34] = {.index = 87, .length = 4},
-  [35] = {.index = 91, .length = 4},
-  [36] = {.index = 95, .length = 4},
-  [37] = {.index = 99, .length = 4},
-  [38] = {.index = 103, .length = 4},
-  [39] = {.index = 107, .length = 4},
-  [40] = {.index = 111, .length = 4},
-  [41] = {.index = 115, .length = 2},
-  [42] = {.index = 117, .length = 5},
-  [43] = {.index = 122, .length = 5},
-  [44] = {.index = 127, .length = 5},
-  [45] = {.index = 132, .length = 5},
-  [46] = {.index = 137, .length = 5},
-  [47] = {.index = 142, .length = 5},
-  [48] = {.index = 147, .length = 2},
-  [49] = {.index = 149, .length = 2},
-  [50] = {.index = 151, .length = 2},
-  [51] = {.index = 153, .length = 2},
-  [52] = {.index = 155, .length = 3},
-  [53] = {.index = 158, .length = 5},
-  [54] = {.index = 163, .length = 5},
-  [55] = {.index = 168, .length = 5},
-  [56] = {.index = 173, .length = 5},
-  [57] = {.index = 178, .length = 5},
-  [58] = {.index = 183, .length = 5},
-  [59] = {.index = 188, .length = 5},
-  [60] = {.index = 193, .length = 5},
-  [61] = {.index = 198, .length = 5},
-  [62] = {.index = 203, .length = 5},
-  [63] = {.index = 208, .length = 5},
-  [64] = {.index = 213, .length = 5},
-  [65] = {.index = 218, .length = 1},
-  [66] = {.index = 219, .length = 3},
-  [67] = {.index = 222, .length = 6},
-  [68] = {.index = 228, .length = 6},
-  [69] = {.index = 234, .length = 6},
-  [70] = {.index = 240, .length = 6},
-  [71] = {.index = 246, .length = 6},
-  [72] = {.index = 252, .length = 6},
-  [73] = {.index = 258, .length = 6},
-  [74] = {.index = 264, .length = 6},
-  [75] = {.index = 270, .length = 6},
-  [76] = {.index = 276, .length = 6},
-  [77] = {.index = 282, .length = 6},
-  [78] = {.index = 288, .length = 6},
-  [79] = {.index = 294, .length = 6},
-  [80] = {.index = 300, .length = 6},
-  [81] = {.index = 306, .length = 6},
-  [82] = {.index = 312, .length = 6},
-  [83] = {.index = 318, .length = 2},
-  [84] = {.index = 320, .length = 3},
-  [85] = {.index = 323, .length = 3},
-  [86] = {.index = 326, .length = 3},
-  [87] = {.index = 329, .length = 6},
-  [88] = {.index = 335, .length = 6},
-  [89] = {.index = 341, .length = 6},
-  [90] = {.index = 347, .length = 6},
-  [91] = {.index = 353, .length = 6},
-  [92] = {.index = 359, .length = 2},
-  [93] = {.index = 361, .length = 7},
-  [94] = {.index = 368, .length = 7},
-  [95] = {.index = 375, .length = 7},
-  [96] = {.index = 382, .length = 7},
-  [97] = {.index = 389, .length = 7},
-  [98] = {.index = 396, .length = 7},
-  [99] = {.index = 403, .length = 7},
-  [100] = {.index = 410, .length = 7},
-  [101] = {.index = 417, .length = 7},
-  [102] = {.index = 424, .length = 7},
-  [103] = {.index = 431, .length = 7},
-  [104] = {.index = 438, .length = 7},
-  [105] = {.index = 445, .length = 7},
-  [106] = {.index = 452, .length = 7},
-  [107] = {.index = 459, .length = 7},
-  [108] = {.index = 466, .length = 7},
-  [109] = {.index = 473, .length = 7},
-  [110] = {.index = 480, .length = 7},
-  [111] = {.index = 487, .length = 7},
-  [112] = {.index = 494, .length = 7},
-  [113] = {.index = 501, .length = 7},
-  [114] = {.index = 508, .length = 7},
-  [115] = {.index = 515, .length = 7},
-  [116] = {.index = 522, .length = 7},
-  [117] = {.index = 529, .length = 7},
-  [118] = {.index = 536, .length = 7},
-  [119] = {.index = 543, .length = 4},
-  [120] = {.index = 547, .length = 2},
-  [121] = {.index = 549, .length = 7},
-  [122] = {.index = 556, .length = 8},
-  [123] = {.index = 564, .length = 8},
-  [124] = {.index = 572, .length = 8},
-  [125] = {.index = 580, .length = 8},
-  [126] = {.index = 588, .length = 8},
-  [127] = {.index = 596, .length = 8},
-  [128] = {.index = 604, .length = 8},
-  [129] = {.index = 612, .length = 8},
-  [130] = {.index = 620, .length = 8},
-  [131] = {.index = 628, .length = 8},
-  [132] = {.index = 636, .length = 8},
-  [133] = {.index = 644, .length = 8},
-  [134] = {.index = 652, .length = 8},
-  [135] = {.index = 660, .length = 8},
-  [136] = {.index = 668, .length = 8},
-  [137] = {.index = 676, .length = 8},
-  [138] = {.index = 684, .length = 8},
-  [139] = {.index = 692, .length = 8},
-  [140] = {.index = 700, .length = 8},
-  [141] = {.index = 708, .length = 8},
-  [142] = {.index = 716, .length = 8},
-  [143] = {.index = 724, .length = 8},
-  [144] = {.index = 732, .length = 8},
-  [145] = {.index = 740, .length = 8},
-  [146] = {.index = 748, .length = 8},
-  [147] = {.index = 756, .length = 8},
-  [148] = {.index = 764, .length = 8},
-  [149] = {.index = 772, .length = 8},
-  [150] = {.index = 780, .length = 8},
-  [151] = {.index = 788, .length = 8},
-  [152] = {.index = 796, .length = 8},
-  [153] = {.index = 804, .length = 3},
-  [154] = {.index = 807, .length = 9},
-  [155] = {.index = 816, .length = 9},
-  [156] = {.index = 825, .length = 9},
-  [157] = {.index = 834, .length = 9},
-  [158] = {.index = 843, .length = 9},
-  [159] = {.index = 852, .length = 9},
-  [160] = {.index = 861, .length = 9},
-  [161] = {.index = 870, .length = 9},
-  [162] = {.index = 879, .length = 9},
-  [163] = {.index = 888, .length = 9},
-  [164] = {.index = 897, .length = 9},
-  [165] = {.index = 906, .length = 9},
-  [166] = {.index = 915, .length = 9},
-  [167] = {.index = 924, .length = 9},
-  [168] = {.index = 933, .length = 9},
-  [169] = {.index = 942, .length = 9},
-  [170] = {.index = 951, .length = 9},
-  [171] = {.index = 960, .length = 9},
-  [172] = {.index = 969, .length = 9},
-  [173] = {.index = 978, .length = 9},
-  [174] = {.index = 987, .length = 9},
-  [175] = {.index = 996, .length = 9},
-  [176] = {.index = 1005, .length = 9},
-  [177] = {.index = 1014, .length = 9},
-  [178] = {.index = 1023, .length = 9},
-  [179] = {.index = 1032, .length = 9},
-  [180] = {.index = 1041, .length = 9},
-  [181] = {.index = 1050, .length = 9},
-  [182] = {.index = 1059, .length = 9},
-  [183] = {.index = 1068, .length = 9},
-  [184] = {.index = 1077, .length = 9},
-  [185] = {.index = 1086, .length = 7},
-  [186] = {.index = 1093, .length = 10},
-  [187] = {.index = 1103, .length = 10},
-  [188] = {.index = 1113, .length = 10},
-  [189] = {.index = 1123, .length = 10},
-  [190] = {.index = 1133, .length = 10},
-  [191] = {.index = 1143, .length = 10},
-  [192] = {.index = 1153, .length = 10},
-  [193] = {.index = 1163, .length = 10},
-  [194] = {.index = 1173, .length = 10},
-  [195] = {.index = 1183, .length = 10},
-  [196] = {.index = 1193, .length = 10},
-  [197] = {.index = 1203, .length = 10},
-  [198] = {.index = 1213, .length = 10},
-  [199] = {.index = 1223, .length = 10},
-  [200] = {.index = 1233, .length = 10},
-  [201] = {.index = 1243, .length = 10},
-  [202] = {.index = 1253, .length = 10},
-  [203] = {.index = 1263, .length = 10},
-  [204] = {.index = 1273, .length = 10},
-  [205] = {.index = 1283, .length = 10},
-  [206] = {.index = 1293, .length = 10},
-  [207] = {.index = 1303, .length = 10},
-  [208] = {.index = 1313, .length = 10},
-  [209] = {.index = 1323, .length = 10},
-  [210] = {.index = 1333, .length = 10},
-  [211] = {.index = 1343, .length = 10},
-  [212] = {.index = 1353, .length = 8},
-  [213] = {.index = 1361, .length = 11},
-  [214] = {.index = 1372, .length = 11},
-  [215] = {.index = 1383, .length = 11},
-  [216] = {.index = 1394, .length = 11},
-  [217] = {.index = 1405, .length = 11},
-  [218] = {.index = 1416, .length = 11},
-  [219] = {.index = 1427, .length = 11},
-  [220] = {.index = 1438, .length = 11},
-  [221] = {.index = 1449, .length = 11},
-  [222] = {.index = 1460, .length = 11},
-  [223] = {.index = 1471, .length = 11},
-  [224] = {.index = 1482, .length = 11},
-  [225] = {.index = 1493, .length = 11},
-  [226] = {.index = 1504, .length = 11},
-  [227] = {.index = 1515, .length = 11},
-  [228] = {.index = 1526, .length = 11},
-  [229] = {.index = 1537, .length = 12},
-  [230] = {.index = 1549, .length = 12},
-  [231] = {.index = 1561, .length = 12},
-  [232] = {.index = 1573, .length = 12},
-  [233] = {.index = 1585, .length = 12},
-  [234] = {.index = 1597, .length = 12},
-  [235] = {.index = 1609, .length = 13},
+  [18] = {.index = 37, .length = 2},
+  [19] = {.index = 39, .length = 3},
+  [20] = {.index = 42, .length = 2},
+  [21] = {.index = 44, .length = 2},
+  [22] = {.index = 46, .length = 3},
+  [23] = {.index = 49, .length = 3},
+  [24] = {.index = 52, .length = 1},
+  [25] = {.index = 53, .length = 1},
+  [26] = {.index = 54, .length = 2},
+  [27] = {.index = 56, .length = 4},
+  [28] = {.index = 60, .length = 4},
+  [29] = {.index = 64, .length = 4},
+  [30] = {.index = 68, .length = 4},
+  [31] = {.index = 72, .length = 4},
+  [32] = {.index = 76, .length = 4},
+  [33] = {.index = 80, .length = 4},
+  [34] = {.index = 84, .length = 4},
+  [35] = {.index = 88, .length = 4},
+  [36] = {.index = 92, .length = 4},
+  [37] = {.index = 96, .length = 3},
+  [38] = {.index = 99, .length = 3},
+  [39] = {.index = 102, .length = 3},
+  [40] = {.index = 105, .length = 3},
+  [41] = {.index = 108, .length = 2},
+  [42] = {.index = 110, .length = 5},
+  [43] = {.index = 115, .length = 4},
+  [44] = {.index = 119, .length = 4},
+  [45] = {.index = 123, .length = 4},
+  [46] = {.index = 127, .length = 4},
+  [47] = {.index = 131, .length = 4},
+  [48] = {.index = 135, .length = 2},
+  [49] = {.index = 137, .length = 2},
+  [50] = {.index = 139, .length = 2},
+  [51] = {.index = 141, .length = 2},
+  [52] = {.index = 143, .length = 3},
+  [53] = {.index = 146, .length = 5},
+  [54] = {.index = 151, .length = 5},
+  [55] = {.index = 156, .length = 5},
+  [56] = {.index = 161, .length = 5},
+  [57] = {.index = 166, .length = 5},
+  [58] = {.index = 171, .length = 5},
+  [59] = {.index = 176, .length = 5},
+  [60] = {.index = 181, .length = 5},
+  [61] = {.index = 186, .length = 5},
+  [62] = {.index = 191, .length = 5},
+  [63] = {.index = 196, .length = 4},
+  [64] = {.index = 200, .length = 4},
+  [65] = {.index = 204, .length = 1},
+  [66] = {.index = 205, .length = 3},
+  [67] = {.index = 208, .length = 6},
+  [68] = {.index = 214, .length = 6},
+  [69] = {.index = 220, .length = 6},
+  [70] = {.index = 226, .length = 6},
+  [71] = {.index = 232, .length = 6},
+  [72] = {.index = 238, .length = 6},
+  [73] = {.index = 244, .length = 5},
+  [74] = {.index = 249, .length = 5},
+  [75] = {.index = 254, .length = 5},
+  [76] = {.index = 259, .length = 5},
+  [77] = {.index = 264, .length = 5},
+  [78] = {.index = 269, .length = 5},
+  [79] = {.index = 274, .length = 5},
+  [80] = {.index = 279, .length = 5},
+  [81] = {.index = 284, .length = 5},
+  [82] = {.index = 289, .length = 5},
+  [83] = {.index = 294, .length = 2},
+  [84] = {.index = 296, .length = 3},
+  [85] = {.index = 299, .length = 3},
+  [86] = {.index = 302, .length = 3},
+  [87] = {.index = 305, .length = 6},
+  [88] = {.index = 311, .length = 6},
+  [89] = {.index = 317, .length = 6},
+  [90] = {.index = 323, .length = 6},
+  [91] = {.index = 329, .length = 6},
+  [92] = {.index = 335, .length = 2},
+  [93] = {.index = 337, .length = 7},
+  [94] = {.index = 344, .length = 7},
+  [95] = {.index = 351, .length = 7},
+  [96] = {.index = 358, .length = 7},
+  [97] = {.index = 365, .length = 7},
+  [98] = {.index = 372, .length = 7},
+  [99] = {.index = 379, .length = 7},
+  [100] = {.index = 386, .length = 7},
+  [101] = {.index = 393, .length = 7},
+  [102] = {.index = 400, .length = 7},
+  [103] = {.index = 407, .length = 7},
+  [104] = {.index = 414, .length = 7},
+  [105] = {.index = 421, .length = 7},
+  [106] = {.index = 428, .length = 7},
+  [107] = {.index = 435, .length = 7},
+  [108] = {.index = 442, .length = 6},
+  [109] = {.index = 448, .length = 6},
+  [110] = {.index = 454, .length = 6},
+  [111] = {.index = 460, .length = 6},
+  [112] = {.index = 466, .length = 6},
+  [113] = {.index = 472, .length = 6},
+  [114] = {.index = 478, .length = 6},
+  [115] = {.index = 484, .length = 6},
+  [116] = {.index = 490, .length = 6},
+  [117] = {.index = 496, .length = 6},
+  [118] = {.index = 502, .length = 6},
+  [119] = {.index = 508, .length = 4},
+  [120] = {.index = 512, .length = 2},
+  [121] = {.index = 514, .length = 7},
+  [122] = {.index = 521, .length = 8},
+  [123] = {.index = 529, .length = 8},
+  [124] = {.index = 537, .length = 8},
+  [125] = {.index = 545, .length = 8},
+  [126] = {.index = 553, .length = 8},
+  [127] = {.index = 561, .length = 8},
+  [128] = {.index = 569, .length = 8},
+  [129] = {.index = 577, .length = 8},
+  [130] = {.index = 585, .length = 8},
+  [131] = {.index = 593, .length = 8},
+  [132] = {.index = 601, .length = 8},
+  [133] = {.index = 609, .length = 8},
+  [134] = {.index = 617, .length = 8},
+  [135] = {.index = 625, .length = 8},
+  [136] = {.index = 633, .length = 8},
+  [137] = {.index = 641, .length = 8},
+  [138] = {.index = 649, .length = 8},
+  [139] = {.index = 657, .length = 8},
+  [140] = {.index = 665, .length = 8},
+  [141] = {.index = 673, .length = 8},
+  [142] = {.index = 681, .length = 7},
+  [143] = {.index = 688, .length = 7},
+  [144] = {.index = 695, .length = 7},
+  [145] = {.index = 702, .length = 7},
+  [146] = {.index = 709, .length = 7},
+  [147] = {.index = 716, .length = 7},
+  [148] = {.index = 723, .length = 7},
+  [149] = {.index = 730, .length = 7},
+  [150] = {.index = 737, .length = 7},
+  [151] = {.index = 744, .length = 7},
+  [152] = {.index = 751, .length = 7},
+  [153] = {.index = 758, .length = 3},
+  [154] = {.index = 761, .length = 9},
+  [155] = {.index = 770, .length = 9},
+  [156] = {.index = 779, .length = 9},
+  [157] = {.index = 788, .length = 9},
+  [158] = {.index = 797, .length = 9},
+  [159] = {.index = 806, .length = 9},
+  [160] = {.index = 815, .length = 9},
+  [161] = {.index = 824, .length = 9},
+  [162] = {.index = 833, .length = 9},
+  [163] = {.index = 842, .length = 9},
+  [164] = {.index = 851, .length = 9},
+  [165] = {.index = 860, .length = 9},
+  [166] = {.index = 869, .length = 9},
+  [167] = {.index = 878, .length = 9},
+  [168] = {.index = 887, .length = 9},
+  [169] = {.index = 896, .length = 8},
+  [170] = {.index = 904, .length = 8},
+  [171] = {.index = 912, .length = 8},
+  [172] = {.index = 920, .length = 8},
+  [173] = {.index = 928, .length = 8},
+  [174] = {.index = 936, .length = 8},
+  [175] = {.index = 944, .length = 8},
+  [176] = {.index = 952, .length = 8},
+  [177] = {.index = 960, .length = 8},
+  [178] = {.index = 968, .length = 8},
+  [179] = {.index = 976, .length = 8},
+  [180] = {.index = 984, .length = 8},
+  [181] = {.index = 992, .length = 8},
+  [182] = {.index = 1000, .length = 8},
+  [183] = {.index = 1008, .length = 8},
+  [184] = {.index = 1016, .length = 8},
+  [185] = {.index = 1024, .length = 7},
+  [186] = {.index = 1031, .length = 10},
+  [187] = {.index = 1041, .length = 10},
+  [188] = {.index = 1051, .length = 10},
+  [189] = {.index = 1061, .length = 10},
+  [190] = {.index = 1071, .length = 10},
+  [191] = {.index = 1081, .length = 10},
+  [192] = {.index = 1091, .length = 9},
+  [193] = {.index = 1100, .length = 9},
+  [194] = {.index = 1109, .length = 9},
+  [195] = {.index = 1118, .length = 9},
+  [196] = {.index = 1127, .length = 9},
+  [197] = {.index = 1136, .length = 9},
+  [198] = {.index = 1145, .length = 9},
+  [199] = {.index = 1154, .length = 9},
+  [200] = {.index = 1163, .length = 9},
+  [201] = {.index = 1172, .length = 9},
+  [202] = {.index = 1181, .length = 9},
+  [203] = {.index = 1190, .length = 9},
+  [204] = {.index = 1199, .length = 9},
+  [205] = {.index = 1208, .length = 9},
+  [206] = {.index = 1217, .length = 9},
+  [207] = {.index = 1226, .length = 9},
+  [208] = {.index = 1235, .length = 9},
+  [209] = {.index = 1244, .length = 9},
+  [210] = {.index = 1253, .length = 9},
+  [211] = {.index = 1262, .length = 9},
+  [212] = {.index = 1271, .length = 8},
+  [213] = {.index = 1279, .length = 11},
+  [214] = {.index = 1290, .length = 10},
+  [215] = {.index = 1300, .length = 10},
+  [216] = {.index = 1310, .length = 10},
+  [217] = {.index = 1320, .length = 10},
+  [218] = {.index = 1330, .length = 10},
+  [219] = {.index = 1340, .length = 10},
+  [220] = {.index = 1350, .length = 10},
+  [221] = {.index = 1360, .length = 10},
+  [222] = {.index = 1370, .length = 10},
+  [223] = {.index = 1380, .length = 10},
+  [224] = {.index = 1390, .length = 10},
+  [225] = {.index = 1400, .length = 10},
+  [226] = {.index = 1410, .length = 10},
+  [227] = {.index = 1420, .length = 10},
+  [228] = {.index = 1430, .length = 10},
+  [229] = {.index = 1440, .length = 11},
+  [230] = {.index = 1451, .length = 11},
+  [231] = {.index = 1462, .length = 11},
+  [232] = {.index = 1473, .length = 11},
+  [233] = {.index = 1484, .length = 11},
+  [234] = {.index = 1495, .length = 11},
+  [235] = {.index = 1506, .length = 12},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -1032,405 +1032,381 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 2},
     {field_step_type, 0},
   [37] =
-    {field_extends, 2},
     {field_extends, 3},
     {field_id, 1},
-  [40] =
+  [39] =
     {field_body, 4},
     {field_id, 1},
     {field_meta, 2},
-  [43] =
+  [42] =
     {field_end, 2},
     {field_start, 0},
-  [45] =
-    {field_extends, 3},
+  [44] =
     {field_extends, 4},
     {field_id, 2},
-  [48] =
+  [46] =
     {field_body, 5},
     {field_id, 2},
     {field_meta, 3},
-  [51] =
+  [49] =
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [55] =
+  [52] =
     {field_context, 1},
-  [56] =
+  [53] =
     {field_condition, 1},
-  [57] =
+  [54] =
     {field_operator, 0},
     {field_reaches, 1},
-  [59] =
+  [56] =
     {field_detector, 2},
     {field_id, 1},
     {field_preconditions, 3},
     {field_step_type, 0},
-  [63] =
+  [60] =
     {field_detector, 2},
     {field_id, 1},
     {field_reaches, 3},
     {field_step_type, 0},
-  [67] =
+  [64] =
     {field_id, 1},
     {field_preconditions, 2},
     {field_reaches, 3},
     {field_step_type, 0},
-  [71] =
+  [68] =
     {field_detector, 3},
     {field_id, 1},
     {field_step_type, 0},
     {field_ttc, 2},
-  [75] =
+  [72] =
     {field_id, 1},
     {field_preconditions, 3},
     {field_step_type, 0},
     {field_ttc, 2},
-  [79] =
+  [76] =
     {field_id, 1},
     {field_reaches, 3},
     {field_step_type, 0},
     {field_ttc, 2},
-  [83] =
+  [80] =
     {field_id, 1},
     {field_meta, 3},
     {field_step_type, 0},
     {field_ttc, 2},
-  [87] =
+  [84] =
     {field_detector, 3},
     {field_id, 1},
     {field_meta, 2},
     {field_step_type, 0},
-  [91] =
+  [88] =
     {field_id, 1},
     {field_meta, 2},
     {field_preconditions, 3},
     {field_step_type, 0},
-  [95] =
+  [92] =
     {field_id, 1},
     {field_meta, 2},
     {field_reaches, 3},
     {field_step_type, 0},
-  [99] =
+  [96] =
     {field_body, 5},
-    {field_extends, 2},
     {field_extends, 3},
     {field_id, 1},
-  [103] =
-    {field_extends, 2},
+  [99] =
     {field_extends, 3},
     {field_id, 1},
     {field_meta, 4},
-  [107] =
+  [102] =
     {field_body, 6},
-    {field_extends, 3},
     {field_extends, 4},
     {field_id, 2},
-  [111] =
-    {field_extends, 3},
+  [105] =
     {field_extends, 4},
     {field_id, 2},
     {field_meta, 5},
-  [115] =
+  [108] =
     {field_expression, 0},
     {field_operator, 1},
-  [117] =
+  [110] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_id, 1},
     {field_step_type, 0},
-  [122] =
+  [115] =
     {field_detector, 4},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [127] =
+  [119] =
     {field_id, 1},
     {field_preconditions, 4},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [132] =
+  [123] =
     {field_id, 1},
     {field_reaches, 4},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [137] =
+  [127] =
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [142] =
+  [131] =
     {field_id, 1},
     {field_meta, 4},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [147] =
+  [135] =
     {field_context, 2},
     {field_name, 1},
-  [149] =
+  [137] =
     {field_context, 1},
     {field_type, 2},
-  [151] =
+  [139] =
     {field_context, 1},
     {field_ttc, 2},
-  [153] =
+  [141] =
     {field_condition, 1},
     {field_condition, 2},
-  [155] =
+  [143] =
     {field_operator, 0},
     {field_reaches, 1},
     {field_reaches, 2},
-  [158] =
+  [146] =
     {field_detector, 2},
     {field_id, 1},
     {field_preconditions, 3},
     {field_reaches, 4},
     {field_step_type, 0},
-  [163] =
+  [151] =
     {field_detector, 3},
     {field_id, 1},
     {field_preconditions, 4},
     {field_step_type, 0},
     {field_ttc, 2},
-  [168] =
+  [156] =
     {field_detector, 3},
     {field_id, 1},
     {field_reaches, 4},
     {field_step_type, 0},
     {field_ttc, 2},
-  [173] =
+  [161] =
     {field_id, 1},
     {field_preconditions, 3},
     {field_reaches, 4},
     {field_step_type, 0},
     {field_ttc, 2},
-  [178] =
+  [166] =
     {field_detector, 4},
     {field_id, 1},
     {field_meta, 3},
     {field_step_type, 0},
     {field_ttc, 2},
-  [183] =
+  [171] =
     {field_id, 1},
     {field_meta, 3},
     {field_preconditions, 4},
     {field_step_type, 0},
     {field_ttc, 2},
-  [188] =
+  [176] =
     {field_id, 1},
     {field_meta, 3},
     {field_reaches, 4},
     {field_step_type, 0},
     {field_ttc, 2},
-  [193] =
+  [181] =
     {field_detector, 3},
     {field_id, 1},
     {field_meta, 2},
     {field_preconditions, 4},
     {field_step_type, 0},
-  [198] =
+  [186] =
     {field_detector, 3},
     {field_id, 1},
     {field_meta, 2},
     {field_reaches, 4},
     {field_step_type, 0},
-  [203] =
+  [191] =
     {field_id, 1},
     {field_meta, 2},
     {field_preconditions, 3},
     {field_reaches, 4},
     {field_step_type, 0},
-  [208] =
+  [196] =
     {field_body, 6},
-    {field_extends, 2},
     {field_extends, 3},
     {field_id, 1},
     {field_meta, 4},
-  [213] =
+  [200] =
     {field_body, 7},
-    {field_extends, 3},
     {field_extends, 4},
     {field_id, 2},
     {field_meta, 5},
-  [218] =
+  [204] =
     {field_id, 0},
-  [219] =
+  [205] =
     {field_left, 0},
     {field_operator, 1},
     {field_right, 2},
-  [222] =
+  [208] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_detector, 5},
     {field_id, 1},
     {field_step_type, 0},
-  [228] =
+  [214] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_id, 1},
     {field_preconditions, 5},
     {field_step_type, 0},
-  [234] =
+  [220] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_id, 1},
     {field_reaches, 5},
     {field_step_type, 0},
-  [240] =
+  [226] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_id, 1},
     {field_step_type, 0},
     {field_ttc, 5},
-  [246] =
+  [232] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_id, 1},
     {field_meta, 5},
     {field_step_type, 0},
-  [252] =
+  [238] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
     {field_cias, 5},
     {field_id, 1},
     {field_step_type, 0},
-  [258] =
+  [244] =
     {field_detector, 4},
     {field_id, 1},
     {field_preconditions, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [264] =
+  [249] =
     {field_detector, 4},
     {field_id, 1},
     {field_reaches, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [270] =
+  [254] =
     {field_id, 1},
     {field_preconditions, 4},
     {field_reaches, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [276] =
+  [259] =
     {field_detector, 5},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [282] =
+  [264] =
     {field_id, 1},
     {field_preconditions, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [288] =
+  [269] =
     {field_id, 1},
     {field_reaches, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [294] =
+  [274] =
     {field_id, 1},
     {field_meta, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [300] =
+  [279] =
     {field_detector, 5},
     {field_id, 1},
     {field_meta, 4},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [306] =
+  [284] =
     {field_id, 1},
     {field_meta, 4},
     {field_preconditions, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [312] =
+  [289] =
     {field_id, 1},
     {field_meta, 4},
     {field_reaches, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [318] =
+  [294] =
     {field_id, 0},
     {field_label, 1},
-  [320] =
+  [296] =
     {field_context, 2},
     {field_name, 1},
     {field_type, 3},
-  [323] =
+  [299] =
     {field_context, 2},
     {field_name, 1},
     {field_ttc, 3},
-  [326] =
+  [302] =
     {field_context, 1},
     {field_ttc, 3},
     {field_type, 2},
-  [329] =
+  [305] =
     {field_detector, 3},
     {field_id, 1},
     {field_preconditions, 4},
     {field_reaches, 5},
     {field_step_type, 0},
     {field_ttc, 2},
-  [335] =
+  [311] =
     {field_detector, 4},
     {field_id, 1},
     {field_meta, 3},
     {field_preconditions, 5},
     {field_step_type, 0},
     {field_ttc, 2},
-  [341] =
+  [317] =
     {field_detector, 4},
     {field_id, 1},
     {field_meta, 3},
     {field_reaches, 5},
     {field_step_type, 0},
     {field_ttc, 2},
-  [347] =
+  [323] =
     {field_id, 1},
     {field_meta, 3},
     {field_preconditions, 4},
     {field_reaches, 5},
     {field_step_type, 0},
     {field_ttc, 2},
-  [353] =
+  [329] =
     {field_detector, 3},
     {field_id, 1},
     {field_meta, 2},
     {field_preconditions, 4},
     {field_reaches, 5},
     {field_step_type, 0},
-  [359] =
+  [335] =
     {field_expression, 0},
     {field_type_id, 2},
-  [361] =
+  [337] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1438,7 +1414,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 6},
     {field_step_type, 0},
-  [368] =
+  [344] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1446,7 +1422,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 6},
     {field_step_type, 0},
-  [375] =
+  [351] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1454,7 +1430,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 5},
     {field_reaches, 6},
     {field_step_type, 0},
-  [382] =
+  [358] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1462,7 +1438,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_step_type, 0},
     {field_ttc, 5},
-  [389] =
+  [365] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1470,7 +1446,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 6},
     {field_step_type, 0},
     {field_ttc, 5},
-  [396] =
+  [372] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1478,7 +1454,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 6},
     {field_step_type, 0},
     {field_ttc, 5},
-  [403] =
+  [379] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1486,7 +1462,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 6},
     {field_step_type, 0},
     {field_ttc, 5},
-  [410] =
+  [386] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1494,7 +1470,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 5},
     {field_step_type, 0},
-  [417] =
+  [393] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1502,7 +1478,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 5},
     {field_preconditions, 6},
     {field_step_type, 0},
-  [424] =
+  [400] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1510,7 +1486,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 5},
     {field_reaches, 6},
     {field_step_type, 0},
-  [431] =
+  [407] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1518,7 +1494,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_detector, 6},
     {field_id, 1},
     {field_step_type, 0},
-  [438] =
+  [414] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1526,7 +1502,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 6},
     {field_step_type, 0},
-  [445] =
+  [421] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1534,7 +1510,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 6},
     {field_step_type, 0},
-  [452] =
+  [428] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1542,7 +1518,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_step_type, 0},
     {field_ttc, 6},
-  [459] =
+  [435] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1550,103 +1526,92 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 6},
     {field_step_type, 0},
-  [466] =
+  [442] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [473] =
+  [448] =
     {field_detector, 4},
     {field_id, 1},
     {field_preconditions, 5},
     {field_reaches, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [480] =
+  [454] =
     {field_detector, 5},
     {field_id, 1},
     {field_preconditions, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [487] =
+  [460] =
     {field_detector, 5},
     {field_id, 1},
     {field_reaches, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [494] =
+  [466] =
     {field_id, 1},
     {field_preconditions, 5},
     {field_reaches, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [501] =
+  [472] =
     {field_detector, 6},
     {field_id, 1},
     {field_meta, 5},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [508] =
+  [478] =
     {field_id, 1},
     {field_meta, 5},
     {field_preconditions, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [515] =
+  [484] =
     {field_id, 1},
     {field_meta, 5},
     {field_reaches, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [522] =
+  [490] =
     {field_detector, 5},
     {field_id, 1},
     {field_meta, 4},
     {field_preconditions, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [529] =
+  [496] =
     {field_detector, 5},
     {field_id, 1},
     {field_meta, 4},
     {field_reaches, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [536] =
+  [502] =
     {field_id, 1},
     {field_meta, 4},
     {field_preconditions, 5},
     {field_reaches, 6},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [543] =
+  [508] =
     {field_context, 2},
     {field_name, 1},
     {field_ttc, 4},
     {field_type, 3},
-  [547] =
+  [512] =
     {field_id, 0},
     {field_values, 2},
-  [549] =
+  [514] =
     {field_detector, 4},
     {field_id, 1},
     {field_meta, 3},
@@ -1654,7 +1619,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 6},
     {field_step_type, 0},
     {field_ttc, 2},
-  [556] =
+  [521] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1663,7 +1628,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-  [564] =
+  [529] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1672,7 +1637,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 7},
     {field_step_type, 0},
     {field_ttc, 5},
-  [572] =
+  [537] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1681,7 +1646,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 7},
     {field_step_type, 0},
     {field_ttc, 5},
-  [580] =
+  [545] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1690,7 +1655,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 7},
     {field_step_type, 0},
     {field_ttc, 5},
-  [588] =
+  [553] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1699,7 +1664,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 6},
     {field_step_type, 0},
     {field_ttc, 5},
-  [596] =
+  [561] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1708,7 +1673,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 7},
     {field_step_type, 0},
     {field_ttc, 5},
-  [604] =
+  [569] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1717,7 +1682,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 7},
     {field_step_type, 0},
     {field_ttc, 5},
-  [612] =
+  [577] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1726,7 +1691,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 5},
     {field_preconditions, 7},
     {field_step_type, 0},
-  [620] =
+  [585] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1735,7 +1700,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 5},
     {field_reaches, 7},
     {field_step_type, 0},
-  [628] =
+  [593] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1744,7 +1709,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-  [636] =
+  [601] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1753,7 +1718,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 7},
     {field_step_type, 0},
-  [644] =
+  [609] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1762,7 +1727,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 7},
     {field_step_type, 0},
-  [652] =
+  [617] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1771,7 +1736,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-  [660] =
+  [625] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1780,7 +1745,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_step_type, 0},
     {field_ttc, 6},
-  [668] =
+  [633] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1789,7 +1754,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 7},
     {field_step_type, 0},
     {field_ttc, 6},
-  [676] =
+  [641] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1798,7 +1763,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 7},
     {field_step_type, 0},
     {field_ttc, 6},
-  [684] =
+  [649] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1807,7 +1772,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 7},
     {field_step_type, 0},
     {field_ttc, 6},
-  [692] =
+  [657] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1816,7 +1781,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 6},
     {field_step_type, 0},
-  [700] =
+  [665] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1825,7 +1790,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 6},
     {field_preconditions, 7},
     {field_step_type, 0},
-  [708] =
+  [673] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1834,110 +1799,99 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-  [716] =
+  [681] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_detector, 7},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [724] =
+  [688] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_id, 1},
     {field_preconditions, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [732] =
+  [695] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_id, 1},
     {field_reaches, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [740] =
+  [702] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 7},
-  [748] =
+  [709] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_id, 1},
     {field_meta, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [756] =
+  [716] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_cias, 7},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [764] =
+  [723] =
     {field_detector, 5},
     {field_id, 1},
     {field_preconditions, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [772] =
+  [730] =
     {field_detector, 6},
     {field_id, 1},
     {field_meta, 5},
     {field_preconditions, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [780] =
+  [737] =
     {field_detector, 6},
     {field_id, 1},
     {field_meta, 5},
     {field_reaches, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [788] =
+  [744] =
     {field_id, 1},
     {field_meta, 5},
     {field_preconditions, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [796] =
+  [751] =
     {field_detector, 5},
     {field_id, 1},
     {field_meta, 4},
     {field_preconditions, 6},
     {field_reaches, 7},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [804] =
+  [758] =
     {field_id, 0},
     {field_values, 2},
     {field_values, 3},
-  [807] =
+  [761] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1947,7 +1901,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 8},
     {field_step_type, 0},
     {field_ttc, 5},
-  [816] =
+  [770] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1957,7 +1911,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_step_type, 0},
     {field_ttc, 5},
-  [825] =
+  [779] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1967,7 +1921,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 8},
     {field_step_type, 0},
     {field_ttc, 5},
-  [834] =
+  [788] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1977,7 +1931,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 8},
     {field_step_type, 0},
     {field_ttc, 5},
-  [843] =
+  [797] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1987,7 +1941,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 7},
     {field_reaches, 8},
     {field_step_type, 0},
-  [852] =
+  [806] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -1997,7 +1951,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 7},
     {field_reaches, 8},
     {field_step_type, 0},
-  [861] =
+  [815] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2007,7 +1961,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_step_type, 0},
     {field_ttc, 6},
-  [870] =
+  [824] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2017,7 +1971,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 8},
     {field_step_type, 0},
     {field_ttc, 6},
-  [879] =
+  [833] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2027,7 +1981,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 8},
     {field_step_type, 0},
     {field_ttc, 6},
-  [888] =
+  [842] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2037,7 +1991,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 7},
     {field_step_type, 0},
     {field_ttc, 6},
-  [897] =
+  [851] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2047,7 +2001,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_step_type, 0},
     {field_ttc, 6},
-  [906] =
+  [860] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2057,7 +2011,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 8},
     {field_step_type, 0},
     {field_ttc, 6},
-  [915] =
+  [869] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2067,7 +2021,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 6},
     {field_preconditions, 8},
     {field_step_type, 0},
-  [924] =
+  [878] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2077,7 +2031,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 6},
     {field_reaches, 8},
     {field_step_type, 0},
-  [933] =
+  [887] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2087,7 +2041,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 7},
     {field_reaches, 8},
     {field_step_type, 0},
-  [942] =
+  [896] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2095,9 +2049,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [951] =
+  [904] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2105,79 +2058,71 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 8},
     {field_step_type, 0},
-    {field_tag, 2},
+    {field_tag, 3},
+  [912] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_preconditions, 7},
+    {field_reaches, 8},
+    {field_step_type, 0},
+    {field_tag, 3},
+  [920] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_detector, 8},
+    {field_id, 1},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [928] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_preconditions, 8},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [936] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_reaches, 8},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [944] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_meta, 8},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [952] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_detector, 8},
+    {field_id, 1},
+    {field_meta, 7},
+    {field_step_type, 0},
     {field_tag, 3},
   [960] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_id, 1},
-    {field_preconditions, 7},
-    {field_reaches, 8},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-  [969] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_detector, 8},
-    {field_id, 1},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [978] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
-    {field_preconditions, 8},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [987] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
-    {field_reaches, 8},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [996] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
-    {field_meta, 8},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1005] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_detector, 8},
-    {field_id, 1},
-    {field_meta, 7},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-  [1014] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
     {field_meta, 7},
     {field_preconditions, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1023] =
+  [968] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2185,9 +2130,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 7},
     {field_reaches, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1032] =
+  [976] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2195,9 +2139,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_detector, 8},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1041] =
+  [984] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2205,9 +2148,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1050] =
+  [992] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2215,19 +2157,17 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1059] =
+  [1000] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
     {field_cias, 7},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1068] =
+  [1008] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2235,19 +2175,17 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1077] =
+  [1016] =
     {field_detector, 6},
     {field_id, 1},
     {field_meta, 5},
     {field_preconditions, 7},
     {field_reaches, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 4},
-  [1086] =
+  [1024] =
     {field_id, 6},
     {field_left_field_id, 2},
     {field_left_id, 0},
@@ -2255,7 +2193,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_right_field_id, 10},
     {field_right_id, 12},
     {field_right_mult, 8},
-  [1093] =
+  [1031] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2266,7 +2204,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 9},
     {field_step_type, 0},
     {field_ttc, 5},
-  [1103] =
+  [1041] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2277,7 +2215,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 9},
     {field_step_type, 0},
     {field_ttc, 6},
-  [1113] =
+  [1051] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2288,7 +2226,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_step_type, 0},
     {field_ttc, 6},
-  [1123] =
+  [1061] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2299,7 +2237,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 9},
     {field_step_type, 0},
     {field_ttc, 6},
-  [1133] =
+  [1071] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2310,7 +2248,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 9},
     {field_step_type, 0},
     {field_ttc, 6},
-  [1143] =
+  [1081] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2321,7 +2259,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_reaches, 9},
     {field_step_type, 0},
-  [1153] =
+  [1091] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2330,7 +2268,76 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
+    {field_tag, 3},
+  [1100] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_detector, 8},
+    {field_id, 1},
+    {field_preconditions, 9},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [1109] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_detector, 8},
+    {field_id, 1},
+    {field_reaches, 9},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [1118] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_preconditions, 8},
+    {field_reaches, 9},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [1127] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_detector, 9},
+    {field_id, 1},
+    {field_meta, 8},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [1136] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_meta, 8},
+    {field_preconditions, 9},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [1145] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_id, 1},
+    {field_meta, 8},
+    {field_reaches, 9},
+    {field_step_type, 0},
+    {field_tag, 3},
+    {field_ttc, 7},
+  [1154] =
+    {field_cias, 4},
+    {field_cias, 5},
+    {field_cias, 6},
+    {field_detector, 8},
+    {field_id, 1},
+    {field_meta, 7},
+    {field_preconditions, 9},
+    {field_step_type, 0},
     {field_tag, 3},
   [1163] =
     {field_cias, 4},
@@ -2338,89 +2345,11 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_cias, 6},
     {field_detector, 8},
     {field_id, 1},
-    {field_preconditions, 9},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1173] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_detector, 8},
-    {field_id, 1},
-    {field_reaches, 9},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1183] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
-    {field_preconditions, 8},
-    {field_reaches, 9},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1193] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_detector, 9},
-    {field_id, 1},
-    {field_meta, 8},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1203] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
-    {field_meta, 8},
-    {field_preconditions, 9},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1213] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_id, 1},
-    {field_meta, 8},
-    {field_reaches, 9},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-    {field_ttc, 7},
-  [1223] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_detector, 8},
-    {field_id, 1},
-    {field_meta, 7},
-    {field_preconditions, 9},
-    {field_step_type, 0},
-    {field_tag, 2},
-    {field_tag, 3},
-  [1233] =
-    {field_cias, 4},
-    {field_cias, 5},
-    {field_cias, 6},
-    {field_detector, 8},
-    {field_id, 1},
     {field_meta, 7},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1243] =
+  [1172] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2429,9 +2358,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1253] =
+  [1181] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2440,9 +2368,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1263] =
+  [1190] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2451,9 +2378,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1273] =
+  [1199] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2462,9 +2388,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 8},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1283] =
+  [1208] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2472,10 +2397,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_detector, 9},
     {field_id, 1},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1293] =
+  [1217] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2483,10 +2407,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1303] =
+  [1226] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2494,10 +2417,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1313] =
+  [1235] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2505,10 +2427,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1323] =
+  [1244] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2517,9 +2438,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 8},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1333] =
+  [1253] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2528,9 +2448,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 8},
     {field_preconditions, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1343] =
+  [1262] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2539,9 +2458,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 8},
     {field_reaches, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1353] =
+  [1271] =
     {field_id, 6},
     {field_left_field_id, 2},
     {field_left_id, 0},
@@ -2550,7 +2468,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_right_field_id, 10},
     {field_right_id, 12},
     {field_right_mult, 8},
-  [1361] =
+  [1279] =
     {field_cias, 2},
     {field_cias, 3},
     {field_cias, 4},
@@ -2562,7 +2480,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_reaches, 10},
     {field_step_type, 0},
     {field_ttc, 6},
-  [1372] =
+  [1290] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2571,10 +2489,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 7},
-  [1383] =
+  [1300] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2583,10 +2500,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 8},
     {field_preconditions, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 7},
-  [1394] =
+  [1310] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2595,10 +2511,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 8},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 7},
-  [1405] =
+  [1320] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2607,10 +2522,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 7},
-  [1416] =
+  [1330] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2620,9 +2534,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1427] =
+  [1340] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2632,9 +2545,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1438] =
+  [1350] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2643,10 +2555,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_preconditions, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1449] =
+  [1360] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2655,10 +2566,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1460] =
+  [1370] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2667,10 +2577,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1471] =
+  [1380] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2679,10 +2588,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_id, 1},
     {field_meta, 9},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1482] =
+  [1390] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2691,10 +2599,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 9},
     {field_preconditions, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1493] =
+  [1400] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2703,10 +2610,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1504] =
+  [1410] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2716,9 +2622,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 8},
     {field_preconditions, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1515] =
+  [1420] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2728,9 +2633,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 8},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1526] =
+  [1430] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2740,9 +2644,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 9},
     {field_reaches, 10},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1537] =
+  [1440] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2752,10 +2655,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 10},
     {field_reaches, 11},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 7},
-  [1549] =
+  [1451] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2765,10 +2667,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 10},
     {field_reaches, 11},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1561] =
+  [1462] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2778,10 +2679,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 9},
     {field_preconditions, 11},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1573] =
+  [1473] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2791,10 +2691,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_meta, 9},
     {field_reaches, 11},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1585] =
+  [1484] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2804,10 +2703,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 10},
     {field_reaches, 11},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
-  [1597] =
+  [1495] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2818,9 +2716,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 10},
     {field_reaches, 11},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
-  [1609] =
+  [1506] =
     {field_cias, 4},
     {field_cias, 5},
     {field_cias, 6},
@@ -2831,7 +2728,6 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_preconditions, 11},
     {field_reaches, 12},
     {field_step_type, 0},
-    {field_tag, 2},
     {field_tag, 3},
     {field_ttc, 8},
 };
@@ -6140,7 +6036,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(124), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6189,7 +6085,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6266,7 +6162,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6299,7 +6195,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6413,7 +6309,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(135), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6508,7 +6404,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6573,7 +6469,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(147), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6636,7 +6532,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6670,7 +6566,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(87), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6866,7 +6762,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -6947,7 +6843,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(89), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -7044,7 +6940,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -7077,7 +6973,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(82), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -7094,7 +6990,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(102), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -7159,7 +7055,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(436), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -7224,7 +7120,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(110), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -7241,7 +7137,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(142), 3,
       sym_asset_variable,
       sym_attack_step,
-      aux_sym_asset_repeat1,
+      aux_sym_asset_declaration_repeat1,
     ACTIONS(301), 5,
       anon_sym_PIPE,
       anon_sym_AMP,
@@ -8681,7 +8577,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(700), 1,
       anon_sym_asset,
     STATE(270), 2,
-      sym_asset,
+      sym_asset_declaration,
       aux_sym_category_declaration_repeat2,
   [5618] = 2,
     ACTIONS(3), 1,
@@ -8711,7 +8607,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(711), 1,
       anon_sym_asset,
     STATE(270), 2,
-      sym_asset,
+      sym_asset_declaration,
       aux_sym_category_declaration_repeat2,
   [5657] = 5,
     ACTIONS(3), 1,
@@ -8744,7 +8640,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(721), 1,
       anon_sym_RBRACE,
     STATE(270), 2,
-      sym_asset,
+      sym_asset_declaration,
       aux_sym_category_declaration_repeat2,
   [5702] = 5,
     ACTIONS(3), 1,
@@ -8756,7 +8652,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(723), 1,
       anon_sym_RBRACE,
     STATE(276), 2,
-      sym_asset,
+      sym_asset_declaration,
       aux_sym_category_declaration_repeat2,
   [5719] = 2,
     ACTIONS(3), 1,
@@ -8777,7 +8673,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(727), 1,
       anon_sym_RBRACE,
     STATE(273), 2,
-      sym_asset,
+      sym_asset_declaration,
       aux_sym_category_declaration_repeat2,
   [5747] = 4,
     ACTIONS(3), 1,
@@ -10131,9 +10027,9 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [425] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attack_step, 10, 0, 210),
   [427] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attack_step, 11, 0, 215),
   [429] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attack_step, 11, 0, 220),
-  [431] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_asset_repeat1, 2, 0, 0),
-  [433] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_asset_repeat1, 2, 0, 0), SHIFT_REPEAT(367),
-  [436] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_asset_repeat1, 2, 0, 0), SHIFT_REPEAT(378),
+  [431] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_asset_declaration_repeat1, 2, 0, 0),
+  [433] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_asset_declaration_repeat1, 2, 0, 0), SHIFT_REPEAT(367),
+  [436] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_asset_declaration_repeat1, 2, 0, 0), SHIFT_REPEAT(378),
   [439] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attack_step, 6, 0, 68),
   [441] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attack_step, 11, 0, 226),
   [443] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attack_step, 12, 0, 231),
@@ -10306,32 +10202,32 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [783] = {.entry = {.count = 1, .reusable = true}}, SHIFT(146),
   [785] = {.entry = {.count = 1, .reusable = true}}, SHIFT(277),
   [787] = {.entry = {.count = 1, .reusable = true}}, SHIFT(279),
-  [789] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 7, 0, 37),
-  [791] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 6, 0, 19),
-  [793] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 7, 0, 21),
+  [789] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 7, 0, 37),
+  [791] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 6, 0, 19),
+  [793] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 7, 0, 21),
   [795] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_ttc_distribution_repeat1, 2, 0, 0), SHIFT_REPEAT(324),
   [798] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_ttc_distribution_repeat1, 2, 0, 0),
-  [800] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 5, 0, 5),
-  [802] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 7, 0, 38),
-  [804] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 7, 0, 22),
+  [800] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 5, 0, 5),
+  [802] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 7, 0, 38),
+  [804] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 7, 0, 22),
   [806] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
   [808] = {.entry = {.count = 1, .reusable = true}}, SHIFT(379),
   [810] = {.entry = {.count = 1, .reusable = true}}, SHIFT(343),
   [812] = {.entry = {.count = 1, .reusable = true}}, SHIFT(51),
   [814] = {.entry = {.count = 1, .reusable = true}}, SHIFT(7),
   [816] = {.entry = {.count = 1, .reusable = true}}, SHIFT(4),
-  [818] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 4, 0, 2),
-  [820] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 6, 0, 12),
+  [818] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 4, 0, 2),
+  [820] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 6, 0, 12),
   [822] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_attack_step_repeat1, 2, 0, 0),
   [824] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_attack_step_repeat1, 2, 0, 0), SHIFT_REPEAT(379),
-  [827] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 9, 0, 64),
+  [827] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 9, 0, 64),
   [829] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
   [831] = {.entry = {.count = 1, .reusable = true}}, SHIFT(350),
   [833] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_detector_name, 1, 0, 0),
   [835] = {.entry = {.count = 1, .reusable = true}}, SHIFT(58),
   [837] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_detector_name, 2, 0, 0),
-  [839] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 6, 0, 18),
-  [841] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 8, 0, 39),
+  [839] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 6, 0, 18),
+  [841] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 8, 0, 39),
   [843] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_detector_context_repeat1, 2, 0, 0), SHIFT_REPEAT(343),
   [846] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_detector_context_repeat1, 2, 0, 0),
   [848] = {.entry = {.count = 1, .reusable = false}}, SHIFT(345),
@@ -10339,15 +10235,15 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [853] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_detector_name_repeat1, 2, 0, 0),
   [855] = {.entry = {.count = 1, .reusable = true}}, SHIFT(324),
   [857] = {.entry = {.count = 1, .reusable = true}}, SHIFT(213),
-  [859] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 8, 0, 40),
+  [859] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 8, 0, 40),
   [861] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_star, 1, 0, 0),
   [863] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_multiplicity, 1, 0, 0),
   [865] = {.entry = {.count = 1, .reusable = true}}, SHIFT(291),
-  [867] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 5, 0, 10),
-  [869] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 6, 0, 11),
+  [867] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 5, 0, 10),
+  [869] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 6, 0, 11),
   [871] = {.entry = {.count = 1, .reusable = false}}, SHIFT(335),
-  [873] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 5, 0, 8),
-  [875] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset, 8, 0, 63),
+  [873] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 5, 0, 8),
+  [875] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_asset_declaration, 8, 0, 63),
   [877] = {.entry = {.count = 1, .reusable = true}}, SHIFT(192),
   [879] = {.entry = {.count = 1, .reusable = true}}, SHIFT(347),
   [881] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_multiplicity_range, 3, 0, 20),

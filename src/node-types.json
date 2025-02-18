@@ -1,6 +1,6 @@
 [
   {
-    "type": "asset",
+    "type": "asset_declaration",
     "named": true,
     "fields": {
       "body": {
@@ -18,13 +18,9 @@
         ]
       },
       "extends": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "extends",
-            "named": false
-          },
           {
             "type": "identity",
             "named": true
@@ -519,13 +515,9 @@
         ]
       },
       "tag": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "@",
-            "named": false
-          },
           {
             "type": "identity",
             "named": true
@@ -553,7 +545,7 @@
         "required": false,
         "types": [
           {
-            "type": "asset",
+            "type": "asset_declaration",
             "named": true
           }
         ]
