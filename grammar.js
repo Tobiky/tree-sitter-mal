@@ -62,6 +62,7 @@ module.exports = grammar({
       '}',
     ),
 
+    // An asset for a category
     asset: $ => seq(
       optional(alias('abstract', 'abstract')),
       'asset',
@@ -73,6 +74,7 @@ module.exports = grammar({
       '}',
     ),
 
+    // A varaible within an asset
     asset_variable: $ => seq(
       'let',
       field('id', $.identity),
@@ -80,6 +82,7 @@ module.exports = grammar({
       field('value', $._asset_expr),
     ),
 
+    // Attack step for an asset
     attack_step: $ => seq(
       field('step_type', choice(
         '|',
@@ -102,6 +105,7 @@ module.exports = grammar({
       optional(field('reaches', $.reaching)),
     ),
 
+    // Detector for attack steps
     detector: $ => seq(
       // Increase //! precidence to overrule comments
       choice('!', token(prec(1, '//!'))),
@@ -124,17 +128,20 @@ module.exports = grammar({
       field('label', $.identity),
     ),
 
+    // Precondition for attack steps
     preconditions: $ => seq(
       '<-', 
       field('condition', commaSep1($._asset_expr))
     ),
 
+    // Inheritence or lead to/from other identities for attack steps
     reaching: $ => seq(
         field('operator', choice('+>', '->')),
         field('reaches', commaSep1($._asset_expr))
     ),
 
 
+    // Time-To-Compromise probabilty distributions
     ttc: $ => seq(
       '[',
       $._ttc_expr,
@@ -180,6 +187,7 @@ module.exports = grammar({
       )
     ),
 
+    // Expression to define relations between assets
     _asset_expr: $ => choice(
       $._asset_expr_parenthesized,
       $._asset_expr_primary,
@@ -239,6 +247,7 @@ module.exports = grammar({
       )
     ),
 
+    // Define values, i.e. global string constants
     define_declaration: $ => seq(
       '#',
       field('id', $.identity),
@@ -246,6 +255,8 @@ module.exports = grammar({
       field('value', $.string)
     ),
 
+    // Define associations between categories, assets, etc. 
+    // Quantitive relationships like in UML/relational database.
     associations_declaration: $ => seq(
       'associations',
       '{',
@@ -266,6 +277,7 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
     ),
 
+    // Multiplicity of an association, * for unbounded, range for bounded, and integer for exact.
     multiplicity: $ => choice(
       $._multiplicity_atom,
       $.multiplicity_range,
@@ -282,7 +294,7 @@ module.exports = grammar({
       field('end', $._multiplicity_atom),
     ),
 
-
+    // Meta information for category, asset, or otherwise.
     meta: $ => seq(
       field('id', $.identity),
       'info',
@@ -290,6 +302,7 @@ module.exports = grammar({
       field('info', $.string),
     ),
 
+    // Primitives/Primaries/Atoms
     string: _ => token(seq('"', /(?:\\"|[^"])*/, '"')),
     integer: _ => token(/[0-9]+/),
     identity: _ => token(/[a-zA-Z0-9_]+/),
