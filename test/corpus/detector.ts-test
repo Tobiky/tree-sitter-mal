@@ -139,5 +139,4 @@ category Test {
                 id: (identity)
                 label: (identity)))
             ttc: (ttc
-              (ttc_primary
-                (integer)))))))))
+              (integer))))))))

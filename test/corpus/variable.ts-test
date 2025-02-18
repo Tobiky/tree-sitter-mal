@@ -11,11 +11,11 @@ category Test {
 ---------------------------------------------
 
 (source_file
-    (declaration
-        (category_declaration
-            id: (identity)
-            assets: (asset
-                        id: (identity)
-                        body: (asset_variable
-                                id: (identity)
-                                value: (asset_expr_primary (identity)))))))
+  (declaration
+    (category_declaration
+      id: (identity)
+      assets: (asset
+        id: (identity)
+        body: (asset_variable
+          id: (identity)
+          value: (identity))))))
