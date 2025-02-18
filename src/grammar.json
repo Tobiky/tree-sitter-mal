@@ -766,7 +766,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "integer"
+          "name": "_number"
         },
         {
           "type": "SYMBOL",
@@ -801,7 +801,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "integer"
+                "name": "_number"
               },
               {
                 "type": "REPEAT",
@@ -814,7 +814,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "integer"
+                      "name": "_number"
                     }
                   ]
                 }
@@ -1523,11 +1523,31 @@
         ]
       }
     },
+    "_number": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float"
+        }
+      ]
+    },
     "integer": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
         "value": "[0-9]+"
+      }
+    },
+    "float": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "(:?[0-9]+(:?[.][0-9]*)?|[.][0-9]+)"
       }
     },
     "identity": {

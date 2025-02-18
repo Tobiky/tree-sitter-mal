@@ -966,6 +966,10 @@
       "required": true,
       "types": [
         {
+          "type": "float",
+          "named": true
+        },
+        {
           "type": "identity",
           "named": true
         },
@@ -999,6 +1003,10 @@
           {
             "type": ")",
             "named": false
+          },
+          {
+            "type": "float",
+            "named": true
           },
           {
             "type": "identity",
@@ -1057,6 +1065,10 @@
             "named": false
           },
           {
+            "type": "float",
+            "named": true
+          },
+          {
             "type": "identity",
             "named": true
           },
@@ -1097,6 +1109,10 @@
           {
             "type": ",",
             "named": false
+          },
+          {
+            "type": "float",
+            "named": true
           },
           {
             "type": "integer",
@@ -1245,6 +1261,10 @@
   {
     "type": "extends",
     "named": false
+  },
+  {
+    "type": "float",
+    "named": true
   },
   {
     "type": "identity",
