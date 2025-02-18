@@ -9,5 +9,13 @@ category Cat
         //        ^ punctuation.bracket
         //                                     ^ punctuation.bracket
         //                                       ^ punctuation.bracket
+        | b {C, I, A}
+        //  ^ punctuation.bracket
+        //   ^ constant.builtin
+        //    ^ punctuation.delimiter
+        //      ^ constant.builtin
+        //       ^ punctuation.delimiter
+        //         ^ constant.builtin
+        //          ^ punctuation.bracket
     }
 }
