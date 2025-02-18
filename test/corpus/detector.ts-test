@@ -16,16 +16,17 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          detector: (detector
-            context: (detector_context
-              (detector_context_asset
-                id: (identity)
-                label: (identity))
-              (detector_context_asset
-                id: (identity)
-                label: (identity)))))))))
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            detector: (detector
+              context: (detector_context
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity))
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity))))))))))
 
 ==========================
 Commented Minimal Detector
@@ -45,16 +46,17 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          detector: (detector
-            context: (detector_context
-              (detector_context_asset
-                id: (identity)
-                label: (identity))
-              (detector_context_asset
-                id: (identity)
-                label: (identity)))))))))
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            detector: (detector
+              context: (detector_context
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity))
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity))))))))))
 
 ===========================
 Detector with Detector Name
@@ -74,17 +76,18 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          detector: (detector
-            name: (detector_name
-              (identity)
-              (identity)
-              (identity))
-            context: (detector_context
-              (detector_context_asset
-                id: (identity)
-                label: (identity)))))))))
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            detector: (detector
+              name: (detector_name
+                (identity)
+                (identity)
+                (identity))
+              context: (detector_context
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity))))))))))
 
 ===========================
 Detector with Detector Type
@@ -104,14 +107,15 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          detector: (detector
-            context: (detector_context
-              (detector_context_asset
-                id: (identity)
-                label: (identity)))
-            type: (identity)))))))
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            detector: (detector
+              context: (detector_context
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity)))
+              type: (identity))))))))
 
 =================
 Detector with TTC
@@ -131,12 +135,13 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          detector: (detector
-            context: (detector_context
-              (detector_context_asset
-                id: (identity)
-                label: (identity)))
-            ttc: (ttc
-              (integer))))))))
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            detector: (detector
+              context: (detector_context
+                (detector_context_asset
+                  id: (identity)
+                  label: (identity)))
+              ttc: (ttc
+                (integer)))))))))

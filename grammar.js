@@ -70,9 +70,11 @@ module.exports = grammar({
       field('extends', optional(seq('extends', $.identity))),
       field('meta', repeat($.meta)),
       '{',
-      field('body', repeat(choice($.attack_step, $.asset_variable))),
+      optional(field('body', $.asset_definition)),
       '}',
     ),
+
+    asset_definition: $ => repeat1(choice($.attack_step, $.asset_variable)),
 
     // A varaible within an asset
     asset_variable: $ => seq(

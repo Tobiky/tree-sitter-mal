@@ -19,15 +19,16 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          preconditions: (preconditions
-            condition: (identity)))
-        body: (attack_step
-          id: (identity)
-          preconditions: (preconditions
-            condition: (identity)
-            condition: (identity)))))))
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            preconditions: (preconditions
+              condition: (identity)))
+          (attack_step
+            id: (identity)
+            preconditions: (preconditions
+              condition: (identity)
+              condition: (identity))))))))
 
 ============================================================
 Attack-step with asset expression operators in Pre-condition
@@ -57,40 +58,41 @@ category Test {
       id: (identity)
       assets: (asset_declaration
         id: (identity)
-        body: (attack_step
-          id: (identity)
-          preconditions: (preconditions
-            condition: (identity)
-            condition: (asset_expr_binop
-              left: (identity)
-              right: (identity))
-            condition: (asset_expr_binop
-              left: (identity)
-              right: (identity))
-            condition: (asset_expr_binop
-              left: (identity)
-              right: (identity))
-            condition: (asset_expr_binop
-              left: (identity)
-              right: (identity))
-            condition: (asset_expr_binop
-              left: (asset_expr_binop
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            preconditions: (preconditions
+              condition: (identity)
+              condition: (asset_expr_binop
                 left: (identity)
                 right: (identity))
-              right: (identity))
-            condition: (asset_expr_binop
-              left: (asset_variable_substitution
-                id: (identity))
-              right: (identity))
-            condition: (asset_expr_binop
-              left: (asset_expr_unop
-                expression: (identity))
-              right: (identity))
-            condition: (asset_expr_type
-              expression: (identity)
-              type_id: (identity))
-            condition: (asset_expr_type
-              expression: (asset_expr_type
+              condition: (asset_expr_binop
+                left: (identity)
+                right: (identity))
+              condition: (asset_expr_binop
+                left: (identity)
+                right: (identity))
+              condition: (asset_expr_binop
+                left: (identity)
+                right: (identity))
+              condition: (asset_expr_binop
+                left: (asset_expr_binop
+                  left: (identity)
+                  right: (identity))
+                right: (identity))
+              condition: (asset_expr_binop
+                left: (asset_variable_substitution
+                  id: (identity))
+                right: (identity))
+              condition: (asset_expr_binop
+                left: (asset_expr_unop
+                  expression: (identity))
+                right: (identity))
+              condition: (asset_expr_type
                 expression: (identity)
                 type_id: (identity))
-              type_id: (identity))))))))
+              condition: (asset_expr_type
+                expression: (asset_expr_type
+                  expression: (identity)
+                  type_id: (identity))
+                type_id: (identity)))))))))

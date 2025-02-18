@@ -210,30 +210,42 @@
           "value": "{"
         },
         {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "attack_step"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "asset_variable"
-                }
-              ]
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "body",
+              "content": {
+                "type": "SYMBOL",
+                "name": "asset_definition"
+              }
+            },
+            {
+              "type": "BLANK"
             }
-          }
+          ]
         },
         {
           "type": "STRING",
           "value": "}"
         }
       ]
+    },
+    "asset_definition": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "attack_step"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "asset_variable"
+          }
+        ]
+      }
     },
     "asset_variable": {
       "type": "SEQ",
