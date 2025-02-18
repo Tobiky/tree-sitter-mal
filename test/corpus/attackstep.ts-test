@@ -80,21 +80,26 @@ category Test {
         body: (asset_definition
           (attack_step
             id: (identity)
-            cias: (cia))
+            cias: (cias
+              (cia)))
           (attack_step
             id: (identity)
-            cias: (cia))
+            cias: (cias
+              (cia)))
           (attack_step
             id: (identity)
-            cias: (cia))
+            cias: (cias
+              (cia)))
           (attack_step
             id: (identity)
-            cias: (cia)
-            cias: (cia))
+            cias: (cias
+              (cia)
+              (cia)))
           (attack_step
             id: (identity)
-            cias: (cia)
-            cias: (cia)))))))
+            cias: (cias
+              (cia)
+              (cia))))))))
 
 ====================
 Attack-step with TTC

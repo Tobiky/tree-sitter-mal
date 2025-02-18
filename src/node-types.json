@@ -436,11 +436,7 @@
         "required": false,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "cia",
+            "type": "cias",
             "named": true
           },
           {
@@ -585,6 +581,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "cias",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "cia",
+          "named": true
+        }
+      ]
     }
   },
   {
