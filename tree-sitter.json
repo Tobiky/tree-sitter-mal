@@ -5,7 +5,7 @@
       "camelcase": "Mal",
       "scope": "source.mal",
       "file-types": [
-        ".mal"
+        "mal"
       ],
       "injection-regex": "^mal$"
     }
