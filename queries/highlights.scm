@@ -48,3 +48,10 @@
   "associations"
   "info"
 ] @keyword
+
+; Delimiters
+"," @punctuation.delimiter
+":" @punctuation.delimiter
+
+(detector_name "." @punctuation.delimiter)
+
