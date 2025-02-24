@@ -1,0 +1,10 @@
+; Brackets
+[
+ "{"
+ "}"
+ "("
+ ")"
+ "["
+ "]"
+] @punctuation.bracket
+
