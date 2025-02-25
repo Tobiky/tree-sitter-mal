@@ -14,9 +14,13 @@
         ]
       },
       "extends": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "extends",
+            "named": false
+          },
           {
             "type": "identity",
             "named": true
@@ -526,9 +530,13 @@
         ]
       },
       "tag": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "@",
+            "named": false
+          },
           {
             "type": "identity",
             "named": true
