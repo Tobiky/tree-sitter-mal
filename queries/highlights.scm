@@ -58,3 +58,12 @@
 ; Special
 (cia) @constant.builtin
 (meta id: (identity) @attribute)
+
+; Primitives
+(string) @string
+
+[
+ (integer)
+ (float)
+ (star)
+] @number
