@@ -9,33 +9,47 @@
 ] @punctuation.bracket
 
 ; Operators
-[
- "#"
- "+"
- "-"
- "*"
- "/"
- "^"
- "\\/"
- "/\\"
- ".."
- "<--"
- "-->"
- "+>"
- "->"
- "<-"
- "@"
- "!"
- "//!"
- "|"
- "&"
- "E"
- "!E"
-] @operator
+(association ["<--" "-->"] @operator)
 
-; To ensure that they are not interpreted as operators elsewhere (e.g. detector names)
-(asset_expr_binop
-  "." @operator)
+(ttc_binop
+  [
+   "+"
+   "-"
+   "/"
+   "^"
+   "*"
+   ] @operator)
+
+(attack_step
+  [
+   "|"
+   "&"
+   "#"
+   "E"
+   "!E"
+   "@"
+   ] @operator)
+
+(detector ["!" "//!"] @operator)
+
+(preconditions "<-" @operator)
+
+(reaching ["+>" "->"] @operator)
+
+(define_declaration "#" @operator)
+
+(asset_expr_binop 
+  [
+   "\\/"
+   "/\\"
+   "-"
+   "."
+   ] @operator)
+
+(asset_expr_unop "*" @operator)
+
+(multiplicity_range ".." @operator)
+
 
 ; Keywords
 [
