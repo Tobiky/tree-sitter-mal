@@ -10,6 +10,7 @@
 
 ; Operators
 [
+ "#"
  "+"
  "-"
  "*"
@@ -28,7 +29,6 @@
  "//!"
  "|"
  "&"
- "#"
  "E"
  "!E"
 ] @operator
@@ -55,3 +55,6 @@
 
 (detector_name "." @punctuation.delimiter)
 
+; Special
+(cia) @constant.builtin
+(meta id: (identity) @attribute)
