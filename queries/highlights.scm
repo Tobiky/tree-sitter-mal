@@ -67,3 +67,7 @@
  (float)
  (star)
 ] @number
+
+; Semantic objects
+(define_declaration id: (identity) @constant)
+(ttc_distribution id: (identity) @function)
