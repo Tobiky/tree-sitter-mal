@@ -85,3 +85,6 @@
 ; Semantic objects
 (define_declaration id: (identity) @constant)
 (ttc_distribution id: (identity) @function)
+
+; Miscellaneous
+(comment) @comment
