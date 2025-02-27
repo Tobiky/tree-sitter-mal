@@ -1,0 +1,640 @@
+
+<!doctype HTML>
+<head>
+  <title>Tree-sitter Highlighting</title>
+  <style>
+    body {
+      font-family: monospace
+    }
+    .line-number {
+      user-select: none;
+      text-align: right;
+      color: rgba(27,31,35,.3);
+      padding: 0 10px;
+    }
+    .line {
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+<tr><td class=line-number>1</td><td class=line><span style='font-style: italic;color: #8a8a8a'>/*</span>
+</td></tr>
+<tr><td class=line-number>2</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * Copyright 2019-2022 coreLang contributors &lt;https://mal-lang.org/coreLang/contributors.html&gt;</span>
+</td></tr>
+<tr><td class=line-number>3</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *</span>
+</td></tr>
+<tr><td class=line-number>4</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+</td></tr>
+<tr><td class=line-number>5</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * you may not use this file except in compliance with the License.</span>
+</td></tr>
+<tr><td class=line-number>6</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * You may obtain a copy of the License at</span>
+</td></tr>
+<tr><td class=line-number>7</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *</span>
+</td></tr>
+<tr><td class=line-number>8</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *     https://www.apache.org/licenses/LICENSE-2.0</span>
+</td></tr>
+<tr><td class=line-number>9</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *</span>
+</td></tr>
+<tr><td class=line-number>10</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * Unless required by applicable law or agreed to in writing, software</span>
+</td></tr>
+<tr><td class=line-number>11</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+</td></tr>
+<tr><td class=line-number>12</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+</td></tr>
+<tr><td class=line-number>13</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * See the License for the specific language governing permissions and</span>
+</td></tr>
+<tr><td class=line-number>14</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * limitations under the License.</span>
+</td></tr>
+<tr><td class=line-number>15</td><td class=line><span style='font-style: italic;color: #8a8a8a'> */</span>
+</td></tr>
+<tr><td class=line-number>16</td><td class=line>
+</td></tr>
+<tr><td class=line-number>17</td><td class=line><span style='color: #5f00d7'>category</span> DataResources <span style='color: #4e4e4e'>{</span>
+</td></tr>
+<tr><td class=line-number>18</td><td class=line>
+</td></tr>
+<tr><td class=line-number>19</td><td class=line>    <span style='color: #5f00d7'>asset</span> Information
+</td></tr>
+<tr><td class=line-number>20</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Represents any type of information that might be contained inside Data. This include general purpose information, but also serves as the basis for more specialized types, such as Credentials and SoftwareProduct. Information represents the abstract concept, while Data represent an actual instance of information stored or transmitted digitally.&quot;</span>
+</td></tr>
+<tr><td class=line-number>21</td><td class=line>    <span style='color: #4e4e4e'>{</span>
+</td></tr>
+<tr><td class=line-number>22</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> read
+</td></tr>
+<tr><td class=line-number>23</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker is able to read the information. They may still be unable to extract it, which represents the adversary being able to read it themselves. This is the case if autonomous code is able to read it, but lack the required networking connections to transmit it back to the adversary.&quot;</span>
+</td></tr>
+<tr><td class=line-number>24</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  dataReplicas<span style='font-weight: bold;color: #4e4e4e'>.</span>read<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>25</td><td class=line>            containerData<span style='font-weight: bold;color: #4e4e4e'>.</span>read
+</td></tr>
+<tr><td class=line-number>26</td><td class=line>
+</td></tr>
+<tr><td class=line-number>27</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> write
+</td></tr>
+<tr><td class=line-number>28</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker is able to write the information.&quot;</span>
+</td></tr>
+<tr><td class=line-number>29</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  dataReplicas<span style='font-weight: bold;color: #4e4e4e'>.</span>write<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>30</td><td class=line>            containerData<span style='font-weight: bold;color: #4e4e4e'>.</span>write<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>31</td><td class=line>            dependentApps<span style='font-weight: bold;color: #4e4e4e'>.</span>fullAccess<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>32</td><td class=line>            delete
+</td></tr>
+<tr><td class=line-number>33</td><td class=line>
+</td></tr>
+<tr><td class=line-number>34</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> delete
+</td></tr>
+<tr><td class=line-number>35</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker is able to delete the information.&quot;</span>
+</td></tr>
+<tr><td class=line-number>36</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  dataReplicas<span style='font-weight: bold;color: #4e4e4e'>.</span>delete<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>37</td><td class=line>            containerData<span style='font-weight: bold;color: #4e4e4e'>.</span>delete<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>38</td><td class=line>            deny
+</td></tr>
+<tr><td class=line-number>39</td><td class=line>
+</td></tr>
+<tr><td class=line-number>40</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deny
+</td></tr>
+<tr><td class=line-number>41</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker is able to deny the information.&quot;</span>
+</td></tr>
+<tr><td class=line-number>42</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  dataReplicas<span style='font-weight: bold;color: #4e4e4e'>.</span>deny<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>43</td><td class=line>            containerData<span style='font-weight: bold;color: #4e4e4e'>.</span>deny<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>44</td><td class=line>            dependentApps<span style='font-weight: bold;color: #4e4e4e'>.</span>deny
+</td></tr>
+<tr><td class=line-number>45</td><td class=line>
+</td></tr>
+<tr><td class=line-number>46</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> extract
+</td></tr>
+<tr><td class=line-number>47</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker is able to extract the information. This means that they have a path available through which they can transfer the information back to a system that they control.&quot;</span>
+</td></tr>
+<tr><td class=line-number>48</td><td class=line>
+</td></tr>
+<tr><td class=line-number>49</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>// The following 5 attack steps are used to implement data replication</span>
+</td></tr>
+<tr><td class=line-number>50</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptReadFromReplica <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>51</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Reading one replica allows the attacker to read all other replicas as well since the information contained in them is the same.&quot;</span>
+</td></tr>
+<tr><td class=line-number>52</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  read
+</td></tr>
+<tr><td class=line-number>53</td><td class=line>
+</td></tr>
+<tr><td class=line-number>54</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> attemptWriteFromReplica <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>55</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Information can be overwritten only if all replicas have been overwritten.&quot;</span>
+</td></tr>
+<tr><td class=line-number>56</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  write
+</td></tr>
+<tr><td class=line-number>57</td><td class=line>
+</td></tr>
+<tr><td class=line-number>58</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> attemptDeleteFromReplica <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>59</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Information can be deleted only if all replicas have been deleted.&quot;</span>
+</td></tr>
+<tr><td class=line-number>60</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  delete
+</td></tr>
+<tr><td class=line-number>61</td><td class=line>
+</td></tr>
+<tr><td class=line-number>62</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> attemptDenyFromReplica <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>63</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Information can be denied only if all replicas have been denied.&quot;</span>
+</td></tr>
+<tr><td class=line-number>64</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  deny
+</td></tr>
+<tr><td class=line-number>65</td><td class=line>
+</td></tr>
+<tr><td class=line-number>66</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptExtractFromReplica <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>67</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker attempts to extract the information.&quot;</span>
+</td></tr>
+<tr><td class=line-number>68</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  extract
+</td></tr>
+<tr><td class=line-number>69</td><td class=line>    <span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>70</td><td class=line>
+</td></tr>
+<tr><td class=line-number>71</td><td class=line>    <span style='color: #5f00d7'>asset</span> Data
+</td></tr>
+<tr><td class=line-number>72</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Any form of data that can be stored or transmitted.&quot;</span>
+</td></tr>
+<tr><td class=line-number>73</td><td class=line>    <span style='color: #4e4e4e'>{</span>
+</td></tr>
+<tr><td class=line-number>74</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> notPresent <span style='color: #4e4e4e'>[</span>Disabled<span style='color: #4e4e4e'>]</span>
+</td></tr>
+<tr><td class=line-number>75</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This defense is used to reason about the attack vectors introduced by this asset. It should be used to model the possibility of data not existing on the associated container (i.e. Hardware, Application, Network, etc.).&quot;</span>
+</td></tr>
+<tr><td class=line-number>76</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Enabling this defense should make the asset behave as if it did not exist, as such all of its impactful attack steps should be disabled by it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>77</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  applicationRespondConnect<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>78</td><td class=line>            successfulRead<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>79</td><td class=line>            successfulWrite<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>80</td><td class=line>            successfulDeny<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>81</td><td class=line>            successfulDelete<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>82</td><td class=line>            reverseReach<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>83</td><td class=line>            extract
+</td></tr>
+<tr><td class=line-number>84</td><td class=line>
+</td></tr>
+<tr><td class=line-number>85</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedAccessFromApplication <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>86</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Try to gain access to the data through permissions.&quot;</span>
+</td></tr>
+<tr><td class=line-number>87</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedReadFromApplication<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>88</td><td class=line>            authorizedWriteFromApplication<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>89</td><td class=line>            authorizedDeleteFromApplication
+</td></tr>
+<tr><td class=line-number>90</td><td class=line>
+</td></tr>
+<tr><td class=line-number>91</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>!E</span> dataEncrypted <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>92</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If the data are encrypted then accessing them requires the associated encryption credentials/key. Data will be considered encrypted if there is at least one Credentials instance associated with it. Otherwise, &#39;accessUnencryptedData&#39; is triggered.&quot;</span>
+</td></tr>
+<tr><td class=line-number>93</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>&lt;-</span>  encryptCreds
+</td></tr>
+<tr><td class=line-number>94</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessUnencryptedData
+</td></tr>
+<tr><td class=line-number>95</td><td class=line>
+</td></tr>
+<tr><td class=line-number>96</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>!E</span> dataSigned <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>97</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If the data are signed then writing them requires the associated signing credentials/key. Data will be considered signed if there is at least one Credentials asset associated with it. Otherwise, &#39;accessUnsignedData&#39; is triggered.&quot;</span>
+</td></tr>
+<tr><td class=line-number>98</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>&lt;-</span>  signingCreds
+</td></tr>
+<tr><td class=line-number>99</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessUnsignedData
+</td></tr>
+<tr><td class=line-number>100</td><td class=line>
+</td></tr>
+<tr><td class=line-number>101</td><td class=line>      E payloadInspectionBypassFromEncryptedData <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>102</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If the data are encrypted then payload inspection cannot be performed on the connection rules they are transmitted over.&quot;</span>
+</td></tr>
+<tr><td class=line-number>103</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>&lt;-</span>  encryptCreds
+</td></tr>
+<tr><td class=line-number>104</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  bypassPayloadInspectionFromEncryptedData
+</td></tr>
+<tr><td class=line-number>105</td><td class=line>
+</td></tr>
+<tr><td class=line-number>106</td><td class=line>      <span style='color: #5f00d7'>let</span> senderOutgoingApplicationConnections = <span style='color: #4e4e4e'>(</span>senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingAppConnections<span style='color: #4e4e4e'>)</span>
+</td></tr>
+<tr><td class=line-number>107</td><td class=line>      <span style='color: #5f00d7'>let</span> receiverIngoingApplicationConnections = <span style='color: #4e4e4e'>(</span>receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingAppConnections<span style='color: #4e4e4e'>)</span>
+</td></tr>
+<tr><td class=line-number>108</td><td class=line>      <span style='color: #5f00d7'>let</span> transitNetworkInboundAllowedConnections = <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+</td></tr>
+<tr><td class=line-number>109</td><td class=line>      <span style='color: #5f00d7'>let</span> transitNetworkOutboundAllowedConnections = <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingNetConnections<span style='color: #4e4e4e'>)</span>
+</td></tr>
+<tr><td class=line-number>110</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassPayloadInspectionFromEncryptedData <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>111</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The connection rules that the encrypted data traverse over cannot provide payload inspection since they are assumed to permit encrypted traffic. This implies that the attacker could simply encrypt their own communications to evade inspection.&quot;</span>
+</td></tr>
+<tr><td class=line-number>112</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #4e4e4e'>(</span>senderOutgoingApplicationConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span> <span style='font-weight: bold;color: #4e4e4e'>/\</span> transitNetworkInboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>payloadInspectionBypassed<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>113</td><td class=line>            <span style='color: #4e4e4e'>(</span>receiverIngoingApplicationConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span> <span style='font-weight: bold;color: #4e4e4e'>/\</span> transitNetworkOutboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>payloadInspectionBypassed
+</td></tr>
+<tr><td class=line-number>114</td><td class=line>
+</td></tr>
+<tr><td class=line-number>115</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> accessUnencryptedData <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>116</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If data are unencrypted then access them.&quot;</span>
+</td></tr>
+<tr><td class=line-number>117</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessDecryptedData
+</td></tr>
+<tr><td class=line-number>118</td><td class=line>
+</td></tr>
+<tr><td class=line-number>119</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> accessUnsignedData <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>120</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If data are unsigned then alter them.&quot;</span>
+</td></tr>
+<tr><td class=line-number>121</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessSpoofedData
+</td></tr>
+<tr><td class=line-number>122</td><td class=line>
+</td></tr>
+<tr><td class=line-number>123</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessSpoofedData <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>124</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to only allow effects of &#39;accessUnsignedData&#39; on data after compromising the signing credentials or signing is disabled.&quot;</span>
+</td></tr>
+<tr><td class=line-number>125</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  applicationRespondConnect<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>126</td><td class=line>            successfulWrite
+</td></tr>
+<tr><td class=line-number>127</td><td class=line>
+</td></tr>
+<tr><td class=line-number>128</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessDecryptedData <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>129</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to only allow effects of &#39;accessUnencryptedData&#39; on data after compromising the encryption credentials or encryption is disabled.&quot;</span>
+</td></tr>
+<tr><td class=line-number>130</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  applicationRespondConnect<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>131</td><td class=line>            successfulRead<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>132</td><td class=line>            successfulWrite<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>133</td><td class=line>            successfulDelete
+</td></tr>
+<tr><td class=line-number>134</td><td class=line>
+</td></tr>
+<tr><td class=line-number>135</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptApplicationRespondConnect <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>136</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to handle defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>137</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  applicationRespondConnect
+</td></tr>
+<tr><td class=line-number>138</td><td class=line>
+</td></tr>
+<tr><td class=line-number>139</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> applicationRespondConnect <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>140</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;In order to perform a respond connect attack the adversary must be able to write the received data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>141</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptNetworkConnectFromResponse<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>142</td><td class=line>            containedData<span style='font-weight: bold;color: #4e4e4e'>.</span>applicationRespondConnect
+</td></tr>
+<tr><td class=line-number>143</td><td class=line>
+</td></tr>
+<tr><td class=line-number>144</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedApplicationRespondConnectFromApplication <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>145</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The adversary can attempt a respond connect attack from an Application, but they still require write permissions in order to perform it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>146</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedApplicationRespondConnect
+</td></tr>
+<tr><td class=line-number>147</td><td class=line>
+</td></tr>
+<tr><td class=line-number>148</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedApplicationRespondConnectFromIAM <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>149</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker has obtained the access control permissions required to modify the incoming requests.&quot;</span>
+</td></tr>
+<tr><td class=line-number>150</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedApplicationRespondConnect
+</td></tr>
+<tr><td class=line-number>151</td><td class=line>
+</td></tr>
+<tr><td class=line-number>152</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> authorizedApplicationRespondConnect <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>153</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;In order to perform a respond connect attack the adversary must be able to write the received data. If they only have specific access on the Application we need to see if they also have the required permissions.&quot;</span>
+</td></tr>
+<tr><td class=line-number>154</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  attemptApplicationRespondConnect
+</td></tr>
+<tr><td class=line-number>155</td><td class=line>
+</td></tr>
+<tr><td class=line-number>156</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptRead <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>157</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>158</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulRead
+</td></tr>
+<tr><td class=line-number>159</td><td class=line>
+</td></tr>
+<tr><td class=line-number>160</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulRead <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>161</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>162</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  read
+</td></tr>
+<tr><td class=line-number>163</td><td class=line>
+</td></tr>
+<tr><td class=line-number>164</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> read <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>C</span><span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>165</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can read the data. This means that the data can be used for further attack steps, but they are not necessarily obtained by the attacker. The extract attack step covers the scenario where the attacker actually collects the data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>166</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  containedData<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptRead<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>167</td><td class=line>            information<span style='font-weight: bold;color: #4e4e4e'>.</span>read<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>168</td><td class=line>            replicatedInformation<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReadFromReplica<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>169</td><td class=line>            extract
+</td></tr>
+<tr><td class=line-number>170</td><td class=line>
+</td></tr>
+<tr><td class=line-number>171</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedReadFromIAM <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>172</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker has obtained the access control permissions required to read the data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>173</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedRead
+</td></tr>
+<tr><td class=line-number>174</td><td class=line>
+</td></tr>
+<tr><td class=line-number>175</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedReadFromApplication <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>176</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can reach the data via an Application, but they still require the adequate permissions to read it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>177</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedRead
+</td></tr>
+<tr><td class=line-number>178</td><td class=line>
+</td></tr>
+<tr><td class=line-number>179</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> authorizedRead <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>180</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker is able to read the Data through authorized permissions, this requires both access to the Data and the adequate permissions.&quot;</span>
+</td></tr>
+<tr><td class=line-number>181</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  attemptRead
+</td></tr>
+<tr><td class=line-number>182</td><td class=line>
+</td></tr>
+<tr><td class=line-number>183</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptWrite <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>184</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>185</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulWrite
+</td></tr>
+<tr><td class=line-number>186</td><td class=line>
+</td></tr>
+<tr><td class=line-number>187</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulWrite <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>188</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>189</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  write
+</td></tr>
+<tr><td class=line-number>190</td><td class=line>
+</td></tr>
+<tr><td class=line-number>191</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> write <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>I</span><span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>192</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can write to the location of the data, effectively modifying or deleting it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>193</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  containedData<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptWrite<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>194</td><td class=line>            information<span style='font-weight: bold;color: #4e4e4e'>.</span>write<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>195</td><td class=line>            replicatedInformation<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptWriteFromReplica<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>196</td><td class=line>            dependentApps<span style='font-weight: bold;color: #4e4e4e'>.</span>fullAccess<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>197</td><td class=line>            attemptDelete
+</td></tr>
+<tr><td class=line-number>198</td><td class=line>
+</td></tr>
+<tr><td class=line-number>199</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedWriteFromIAM <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>200</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker has obtained the access control permissions required to write the data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>201</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedWrite
+</td></tr>
+<tr><td class=line-number>202</td><td class=line>
+</td></tr>
+<tr><td class=line-number>203</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedWriteFromApplication <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>204</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can reach the data via an Application, but they still require the adequate permissions to write it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>205</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedWrite
+</td></tr>
+<tr><td class=line-number>206</td><td class=line>
+</td></tr>
+<tr><td class=line-number>207</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> authorizedWrite <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>208</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker is able to write the Data through authorized permissions, this requires both access to the Data and the adequate permissions.&quot;</span>
+</td></tr>
+<tr><td class=line-number>209</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  attemptWrite
+</td></tr>
+<tr><td class=line-number>210</td><td class=line>
+</td></tr>
+<tr><td class=line-number>211</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptDelete <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>212</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>213</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> successfulDelete
+</td></tr>
+<tr><td class=line-number>214</td><td class=line>
+</td></tr>
+<tr><td class=line-number>215</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulDelete <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>216</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>217</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  delete
+</td></tr>
+<tr><td class=line-number>218</td><td class=line>
+</td></tr>
+<tr><td class=line-number>219</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> delete <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>I</span><span style='color: #4e4e4e'>,</span><span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>220</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can delete the data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>221</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  containedData<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDelete<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>222</td><td class=line>            information<span style='font-weight: bold;color: #4e4e4e'>.</span>delete<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>223</td><td class=line>            replicatedInformation<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDeleteFromReplica<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>224</td><td class=line>            attemptDeny
+</td></tr>
+<tr><td class=line-number>225</td><td class=line>
+</td></tr>
+<tr><td class=line-number>226</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedDeleteFromIAM <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>227</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker has obtained the access control permissions required to delete the data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>228</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedDelete
+</td></tr>
+<tr><td class=line-number>229</td><td class=line>
+</td></tr>
+<tr><td class=line-number>230</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> authorizedDeleteFromApplication <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>231</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can reach the data via an Application, but they still require the adequate permissions to delete it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>232</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  authorizedDelete
+</td></tr>
+<tr><td class=line-number>233</td><td class=line>
+</td></tr>
+<tr><td class=line-number>234</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> authorizedDelete <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>235</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker is able to delete the Data through authorized permissions, this requires both access to the Data and the adequate permissions.&quot;</span>
+</td></tr>
+<tr><td class=line-number>236</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  attemptDelete
+</td></tr>
+<tr><td class=line-number>237</td><td class=line>
+</td></tr>
+<tr><td class=line-number>238</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptDeny <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>239</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>240</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulDeny
+</td></tr>
+<tr><td class=line-number>241</td><td class=line>
+</td></tr>
+<tr><td class=line-number>242</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulDeny <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>243</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>244</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  deny
+</td></tr>
+<tr><td class=line-number>245</td><td class=line>
+</td></tr>
+<tr><td class=line-number>246</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deny <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>247</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If a DoS is performed data are denied, it has the same effects as deleting the data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>248</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  containedData<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDeny<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>249</td><td class=line>            information<span style='font-weight: bold;color: #4e4e4e'>.</span>deny<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>250</td><td class=line>            replicatedInformation<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDenyFromReplica<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>251</td><td class=line>            dependentApps<span style='font-weight: bold;color: #4e4e4e'>.</span>deny
+</td></tr>
+<tr><td class=line-number>252</td><td class=line>
+</td></tr>
+<tr><td class=line-number>253</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> denyFromLockout <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>254</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This is an intermediate attack step to only trigger deny on data when all the access control roles that can read them are locked out.&quot;</span>
+</td></tr>
+<tr><td class=line-number>255</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  attemptDeny
+</td></tr>
+<tr><td class=line-number>256</td><td class=line>
+</td></tr>
+<tr><td class=line-number>257</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptReverseReach <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>258</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses.&quot;</span>
+</td></tr>
+<tr><td class=line-number>259</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  reverseReach
+</td></tr>
+<tr><td class=line-number>260</td><td class=line>
+</td></tr>
+<tr><td class=line-number>261</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> reverseReach <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+</td></tr>
+<tr><td class=line-number>262</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Reverse reach for Data is used to determine whether or not the data can be transferred to attacker.&quot;</span>
+</td></tr>
+<tr><td class=line-number>263</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  extract<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>264</td><td class=line>            containedData<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach
+</td></tr>
+<tr><td class=line-number>265</td><td class=line>
+</td></tr>
+<tr><td class=line-number>266</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> extract
+</td></tr>
+<tr><td class=line-number>267</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The attacker can extract the data. The read attack step represents just being able to make use of the data for further attack steps without the attacker obtaining it.&quot;</span>
+</td></tr>
+<tr><td class=line-number>268</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  information<span style='font-weight: bold;color: #4e4e4e'>.</span>extract<span style='color: #4e4e4e'>,</span>
+</td></tr>
+<tr><td class=line-number>269</td><td class=line>            replicatedInformation<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptExtractFromReplica
+</td></tr>
+<tr><td class=line-number>270</td><td class=line>    <span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>271</td><td class=line><span style='color: #4e4e4e'>}</span>
+</td></tr>
+<tr><td class=line-number>272</td><td class=line>
+</td></tr>
+<tr><td class=line-number>273</td><td class=line><span style='color: #5f00d7'>associations</span> <span style='color: #4e4e4e'>{</span>
+</td></tr>
+<tr><td class=line-number>274</td><td class=line>  <span style='font-style: italic;color: #8a8a8a'>// ### Data related associations</span>
+</td></tr>
+<tr><td class=line-number>275</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>containingData<span style='color: #4e4e4e'>]</span>       <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> DataContainment       <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>containedData<span style='color: #4e4e4e'>]</span>          Data
+</td></tr>
+<tr><td class=line-number>276</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Data can be contained inside other data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>277</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>containedData<span style='color: #4e4e4e'>]</span>        <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> AppContainment        <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>containingApp<span style='color: #4e4e4e'>]</span>          Application
+</td></tr>
+<tr><td class=line-number>278</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An application should be able to contain some data.&quot;</span>
+</td></tr>
+<tr><td class=line-number>279</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>sentData<span style='color: #4e4e4e'>]</span>             <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> SendData              <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>senderApp<span style='color: #4e4e4e'>]</span>              Application
+</td></tr>
+<tr><td class=line-number>280</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An application can also send some data that are supposed to be transferred over a network or connection. This expresses an active connection.&quot;</span>
+</td></tr>
+<tr><td class=line-number>281</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>receivedData<span style='color: #4e4e4e'>]</span>         <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> ReceiveData           <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>receiverApp<span style='color: #4e4e4e'>]</span>            Application
+</td></tr>
+<tr><td class=line-number>282</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An application can also receive some data that are supposed to be transferred over a network or connection. This expresses an active connection.&quot;</span>
+</td></tr>
+<tr><td class=line-number>283</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>transitData<span style='color: #4e4e4e'>]</span>          <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> DataInTransit         <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>transitNetwork<span style='color: #4e4e4e'>]</span>         Network
+</td></tr>
+<tr><td class=line-number>284</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A network can also contain some data that are supposed to be network-wide available.&quot;</span>
+</td></tr>
+<tr><td class=line-number>285</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>hostedData<span style='color: #4e4e4e'>]</span>           <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> DataHosting           <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>0</span><span style='font-weight: bold;color: #4e4e4e'>..</span><span style='font-weight: bold;color: #875f00'>1</span> <span style='color: #4e4e4e'>[</span>hardware<span style='color: #4e4e4e'>]</span>               Hardware
+</td></tr>
+<tr><td class=line-number>286</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Data can be hosted on hardware.&quot;</span>
+</td></tr>
+<tr><td class=line-number>287</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>containerData<span style='color: #4e4e4e'>]</span>        <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> InfoContainment       <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>information<span style='color: #4e4e4e'>]</span>            Information
+</td></tr>
+<tr><td class=line-number>288</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Data can contain information, as for example credentials.&quot;</span>
+</td></tr>
+<tr><td class=line-number>289</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>dataReplicas<span style='color: #4e4e4e'>]</span>         <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Replica               <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>replicatedInformation<span style='color: #4e4e4e'>]</span>  Information
+</td></tr>
+<tr><td class=line-number>290</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Information can be replicated across multiple data assets that offer redundancy.&quot;</span>
+</td></tr>
+<tr><td class=line-number>291</td><td class=line>  <span style='font-style: italic;color: #8a8a8a'>// ### Application dependence associations</span>
+</td></tr>
+<tr><td class=line-number>292</td><td class=line>  <span style='font-style: italic;color: #8a8a8a'>/* Dependence is used to represent various situations where the operations</span>
+</td></tr>
+<tr><td class=line-number>293</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * of the Application are impacted by modifying/denying the Data/Information</span>
+</td></tr>
+<tr><td class=line-number>294</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * it depends upon. Examples of this type of behavior are configurations,</span>
+</td></tr>
+<tr><td class=line-number>295</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * plugins, libraries, or other input data that is critical to the purpose</span>
+</td></tr>
+<tr><td class=line-number>296</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * of the software component represented by the Application. This</span>
+</td></tr>
+<tr><td class=line-number>297</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * association should only be used for circumstances where the workflow of</span>
+</td></tr>
+<tr><td class=line-number>298</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * the Application is not altered, but the Data/Information are modified</span>
+</td></tr>
+<tr><td class=line-number>299</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * within the regular operating process. For situations where abnormal</span>
+</td></tr>
+<tr><td class=line-number>300</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * behaviour is induced to impact the Application SoftwareVulnerabilities</span>
+</td></tr>
+<tr><td class=line-number>301</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   * should be used instead.</span>
+</td></tr>
+<tr><td class=line-number>302</td><td class=line><span style='font-style: italic;color: #8a8a8a'>   */</span>
+</td></tr>
+<tr><td class=line-number>303</td><td class=line>  Data        <span style='color: #4e4e4e'>[</span>dataDependedUpon<span style='color: #4e4e4e'>]</span>     <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Dependence            <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>dependentApps<span style='color: #4e4e4e'>]</span>         Application
+</td></tr>
+<tr><td class=line-number>304</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Data can be specified as a dependence for an Application.&quot;</span>
+</td></tr>
+<tr><td class=line-number>305</td><td class=line>  Information <span style='color: #4e4e4e'>[</span>infoDependedUpon<span style='color: #4e4e4e'>]</span>     <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Dependence            <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span>dependentApps<span style='color: #4e4e4e'>]</span>         Application
+</td></tr>
+<tr><td class=line-number>306</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Information can be specified as a dependence for an Application.&quot;</span>
+</td></tr>
+<tr><td class=line-number>307</td><td class=line><span style='color: #4e4e4e'>}</span>
+</td></tr>
+</table>
+
+</body>
+
