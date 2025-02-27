@@ -88,3 +88,4 @@
 
 ; Miscellaneous
 (comment) @comment
+(attack_step tag: (identity) @tag)
