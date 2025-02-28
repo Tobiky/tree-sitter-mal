@@ -16,6 +16,30 @@
       white-space: pre;
     }
   </style>
+  <style>
+    .constant { color: #875f00; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .constructor { color: #af8700; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .property { color: #af0000; }
+    .attribute { font-style: italic;color: #af0000; }
+    .string { color: #008700; }
+    .keyword { color: #5f00d7; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .string.special { color: #008787; }
+    .type { color: #005f5f; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .tag { color: #000087; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .function { color: #005fd7; }
+    .module { color: #af8700; }
+    .variable.builtin { font-weight: bold;; }
+    .comment { font-style: italic;color: #8a8a8a; }
+    .number { font-weight: bold;color: #875f00; }
+    .variable.parameter { text-decoration: underline;; }
+  </style>
+
 </head>
 <body>
 
@@ -56,7 +80,7 @@
 </td></tr>
 <tr><td class=line-number>18</td><td class=line>
 </td></tr>
-<tr><td class=line-number>19</td><td class=line><span style='color: #5f00d7'>category</span> System <span style='color: #4e4e4e'>{</span>
+<tr><td class=line-number>19</td><td class=line><span style='color: #5f00d7'>category</span> <span style='color: #af8700'>System</span> <span style='color: #4e4e4e'>{</span>
 </td></tr>
 <tr><td class=line-number>20</td><td class=line>  <span style='color: #5f00d7'>asset</span> Network <span style='color: #4e4e4e'>{</span>
 </td></tr>
@@ -120,11 +144,11 @@
 </td></tr>
 <tr><td class=line-number>50</td><td class=line><span style='color: #5f00d7'>associations</span> <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>51</td><td class=line>  Network <span style='color: #4e4e4e'>[</span>networks<span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> NetworkAccess <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span>hosts<span style='color: #4e4e4e'>]</span> Host
+<tr><td class=line-number>51</td><td class=line>  <span style='color: #005f5f'>Network</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>networks</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> NetworkAccess <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>hosts</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Host</span>
 </td></tr>
-<tr><td class=line-number>52</td><td class=line>  Host <span style='color: #4e4e4e'>[</span>host<span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Credentials <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span>passwords<span style='color: #4e4e4e'>]</span> Password
+<tr><td class=line-number>52</td><td class=line>  <span style='color: #005f5f'>Host</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>host</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Credentials <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>passwords</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Password</span>
 </td></tr>
-<tr><td class=line-number>53</td><td class=line>  User <span style='color: #4e4e4e'>[</span>user<span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Credentials <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span>passwords<span style='color: #4e4e4e'>]</span> Password
+<tr><td class=line-number>53</td><td class=line>  <span style='color: #005f5f'>User</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>user</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Credentials <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>passwords</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Password</span>
 </td></tr>
 <tr><td class=line-number>54</td><td class=line><span style='color: #4e4e4e'>}</span>
 </td></tr>

@@ -85,6 +85,16 @@
 ; Semantic objects
 (define_declaration id: (identity) @constant)
 (ttc_distribution id: (identity) @function)
+(ttc (identity) @type)
+(category_declaration id: (identity) @module)
+(association
+  left_id: (identity) @type
+  left_field_id: (identity) @property
+  right_field_id: (identity) @property
+  right_id: (identity) @type)
+(asset_declaration
+  id: (identity) @type
+  extends: (identity) @type)
 
 ; Miscellaneous
 (comment) @comment
