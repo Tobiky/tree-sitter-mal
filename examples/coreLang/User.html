@@ -16,6 +16,30 @@
       white-space: pre;
     }
   </style>
+  <style>
+    .string.special { color: #008787; }
+    .type { color: #005f5f; }
+    .constant { color: #875f00; }
+    .string { color: #008700; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
+    .variable.parameter { text-decoration: underline;; }
+    .property { color: #af0000; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .attribute { font-style: italic;color: #af0000; }
+    .constructor { color: #af8700; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .comment { font-style: italic;color: #8a8a8a; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .tag { color: #000087; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .module { color: #af8700; }
+    .number { font-weight: bold;color: #875f00; }
+    .variable.builtin { font-weight: bold;; }
+    .keyword { color: #5f00d7; }
+    .function { color: #005fd7; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+  </style>
+
 </head>
 <body>
 
@@ -52,7 +76,7 @@
 </td></tr>
 <tr><td class=line-number>16</td><td class=line>
 </td></tr>
-<tr><td class=line-number>17</td><td class=line><span style='color: #5f00d7'>category</span> User <span style='color: #4e4e4e'>{</span>
+<tr><td class=line-number>17</td><td class=line><span style='color: #5f00d7'>category</span> <span style='color: #af8700'>User</span> <span style='color: #4e4e4e'>{</span>
 </td></tr>
 <tr><td class=line-number>18</td><td class=line>
 </td></tr>
@@ -62,7 +86,7 @@
 </td></tr>
 <tr><td class=line-number>21</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>22</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> noPasswordReuse <span style='color: #4e4e4e'>[</span>Enabled<span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>22</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> noPasswordReuse <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>Enabled</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>23</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If one credential of that user is compromised there is a probability that all other credentials of that user are also compromised.&quot;</span>
 </td></tr>
@@ -70,7 +94,7 @@
 </td></tr>
 <tr><td class=line-number>25</td><td class=line>
 </td></tr>
-<tr><td class=line-number>26</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> noRemovableMediaUsage <span style='color: #4e4e4e'>[</span>Enabled<span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>26</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> noRemovableMediaUsage <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>Enabled</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>27</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The user does not utilise removable media and therefore the attack steps associated with it cannot be reached.&quot;</span>
 </td></tr>
@@ -88,7 +112,7 @@
 </td></tr>
 <tr><td class=line-number>34</td><td class=line>
 </td></tr>
-<tr><td class=line-number>35</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassSecurityAwareness <span style='color: #4e4e4e'>[</span>VeryHardAndUncertain<span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>35</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassSecurityAwareness <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>VeryHardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>36</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Security awareness can be bypassed.&quot;</span>
 </td></tr>
@@ -96,7 +120,7 @@
 </td></tr>
 <tr><td class=line-number>38</td><td class=line>
 </td></tr>
-<tr><td class=line-number>39</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> securityAwarenessBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>39</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> securityAwarenessBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>40</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Security awareness is bypassed either because it was not set, the attacker was able to circumvent it through additional effort, or we simply assume that everyone has an off day every now and then.&quot;</span>
 </td></tr>
@@ -106,7 +130,7 @@
 </td></tr>
 <tr><td class=line-number>43</td><td class=line>
 </td></tr>
-<tr><td class=line-number>44</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> oneCredentialCompromised <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>44</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> oneCredentialCompromised <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>45</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This intermediate attack step is needed in order to block passwordReuseCompromise when no other credential is first compromised.&quot;</span>
 </td></tr>
@@ -114,7 +138,7 @@
 </td></tr>
 <tr><td class=line-number>47</td><td class=line>
 </td></tr>
-<tr><td class=line-number>48</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> passwordReuseCompromise <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>48</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> passwordReuseCompromise <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>49</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If one reused credential of that user is compromised then, all other credentials of that user can also be compromised.&quot;</span>
 </td></tr>
@@ -122,7 +146,7 @@
 </td></tr>
 <tr><td class=line-number>51</td><td class=line>
 </td></tr>
-<tr><td class=line-number>52</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> weakCredentials <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>52</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> weakCredentials <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>53</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step that defines the strength of all of the Credentials associated with the user. This is inversely proportional with the user&#39;s securityAwareness defense.&quot;</span>
 </td></tr>
@@ -130,7 +154,7 @@
 </td></tr>
 <tr><td class=line-number>55</td><td class=line>
 </td></tr>
-<tr><td class=line-number>56</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptSocialEngineering <span style='font-weight: bold;color: #4e4e4e'>@</span>entrypoint
+<tr><td class=line-number>56</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptSocialEngineering <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>entrypoint</span>
 </td></tr>
 <tr><td class=line-number>57</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker can try to perform social engineering techniques such as phishing and inducing the user to perform malicious actions.&quot;</span>
 </td></tr>
@@ -144,7 +168,7 @@
 </td></tr>
 <tr><td class=line-number>62</td><td class=line>
 </td></tr>
-<tr><td class=line-number>63</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulSocialEngineering <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>63</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulSocialEngineering <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>64</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
@@ -152,7 +176,7 @@
 </td></tr>
 <tr><td class=line-number>66</td><td class=line>
 </td></tr>
-<tr><td class=line-number>67</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> socialEngineering <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>67</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> socialEngineering <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>68</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Currently social engineering entails phishing credentials and tricking the user into unsafe actions that expose Applications to the attacker. In the future, other social engineering techniques should be added to this attack step.&quot;</span>
 </td></tr>
@@ -162,7 +186,7 @@
 </td></tr>
 <tr><td class=line-number>71</td><td class=line>
 </td></tr>
-<tr><td class=line-number>72</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptDeliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span>entrypoint
+<tr><td class=line-number>72</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptDeliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>entrypoint</span>
 </td></tr>
 <tr><td class=line-number>73</td><td class=line>        <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker can try to deliver a removable media drive(i.e. USB drive) containing malicious code to a location accessible to the target users.&quot;</span>
 </td></tr>
@@ -176,7 +200,7 @@
 </td></tr>
 <tr><td class=line-number>78</td><td class=line>
 </td></tr>
-<tr><td class=line-number>79</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulDeliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden
+<tr><td class=line-number>79</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulDeliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>80</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
@@ -184,7 +208,7 @@
 </td></tr>
 <tr><td class=line-number>82</td><td class=line>
 </td></tr>
-<tr><td class=line-number>83</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.01</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>83</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.01</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>84</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The user is assumed to connect the removable media containing the malicious code to all of the hardware systems that they have access to. Since this is expected to unwittingly happen as part of their normal operations the attack exposes their regular security context.&quot;</span>
 </td></tr>
@@ -196,7 +220,7 @@
 </td></tr>
 <tr><td class=line-number>88</td><td class=line>
 </td></tr>
-<tr><td class=line-number>89</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> credentialTheft <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden <span style='color: #4e4e4e'>[</span>HardAndUncertain<span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>89</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> credentialTheft <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>HardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>90</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Trick the user into providing their credentials.&quot;</span>
 </td></tr>
@@ -206,7 +230,7 @@
 </td></tr>
 <tr><td class=line-number>93</td><td class=line>
 </td></tr>
-<tr><td class=line-number>94</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> unsafeUserActivity <span style='font-weight: bold;color: #4e4e4e'>@</span>hidden <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.03</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>94</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> unsafeUserActivity <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.03</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>95</td><td class=line>        <span style='font-style: italic;color: #af0000'>developer</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The user can engage in unsafe behaviour that could allow the attacker to gain access to the applications the user has access to.&quot;</span>
 </td></tr>
@@ -224,15 +248,15 @@
 </td></tr>
 <tr><td class=line-number>102</td><td class=line><span style='color: #5f00d7'>associations</span> <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>103</td><td class=line>  User <span style='color: #4e4e4e'>[</span>users<span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> ZoneAccess            <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span>physicalZones<span style='color: #4e4e4e'>]</span>   PhysicalZone
+<tr><td class=line-number>103</td><td class=line>  <span style='color: #005f5f'>User</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>users</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> ZoneAccess            <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>physicalZones</span><span style='color: #4e4e4e'>]</span>   <span style='color: #005f5f'>PhysicalZone</span>
 </td></tr>
 <tr><td class=line-number>104</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A user may have access to different physical zones.&quot;</span>
 </td></tr>
-<tr><td class=line-number>105</td><td class=line>  User <span style='color: #4e4e4e'>[</span>users<span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> HardwareAccess        <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span>hardwareSystems<span style='color: #4e4e4e'>]</span> Hardware
+<tr><td class=line-number>105</td><td class=line>  <span style='color: #005f5f'>User</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>users</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> HardwareAccess        <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>hardwareSystems</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Hardware</span>
 </td></tr>
 <tr><td class=line-number>106</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A user may have access to different hardware systems, rigs, or components.&quot;</span>
 </td></tr>
-<tr><td class=line-number>107</td><td class=line>  User <span style='color: #4e4e4e'>[</span>users<span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> UserAssignedIdentities<span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span>userIds<span style='color: #4e4e4e'>]</span>         Identity
+<tr><td class=line-number>107</td><td class=line>  <span style='color: #005f5f'>User</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>users</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> UserAssignedIdentities<span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>userIds</span><span style='color: #4e4e4e'>]</span>         <span style='color: #005f5f'>Identity</span>
 </td></tr>
 <tr><td class=line-number>108</td><td class=line>      <span style='font-style: italic;color: #af0000'>user</span> <span style='color: #5f00d7'>info</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A user may have different identities associated with it.&quot;</span>
 </td></tr>
