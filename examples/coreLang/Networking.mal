@@ -240,6 +240,7 @@ category Networking {
 
       | attemptAccessNetworksUninspected @hidden
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+        ! detector.my_name (RoutingFirewall firewall) audit [1]
         ->  successfulAccessNetworksUninspected,
             bypassRestricted,
             bypassPayloadInspection
