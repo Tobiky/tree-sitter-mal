@@ -60,7 +60,6 @@
   "extends"
   "let"
   "associations"
-  "info"
 ] @keyword
 
 ; Delimiters
@@ -71,8 +70,7 @@
 
 ; Special
 (cia) @constant.builtin
-(meta id: (identity) @attribute)
-
+(meta) @comment
 ; Primitives
 (string) @string
 
