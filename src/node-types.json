@@ -734,7 +734,7 @@
           }
         ]
       },
-      "label": {
+      "type": {
         "multiple": false,
         "required": true,
         "types": [
@@ -1282,7 +1282,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "extends",
