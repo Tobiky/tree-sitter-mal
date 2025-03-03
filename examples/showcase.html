@@ -1,158 +1,54 @@
+[3m[38;5;245m/*
+ * Copyright 2020-2022 Foreseeti AB <https://foreseeti.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */[0m
+[1m[38;5;239m#[0m[38;5;94mid[0m: [38;5;28m"org.mal-lang.examplelang"[0m
+[1m[38;5;239m#[0m[38;5;94mversion[0m: [38;5;28m"1.0.0"[0m
 
-<!doctype HTML>
-<head>
-  <title>Tree-sitter Highlighting</title>
-  <style>
-    body {
-      font-family: monospace
-    }
-    .line-number {
-      user-select: none;
-      text-align: right;
-      color: rgba(27,31,35,.3);
-      padding: 0 10px;
-    }
-    .line {
-      white-space: pre;
-    }
-  </style>
-  <style>
-    .tag { color: #000087; }
-    .variable.parameter { text-decoration: underline;; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
-    .constant { color: #875f00; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .type { color: #005f5f; }
-    .property { color: #af0000; }
-    .comment { font-style: italic;color: #8a8a8a; }
-    .attribute { font-style: italic;color: #af0000; }
-    .keyword { color: #5f00d7; }
-    .function { color: #005fd7; }
-    .string { color: #008700; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .module { color: #af8700; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .type.builtin { font-weight: bold;color: #005f5f; }
-    .variable.builtin { font-weight: bold;; }
-    .constructor { color: #af8700; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .string.special { color: #008787; }
-    .number { font-weight: bold;color: #875f00; }
-  </style>
+[38;5;56mcategory[0m [38;5;136mSystem[0m [38;5;239m{[0m
+  [38;5;56masset[0m Network [38;5;239m{[0m
+    [1m[38;5;239m|[0m access
+      [1m[38;5;239m->[0m hosts[1m[38;5;239m.[0mconnect
+  [38;5;239m}[0m
 
-</head>
-<body>
+  [38;5;56masset[0m Host [38;5;239m{[0m
+    [1m[38;5;239m|[0m connect
+      [1m[38;5;239m->[0m access
+    [1m[38;5;239m|[0m authenticate
+      [1m[38;5;239m->[0m access
+    [1m[38;5;239m|[0m guessPassword
+      [1m[38;5;239m->[0m guessedPassword
+    [1m[38;5;239m|[0m guessedPassword [38;5;239m[[0m[38;5;26mExponential[0m[38;5;239m([0m[1m[38;5;94m0.02[0m[38;5;239m)[0m[38;5;239m][0m
+      [1m[38;5;239m->[0m authenticate
+    [1m[38;5;239m&[0m access
+  [38;5;239m}[0m
 
-<table>
-<tr><td class=line-number>1</td><td class=line><span style='font-style: italic;color: #8a8a8a'>/*</span>
-</td></tr>
-<tr><td class=line-number>2</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * Copyright 2020-2022 Foreseeti AB &lt;https://foreseeti.com&gt;</span>
-</td></tr>
-<tr><td class=line-number>3</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *</span>
-</td></tr>
-<tr><td class=line-number>4</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-</td></tr>
-<tr><td class=line-number>5</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * you may not use this file except in compliance with the License.</span>
-</td></tr>
-<tr><td class=line-number>6</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * You may obtain a copy of the License at</span>
-</td></tr>
-<tr><td class=line-number>7</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *</span>
-</td></tr>
-<tr><td class=line-number>8</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *     https://www.apache.org/licenses/LICENSE-2.0</span>
-</td></tr>
-<tr><td class=line-number>9</td><td class=line><span style='font-style: italic;color: #8a8a8a'> *</span>
-</td></tr>
-<tr><td class=line-number>10</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * Unless required by applicable law or agreed to in writing, software</span>
-</td></tr>
-<tr><td class=line-number>11</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-</td></tr>
-<tr><td class=line-number>12</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-</td></tr>
-<tr><td class=line-number>13</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * See the License for the specific language governing permissions and</span>
-</td></tr>
-<tr><td class=line-number>14</td><td class=line><span style='font-style: italic;color: #8a8a8a'> * limitations under the License.</span>
-</td></tr>
-<tr><td class=line-number>15</td><td class=line><span style='font-style: italic;color: #8a8a8a'> */</span>
-</td></tr>
-<tr><td class=line-number>16</td><td class=line><span style='font-weight: bold;color: #4e4e4e'>#</span><span style='color: #875f00'>id</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;org.mal-lang.examplelang&quot;</span>
-</td></tr>
-<tr><td class=line-number>17</td><td class=line><span style='font-weight: bold;color: #4e4e4e'>#</span><span style='color: #875f00'>version</span><span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;1.0.0&quot;</span>
-</td></tr>
-<tr><td class=line-number>18</td><td class=line>
-</td></tr>
-<tr><td class=line-number>19</td><td class=line><span style='color: #5f00d7'>category</span> <span style='color: #af8700'>System</span> <span style='color: #4e4e4e'>{</span>
-</td></tr>
-<tr><td class=line-number>20</td><td class=line>  <span style='color: #5f00d7'>asset</span> Network <span style='color: #4e4e4e'>{</span>
-</td></tr>
-<tr><td class=line-number>21</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> access
-</td></tr>
-<tr><td class=line-number>22</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> hosts<span style='font-weight: bold;color: #4e4e4e'>.</span>connect
-</td></tr>
-<tr><td class=line-number>23</td><td class=line>  <span style='color: #4e4e4e'>}</span>
-</td></tr>
-<tr><td class=line-number>24</td><td class=line>
-</td></tr>
-<tr><td class=line-number>25</td><td class=line>  <span style='color: #5f00d7'>asset</span> Host <span style='color: #4e4e4e'>{</span>
-</td></tr>
-<tr><td class=line-number>26</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> connect
-</td></tr>
-<tr><td class=line-number>27</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> access
-</td></tr>
-<tr><td class=line-number>28</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> authenticate
-</td></tr>
-<tr><td class=line-number>29</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> access
-</td></tr>
-<tr><td class=line-number>30</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> guessPassword
-</td></tr>
-<tr><td class=line-number>31</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> guessedPassword
-</td></tr>
-<tr><td class=line-number>32</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> guessedPassword <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.02</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
-</td></tr>
-<tr><td class=line-number>33</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> authenticate
-</td></tr>
-<tr><td class=line-number>34</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> access
-</td></tr>
-<tr><td class=line-number>35</td><td class=line>  <span style='color: #4e4e4e'>}</span>
-</td></tr>
-<tr><td class=line-number>36</td><td class=line>
-</td></tr>
-<tr><td class=line-number>37</td><td class=line>  <span style='color: #5f00d7'>asset</span> User <span style='color: #4e4e4e'>{</span>
-</td></tr>
-<tr><td class=line-number>38</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptPhishing
-</td></tr>
-<tr><td class=line-number>39</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> phish
-</td></tr>
-<tr><td class=line-number>40</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> phish <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.1</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
-</td></tr>
-<tr><td class=line-number>41</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> passwords<span style='font-weight: bold;color: #4e4e4e'>.</span>obtain
-</td></tr>
-<tr><td class=line-number>42</td><td class=line>  <span style='color: #4e4e4e'>}</span>
-</td></tr>
-<tr><td class=line-number>43</td><td class=line>
-</td></tr>
-<tr><td class=line-number>44</td><td class=line>  <span style='color: #5f00d7'>asset</span> Password <span style='color: #4e4e4e'>{</span>
-</td></tr>
-<tr><td class=line-number>45</td><td class=line>    <span style='font-weight: bold;color: #4e4e4e'>|</span> obtain
-</td></tr>
-<tr><td class=line-number>46</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span> host<span style='font-weight: bold;color: #4e4e4e'>.</span>authenticate
-</td></tr>
-<tr><td class=line-number>47</td><td class=line>  <span style='color: #4e4e4e'>}</span>
-</td></tr>
-<tr><td class=line-number>48</td><td class=line><span style='color: #4e4e4e'>}</span>
-</td></tr>
-<tr><td class=line-number>49</td><td class=line>
-</td></tr>
-<tr><td class=line-number>50</td><td class=line><span style='color: #5f00d7'>associations</span> <span style='color: #4e4e4e'>{</span>
-</td></tr>
-<tr><td class=line-number>51</td><td class=line>  <span style='color: #005f5f'>Network</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>networks</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> NetworkAccess <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>hosts</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Host</span>
-</td></tr>
-<tr><td class=line-number>52</td><td class=line>  <span style='color: #005f5f'>Host</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>host</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Credentials <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>passwords</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Password</span>
-</td></tr>
-<tr><td class=line-number>53</td><td class=line>  <span style='color: #005f5f'>User</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>user</span><span style='color: #4e4e4e'>]</span> <span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> Credentials <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>passwords</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>Password</span>
-</td></tr>
-<tr><td class=line-number>54</td><td class=line><span style='color: #4e4e4e'>}</span>
-</td></tr>
-</table>
+  [38;5;56masset[0m User [38;5;239m{[0m
+    [1m[38;5;239m|[0m attemptPhishing
+      [1m[38;5;239m->[0m phish
+    [1m[38;5;239m|[0m phish [38;5;239m[[0m[38;5;26mExponential[0m[38;5;239m([0m[1m[38;5;94m0.1[0m[38;5;239m)[0m[38;5;239m][0m
+      [1m[38;5;239m->[0m passwords[1m[38;5;239m.[0mobtain
+  [38;5;239m}[0m
 
-</body>
+  [38;5;56masset[0m Password [38;5;239m{[0m
+    [1m[38;5;239m|[0m obtain
+      [1m[38;5;239m->[0m host[1m[38;5;239m.[0mauthenticate
+  [38;5;239m}[0m
+[38;5;239m}[0m
 
+[38;5;56massociations[0m [38;5;239m{[0m
+  [38;5;23mNetwork[0m [38;5;239m[[0m[38;5;124mnetworks[0m[38;5;239m][0m [1m[38;5;94m*[0m [1m[38;5;239m<--[0m NetworkAccess [1m[38;5;239m-->[0m [1m[38;5;94m*[0m [38;5;239m[[0m[38;5;124mhosts[0m[38;5;239m][0m [38;5;23mHost[0m
+  [38;5;23mHost[0m [38;5;239m[[0m[38;5;124mhost[0m[38;5;239m][0m [1m[38;5;94m1[0m [1m[38;5;239m<--[0m Credentials [1m[38;5;239m-->[0m [1m[38;5;94m*[0m [38;5;239m[[0m[38;5;124mpasswords[0m[38;5;239m][0m [38;5;23mPassword[0m
+  [38;5;23mUser[0m [38;5;239m[[0m[38;5;124muser[0m[38;5;239m][0m [1m[38;5;94m1[0m [1m[38;5;239m<--[0m Credentials [1m[38;5;239m-->[0m [1m[38;5;94m*[0m [38;5;239m[[0m[38;5;124mpasswords[0m[38;5;239m][0m [38;5;23mPassword[0m
+[38;5;239m}[0m
