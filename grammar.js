@@ -303,7 +303,7 @@ module.exports = grammar({
       field('id', $.identity),
       'info',
       ':',
-      field('info', $.string),
+      field('info', alias($.string, $.meta_string)),
     ),
 
     // Primitives/Primaries/Atoms

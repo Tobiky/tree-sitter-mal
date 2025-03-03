@@ -233,15 +233,15 @@ category Test {
             id: (identity)
             meta: (meta
               id: (identity)
-              info: (string))
+              info: (meta_string))
             meta: (meta
               id: (identity)
-              info: (string)))
+              info: (meta_string)))
           (attack_step
             id: (identity)
             meta: (meta
               id: (identity)
-              info: (string))))))))
+              info: (meta_string))))))))
 
 =========================
 Attack-step with Reaching

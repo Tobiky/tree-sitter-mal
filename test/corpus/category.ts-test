@@ -7,10 +7,9 @@ category System {}
 --------------------------
 
 (source_file
- (declaration
+  (declaration
     (category_declaration
-        id: (identity))))
-
+      id: (identity))))
 
 =========================================
 Empty Category Declaration with Meta Info
@@ -24,18 +23,18 @@ category System sameLine info: "Meta on same line" {}
 -----------------------------------------
 
 (source_file
-    (declaration
-         (category_declaration
-            id: (identity)
-            meta: (meta
-                    id: (identity)
-                    info: (string))
-            meta: (meta
-                    id: (identity)
-                    info: (string))))
-    (declaration
-        (category_declaration
-            id: (identity)
-            meta: (meta
-                    id: (identity)
-                    info: (string)))))
+  (declaration
+    (category_declaration
+      id: (identity)
+      meta: (meta
+        id: (identity)
+        info: (meta_string))
+      meta: (meta
+        id: (identity)
+        info: (meta_string))))
+  (declaration
+    (category_declaration
+      id: (identity)
+      meta: (meta
+        id: (identity)
+        info: (meta_string)))))
