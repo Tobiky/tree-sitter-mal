@@ -621,7 +621,7 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "id",
+          "name": "type",
           "content": {
             "type": "SYMBOL",
             "name": "identity"
@@ -629,7 +629,7 @@
         },
         {
           "type": "FIELD",
-          "name": "label",
+          "name": "id",
           "content": {
             "type": "SYMBOL",
             "name": "identity"
@@ -1621,5 +1621,6 @@
   ],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

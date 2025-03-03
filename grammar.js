@@ -128,8 +128,8 @@ module.exports = grammar({
     ),
 
     detector_context_asset: $ => seq(
+      field('type', $.identity),
       field('id', $.identity),
-      field('label', $.identity),
     ),
 
     // Precondition for attack steps

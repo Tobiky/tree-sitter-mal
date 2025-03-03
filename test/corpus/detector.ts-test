@@ -22,11 +22,11 @@ category Test {
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity))
+                  type: (identity)
+                  id: (identity))
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity))))))))))
+                  type: (identity)
+                  id: (identity))))))))))
 
 ==========================
 Commented Minimal Detector
@@ -52,11 +52,11 @@ category Test {
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity))
+                  type: (identity)
+                  id: (identity))
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity))))))))))
+                  type: (identity)
+                  id: (identity))))))))))
 
 ===========================
 Detector with Detector Name
@@ -86,8 +86,8 @@ category Test {
                 (identity))
               context: (detector_context
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity))))))))))
+                  type: (identity)
+                  id: (identity))))))))))
 
 ===========================
 Detector with Detector Type
@@ -113,8 +113,8 @@ category Test {
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity)))
+                  type: (identity)
+                  id: (identity)))
               type: (identity))))))))
 
 =================
@@ -141,7 +141,7 @@ category Test {
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  id: (identity)
-                  label: (identity)))
+                  type: (identity)
+                  id: (identity)))
               ttc: (ttc
                 (integer)))))))))
