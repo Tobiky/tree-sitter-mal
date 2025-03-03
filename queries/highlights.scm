@@ -95,6 +95,8 @@
 (detector_context_asset
   type: (identity) @type
   id: (identity) @property)
+(asset_variable_substitution
+  id: (identity) @property)
 
 ; Miscellaneous
 (comment) @comment
