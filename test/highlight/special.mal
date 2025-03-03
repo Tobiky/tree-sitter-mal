@@ -1,7 +1,8 @@
 category Cat 
     metaInfo info: "value"
-    // <- attribute
-    //           ^ punctuation.delimiter
+//  ^^^^^^^^ comment
+//           ^^^^^ comment
+//                 ^^^^^^^ comment
 {
     asset Tail {
         | a ! d.e (context label) detectorType [1]
