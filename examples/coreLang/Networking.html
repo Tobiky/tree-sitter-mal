@@ -17,27 +17,27 @@
     }
   </style>
   <style>
-    .punctuation.bracket { color: #4e4e4e; }
-    .variable.builtin { font-weight: bold;; }
-    .string.special { color: #008787; }
-    .tag { color: #000087; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .keyword { color: #5f00d7; }
-    .function { color: #005fd7; }
-    .type.builtin { font-weight: bold;color: #005f5f; }
-    .comment { font-style: italic;color: #8a8a8a; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .module { color: #af8700; }
-    .type { color: #005f5f; }
-    .constructor { color: #af8700; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .property { color: #af0000; }
-    .variable.parameter { text-decoration: underline;; }
     .constant { color: #875f00; }
-    .attribute { font-style: italic;color: #af0000; }
-    .string { color: #008700; }
-    .number { font-weight: bold;color: #875f00; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .function { color: #005fd7; }
+    .punctuation.delimiter { color: #4e4e4e; }
     .constant.builtin { font-weight: bold;color: #875f00; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
+    .property { color: #af0000; }
+    .string.special { color: #008787; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .variable.parameter { text-decoration: underline;; }
+    .constructor { color: #af8700; }
+    .string { color: #008700; }
+    .type { color: #005f5f; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .tag { color: #000087; }
+    .number { font-weight: bold;color: #875f00; }
+    .variable.builtin { font-weight: bold;; }
+    .keyword { color: #5f00d7; }
+    .attribute { font-style: italic;color: #af0000; }
+    .module { color: #af8700; }
+    .comment { font-style: italic;color: #8a8a8a; }
   </style>
 
 </head>
@@ -82,9 +82,9 @@
 </td></tr>
 <tr><td class=line-number>19</td><td class=line>    <span style='color: #5f00d7'>asset</span> Network
 </td></tr>
-<tr><td class=line-number>20</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A network (zone) is a set of network accessible applications and data.&quot;</span></span>
+<tr><td class=line-number>20</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;A network (zone) is a set of network accessible applications and data.&quot;</span>
 </td></tr>
-<tr><td class=line-number>21</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The network asset tries to cover all the levels of the OSI stack in a very abstract and compact way (i.e. it tries to represent all the OSI layers). For example it will try to cover both ARP attacks (that are Level 2) but also DNS/HTTP spoofing attacks (that are Level 7).&quot;</span></span>
+<tr><td class=line-number>21</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The network asset tries to cover all the levels of the OSI stack in a very abstract and compact way (i.e. it tries to represent all the OSI layers). For example it will try to cover both ARP attacks (that are Level 2) but also DNS/HTTP spoofing attacks (that are Level 7).&quot;</span>
 </td></tr>
 <tr><td class=line-number>22</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
@@ -94,15 +94,15 @@
 </td></tr>
 <tr><td class=line-number>25</td><td class=line>      <span style='color: #5f00d7'>let</span> allNetConnections = <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>26</td><td class=line>      <span style='color: #5f00d7'>let</span> allowedApplicationConnectionsApplications = <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> allNetConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>applications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>26</td><td class=line>      <span style='color: #5f00d7'>let</span> allowedApplicationConnectionsApplications = <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> <span style='color: #af0000'>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>applications<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>27</td><td class=line>
 </td></tr>
 <tr><td class=line-number>28</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> physicalAccess <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>entrypoint</span> <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>C</span><span style='color: #4e4e4e'>,</span> <span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>29</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Attacker has physical access on the network. This means they can cut wires/fibers, connect using iLOs, eavesdrop and get proper network access.&quot;</span></span>
+<tr><td class=line-number>29</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Attacker has physical access on the network. This means they can cut wires/fibers, connect using iLOs, eavesdrop and get proper network access.&quot;</span>
 </td></tr>
-<tr><td class=line-number>30</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This attack step can be used as an entry point when analyzing scenarios that involve gaining physical access to assets.&quot;</span></span>
+<tr><td class=line-number>30</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;This attack step can be used as an entry point when analyzing scenarios that involve gaining physical access to assets.&quot;</span>
 </td></tr>
 <tr><td class=line-number>31</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  deny<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -118,7 +118,7 @@
 </td></tr>
 <tr><td class=line-number>37</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassEavesdropDefenseFromPhysicalAccess
 </td></tr>
-<tr><td class=line-number>38</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The eavesdrop defense can be bypassed more easily if the attacker has physical access to the network. This attack step will add its impact to the unconditional bypass.&quot;</span></span>
+<tr><td class=line-number>38</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The eavesdrop defense can be bypassed more easily if the attacker has physical access to the network. This attack step will add its impact to the unconditional bypass.&quot;</span>
 </td></tr>
 <tr><td class=line-number>39</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  eavesdropDefenseBypassed
 </td></tr>
@@ -126,7 +126,7 @@
 </td></tr>
 <tr><td class=line-number>41</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassAdversaryInTheMiddleDefenseFromPhysicalAccess
 </td></tr>
-<tr><td class=line-number>42</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The adversary in the middle defense can be bypassed more easily if the attacker has physical access to the network. This attack step will add its impact to the unconditional bypass.&quot;</span></span>
+<tr><td class=line-number>42</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The adversary in the middle defense can be bypassed more easily if the attacker has physical access to the network. This attack step will add its impact to the unconditional bypass.&quot;</span>
 </td></tr>
 <tr><td class=line-number>43</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  adversaryInTheMiddleDefenseBypassed
 </td></tr>
@@ -134,7 +134,7 @@
 </td></tr>
 <tr><td class=line-number>45</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> networkAccessControl
 </td></tr>
-<tr><td class=line-number>46</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Access control protects from unauthorized physical access on the network.&quot;</span></span>
+<tr><td class=line-number>46</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Access control protects from unauthorized physical access on the network.&quot;</span>
 </td></tr>
 <tr><td class=line-number>47</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessControlBypassed
 </td></tr>
@@ -142,7 +142,7 @@
 </td></tr>
 <tr><td class=line-number>49</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassAccessControl <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>VeryHardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>50</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If access control is enabled, the attacker can still try to bypass it and gain access on the network.&quot;</span></span>
+<tr><td class=line-number>50</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If access control is enabled, the attacker can still try to bypass it and gain access on the network.&quot;</span>
 </td></tr>
 <tr><td class=line-number>51</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessControlBypassed
 </td></tr>
@@ -150,7 +150,7 @@
 </td></tr>
 <tr><td class=line-number>53</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessControlBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>54</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Access control is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span></span>
+<tr><td class=line-number>54</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Access control is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span>
 </td></tr>
 <tr><td class=line-number>55</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessUninspectedFromPhysicalAccess<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -160,7 +160,7 @@
 </td></tr>
 <tr><td class=line-number>58</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptAccessUninspectedFromPhysicalAccess <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>59</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>59</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>60</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessUninspectedFromPhysicalAccess<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -170,7 +170,7 @@
 </td></tr>
 <tr><td class=line-number>63</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptAccessInspectedFromPhysicalAccess <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>64</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>64</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>65</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessInspectedFromPhysicalAccess<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -180,7 +180,7 @@
 </td></tr>
 <tr><td class=line-number>68</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulAccessUninspectedFromPhysicalAccess <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>69</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span></span>
+<tr><td class=line-number>69</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>70</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessUninspected
 </td></tr>
@@ -188,7 +188,7 @@
 </td></tr>
 <tr><td class=line-number>72</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulAccessInspectedFromPhysicalAccess <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>73</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span></span>
+<tr><td class=line-number>73</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>74</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessInspected
 </td></tr>
@@ -196,9 +196,9 @@
 </td></tr>
 <tr><td class=line-number>76</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessUninspected
 </td></tr>
-<tr><td class=line-number>77</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Uninspected access provides connect to all reachable applications without any restrictions.&quot;</span></span>
+<tr><td class=line-number>77</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Uninspected access provides connect to all reachable applications without any restrictions.&quot;</span>
 </td></tr>
-<tr><td class=line-number>78</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  outboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsUninspected<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>78</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>79</td><td class=line>            applications<span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -214,9 +214,9 @@
 </td></tr>
 <tr><td class=line-number>85</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessInspected
 </td></tr>
-<tr><td class=line-number>86</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Inspected access provides connect to all reachable applications, but with limitations.&quot;</span></span>
+<tr><td class=line-number>86</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Inspected access provides connect to all reachable applications, but with limitations.&quot;</span>
 </td></tr>
-<tr><td class=line-number>87</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  outboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsInspected<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>87</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsInspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>88</td><td class=line>            applications<span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectInspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -230,7 +230,7 @@
 </td></tr>
 <tr><td class=line-number>93</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptReverseReach <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>94</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses.&quot;</span></span>
+<tr><td class=line-number>94</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>95</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  reverseReach
 </td></tr>
@@ -238,9 +238,9 @@
 </td></tr>
 <tr><td class=line-number>97</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> reverseReach <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>98</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates toward outgoing or bidirectional communications.&quot;</span></span>
+<tr><td class=line-number>98</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates toward outgoing or bidirectional communications.&quot;</span>
 </td></tr>
-<tr><td class=line-number>99</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  inboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>99</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>inboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach<span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>100</td><td class=line>            applications<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach
 </td></tr>
@@ -248,11 +248,11 @@
 </td></tr>
 <tr><td class=line-number>102</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> networkForwardingUninspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>103</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;By using the allowed connections (connection rules), uninspected forwarding from one network to another network or applications can happen.&quot;</span></span>
+<tr><td class=line-number>103</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;By using the allowed connections (connection rules), uninspected forwarding from one network to another network or applications can happen.&quot;</span>
 </td></tr>
-<tr><td class=line-number>104</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  outboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptAccessNetworksUninspected<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>104</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptAccessNetworksUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>105</td><td class=line>              outboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsUninspected<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>105</td><td class=line>              <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>106</td><td class=line>              networkForwardingInspected
 </td></tr>
@@ -260,27 +260,27 @@
 </td></tr>
 <tr><td class=line-number>108</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> networkForwardingInspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>109</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;By using the allowed connections (connection rules), inspected forwarding from one network to another network or applications can happen.&quot;</span></span>
+<tr><td class=line-number>109</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;By using the allowed connections (connection rules), inspected forwarding from one network to another network or applications can happen.&quot;</span>
 </td></tr>
-<tr><td class=line-number>110</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  outboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptAccessNetworksInspected<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>110</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptAccessNetworksInspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>111</td><td class=line>              outboundAllowedConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsInspected
+<tr><td class=line-number>111</td><td class=line>              <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptConnectToApplicationsInspected
 </td></tr>
 <tr><td class=line-number>112</td><td class=line>
 </td></tr>
 <tr><td class=line-number>113</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deny <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>114</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If a DoS is performed it affects, the applications communicating over the network as well as the connected application.&quot;</span></span>
+<tr><td class=line-number>114</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If a DoS is performed it affects, the applications communicating over the network as well as the connected application.&quot;</span>
 </td></tr>
-<tr><td class=line-number>115</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  allNetConnections<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDeny<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>115</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDeny<span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>116</td><td class=line>            allowedApplicationConnectionsApplications<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>denyFromNetworkingAsset
+<tr><td class=line-number>116</td><td class=line>            <span style='color: #af0000'>allowedApplicationConnectionsApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>denyFromNetworkingAsset
 </td></tr>
 <tr><td class=line-number>117</td><td class=line>
 </td></tr>
 <tr><td class=line-number>118</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessNetworkData <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>119</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Access also the data that are network-wide available.&quot;</span></span>
+<tr><td class=line-number>119</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Access also the data that are network-wide available.&quot;</span>
 </td></tr>
 <tr><td class=line-number>120</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  attemptEavesdrop<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -290,9 +290,9 @@
 </td></tr>
 <tr><td class=line-number>123</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> eavesdropDefense
 </td></tr>
-<tr><td class=line-number>124</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This defense protects from eavesdrop attacks. If this defense is disabled, then it is equivalent to the network being considered a broadcast network.&quot;</span></span>
+<tr><td class=line-number>124</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;This defense protects from eavesdrop attacks. If this defense is disabled, then it is equivalent to the network being considered a broadcast network.&quot;</span>
 </td></tr>
-<tr><td class=line-number>125</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If this defense is enabled, attacks such as ARP spoofing should however, still be possible.&quot;</span></span>
+<tr><td class=line-number>125</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;If this defense is enabled, attacks such as ARP spoofing should however, still be possible.&quot;</span>
 </td></tr>
 <tr><td class=line-number>126</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  eavesdropDefenseBypassed
 </td></tr>
@@ -300,7 +300,7 @@
 </td></tr>
 <tr><td class=line-number>128</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassEavesdropDefense <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>VeryHardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>129</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The eavesdrop defense can be bypassed.&quot;</span></span>
+<tr><td class=line-number>129</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The eavesdrop defense can be bypassed.&quot;</span>
 </td></tr>
 <tr><td class=line-number>130</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  eavesdropDefenseBypassed
 </td></tr>
@@ -308,7 +308,7 @@
 </td></tr>
 <tr><td class=line-number>132</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> eavesdropDefenseBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>133</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The Eavesdrop defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span></span>
+<tr><td class=line-number>133</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The Eavesdrop defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span>
 </td></tr>
 <tr><td class=line-number>134</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulEavesdrop
 </td></tr>
@@ -316,7 +316,7 @@
 </td></tr>
 <tr><td class=line-number>136</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptEavesdrop <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>137</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>137</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>138</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulEavesdrop<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -326,7 +326,7 @@
 </td></tr>
 <tr><td class=line-number>141</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulEavesdrop <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>142</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span></span>
+<tr><td class=line-number>142</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>143</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  eavesdrop
 </td></tr>
@@ -334,7 +334,7 @@
 </td></tr>
 <tr><td class=line-number>145</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> eavesdrop <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>C</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>146</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker that performs an eavesdrop attack on a network tries to access all the transferred data over that network.&quot;</span></span>
+<tr><td class=line-number>146</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;An attacker that performs an eavesdrop attack on a network tries to access all the transferred data over that network.&quot;</span>
 </td></tr>
 <tr><td class=line-number>147</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  transitData<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptRead
 </td></tr>
@@ -342,7 +342,7 @@
 </td></tr>
 <tr><td class=line-number>149</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> adversaryInTheMiddleDefense
 </td></tr>
-<tr><td class=line-number>150</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This defense protects against adversary-in-the-middle (AitM) attacks that are originating either form the network layer (like ARP spoofing) or by manipulating the higher network layers (like DNS poisoning).&quot;</span></span>
+<tr><td class=line-number>150</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;This defense protects against adversary-in-the-middle (AitM) attacks that are originating either form the network layer (like ARP spoofing) or by manipulating the higher network layers (like DNS poisoning).&quot;</span>
 </td></tr>
 <tr><td class=line-number>151</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  adversaryInTheMiddleDefenseBypassed
 </td></tr>
@@ -350,7 +350,7 @@
 </td></tr>
 <tr><td class=line-number>153</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassAdversaryInTheMiddleDefense <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>VeryHardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>154</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The adversary in the middle defense can be bypassed.&quot;</span></span>
+<tr><td class=line-number>154</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The adversary in the middle defense can be bypassed.&quot;</span>
 </td></tr>
 <tr><td class=line-number>155</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  adversaryInTheMiddleDefenseBypassed
 </td></tr>
@@ -358,7 +358,7 @@
 </td></tr>
 <tr><td class=line-number>157</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> adversaryInTheMiddleDefenseBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>158</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The adversary in the middle defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span></span>
+<tr><td class=line-number>158</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The adversary in the middle defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span>
 </td></tr>
 <tr><td class=line-number>159</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAdversaryInTheMiddle
 </td></tr>
@@ -366,7 +366,7 @@
 </td></tr>
 <tr><td class=line-number>161</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptAdversaryInTheMiddle <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>162</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>162</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>163</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAdversaryInTheMiddle<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -376,7 +376,7 @@
 </td></tr>
 <tr><td class=line-number>166</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulAdversaryInTheMiddle <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>167</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span></span>
+<tr><td class=line-number>167</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>168</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  adversaryInTheMiddle
 </td></tr>
@@ -384,7 +384,7 @@
 </td></tr>
 <tr><td class=line-number>170</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> adversaryInTheMiddle <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>C</span><span style='color: #4e4e4e'>,</span> <span style='font-weight: bold;color: #875f00'>I</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>171</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An attacker that performs a AitM attack on a network tries to read and modify all the transferred data over that network.&quot;</span></span>
+<tr><td class=line-number>171</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;An attacker that performs a AitM attack on a network tries to read and modify all the transferred data over that network.&quot;</span>
 </td></tr>
 <tr><td class=line-number>172</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  eavesdrop<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -398,13 +398,13 @@
 </td></tr>
 <tr><td class=line-number>177</td><td class=line>    <span style='color: #5f00d7'>asset</span> <span style='color: #005f5f'>RoutingFirewall</span> <span style='color: #5f00d7'>extends</span> <span style='color: #005f5f'>Application</span>
 </td></tr>
-<tr><td class=line-number>178</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A routing firewall specifies a router with firewall capabilities that connects many networks.&quot;</span></span>
+<tr><td class=line-number>178</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;A routing firewall specifies a router with firewall capabilities that connects many networks.&quot;</span>
 </td></tr>
 <tr><td class=line-number>179</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
 <tr><td class=line-number>180</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deny <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>181</td><td class=line>       <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A DoS attack should cascade on the connected networks and associated connections&quot;</span></span>
+<tr><td class=line-number>181</td><td class=line>       <span style='font-style: italic;color: #8a8a8a'>user info: &quot;A DoS attack should cascade on the connected networks and associated connections&quot;</span>
 </td></tr>
 <tr><td class=line-number>182</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  connectionRules<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptDeny
 </td></tr>
@@ -412,7 +412,7 @@
 </td></tr>
 <tr><td class=line-number>184</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> fullAccess <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>I</span><span style='color: #4e4e4e'>,</span> <span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>185</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If full access is achieved on RoutingFirewall then it is 0wned and all connections can be allowed! This can happen by compromising the manager application.&quot;</span></span>
+<tr><td class=line-number>185</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;If full access is achieved on RoutingFirewall then it is 0wned and all connections can be allowed! This can happen by compromising the manager application.&quot;</span>
 </td></tr>
 <tr><td class=line-number>186</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>+&gt;</span>  <span style='color: #4e4e4e'>(</span>connectionRules<span style='font-weight: bold;color: #4e4e4e'>.</span>networks <span style='font-weight: bold;color: #4e4e4e'>\/</span> connectionRules<span style='font-weight: bold;color: #4e4e4e'>.</span>outNetworks <span style='font-weight: bold;color: #4e4e4e'>\/</span> connectionRules<span style='font-weight: bold;color: #4e4e4e'>.</span>inNetworks <span style='font-weight: bold;color: #4e4e4e'>\/</span> connectionRules<span style='font-weight: bold;color: #4e4e4e'>.</span>diodeInNetworks<span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>accessUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -424,9 +424,9 @@
 </td></tr>
 <tr><td class=line-number>190</td><td class=line>    <span style='color: #5f00d7'>asset</span> ConnectionRule
 </td></tr>
-<tr><td class=line-number>191</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This asset is used to model firewall rules between Applications and/or Networks. The association selected (bi/uni-directional) only describes the connection initiation.&quot;</span></span>
+<tr><td class=line-number>191</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;This asset is used to model firewall rules between Applications and/or Networks. The association selected (bi/uni-directional) only describes the connection initiation.&quot;</span>
 </td></tr>
-<tr><td class=line-number>192</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This asset is mainly used to model the functionality of a network connection through a firewall. If Data is added, then it also models the data in transit.&quot;</span></span>
+<tr><td class=line-number>192</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;This asset is mainly used to model the functionality of a network connection through a firewall. If Data is added, then it also models the data in transit.&quot;</span>
 </td></tr>
 <tr><td class=line-number>193</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
@@ -440,7 +440,7 @@
 </td></tr>
 <tr><td class=line-number>198</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> restricted <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>Disabled</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>199</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The restricted defense can be used to probabilistically model the likelihood of both the protocols required by the attack being enabled or the existence of the ConnectionRule altogether.&quot;</span></span>
+<tr><td class=line-number>199</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The restricted defense can be used to probabilistically model the likelihood of both the protocols required by the attack being enabled or the existence of the ConnectionRule altogether.&quot;</span>
 </td></tr>
 <tr><td class=line-number>200</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  restrictedBypassed
 </td></tr>
@@ -448,7 +448,7 @@
 </td></tr>
 <tr><td class=line-number>202</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassRestricted <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>VeryHardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>203</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The restricted defense can be bypassed.&quot;</span></span>
+<tr><td class=line-number>203</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The restricted defense can be bypassed.&quot;</span>
 </td></tr>
 <tr><td class=line-number>204</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  restrictedBypassed
 </td></tr>
@@ -456,7 +456,7 @@
 </td></tr>
 <tr><td class=line-number>206</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> restrictedBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>207</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;The restricted defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span></span>
+<tr><td class=line-number>207</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The restricted defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span>
 </td></tr>
 <tr><td class=line-number>208</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessNetworksUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -474,7 +474,7 @@
 </td></tr>
 <tr><td class=line-number>215</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>#</span> payloadInspection <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>Disabled</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>216</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If enabled, then the traffic is considered to be inspected and filtered by an IDPS that can detect and stop malicious payloads, effectively allowing only legitimate communication(i.e. network-level vulnerabilities cannot be exploited, unsafe actions that the user may taken that would benefit the attacker are also prevented).&quot;</span></span>
+<tr><td class=line-number>216</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If enabled, then the traffic is considered to be inspected and filtered by an IDPS that can detect and stop malicious payloads, effectively allowing only legitimate communication(i.e. network-level vulnerabilities cannot be exploited, unsafe actions that the user may taken that would benefit the attacker are also prevented).&quot;</span>
 </td></tr>
 <tr><td class=line-number>217</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  payloadInspectionBypassed
 </td></tr>
@@ -482,7 +482,7 @@
 </td></tr>
 <tr><td class=line-number>219</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassPayloadInspection <span style='color: #4e4e4e'>[</span><span style='color: #005f5f'>VeryHardAndUncertain</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
-<tr><td class=line-number>220</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Payload inspection can be bypassed.&quot;</span></span>
+<tr><td class=line-number>220</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Payload inspection can be bypassed.&quot;</span>
 </td></tr>
 <tr><td class=line-number>221</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  payloadInspectionBypassed
 </td></tr>
@@ -490,7 +490,7 @@
 </td></tr>
 <tr><td class=line-number>223</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> payloadInspectionBypassed <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>224</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Payload inspection is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span></span>
+<tr><td class=line-number>224</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Payload inspection is bypassed either because it was not set, the attacker was able to circumvent it through additional effort.&quot;</span>
 </td></tr>
 <tr><td class=line-number>225</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessNetworksUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -504,7 +504,7 @@
 </td></tr>
 <tr><td class=line-number>230</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptReverseReach <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>231</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>231</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>232</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  reverseReach<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -516,9 +516,9 @@
 </td></tr>
 <tr><td class=line-number>236</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> reverseReach <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>237</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates via outgoing or bidirectional communications.&quot;</span></span>
+<tr><td class=line-number>237</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates via outgoing or bidirectional communications.&quot;</span>
 </td></tr>
-<tr><td class=line-number>238</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  senderApplications<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>238</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>senderApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach<span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>239</td><td class=line>            <span style='color: #4e4e4e'>(</span>networks <span style='font-weight: bold;color: #4e4e4e'>\/</span> outNetworks<span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>attemptReverseReach
 </td></tr>
@@ -526,9 +526,9 @@
 </td></tr>
 <tr><td class=line-number>241</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptAccessNetworksUninspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>242</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>242</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
-<tr><td class=line-number>243</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>!</span> detector<span style='color: #4e4e4e'>.</span>my_name <span style='color: #4e4e4e'>(</span>RoutingFirewall firewall<span style='color: #4e4e4e'>)</span> audit <span style='color: #4e4e4e'>[</span><span style='font-weight: bold;color: #875f00'>1</span><span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>243</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>!</span> detector<span style='color: #4e4e4e'>.</span>my_name <span style='color: #4e4e4e'>(</span><span style='color: #005f5f'>RoutingFirewall</span> <span style='color: #af0000'>firewall</span><span style='color: #4e4e4e'>)</span> audit <span style='color: #4e4e4e'>[</span><span style='font-weight: bold;color: #875f00'>1</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>244</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessNetworksUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -540,7 +540,7 @@
 </td></tr>
 <tr><td class=line-number>248</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptAccessNetworksInspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>249</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>249</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>250</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulAccessNetworksInspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -550,7 +550,7 @@
 </td></tr>
 <tr><td class=line-number>253</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulAccessNetworksUninspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>254</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span></span>
+<tr><td class=line-number>254</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>255</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessNetworksUninspected
 </td></tr>
@@ -558,7 +558,7 @@
 </td></tr>
 <tr><td class=line-number>257</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> successfulAccessNetworksInspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>258</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to model defenses.&quot;</span></span>
+<tr><td class=line-number>258</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>259</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  accessNetworksInspected
 </td></tr>
@@ -566,7 +566,7 @@
 </td></tr>
 <tr><td class=line-number>261</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessNetworksUninspected
 </td></tr>
-<tr><td class=line-number>262</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Access all networks that are associated with this ConnectionRule, without any restriction due to inspection.&quot;</span></span>
+<tr><td class=line-number>262</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Access all networks that are associated with this ConnectionRule, without any restriction due to inspection.&quot;</span>
 </td></tr>
 <tr><td class=line-number>263</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #4e4e4e'>(</span>networks  <span style='font-weight: bold;color: #4e4e4e'>\/</span> inNetworks  <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeInNetworks<span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>accessUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -576,7 +576,7 @@
 </td></tr>
 <tr><td class=line-number>266</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> accessNetworksInspected
 </td></tr>
-<tr><td class=line-number>267</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Access all networks that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected.&quot;</span></span>
+<tr><td class=line-number>267</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Access all networks that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected.&quot;</span>
 </td></tr>
 <tr><td class=line-number>268</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #4e4e4e'>(</span>networks  <span style='font-weight: bold;color: #4e4e4e'>\/</span> inNetworks  <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeInNetworks<span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>accessInspected
 </td></tr>
@@ -584,7 +584,7 @@
 </td></tr>
 <tr><td class=line-number>270</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptConnectToApplicationsUninspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>271</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>271</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>272</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  connectToApplicationsUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -596,7 +596,7 @@
 </td></tr>
 <tr><td class=line-number>276</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptConnectToApplicationsInspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>277</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>277</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>278</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  connectToApplicationsInspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -606,25 +606,25 @@
 </td></tr>
 <tr><td class=line-number>281</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> connectToApplicationsUninspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>282</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Connect to all the (server) Applications that are associated with this ConnectionRule, without any restriction due to inspection.&quot;</span></span>
+<tr><td class=line-number>282</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Connect to all the (server) Applications that are associated with this ConnectionRule, without any restriction due to inspection.&quot;</span>
 </td></tr>
-<tr><td class=line-number>283</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  receiverApplications<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectUninspected<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>283</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectUninspected<span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>284</td><td class=line>            receiverApplications<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectInspected
+<tr><td class=line-number>284</td><td class=line>            <span style='color: #af0000'>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectInspected
 </td></tr>
 <tr><td class=line-number>285</td><td class=line>
 </td></tr>
 <tr><td class=line-number>286</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> connectToApplicationsInspected <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>287</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Connect to all the (server) Applications that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected. This attack step is used to allow legitimate traffic even when payload inspection is enabled on the connection.&quot;</span></span>
+<tr><td class=line-number>287</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Connect to all the (server) Applications that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected. This attack step is used to allow legitimate traffic even when payload inspection is enabled on the connection.&quot;</span>
 </td></tr>
-<tr><td class=line-number>288</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  receiverApplications<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectInspected
+<tr><td class=line-number>288</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>networkConnectInspected
 </td></tr>
 <tr><td class=line-number>289</td><td class=line>
 </td></tr>
 <tr><td class=line-number>290</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> attemptDeny <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
-<tr><td class=line-number>291</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span></span>
+<tr><td class=line-number>291</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to allow for defenses and trigger bypasses.&quot;</span>
 </td></tr>
 <tr><td class=line-number>292</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  deny<span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -634,9 +634,9 @@
 </td></tr>
 <tr><td class=line-number>295</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>&amp;</span> deny <span style='color: #4e4e4e'>{</span><span style='font-weight: bold;color: #875f00'>A</span><span style='color: #4e4e4e'>}</span>
 </td></tr>
-<tr><td class=line-number>296</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;If a connection rule is denied it affects the applications communicating over it.&quot;</span></span>
+<tr><td class=line-number>296</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If a connection rule is denied it affects the applications communicating over it.&quot;</span>
 </td></tr>
-<tr><td class=line-number>297</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  allApplications<span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>denyFromNetworkingAsset
+<tr><td class=line-number>297</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>allApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>denyFromNetworkingAsset
 </td></tr>
 <tr><td class=line-number>298</td><td class=line>    <span style='color: #4e4e4e'>}</span>
 </td></tr>
@@ -650,49 +650,49 @@
 </td></tr>
 <tr><td class=line-number>303</td><td class=line>  <span style='color: #005f5f'>RoutingFirewall</span>  <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>routingFirewalls</span><span style='color: #4e4e4e'>]</span>  <span style='font-weight: bold;color: #875f00'>0</span><span style='font-weight: bold;color: #4e4e4e'>..</span><span style='font-weight: bold;color: #875f00'>1</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> FirewallConnectionRule <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>connectionRules</span><span style='color: #4e4e4e'>]</span>       <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>304</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A routing firewall has routing or firewall rules specified by connections between networks or applications respectively.&quot;</span></span>
+<tr><td class=line-number>304</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;A routing firewall has routing or firewall rules specified by connections between networks or applications respectively.&quot;</span>
 </td></tr>
 <tr><td class=line-number>305</td><td class=line>  <span style='color: #005f5f'>RoutingFirewall</span>  <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>managedRoutingFw</span><span style='color: #4e4e4e'>]</span>     <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> ManagedBy             <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>0</span><span style='font-weight: bold;color: #4e4e4e'>..</span><span style='font-weight: bold;color: #875f00'>1</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>managerApp</span><span style='color: #4e4e4e'>]</span>             <span style='color: #005f5f'>Application</span>
 </td></tr>
-<tr><td class=line-number>306</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;A routing firewall can have an admin/manager interface (application) that is accessible from a network location.&quot;</span></span>
+<tr><td class=line-number>306</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;A routing firewall can have an admin/manager interface (application) that is accessible from a network location.&quot;</span>
 </td></tr>
 <tr><td class=line-number>307</td><td class=line>  <span style='color: #005f5f'>Network</span>          <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>networks</span><span style='color: #4e4e4e'>]</span>             <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> NetworkExposure       <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>applications</span><span style='color: #4e4e4e'>]</span>           <span style='color: #005f5f'>Application</span>
 </td></tr>
-<tr><td class=line-number>308</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An application can communicate / be exposed on a network.&quot;</span></span>
+<tr><td class=line-number>308</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;An application can communicate / be exposed on a network.&quot;</span>
 </td></tr>
-<tr><td class=line-number>309</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>modeler info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This is DEPRECATED and should only be used by fully aware modelers.&quot;</span></span>
+<tr><td class=line-number>309</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;This is DEPRECATED and should only be used by fully aware modelers.&quot;</span>
 </td></tr>
-<tr><td class=line-number>310</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>developer info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;This can equivalently be modeled using a ConnectionRule but this direct approach should be prefered in the case where the application is “located” in the same network as the host on which it is running.&quot;</span></span>
+<tr><td class=line-number>310</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;This can equivalently be modeled using a ConnectionRule but this direct approach should be prefered in the case where the application is “located” in the same network as the host on which it is running.&quot;</span>
 </td></tr>
 <tr><td class=line-number>311</td><td class=line>  <span style='color: #005f5f'>Application</span>      <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>applications</span><span style='color: #4e4e4e'>]</span>         <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> ApplicationConnection <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>appConnections</span><span style='color: #4e4e4e'>]</span>         <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>312</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;An application can communicate over one or more (mesh type) bidirectional connections.&quot;</span></span>
+<tr><td class=line-number>312</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;An application can communicate over one or more (mesh type) bidirectional connections.&quot;</span>
 </td></tr>
-<tr><td class=line-number>313</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>modeler info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;ConnectionRules associated with Applications are practically expressing a traffic flow.&quot;</span></span>
+<tr><td class=line-number>313</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;ConnectionRules associated with Applications are practically expressing a traffic flow.&quot;</span>
 </td></tr>
 <tr><td class=line-number>314</td><td class=line>  <span style='color: #005f5f'>Application</span>      <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>inApplications</span><span style='color: #4e4e4e'>]</span>       <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> InApplicationConnection <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>  <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>ingoingAppConnections</span><span style='color: #4e4e4e'>]</span>  <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>315</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Two or more applications can also be inter-connected via a uni-directional connection. In means that this is the server side application, awaiting incoming connections.&quot;</span></span>
+<tr><td class=line-number>315</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Two or more applications can also be inter-connected via a uni-directional connection. In means that this is the server side application, awaiting incoming connections.&quot;</span>
 </td></tr>
 <tr><td class=line-number>316</td><td class=line>  <span style='color: #005f5f'>Application</span>      <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>outApplications</span><span style='color: #4e4e4e'>]</span>      <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> OutApplicationConnection <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>outgoingAppConnections</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>317</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Two or more applications can also be inter-connected via a uni-directional connection. Out means that this is the client side application initiating connections.&quot;</span></span>
+<tr><td class=line-number>317</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Two or more applications can also be inter-connected via a uni-directional connection. Out means that this is the client side application initiating connections.&quot;</span>
 </td></tr>
 <tr><td class=line-number>318</td><td class=line>  <span style='color: #005f5f'>Network</span>          <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>networks</span><span style='color: #4e4e4e'>]</span>             <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> NetworkConnection     <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>netConnections</span><span style='color: #4e4e4e'>]</span>         <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>319</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Two or more networks can also be inter-connected via a bidirectional connection.&quot;</span></span>
+<tr><td class=line-number>319</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Two or more networks can also be inter-connected via a bidirectional connection.&quot;</span>
 </td></tr>
 <tr><td class=line-number>320</td><td class=line>  <span style='color: #005f5f'>Network</span>          <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>inNetworks</span><span style='color: #4e4e4e'>]</span>           <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> InNetworkConnection   <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>ingoingNetConnections</span><span style='color: #4e4e4e'>]</span>  <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>321</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Two or more networks can also be inter-connected via a uni-directional connection. In means that ingoing traffic to the network is allowed.&quot;</span></span>
+<tr><td class=line-number>321</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Two or more networks can also be inter-connected via a uni-directional connection. In means that ingoing traffic to the network is allowed.&quot;</span>
 </td></tr>
 <tr><td class=line-number>322</td><td class=line>  <span style='color: #005f5f'>Network</span>          <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>outNetworks</span><span style='color: #4e4e4e'>]</span>          <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> OutNetworkConnection  <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span>    <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>outgoingNetConnections</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>323</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Two or more networks can also be inter-connected via a uni-directional connection. Out means that outgoing traffic from the network is allowed.&quot;</span></span>
+<tr><td class=line-number>323</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Two or more networks can also be inter-connected via a uni-directional connection. Out means that outgoing traffic from the network is allowed.&quot;</span>
 </td></tr>
 <tr><td class=line-number>324</td><td class=line>  <span style='color: #005f5f'>Network</span>          <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>diodeInNetworks</span><span style='color: #4e4e4e'>]</span>      <span style='font-weight: bold;color: #875f00'>*</span> <span style='font-weight: bold;color: #4e4e4e'>&lt;--</span> DiodeInNetworkConnection <span style='font-weight: bold;color: #4e4e4e'>--&gt;</span> <span style='font-weight: bold;color: #875f00'>*</span> <span style='color: #4e4e4e'>[</span><span style='color: #af0000'>diodeIngoingNetConnections</span><span style='color: #4e4e4e'>]</span> <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
-<tr><td class=line-number>325</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info<span style='color: #4e4e4e'>:</span> <span style='color: #008700'>&quot;Two or more networks can also be inter-connected via a uni-directional connection that acts like a diode. That means that no responses can come back after connection initiation.&quot;</span></span>
+<tr><td class=line-number>325</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Two or more networks can also be inter-connected via a uni-directional connection that acts like a diode. That means that no responses can come back after connection initiation.&quot;</span>
 </td></tr>
 <tr><td class=line-number>326</td><td class=line><span style='color: #4e4e4e'>}</span>
 </td></tr>
