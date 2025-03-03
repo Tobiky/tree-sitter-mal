@@ -1513,8 +1513,13 @@
           "type": "FIELD",
           "name": "info",
           "content": {
-            "type": "SYMBOL",
-            "name": "string"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "string"
+            },
+            "named": true,
+            "value": "meta_string"
           }
         }
       ]

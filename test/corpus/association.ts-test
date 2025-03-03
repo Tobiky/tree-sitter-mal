@@ -181,10 +181,10 @@ associations {
         right_id: (identity)
         meta: (meta
           id: (identity)
-          info: (string))
+          info: (meta_string))
         meta: (meta
           id: (identity)
-          info: (string)))
+          info: (meta_string)))
       (association
         left_id: (identity)
         left_field_id: (identity)
@@ -197,4 +197,4 @@ associations {
         right_id: (identity)
         meta: (meta
           id: (identity)
-          info: (string))))))
+          info: (meta_string))))))

@@ -110,12 +110,12 @@ category Test {
         id: (identity)
         meta: (meta
           id: (identity)
-          info: (string))
+          info: (meta_string))
         meta: (meta
           id: (identity)
-          info: (string)))
+          info: (meta_string)))
       assets: (asset_declaration
         id: (identity)
         meta: (meta
           id: (identity)
-          info: (string))))))
+          info: (meta_string))))))
