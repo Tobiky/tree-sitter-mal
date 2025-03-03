@@ -93,6 +93,9 @@
 (asset_declaration
   id: (identity) @type
   extends: (identity) @type)
+(detector_context_asset
+  type: (identity) @type
+  id: (identity) @property)
 
 ; Miscellaneous
 (comment) @comment
