@@ -102,31 +102,43 @@ associations {
   // <- keyword
   //         ^ punctuation.bracket
   Network [networks] * <-- NetworkAccess --> * [hosts] Host
+  // <- type
   //      ^ punctuation.bracket
+  //       ^^^^^^^^ property
   //               ^ punctuation.bracket
   //                 ^ number
   //                   ^^^ operator
   //                                     ^^^ operator
   //                                         ^ number
   //                                           ^ punctuation.bracket
+  //                                            ^^^^^ property
   //                                                 ^ punctuation.bracket
+  //                                                   ^^^^ type
   Host [host] 1 <-- Credentials --> * [passwords] Password
+  // <- type
   //   ^ punctuation.bracket
+  //    ^^^^ property
   //        ^ punctuation.bracket
   //          ^ number
   //            ^^^ operator
   //                            ^^^ operator
   //                                ^ number
   //                                  ^ punctuation.bracket
+  //                                   ^^^^^^^^^ property
   //                                            ^ punctuation.bracket
+  //                                              ^^^^^^^^ type
   User [user] 1 <-- Credentials --> * [passwords] Password
+  // <- type
   //   ^ punctuation.bracket
+  //    ^^^^ property
   //        ^ punctuation.bracket
   //          ^ number
   //            ^^^ operator
   //                            ^^^ operator
   //                                ^ number
   //                                  ^ punctuation.bracket
+  //                                   ^^^^^^^^^ property
   //                                            ^ punctuation.bracket
+  //                                              ^^^^^^^^ type
 }
 // <- punctuation.bracket
