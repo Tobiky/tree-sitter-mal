@@ -19,8 +19,8 @@ category Networking {
     //   ^ module
     //              ^ punctuation.bracket
     asset Network
-    // <- type
-    //    ^type
+    // <- keyword
+    //    ^ type
       user info: "A network (zone) is a set of network accessible applications and data."
     // ^ comment
     //     ^ comment
