@@ -1,0 +1,1113 @@
+/*
+ * Copyright 2019-2022 coreLang contributors <https://mal-lang.org/coreLang/contributors.html>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+category Networking {
+    // <- keyword
+    //   ^ module
+    //              ^ punctuation.bracket
+    asset Network
+    // <- type
+    //    ^type
+      user info: "A network (zone) is a set of network accessible applications and data."
+    // ^ comment
+    //     ^ comment
+    //         ^ comment
+    //           ^ comment
+      developer info: "The network asset tries to cover all the levels of the OSI stack in a very abstract and compact way (i.e. it tries to represent all the OSI layers). For example it will try to cover both ARP attacks (that are Level 2) but also DNS/HTTP spoofing attacks (that are Level 7)."
+    // ^ comment
+    //          ^ comment
+    //              ^ comment
+    //                ^ comment
+    {
+    // <- punctuation.bracket
+      let outboundAllowedConnections = (netConnections \/ outgoingNetConnections)
+      // <- keyword
+      //  ^ property
+      //                             ^ operator
+      //                               ^ punctuation.bracket
+      //                                               ^ operator
+      //                                                                        ^ punctuation.bracket
+      let inboundAllowedConnections = (netConnections \/ ingoingNetConnections \/ diodeIngoingNetConnections)
+      // <- keyword
+      //  ^ property
+      //                            ^ operator
+      //                              ^ punctuation.bracket
+      //                                              ^ operator
+      //                                                                       ^ operator
+      //                                                                                                    ^ punctuation.bracket
+      let allNetConnections = (netConnections \/ ingoingNetConnections \/ outgoingNetConnections \/ diodeIngoingNetConnections)
+      // <- keyword
+      //  ^ property
+      //                    ^ operator
+      //                      ^ punctuation.bracket
+      //                                      ^ operator
+      //                                                               ^ operator
+      //                                                                                         ^ operator
+      //                                                                                                                      ^ punctuation.bracket
+      let allowedApplicationConnectionsApplications = (applications \/ allNetConnections().applications)
+      // <- keyword
+      //  ^ property
+      //                                            ^ operator
+      //                                              ^ punctuation.bracket
+      //                                                            ^ operator
+      //                                                               ^ property
+      //                                                                                ^^ punctuation.bracket
+      //                                                                                  ^ operator
+      //                                                                                               ^ punctuation.bracket
+
+      | physicalAccess @entrypoint {C, A}
+      // <- operator
+      //               ^ operator
+      //                ^ tag
+      //                           ^ punctuation.bracket
+      //                            ^ constant.builtin
+      //                             ^ punctuation.delimiter
+      //                               ^ constant.builtin
+      //                                ^ punctuation.bracket
+        user info: "Attacker has physical access on the network. This means they can cut wires/fibers, connect using iLOs, eavesdrop and get proper network access."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        modeler info: "This attack step can be used as an entry point when analyzing scenarios that involve gaining physical access to assets."
+      // ^ comment
+      //        ^ comment
+      //            ^ comment
+      //              ^ comment
+        ->  deny,
+      // ^ operator
+      //        ^ punctuation.delimiter
+            attemptAccessUninspectedFromPhysicalAccess,
+      //                                              ^ punctuation.delimiter
+            attemptAccessInspectedFromPhysicalAccess,
+      //                                            ^ punctuation.delimiter
+            bypassEavesdropDefenseFromPhysicalAccess,
+      //                                            ^ punctuation.delimiter
+            bypassAdversaryInTheMiddleDefenseFromPhysicalAccess
+
+      | bypassEavesdropDefenseFromPhysicalAccess
+      // <- operator
+        user info: "The eavesdrop defense can be bypassed more easily if the attacker has physical access to the network. This attack step will add its impact to the unconditional bypass."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  eavesdropDefenseBypassed
+      // ^ operator
+
+      | bypassAdversaryInTheMiddleDefenseFromPhysicalAccess
+      // <- operator
+        user info: "The adversary in the middle defense can be bypassed more easily if the attacker has physical access to the network. This attack step will add its impact to the unconditional bypass."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  adversaryInTheMiddleDefenseBypassed
+      // <- operator
+
+      # networkAccessControl
+      // <- operator
+        user info: "Access control protects from unauthorized physical access on the network."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  accessControlBypassed
+      // ^ operator
+
+      | bypassAccessControl [VeryHardAndUncertain]
+      // <- operator
+      //                    ^ punctuation.bracket
+      //                     ^ type
+      //                                         ^ punctuation.bracket
+        user info: "If access control is enabled, the attacker can still try to bypass it and gain access on the network."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  accessControlBypassed
+      // ^ operator
+
+      | accessControlBypassed @hidden
+      // <- operator
+      //                      ^ operator
+      //                       ^ tag
+        developer info: "Access control is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAccessUninspectedFromPhysicalAccess,
+      // ^ operator
+      //                                                 ^ punctuation.delimiter
+            successfulAccessInspectedFromPhysicalAccess
+
+      | attemptAccessUninspectedFromPhysicalAccess @hidden
+      // <- operator
+      //                                           ^ operator
+      //                                            ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAccessUninspectedFromPhysicalAccess,
+      // ^ operator
+      //                                                 ^ punctuation.delimiter
+            bypassAccessControl
+
+      | attemptAccessInspectedFromPhysicalAccess @hidden
+      // <- operator
+      //                                         ^ operator
+      //                                          ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAccessInspectedFromPhysicalAccess,
+      // ^ operator
+      //                                               ^ punctuation.delimiter
+            bypassAccessControl
+
+      & successfulAccessUninspectedFromPhysicalAccess @hidden
+      // <- operator
+      //                                              ^ operator
+      //                                               ^ tag
+        developer info: "Intermediate attack step to model defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  accessUninspected
+      // ^ operator
+
+      & successfulAccessInspectedFromPhysicalAccess @hidden
+      // <- operator
+      //                                            ^ operator
+      //                                             ^ tag
+        developer info: "Intermediate attack step to model defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  accessInspected
+      // ^ operator
+
+      | accessUninspected
+      // <- operator
+        user info: "Uninspected access provides connect to all reachable applications without any restrictions."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  outboundAllowedConnections().attemptConnectToApplicationsUninspected,
+      // ^ operator
+      //    ^ property
+      //                              ^^ punctuation.bracket
+      //                                                                        ^ punctuation.delimiter
+            applications.networkConnectUninspected,
+      //                                          ^ punctuation.delimiter
+            networkForwardingUninspected,
+      //                                ^ punctuation.delimiter
+            attemptReverseReach,
+      //                       ^ punctuation.delimiter
+            accessNetworkData,
+      //                     ^ punctuation.delimiter
+            deny
+
+      | accessInspected
+      // <- operator
+        user info: "Inspected access provides connect to all reachable applications, but with limitations."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  outboundAllowedConnections().attemptConnectToApplicationsInspected,
+      // ^ operator
+      //    ^ property
+      //                              ^^ punctuation.bracket
+      //                                                                      ^ punctuation.delimiter
+            applications.networkConnectInspected,
+      //                                        ^ punctuation.delimiter
+            networkForwardingInspected,
+      //                              ^ punctuation.delimiter
+            accessNetworkData,
+      //                     ^ punctuation.delimiter
+            deny
+
+      | attemptReverseReach @hidden
+      // <- operator
+      //                    ^ operator
+      //                     ^ tag
+        developer info: "Intermediate attack step to allow for defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  reverseReach
+      // ^ operator
+
+      & reverseReach @hidden
+      // <- operator
+      //             ^operator
+      //              ^ tag
+        developer info: "Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates toward outgoing or bidirectional communications."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  inboundAllowedConnections().attemptReverseReach,
+      // ^ operator
+      //    ^ property
+      //                             ^^ punctuation.bracket
+      //                               ^ operator
+      //                                                   ^ punctuation.delimiter
+            applications.attemptReverseReach
+      //                ^ operator
+
+      | networkForwardingUninspected @hidden
+      // <- operator
+      //                             ^ operator
+      //                              ^ tag
+        developer info: "By using the allowed connections (connection rules), uninspected forwarding from one network to another network or applications can happen."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+          ->  outboundAllowedConnections().attemptAccessNetworksUninspected,
+      //  ^ operator
+      //      ^ property
+      //                                ^^ punctuation.bracket
+      //                                  ^ operator
+      //                                                                   ^ punctuation.delimiter
+              outboundAllowedConnections().attemptConnectToApplicationsUninspected,
+      //                                ^^ punctuation.bracket
+      //                                  ^ operator
+      //                                                                          ^ punctuation.delimiter
+
+              networkForwardingInspected
+
+      | networkForwardingInspected @hidden
+      // <- operator
+      //                           ^ operator
+      //                            ^ tag
+        developer info: "By using the allowed connections (connection rules), inspected forwarding from one network to another network or applications can happen."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+          ->  outboundAllowedConnections().attemptAccessNetworksInspected,
+      //  ^ operator
+      //                                ^^ punctuation.bracket
+      //                                  ^ operator
+      //                                                                 ^ punctuation.delimiter
+              outboundAllowedConnections().attemptConnectToApplicationsInspected
+      //                                ^^ punctuation.bracket
+      //                                  ^ operator
+
+      | deny {A}
+      // <- operator
+      //     ^ punctuation.bracket
+      //      ^ constant.builtin
+      //       ^ punctuation.bracket
+        user info: "If a DoS is performed it affects, the applications communicating over the network as well as the connected application."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  allNetConnections().attemptDeny,
+      // <- operator
+      //    ^ operator
+      //                     ^^ punctuation.bracket
+      //                       ^ operator
+      //                                   ^ punctuation.delimiter
+            allowedApplicationConnectionsApplications().denyFromNetworkingAsset
+      //                                             ^^ punctuation.bracket
+      //                                               ^ operator
+
+      | accessNetworkData @hidden
+      // <- operator
+      //                  ^ operator
+      //                   ^ tag
+        developer info: "Access also the data that are network-wide available."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  attemptEavesdrop,
+      // ^ operator
+      //                    ^ punctuation.delimiter
+            attemptAdversaryInTheMiddle
+
+      # eavesdropDefense
+      // <- operator
+        user info: "This defense protects from eavesdrop attacks. If this defense is disabled, then it is equivalent to the network being considered a broadcast network."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        modeler info: "If this defense is enabled, attacks such as ARP spoofing should however, still be possible."
+      // ^ comment
+      //        ^ comment
+      //            ^ comment
+      //              ^ comment
+        ->  eavesdropDefenseBypassed
+      // ^ operator
+
+      | bypassEavesdropDefense [VeryHardAndUncertain]
+      // <- operator
+      //                       ^ punctuation.bracket
+      //                        ^ type
+      //                                            ^ punctuation.bracket
+        user info: "The eavesdrop defense can be bypassed."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  eavesdropDefenseBypassed
+      // <- operator
+
+      | eavesdropDefenseBypassed @hidden
+      // <- operator
+      //                         ^ operator
+      //                          ^ tag
+        developer info: "The Eavesdrop defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulEavesdrop
+      // <- operator
+
+      | attemptEavesdrop @hidden
+      // <- operator
+      //                 ^ operator
+      //                  ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulEavesdrop,
+      // ^ operator
+      //                       ^ punctuation.delimiter
+            bypassEavesdropDefense
+
+      & successfulEavesdrop @hidden
+      // <- operator
+      //                    ^ operator
+      //                     ^ tag
+        developer info: "Intermediate attack step to model defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  eavesdrop
+      // ^ operator
+
+      | eavesdrop {C}
+      // <- operator
+      //          ^ punctuation.bracket
+      //           ^ constant.builtin
+      //            ^ punctuation.builtin
+        user info: "An attacker that performs an eavesdrop attack on a network tries to access all the transferred data over that network."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  transitData.attemptRead
+      // ^ operator
+      //               ^ operator
+
+      # adversaryInTheMiddleDefense
+      // <- operator
+        user info: "This defense protects against adversary-in-the-middle (AitM) attacks that are originating either form the network layer (like ARP spoofing) or by manipulating the higher network layers (like DNS poisoning)."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  adversaryInTheMiddleDefenseBypassed
+      // ^ operator
+
+      | bypassAdversaryInTheMiddleDefense [VeryHardAndUncertain]
+      // <- operator
+      //                                  ^ punctuation.bracket
+      //                                   ^ type
+      //                                                       ^ punctuation.bracket
+        user info: "The adversary in the middle defense can be bypassed."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  adversaryInTheMiddleDefenseBypassed
+      // ^ operator
+
+      | adversaryInTheMiddleDefenseBypassed @hidden
+      // <- operator
+      //                                    ^ operator
+      //                                     ^ tag
+        developer info: "The adversary in the middle defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAdversaryInTheMiddle
+      // ^ operator
+
+      | attemptAdversaryInTheMiddle @hidden
+      // <- operator
+      //                            ^ operator
+      //                             ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAdversaryInTheMiddle,
+      // ^ operator
+      //                                  ^ punctuation.delimiter
+            bypassAdversaryInTheMiddleDefense
+
+      & successfulAdversaryInTheMiddle @hidden
+      // <- operator
+      //                               ^ operator
+      //                                ^ tag
+        developer info: "Intermediate attack step to model defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  adversaryInTheMiddle
+      // ^ operator
+
+      | adversaryInTheMiddle {C, I}
+      // <- operator
+      //                     ^ punctuation.bracket
+      //                      ^ constant.builtin
+      //                       ^ punctuation.delimiter
+      //                         ^ constant.builtin
+      //                          ^ punctuation.bracket
+        user info: "An attacker that performs a AitM attack on a network tries to read and modify all the transferred data over that network."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  eavesdrop,
+      // ^ operator
+      //             ^ punctuation.delimiter
+            transitData.attemptWrite,
+      //               ^ operator
+      //                            ^ punctuation.delimiter
+            transitData.attemptApplicationRespondConnect
+      //               ^ operator
+      //                            ^ punctuation.delimiter
+    }
+
+    asset RoutingFirewall extends Application
+    // <- keyword
+    //                    ^ keyword
+      user info: "A routing firewall specifies a router with firewall capabilities that connects many networks."
+    // ^ comment
+    //     ^ comment
+    //         ^ comment
+    //           ^ comment
+    {
+    // <- punctuation.bracket
+      | deny {A}
+      // <- operator
+      //     ^ punctuation.bracket
+      //      ^ constant.builtin
+      //       ^ punctuation.bracket
+       user info: "A DoS attack should cascade on the connected networks and associated connections"
+      // ^ comment
+      //    ^ comment
+      //        ^ comment
+      //          ^ comment
+        ->  connectionRules.attemptDeny
+      // ^ operator
+      //                   ^ operator
+
+      | fullAccess {I, A}
+      // <- operator
+      //           ^ punctuation.bracket
+      //            ^ constant.builtin
+      //             ^ punctuation.delimiter
+      //               ^ constant.builtin
+      //                ^ punctuation.bracket
+        developer info: "If full access is achieved on RoutingFirewall then it is 0wned and all connections can be allowed! This can happen by compromising the manager application."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        +>  (connectionRules.networks \/ connectionRules.outNetworks \/ connectionRules.inNetworks \/ connectionRules.diodeInNetworks).accessUninspected,
+      // ^ operator
+      //    ^ punctuation.bracket
+      //                    ^ operator
+      //                              ^ operator
+      //                                                ^ operator
+      //                                                             ^ operator
+      //                                                                               ^ operator
+      //                                                                                           ^ operator
+      //                                                                                                             ^ operator
+      //                                                                                                                             ^ punctuation.bracket
+      //                                                                                                                              ^ operator
+      //                                                                                                                                                ^ punctuation.delimiter
+            connectionRules.applications.networkConnectUninspected
+      //                   ^ operator
+      //                                ^ operator
+    }
+    // <- punctuation.bracket
+
+    asset ConnectionRule
+    // <- keyword
+      user info: "This asset is used to model firewall rules between Applications and/or Networks. The association selected (bi/uni-directional) only describes the connection initiation."
+    // ^ comment
+    //     ^ comment
+    //         ^ comment
+    //           ^ comment
+      developer info: "This asset is mainly used to model the functionality of a network connection through a firewall. If Data is added, then it also models the data in transit."
+    // ^ comment
+    //          ^ comment
+    //              ^ comment
+    //                ^ comment
+    {
+    // <- punctuation.bracket
+      let allApplications = (applications \/ inApplications \/ outApplications)
+      // <- keyword
+      //  ^ property
+      //                  ^ operator
+      //                    ^ punctuation.bracket
+      //                                  ^ operator
+      //                                                    ^ operator
+      //                                                                      ^ punctuation.bracket
+      let senderApplications = (applications \/ outApplications)
+      // <- keyword
+      //  ^ property
+      //                     ^ operator
+      //                       ^ punctuation.bracket
+      //                                     ^ operator
+      //                                                       ^ punctuation.bracket
+      let receiverApplications = (applications \/ inApplications)
+      // <- keyword
+      //  ^ property
+      //                       ^ operator
+      //                         ^ punctuation.bracket
+      //                                       ^ operator
+      //                                                        ^ punctuation.bracket
+
+      # restricted [Disabled]
+      // <- operator
+      //           ^ punctuation.bracket
+      //            ^ type
+      //                    ^ punctuation.bracket
+        user info: "The restricted defense can be used to probabilistically model the likelihood of both the protocols required by the attack being enabled or the existence of the ConnectionRule altogether."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  restrictedBypassed
+      // ^ operator
+
+      | bypassRestricted [VeryHardAndUncertain]
+      // <- operator
+      //                 ^ punctuation.bracket
+      //                  ^ type
+      //                                      ^ punctuation.bracket
+        user info: "The restricted defense can be bypassed."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  restrictedBypassed
+      // ^ operator
+
+      | restrictedBypassed @hidden
+      // <- operator
+      //                   ^ operator
+      //                    ^ tag
+        developer info: "The restricted defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAccessNetworksUninspected,
+      // ^ operator
+      //                                       ^ punctuation.delimiter
+            successfulAccessNetworksInspected,
+      //                                     ^ punctuation.delimiter
+            connectToApplicationsUninspected,
+      //                                    ^ punctuation.delimiter
+            connectToApplicationsInspected,
+      //                                  ^ punctuation.delimiter
+            deny,
+      //        ^ punctuation.delimiter
+            reverseReach
+
+      # payloadInspection [Disabled]
+      // <- operator
+      //                  ^ punctuation.bracket
+      //                   ^ type
+      //                           ^ punctuation.bracket
+        user info: "If enabled, then the traffic is considered to be inspected and filtered by an IDPS that can detect and stop malicious payloads, effectively allowing only legitimate communication(i.e. network-level vulnerabilities cannot be exploited, unsafe actions that the user may taken that would benefit the attacker are also prevented)."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  payloadInspectionBypassed
+      // ^ operator
+
+      | bypassPayloadInspection [VeryHardAndUncertain]
+      // <- operator
+      //                        ^ punctuation.bracket
+      //                         ^ type
+      //                                             ^ punctuation.bracket
+        user info: "Payload inspection can be bypassed."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  payloadInspectionBypassed
+      // ^ operator
+
+      | payloadInspectionBypassed @hidden
+      // <- operator
+      //                          ^ operator
+      //                           ^ tag
+        developer info: "Payload inspection is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAccessNetworksUninspected,
+      // ^ operator
+      //                                       ^ punctuation.delimiter
+            connectToApplicationsUninspected,
+      //                                    ^ punctuation.delimiter
+            reverseReach
+
+      // All the hidden attack steps below are hidden because they are just used for the internal mechanics of the ConnectionRules
+      | attemptReverseReach @hidden
+      // <- operator
+      //                    ^ operator
+      //                     ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  reverseReach,
+      // ^ operator
+      //                ^ punctuation.delimiter
+            bypassRestricted,
+      //                    ^ punctuation.delimiter
+            bypassPayloadInspection
+
+      & reverseReach @hidden
+      // <- operator
+      //             ^ operator
+      //              ^ tag
+        developer info: "Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates via outgoing or bidirectional communications."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  senderApplications().attemptReverseReach,
+      // ^ operator
+      //    ^ property
+      //                      ^^ punctuation.bracket
+      //                        ^ operator
+      //                                            ^ punctuation.delimiter
+            (networks \/ outNetworks).attemptReverseReach
+      //    ^ punctuation.bracket
+      //              ^ operator
+      //                            ^ punctuation.bracket
+      //                             ^ operator
+
+      | attemptAccessNetworksUninspected @hidden
+      // <- operator
+      //                                 ^ operator
+      //                                  ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ! detector.my_name (RoutingFirewall firewall) audit [1]
+      //^ operator
+      //                   ^ punctuation.bracket
+      //                    ^ type
+      //                                    ^ property
+      //                                                    ^ punctuation.bracket
+      //                                                     ^ number
+      //                                                      ^ punctuation.bracket
+        ->  successfulAccessNetworksUninspected,
+      // ^ operator
+      //                                       ^ punctuation.delimiter
+            bypassRestricted,
+      //                    ^ punctuation.delimiter
+            bypassPayloadInspection
+
+      | attemptAccessNetworksInspected @hidden
+      // <- operator
+      //                               ^ operator
+      //                                ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  successfulAccessNetworksInspected,
+      // ^ operator
+      //                                     ^ punctuation.delimiter
+            bypassRestricted
+
+      & successfulAccessNetworksUninspected @hidden
+      // <- operator
+      //                                    ^ operator
+      //                                     ^ tag
+        developer info: "Intermediate attack step to model defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  accessNetworksUninspected
+      // ^ operator
+
+      & successfulAccessNetworksInspected @hidden
+      // <- operator
+      //                                  ^ operator
+      //                                   ^ tag
+        developer info: "Intermediate attack step to model defenses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  accessNetworksInspected
+      // ^ operator
+
+      | accessNetworksUninspected
+      // <- operator
+        developer info: "Access all networks that are associated with this ConnectionRule, without any restriction due to inspection."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  (networks  \/ inNetworks  \/ diodeInNetworks).accessUninspected,
+      // ^ operator
+      //    ^ punctuation.bracket
+      //               ^ operator
+      //                              ^ operator
+      //                                                ^ punctuation.bracket
+      //                                                 ^ operator
+      //                                                                   ^ punctuation.delimiter
+            accessNetworksInspected
+
+      | accessNetworksInspected
+      // <- operator
+        developer info: "Access all networks that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  (networks  \/ inNetworks  \/ diodeInNetworks).accessInspected
+
+      | attemptConnectToApplicationsUninspected @hidden
+      // <- operator
+      //                                        ^ operator
+      //                                         ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  connectToApplicationsUninspected,
+      // ^ operator
+      //                                    ^ punctuation.delimiter
+            bypassRestricted,
+      //                    ^ punctuation.delimiter
+            bypassPayloadInspection
+
+      | attemptConnectToApplicationsInspected @hidden
+      // <- operator
+      //                                      ^ operator
+      //                                       ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  connectToApplicationsInspected,
+      // ^ operator
+      //                                  ^ punctuation.delimiter
+            bypassRestricted
+
+      & connectToApplicationsUninspected @hidden
+      // <- operator
+      //                                 ^ operator
+      //                                  ^ tag
+        developer info: "Connect to all the (server) Applications that are associated with this ConnectionRule, without any restriction due to inspection."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  receiverApplications().networkConnectUninspected,
+      // ^ operator
+      //    ^ property
+      //                        ^^ punctuation.bracket
+      //                          ^ operator
+      //                                                    ^ punctuation.delimiter
+            receiverApplications().networkConnectInspected
+      //    ^ property
+      //                        ^^ punctuation.bracket
+      //                          ^ operator
+
+      & connectToApplicationsInspected @hidden
+      // <- operator
+      //                               ^ operator
+      //                                ^ tag
+        developer info: "Connect to all the (server) Applications that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected. This attack step is used to allow legitimate traffic even when payload inspection is enabled on the connection."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  receiverApplications().networkConnectInspected
+      // ^ operator
+      //    ^ property
+      //                        ^^ punctuation.bracket
+      //                          ^ operator
+
+      | attemptDeny @hidden
+      // <- operator
+      //            ^ operator
+      //             ^ tag
+        developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
+      // ^ comment
+      //          ^ comment
+      //              ^ comment
+      //                ^ comment
+        ->  deny,
+      // ^ operator
+      //        ^ punctuation.delimiter
+            bypassRestricted
+
+      & deny {A}
+      // <- operator
+      //     ^ punctuation.bracket
+      //      ^ constant.builtin
+      //       ^ punctuation.bracket
+        user info: "If a connection rule is denied it affects the applications communicating over it."
+      // ^ comment
+      //     ^ comment
+      //         ^ comment
+      //           ^ comment
+        ->  allApplications().denyFromNetworkingAsset
+      // ^ operator
+      //    ^ property
+      //                   ^^ punctuation.bracket
+      //                     ^ operator
+    }
+}
+
+associations {
+  // <- keyword
+  //         ^ punctuation.bracket
+  // ### Networking associations
+  RoutingFirewall  [routingFirewalls]  0..1 <-- FirewallConnectionRule --> *    [connectionRules]       ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                                ^ punctuation.bracket
+  //                                   ^ number
+  //                                    ^^ operator
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                   ^ operator
+  //                                                                       ^ number
+  //                                                                            ^ punctuation.bracket
+  //                                                                             ^ property
+  //                                                                                            ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "A routing firewall has routing or firewall rules specified by connections between networks or applications respectively."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  RoutingFirewall  [managedRoutingFw]     * <-- ManagedBy             --> 0..1 [managerApp]             Application
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                                ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                  ^ operator
+  //                                                                      ^ number
+  //                                                                       ^^ operator
+  //                                                                         ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                      ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "A routing firewall can have an admin/manager interface (application) that is accessible from a network location."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  Network          [networks]             * <-- NetworkExposure       --> *    [applications]           Application
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                        ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                  ^ operator
+  //                                                                      ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                        ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "An application can communicate / be exposed on a network."
+      modeler info: "This is DEPRECATED and should only be used by fully aware modelers."
+      developer info: "This can equivalently be modeled using a ConnectionRule but this direct approach should be prefered in the case where the application is “located” in the same network as the host on which it is running."
+  //  ^^^^^^^^^^^^^^^^^ comment
+  Application      [applications]         * <-- ApplicationConnection --> *    [appConnections]         ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                            ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                  ^ operator
+  //                                                                      ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                          ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "An application can communicate over one or more (mesh type) bidirectional connections."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+      modeler info: "ConnectionRules associated with Applications are practically expressing a traffic flow."
+  Application      [inApplications]       * <-- InApplicationConnection --> *  [ingoingAppConnections]  ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                              ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                    ^ operator
+  //                                                                        ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                                 ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "Two or more applications can also be inter-connected via a uni-directional connection. In means that this is the server side application, awaiting incoming connections."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  Application      [outApplications]      * <-- OutApplicationConnection --> * [outgoingAppConnections] ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                              ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                     ^ operator
+  //                                                                         ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                                  ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "Two or more applications can also be inter-connected via a uni-directional connection. Out means that this is the client side application initiating connections."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  Network          [networks]             * <-- NetworkConnection     --> *    [netConnections]         ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                        ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                  ^ operator
+  //                                                                      ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                          ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "Two or more networks can also be inter-connected via a bidirectional connection."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  Network          [inNetworks]           * <-- InNetworkConnection   --> *    [ingoingNetConnections]  ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                          ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                  ^ operator
+  //                                                                      ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                                 ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "Two or more networks can also be inter-connected via a uni-directional connection. In means that ingoing traffic to the network is allowed."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  Network          [outNetworks]          * <-- OutNetworkConnection  --> *    [outgoingNetConnections] ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                           ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                  ^ operator
+  //                                                                      ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                                  ^ punctuation.bracket
+  //                                                                                                    ^ type
+      user info: "Two or more networks can also be inter-connected via a uni-directional connection. Out means that outgoing traffic from the network is allowed."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+  Network          [diodeInNetworks]      * <-- DiodeInNetworkConnection --> * [diodeIngoingNetConnections] ConnectionRule
+  // ^ type
+  //               ^ punctuation.bracket
+  //                ^ property
+  //                               ^ punctuation.bracket
+  //                                      ^ number
+  //                                        ^ operator
+  //                                                                     ^ operator
+  //                                                                         ^ number
+  //                                                                           ^ punctuation.bracket
+  //                                                                            ^ property
+  //                                                                                                      ^ punctuation.bracket
+  //                                                                                                        ^ type
+      user info: "Two or more networks can also be inter-connected via a uni-directional connection that acts like a diode. That means that no responses can come back after connection initiation."
+  //  ^ comment
+  //       ^ comment
+  //           ^ comment
+  //             ^ comment
+}
