@@ -30,6 +30,8 @@
    "@"
    ] @operator)
 
+(asset_variable "=" @operator)
+
 (detector ["!" "//!"] @operator)
 
 (preconditions "<-" @operator)
