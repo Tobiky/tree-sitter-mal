@@ -17,27 +17,27 @@
     }
   </style>
   <style>
-    .constructor { color: #af8700; }
-    .variable.parameter { text-decoration: underline;; }
     .number { font-weight: bold;color: #875f00; }
-    .variable.builtin { font-weight: bold;; }
     .keyword { color: #5f00d7; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .string { color: #008700; }
-    .tag { color: #000087; }
-    .string.special { color: #008787; }
-    .constant { color: #875f00; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .function { color: #005fd7; }
+    .variable.builtin { font-weight: bold;; }
     .attribute { font-style: italic;color: #af0000; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .module { color: #af8700; }
+    .string { color: #008700; }
     .type { color: #005f5f; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .tag { color: #000087; }
+    .function { color: #005fd7; }
     .punctuation.bracket { color: #4e4e4e; }
+    .module { color: #af8700; }
     .type.builtin { font-weight: bold;color: #005f5f; }
-    .property { color: #af0000; }
+    .variable.parameter { text-decoration: underline;; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .constant { color: #875f00; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .string.special { color: #008787; }
+    .constructor { color: #af8700; }
     .comment { font-style: italic;color: #8a8a8a; }
+    .property { color: #af0000; }
   </style>
 
 </head>
@@ -80,7 +80,7 @@
 </td></tr>
 <tr><td class=line-number>18</td><td class=line>
 </td></tr>
-<tr><td class=line-number>19</td><td class=line>    <span style='color: #5f00d7'>asset</span> Information
+<tr><td class=line-number>19</td><td class=line>    <span style='color: #5f00d7'>asset</span> <span style='color: #005f5f'>Information</span>
 </td></tr>
 <tr><td class=line-number>20</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Represents any type of information that might be contained inside Data. This include general purpose information, but also serves as the basis for more specialized types, such as Credentials and SoftwareProduct. Information represents the abstract concept, while Data represent an actual instance of information stored or transmitted digitally.&quot;</span>
 </td></tr>
@@ -184,7 +184,7 @@
 </td></tr>
 <tr><td class=line-number>70</td><td class=line>
 </td></tr>
-<tr><td class=line-number>71</td><td class=line>    <span style='color: #5f00d7'>asset</span> Data
+<tr><td class=line-number>71</td><td class=line>    <span style='color: #5f00d7'>asset</span> <span style='color: #005f5f'>Data</span>
 </td></tr>
 <tr><td class=line-number>72</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Any form of data that can be stored or transmitted.&quot;</span>
 </td></tr>
@@ -254,13 +254,13 @@
 </td></tr>
 <tr><td class=line-number>105</td><td class=line>
 </td></tr>
-<tr><td class=line-number>106</td><td class=line>      <span style='color: #5f00d7'>let</span> senderOutgoingApplicationConnections = <span style='color: #4e4e4e'>(</span>senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingAppConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>106</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>senderOutgoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingAppConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>107</td><td class=line>      <span style='color: #5f00d7'>let</span> receiverIngoingApplicationConnections = <span style='color: #4e4e4e'>(</span>receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingAppConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>107</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>receiverIngoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingAppConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>108</td><td class=line>      <span style='color: #5f00d7'>let</span> transitNetworkInboundAllowedConnections = <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>108</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>transitNetworkInboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>109</td><td class=line>      <span style='color: #5f00d7'>let</span> transitNetworkOutboundAllowedConnections = <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>109</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>transitNetworkOutboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>110</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassPayloadInspectionFromEncryptedData <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
