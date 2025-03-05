@@ -427,7 +427,7 @@ category Networking {
       // <- operator
       //          ^ punctuation.bracket
       //           ^ constant.builtin
-      //            ^ punctuation.builtin
+      //            ^ punctuation.bracket
         user info: "An attacker that performs an eavesdrop attack on a network tries to access all the transferred data over that network."
       // ^ comment
       //     ^ comment
