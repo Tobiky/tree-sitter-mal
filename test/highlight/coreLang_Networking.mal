@@ -116,7 +116,7 @@ category Networking {
       //         ^ comment
       //           ^ comment
         ->  adversaryInTheMiddleDefenseBypassed
-      // <- operator
+      // ^ operator
 
       # networkAccessControl
       // <- operator
@@ -330,7 +330,7 @@ category Networking {
       //         ^ comment
       //           ^ comment
         ->  allNetConnections().attemptDeny,
-      // <- operator
+      // ^ operator
       //    ^ operator
       //                     ^^ punctuation.bracket
       //                       ^ operator
@@ -379,7 +379,7 @@ category Networking {
       //         ^ comment
       //           ^ comment
         ->  eavesdropDefenseBypassed
-      // <- operator
+      // ^ operator
 
       | eavesdropDefenseBypassed @hidden
       // <- operator
@@ -391,7 +391,7 @@ category Networking {
       //              ^ comment
       //                ^ comment
         ->  successfulEavesdrop
-      // <- operator
+      // ^ operator
 
       | attemptEavesdrop @hidden
       // <- operator
