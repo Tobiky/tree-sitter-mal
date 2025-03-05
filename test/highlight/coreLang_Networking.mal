@@ -295,6 +295,7 @@ category Networking {
       //                                  ^ operator
       //                                                                   ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsUninspected,
+      //      ^ property
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                                                          ^ punctuation.delimiter
@@ -311,11 +312,13 @@ category Networking {
       //              ^ comment
       //                ^ comment
           ->  outboundAllowedConnections().attemptAccessNetworksInspected,
+      //      ^ property
       //  ^ operator
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                                                 ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsInspected
+      //      ^ property
       //                                ^^ punctuation.bracket
       //                                  ^ operator
 
@@ -331,11 +334,12 @@ category Networking {
       //           ^ comment
         ->  allNetConnections().attemptDeny,
       // ^ operator
-      //    ^ operator
+      //    ^ property
       //                     ^^ punctuation.bracket
       //                       ^ operator
       //                                   ^ punctuation.delimiter
             allowedApplicationConnectionsApplications().denyFromNetworkingAsset
+      //    ^ property
       //                                             ^^ punctuation.bracket
       //                                               ^ operator
 
