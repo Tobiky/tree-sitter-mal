@@ -97,6 +97,8 @@
   id: (identity) @property)
 (asset_variable_substitution
   id: (identity) @property)
+(asset_variable
+  id: (identity) @property)
 
 ; Miscellaneous
 (comment) @comment
