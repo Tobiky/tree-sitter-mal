@@ -90,8 +90,8 @@
   right_field_id: (identity) @property
   right_id: (identity) @type)
 (asset_declaration
-  id: (identity) @type
-  extends: (identity) @type)
+  [id: (identity)
+   extends: (identity)] @type)
 (detector_context_asset
   type: (identity) @type
   id: (identity) @property)
