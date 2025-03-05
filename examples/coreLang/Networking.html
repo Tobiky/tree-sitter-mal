@@ -17,27 +17,27 @@
     }
   </style>
   <style>
-    .constant { color: #875f00; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .function { color: #005fd7; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
     .type.builtin { font-weight: bold;color: #005f5f; }
-    .property { color: #af0000; }
-    .string.special { color: #008787; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .variable.parameter { text-decoration: underline;; }
-    .constructor { color: #af8700; }
-    .string { color: #008700; }
-    .type { color: #005f5f; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .tag { color: #000087; }
-    .number { font-weight: bold;color: #875f00; }
-    .variable.builtin { font-weight: bold;; }
-    .keyword { color: #5f00d7; }
-    .attribute { font-style: italic;color: #af0000; }
+    .function { color: #005fd7; }
     .module { color: #af8700; }
+    .number { font-weight: bold;color: #875f00; }
+    .string { color: #008700; }
     .comment { font-style: italic;color: #8a8a8a; }
+    .property { color: #af0000; }
+    .attribute { font-style: italic;color: #af0000; }
+    .keyword { color: #5f00d7; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .variable.builtin { font-weight: bold;; }
+    .constructor { color: #af8700; }
+    .tag { color: #000087; }
+    .string.special { color: #008787; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .type { color: #005f5f; }
+    .variable.parameter { text-decoration: underline;; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .constant { color: #875f00; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
   </style>
 
 </head>
@@ -80,7 +80,7 @@
 </td></tr>
 <tr><td class=line-number>18</td><td class=line>
 </td></tr>
-<tr><td class=line-number>19</td><td class=line>    <span style='color: #5f00d7'>asset</span> Network
+<tr><td class=line-number>19</td><td class=line>    <span style='color: #5f00d7'>asset</span> <span style='color: #005f5f'>Network</span>
 </td></tr>
 <tr><td class=line-number>20</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;A network (zone) is a set of network accessible applications and data.&quot;</span>
 </td></tr>
@@ -88,13 +88,13 @@
 </td></tr>
 <tr><td class=line-number>22</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>23</td><td class=line>      <span style='color: #5f00d7'>let</span> outboundAllowedConnections = <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>23</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>outboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>24</td><td class=line>      <span style='color: #5f00d7'>let</span> inboundAllowedConnections = <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>24</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>inboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>25</td><td class=line>      <span style='color: #5f00d7'>let</span> allNetConnections = <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>25</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allNetConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>26</td><td class=line>      <span style='color: #5f00d7'>let</span> allowedApplicationConnectionsApplications = <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> <span style='color: #af0000'>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>applications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>26</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allowedApplicationConnectionsApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> <span style='color: #af0000'>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>applications<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>27</td><td class=line>
 </td></tr>
@@ -422,7 +422,7 @@
 </td></tr>
 <tr><td class=line-number>189</td><td class=line>
 </td></tr>
-<tr><td class=line-number>190</td><td class=line>    <span style='color: #5f00d7'>asset</span> ConnectionRule
+<tr><td class=line-number>190</td><td class=line>    <span style='color: #5f00d7'>asset</span> <span style='color: #005f5f'>ConnectionRule</span>
 </td></tr>
 <tr><td class=line-number>191</td><td class=line>      <span style='font-style: italic;color: #8a8a8a'>user info: &quot;This asset is used to model firewall rules between Applications and/or Networks. The association selected (bi/uni-directional) only describes the connection initiation.&quot;</span>
 </td></tr>
@@ -430,11 +430,11 @@
 </td></tr>
 <tr><td class=line-number>193</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>194</td><td class=line>      <span style='color: #5f00d7'>let</span> allApplications = <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>194</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>195</td><td class=line>      <span style='color: #5f00d7'>let</span> senderApplications = <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>195</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>senderApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>196</td><td class=line>      <span style='color: #5f00d7'>let</span> receiverApplications = <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>196</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>receiverApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>197</td><td class=line>
 </td></tr>
