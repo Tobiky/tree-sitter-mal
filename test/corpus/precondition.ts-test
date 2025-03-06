@@ -23,12 +23,15 @@ category Test {
           (attack_step
             id: (identity)
             preconditions: (preconditions
-              condition: (identity)))
+              condition: (asset_expr
+                (identity))))
           (attack_step
             id: (identity)
             preconditions: (preconditions
-              condition: (identity)
-              condition: (identity))))))))
+              condition: (asset_expr
+                (identity))
+              condition: (asset_expr
+                (identity)))))))))
 
 ============================================================
 Attack-step with asset expression operators in Pre-condition
@@ -62,37 +65,47 @@ category Test {
           (attack_step
             id: (identity)
             preconditions: (preconditions
-              condition: (identity)
-              condition: (asset_expr_binop
-                left: (identity)
-                right: (identity))
-              condition: (asset_expr_binop
-                left: (identity)
-                right: (identity))
-              condition: (asset_expr_binop
-                left: (identity)
-                right: (identity))
-              condition: (asset_expr_binop
-                left: (identity)
-                right: (identity))
-              condition: (asset_expr_binop
-                left: (asset_expr_binop
+              condition: (asset_expr
+                (identity))
+              condition: (asset_expr
+                (asset_expr_binop
                   left: (identity)
-                  right: (identity))
-                right: (identity))
-              condition: (asset_expr_binop
-                left: (asset_variable_substitution
-                  id: (identity))
-                right: (identity))
-              condition: (asset_expr_binop
-                left: (asset_expr_unop
-                  expression: (identity))
-                right: (identity))
-              condition: (asset_expr_type
-                expression: (identity)
-                type_id: (identity))
-              condition: (asset_expr_type
-                expression: (asset_expr_type
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_binop
+                  left: (identity)
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_binop
+                  left: (identity)
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_binop
+                  left: (identity)
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_binop
+                  left: (asset_expr_binop
+                    left: (identity)
+                    right: (identity))
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_binop
+                  left: (asset_variable_substitution
+                    id: (identity))
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_binop
+                  left: (asset_expr_unop
+                    expression: (identity))
+                  right: (identity)))
+              condition: (asset_expr
+                (asset_expr_type
                   expression: (identity)
-                  type_id: (identity))
-                type_id: (identity)))))))))
+                  type_id: (identity)))
+              condition: (asset_expr
+                (asset_expr_type
+                  expression: (asset_expr_type
+                    expression: (identity)
+                    type_id: (identity))
+                  type_id: (identity))))))))))

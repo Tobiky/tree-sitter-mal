@@ -81,7 +81,7 @@ module.exports = grammar({
       'let',
       field('id', $.identity),
       '=',
-      field('value', $._asset_expr),
+      field('value', $.asset_expr),
     ),
 
     // Attack step for an asset
@@ -135,13 +135,13 @@ module.exports = grammar({
     // Precondition for attack steps
     preconditions: $ => seq(
       '<-', 
-      field('condition', commaSep1($._asset_expr))
+      field('condition', commaSep1($.asset_expr))
     ),
 
     // Inheritence or lead to/from other identities for attack steps
     reaching: $ => seq(
         field('operator', choice('+>', '->')),
-        field('reaches', commaSep1($._asset_expr))
+        field('reaches', commaSep1($.asset_expr))
     ),
 
 
@@ -192,19 +192,19 @@ module.exports = grammar({
     ),
 
     // Expression to define relations between assets
-    _asset_expr: $ => choice(
-      $._asset_expr_parenthesized,
+    asset_expr: $ => $._inline_asset_expr,
+
+    // In order to ensure that asset_expr only occurs as a root node all of 
+    // the grammar logic is placed inside this inline node
+    _inline_asset_expr: $ => choice(
+      // alias to ._ to inline
+      seq('(', $._inline_asset_expr, ')', ),
       $._asset_expr_primary,
       $.asset_expr_binop,
       $.asset_expr_unop,
       $.asset_expr_type,
     ),
 
-    _asset_expr_parenthesized: $ => seq(
-      '(',
-      $._asset_expr,
-      ')',
-    ),
 
     _asset_expr_primary: $ => choice(
       $.identity,
@@ -218,7 +218,7 @@ module.exports = grammar({
     ),
 
     asset_expr_type: $ => prec.left('binary_exp', seq(
-      field('expression', $._asset_expr),
+      field('expression', $._inline_asset_expr),
       '[',
       field('type_id', $.identity),
       ']',
@@ -232,9 +232,9 @@ module.exports = grammar({
         ['.', 'binary_exp'],
       ].map(([operator, precedence, associativity]) =>
         (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
-          field('left', $._asset_expr),
+          field('left', $._inline_asset_expr),
           field('operator', operator),
-          field('right', $._asset_expr),
+          field('right', $._inline_asset_expr),
         )),
       )
     ),
@@ -245,7 +245,7 @@ module.exports = grammar({
         ['*', 'binary_exp'],
       ].map(([operator, precedence, associativity]) =>
         (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
-          field('expression', $._asset_expr),
+          field('expression', $._inline_asset_expr),
           field('operator', operator),
         )),
       )
