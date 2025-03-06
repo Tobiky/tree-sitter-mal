@@ -272,18 +272,24 @@ category Test {
           (attack_step
             id: (identity)
             reaches: (reaching
-              reaches: (identity)))
+              reaches: (asset_expr
+                (identity))))
           (attack_step
             id: (identity)
             reaches: (reaching
-              reaches: (identity)
-              reaches: (identity)))
+              reaches: (asset_expr
+                (identity))
+              reaches: (asset_expr
+                (identity))))
           (attack_step
             id: (identity)
             reaches: (reaching
-              reaches: (identity)))
+              reaches: (asset_expr
+                (identity))))
           (attack_step
             id: (identity)
             reaches: (reaching
-              reaches: (identity)
-              reaches: (identity))))))))
+              reaches: (asset_expr
+                (identity))
+              reaches: (asset_expr
+                (identity)))))))))

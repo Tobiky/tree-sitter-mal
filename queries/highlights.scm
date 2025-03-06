@@ -102,6 +102,14 @@
 (asset_variable
   id: (identity) @property)
 
+(reaching 
+  reaches: ((identity) @function)+)
+
+(reaching 
+  reaches: ((asset_expr_binop
+              left: (_)
+              right: (identity) @function))+)
+
 ; Miscellaneous
 (comment) @comment
 (attack_step tag: (identity) @tag)

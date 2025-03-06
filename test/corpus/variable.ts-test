@@ -19,4 +19,5 @@ category Test {
         body: (asset_definition
           (asset_variable
             id: (identity)
-            value: (identity)))))))
+            value: (asset_expr
+              (identity))))))))
