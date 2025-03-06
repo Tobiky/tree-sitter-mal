@@ -38,34 +38,45 @@ category Networking {
       //  ^ property
       //                             ^ operator
       //                               ^ punctuation.bracket
+      //                                ^ property
       //                                               ^ operator
+      //                                                  ^ property
       //                                                                        ^ punctuation.bracket
       let inboundAllowedConnections = (netConnections \/ ingoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
       //  ^ property
       //                            ^ operator
       //                              ^ punctuation.bracket
+      //                               ^ property
       //                                              ^ operator
+      //                                                 ^ property
       //                                                                       ^ operator
+      //                                                                          ^ property
       //                                                                                                    ^ punctuation.bracket
       let allNetConnections = (netConnections \/ ingoingNetConnections \/ outgoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
       //  ^ property
       //                    ^ operator
       //                      ^ punctuation.bracket
+      //                       ^ property
       //                                      ^ operator
+      //                                         ^ property
       //                                                               ^ operator
+      //                                                                  ^ property
       //                                                                                         ^ operator
+      //                                                                                            ^ property
       //                                                                                                                      ^ punctuation.bracket
       let allowedApplicationConnectionsApplications = (applications \/ allNetConnections().applications)
       // <- keyword
       //  ^ property
       //                                            ^ operator
       //                                              ^ punctuation.bracket
+      //                                               ^ property
       //                                                            ^ operator
       //                                                               ^ property
       //                                                                                ^^ punctuation.bracket
       //                                                                                  ^ operator
+      //                                                                                   ^ property
       //                                                                                               ^ punctuation.bracket
 
       | physicalAccess @entrypoint {C, A}
@@ -88,15 +99,20 @@ category Networking {
       //            ^ comment
       //              ^ comment
         ->  deny,
+      //    ^ function
       // ^ operator
       //        ^ punctuation.delimiter
             attemptAccessUninspectedFromPhysicalAccess,
+      //    ^ function
       //                                              ^ punctuation.delimiter
             attemptAccessInspectedFromPhysicalAccess,
+      //    ^ function
       //                                            ^ punctuation.delimiter
             bypassEavesdropDefenseFromPhysicalAccess,
+      //    ^ function
       //                                            ^ punctuation.delimiter
             bypassAdversaryInTheMiddleDefenseFromPhysicalAccess
+      //    ^ function
 
       | bypassEavesdropDefenseFromPhysicalAccess
       // <- operator
@@ -107,6 +123,7 @@ category Networking {
       //           ^ comment
         ->  eavesdropDefenseBypassed
       // ^ operator
+      //    ^ function
 
       | bypassAdversaryInTheMiddleDefenseFromPhysicalAccess
       // <- operator
@@ -117,6 +134,7 @@ category Networking {
       //           ^ comment
         ->  adversaryInTheMiddleDefenseBypassed
       // ^ operator
+      //    ^ function
 
       # networkAccessControl
       // <- operator
@@ -127,6 +145,7 @@ category Networking {
       //           ^ comment
         ->  accessControlBypassed
       // ^ operator
+      //    ^ function
 
       | bypassAccessControl [VeryHardAndUncertain]
       // <- operator
@@ -140,6 +159,7 @@ category Networking {
       //           ^ comment
         ->  accessControlBypassed
       // ^ operator
+      //    ^ function
 
       | accessControlBypassed @hidden
       // <- operator
@@ -152,8 +172,10 @@ category Networking {
       //                ^ comment
         ->  successfulAccessUninspectedFromPhysicalAccess,
       // ^ operator
+      //    ^ function
       //                                                 ^ punctuation.delimiter
             successfulAccessInspectedFromPhysicalAccess
+      //    ^ function
 
       | attemptAccessUninspectedFromPhysicalAccess @hidden
       // <- operator
@@ -166,6 +188,7 @@ category Networking {
       //                ^ comment
         ->  successfulAccessUninspectedFromPhysicalAccess,
       // ^ operator
+      //    ^ function
       //                                                 ^ punctuation.delimiter
             bypassAccessControl
 
@@ -180,8 +203,10 @@ category Networking {
       //                ^ comment
         ->  successfulAccessInspectedFromPhysicalAccess,
       // ^ operator
+      //    ^ function
       //                                               ^ punctuation.delimiter
             bypassAccessControl
+      //    ^ function
 
       & successfulAccessUninspectedFromPhysicalAccess @hidden
       // <- operator
@@ -194,6 +219,7 @@ category Networking {
       //                ^ comment
         ->  accessUninspected
       // ^ operator
+      //    ^ function
 
       & successfulAccessInspectedFromPhysicalAccess @hidden
       // <- operator
@@ -206,6 +232,7 @@ category Networking {
       //                ^ comment
         ->  accessInspected
       // ^ operator
+      //    ^ function
 
       | accessUninspected
       // <- operator
@@ -218,16 +245,25 @@ category Networking {
       // ^ operator
       //    ^ property
       //                              ^^ punctuation.bracket
+      //                                ^ operator
+      //                                 ^ function
       //                                                                        ^ punctuation.delimiter
             applications.networkConnectUninspected,
+      //    ^ function
+      //                ^ operator
+      //                 ^ function
       //                                          ^ punctuation.delimiter
             networkForwardingUninspected,
+      //    ^ function
       //                                ^ punctuation.delimiter
             attemptReverseReach,
+      //    ^ function
       //                       ^ punctuation.delimiter
             accessNetworkData,
+      //    ^ function
       //                     ^ punctuation.delimiter
             deny
+      //    ^ function
 
       | accessInspected
       // <- operator
@@ -240,14 +276,22 @@ category Networking {
       // ^ operator
       //    ^ property
       //                              ^^ punctuation.bracket
+      //                                ^ operator
+      //                                 ^ function
       //                                                                      ^ punctuation.delimiter
             applications.networkConnectInspected,
+      //    ^ property
+      //                ^ operator
+      //                 ^ function
       //                                        ^ punctuation.delimiter
             networkForwardingInspected,
+      //    ^ function
       //                              ^ punctuation.delimiter
             accessNetworkData,
+      //    ^ function
       //                     ^ punctuation.delimiter
             deny
+      //    ^ function
 
       | attemptReverseReach @hidden
       // <- operator
@@ -263,7 +307,7 @@ category Networking {
 
       & reverseReach @hidden
       // <- operator
-      //             ^operator
+      //             ^ operator
       //              ^ tag
         developer info: "Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates toward outgoing or bidirectional communications."
       // ^ comment
@@ -275,9 +319,12 @@ category Networking {
       //    ^ property
       //                             ^^ punctuation.bracket
       //                               ^ operator
+      //                                ^ function
       //                                                   ^ punctuation.delimiter
             applications.attemptReverseReach
+      //    ^ property
       //                ^ operator
+      //                 ^ function
 
       | networkForwardingUninspected @hidden
       // <- operator
@@ -293,14 +340,17 @@ category Networking {
       //      ^ property
       //                                ^^ punctuation.bracket
       //                                  ^ operator
+      //                                   ^ function
       //                                                                   ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsUninspected,
       //      ^ property
       //                                ^^ punctuation.bracket
       //                                  ^ operator
+      //                                   ^ function
       //                                                                          ^ punctuation.delimiter
 
               networkForwardingInspected
+      //      ^ function
 
       | networkForwardingInspected @hidden
       // <- operator
@@ -312,15 +362,17 @@ category Networking {
       //              ^ comment
       //                ^ comment
           ->  outboundAllowedConnections().attemptAccessNetworksInspected,
-      //      ^ property
       //  ^ operator
+      //      ^ property
       //                                ^^ punctuation.bracket
       //                                  ^ operator
+      //                                   ^ function
       //                                                                 ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsInspected
       //      ^ property
       //                                ^^ punctuation.bracket
       //                                  ^ operator
+      //                                   ^ function
 
       | deny {A}
       // <- operator
@@ -337,11 +389,13 @@ category Networking {
       //    ^ property
       //                     ^^ punctuation.bracket
       //                       ^ operator
+      //                        ^ function
       //                                   ^ punctuation.delimiter
             allowedApplicationConnectionsApplications().denyFromNetworkingAsset
       //    ^ property
       //                                             ^^ punctuation.bracket
       //                                               ^ operator
+      //                                                ^ function
 
       | accessNetworkData @hidden
       // <- operator
@@ -354,8 +408,10 @@ category Networking {
       //           ^ comment
         ->  attemptEavesdrop,
       // ^ operator
+      //    ^ function
       //                    ^ punctuation.delimiter
             attemptAdversaryInTheMiddle
+      //    ^ function
 
       # eavesdropDefense
       // <- operator
@@ -371,6 +427,7 @@ category Networking {
       //              ^ comment
         ->  eavesdropDefenseBypassed
       // ^ operator
+      //    ^ function
 
       | bypassEavesdropDefense [VeryHardAndUncertain]
       // <- operator
@@ -384,6 +441,7 @@ category Networking {
       //           ^ comment
         ->  eavesdropDefenseBypassed
       // ^ operator
+      //    ^ function
 
       | eavesdropDefenseBypassed @hidden
       // <- operator
@@ -396,6 +454,7 @@ category Networking {
       //                ^ comment
         ->  successfulEavesdrop
       // ^ operator
+      //    ^ function
 
       | attemptEavesdrop @hidden
       // <- operator
@@ -408,8 +467,10 @@ category Networking {
       //                ^ comment
         ->  successfulEavesdrop,
       // ^ operator
+      //    ^ function
       //                       ^ punctuation.delimiter
             bypassEavesdropDefense
+      //    ^ function
 
       & successfulEavesdrop @hidden
       // <- operator
@@ -422,6 +483,7 @@ category Networking {
       //                ^ comment
         ->  eavesdrop
       // ^ operator
+      //    ^ function
 
       | eavesdrop {C}
       // <- operator
@@ -435,7 +497,9 @@ category Networking {
       //           ^ comment
         ->  transitData.attemptRead
       // ^ operator
+      //    ^ function
       //               ^ operator
+      //                ^ function
 
       # adversaryInTheMiddleDefense
       // <- operator
@@ -446,6 +510,7 @@ category Networking {
       //           ^ comment
         ->  adversaryInTheMiddleDefenseBypassed
       // ^ operator
+      //    ^ function
 
       | bypassAdversaryInTheMiddleDefense [VeryHardAndUncertain]
       // <- operator
@@ -459,6 +524,7 @@ category Networking {
       //           ^ comment
         ->  adversaryInTheMiddleDefenseBypassed
       // ^ operator
+      //    ^ function
 
       | adversaryInTheMiddleDefenseBypassed @hidden
       // <- operator
@@ -471,6 +537,7 @@ category Networking {
       //                ^ comment
         ->  successfulAdversaryInTheMiddle
       // ^ operator
+      //    ^ function
 
       | attemptAdversaryInTheMiddle @hidden
       // <- operator
@@ -483,6 +550,7 @@ category Networking {
       //                ^ comment
         ->  successfulAdversaryInTheMiddle,
       // ^ operator
+      //    ^ function
       //                                  ^ punctuation.delimiter
             bypassAdversaryInTheMiddleDefense
 
@@ -497,6 +565,7 @@ category Networking {
       //                ^ comment
         ->  adversaryInTheMiddle
       // ^ operator
+      //    ^ function
 
       | adversaryInTheMiddle {C, I}
       // <- operator
@@ -512,12 +581,17 @@ category Networking {
       //           ^ comment
         ->  eavesdrop,
       // ^ operator
+      //    ^ function
       //             ^ punctuation.delimiter
             transitData.attemptWrite,
+      //    ^ property
       //               ^ operator
+      //                ^ function
       //                            ^ punctuation.delimiter
             transitData.attemptApplicationRespondConnect
+      //    ^ property
       //               ^ operator
+      //                ^ function
       //                            ^ punctuation.delimiter
     }
 
@@ -543,7 +617,9 @@ category Networking {
       //          ^ comment
         ->  connectionRules.attemptDeny
       // ^ operator
+      //    ^ property
       //                   ^ operator
+      //                    ^ function
 
       | fullAccess {I, A}
       // <- operator
@@ -560,19 +636,31 @@ category Networking {
         +>  (connectionRules.networks \/ connectionRules.outNetworks \/ connectionRules.inNetworks \/ connectionRules.diodeInNetworks).accessUninspected,
       // ^ operator
       //    ^ punctuation.bracket
+      //     ^ property
       //                    ^ operator
+      //                     ^ property
       //                              ^ operator
+      //                                 ^ property
       //                                                ^ operator
+      //                                                 ^ property
       //                                                             ^ operator
+      //                                                                ^ property
       //                                                                               ^ operator
+      //                                                                                ^ property
       //                                                                                           ^ operator
+      //                                                                                              ^ property
       //                                                                                                             ^ operator
+      //                                                                                                              ^ property
       //                                                                                                                             ^ punctuation.bracket
       //                                                                                                                              ^ operator
       //                                                                                                                                                ^ punctuation.delimiter
             connectionRules.applications.networkConnectUninspected
+      //    ^ property
       //                   ^ operator
+      //                    ^ property
       //                                ^ operator
+      //                                 ^ function
+      
     }
     // <- punctuation.bracket
 
@@ -595,22 +683,29 @@ category Networking {
       //  ^ property
       //                  ^ operator
       //                    ^ punctuation.bracket
+      //                     ^ property
       //                                  ^ operator
+      //                                    ^ property
       //                                                    ^ operator
+      //                                                       ^ property
       //                                                                      ^ punctuation.bracket
       let senderApplications = (applications \/ outApplications)
       // <- keyword
       //  ^ property
       //                     ^ operator
       //                       ^ punctuation.bracket
+      //                        ^ property
       //                                     ^ operator
+      //                                        ^ property
       //                                                       ^ punctuation.bracket
       let receiverApplications = (applications \/ inApplications)
       // <- keyword
       //  ^ property
       //                       ^ operator
       //                         ^ punctuation.bracket
+      //                          ^ property
       //                                       ^ operator
+      //                                          ^ property
       //                                                        ^ punctuation.bracket
 
       # restricted [Disabled]
@@ -625,6 +720,7 @@ category Networking {
       //           ^ comment
         ->  restrictedBypassed
       // ^ operator
+      //    ^ function
 
       | bypassRestricted [VeryHardAndUncertain]
       // <- operator
@@ -638,6 +734,7 @@ category Networking {
       //           ^ comment
         ->  restrictedBypassed
       // ^ operator
+      //    ^ function
 
       | restrictedBypassed @hidden
       // <- operator
@@ -650,16 +747,22 @@ category Networking {
       //                ^ comment
         ->  successfulAccessNetworksUninspected,
       // ^ operator
+      //    ^ function
       //                                       ^ punctuation.delimiter
             successfulAccessNetworksInspected,
+      //    ^ function
       //                                     ^ punctuation.delimiter
             connectToApplicationsUninspected,
+      //    ^ function
       //                                    ^ punctuation.delimiter
             connectToApplicationsInspected,
+      //    ^ function
       //                                  ^ punctuation.delimiter
             deny,
+      //    ^ function
       //        ^ punctuation.delimiter
             reverseReach
+      //    ^ function
 
       # payloadInspection [Disabled]
       // <- operator
@@ -673,6 +776,7 @@ category Networking {
       //           ^ comment
         ->  payloadInspectionBypassed
       // ^ operator
+      //    ^ function
 
       | bypassPayloadInspection [VeryHardAndUncertain]
       // <- operator
@@ -686,6 +790,7 @@ category Networking {
       //           ^ comment
         ->  payloadInspectionBypassed
       // ^ operator
+      //    ^ function
 
       | payloadInspectionBypassed @hidden
       // <- operator
@@ -698,10 +803,13 @@ category Networking {
       //                ^ comment
         ->  successfulAccessNetworksUninspected,
       // ^ operator
+      //    ^ function
       //                                       ^ punctuation.delimiter
             connectToApplicationsUninspected,
+      //    ^ function
       //                                    ^ punctuation.delimiter
             reverseReach
+      //    ^ function
 
       // All the hidden attack steps below are hidden because they are just used for the internal mechanics of the ConnectionRules
       | attemptReverseReach @hidden
@@ -715,10 +823,13 @@ category Networking {
       //                ^ comment
         ->  reverseReach,
       // ^ operator
+      //    ^ function
       //                ^ punctuation.delimiter
             bypassRestricted,
+      //    ^ function
       //                    ^ punctuation.delimiter
             bypassPayloadInspection
+      //    ^ function
 
       & reverseReach @hidden
       // <- operator
@@ -734,12 +845,16 @@ category Networking {
       //    ^ property
       //                      ^^ punctuation.bracket
       //                        ^ operator
+      //                         ^ function
       //                                            ^ punctuation.delimiter
             (networks \/ outNetworks).attemptReverseReach
       //    ^ punctuation.bracket
+      //     ^ property
       //              ^ operator
+      //                 ^ property
       //                            ^ punctuation.bracket
       //                             ^ operator
+      //                              ^ function
 
       | attemptAccessNetworksUninspected @hidden
       // <- operator
@@ -760,10 +875,13 @@ category Networking {
       //                                                      ^ punctuation.bracket
         ->  successfulAccessNetworksUninspected,
       // ^ operator
+      //    ^ function
       //                                       ^ punctuation.delimiter
             bypassRestricted,
+      //    ^ function
       //                    ^ punctuation.delimiter
             bypassPayloadInspection
+      //    ^ function
 
       | attemptAccessNetworksInspected @hidden
       // <- operator
@@ -776,8 +894,10 @@ category Networking {
       //                ^ comment
         ->  successfulAccessNetworksInspected,
       // ^ operator
+      //    ^ function
       //                                     ^ punctuation.delimiter
             bypassRestricted
+      //    ^ function
 
       & successfulAccessNetworksUninspected @hidden
       // <- operator
@@ -790,6 +910,7 @@ category Networking {
       //                ^ comment
         ->  accessNetworksUninspected
       // ^ operator
+      //    ^ function
 
       & successfulAccessNetworksInspected @hidden
       // <- operator
@@ -802,6 +923,7 @@ category Networking {
       //                ^ comment
         ->  accessNetworksInspected
       // ^ operator
+      //    ^ function
 
       | accessNetworksUninspected
       // <- operator
@@ -817,6 +939,7 @@ category Networking {
       //                              ^ operator
       //                                                ^ punctuation.bracket
       //                                                 ^ operator
+      //                                                  ^ function
       //                                                                   ^ punctuation.delimiter
             accessNetworksInspected
 
@@ -828,6 +951,15 @@ category Networking {
       //              ^ comment
       //                ^ comment
         ->  (networks  \/ inNetworks  \/ diodeInNetworks).accessInspected
+      // ^ operator
+      //    ^ punctuation.bracket
+      //               ^ operator
+      //                  ^ property
+      //                              ^ operator
+      //                                 ^ property
+      //                                                ^ punctuation.bracket
+      //                                                 ^ operator
+      //                                                  ^ function
 
       | attemptConnectToApplicationsUninspected @hidden
       // <- operator
@@ -840,10 +972,13 @@ category Networking {
       //                ^ comment
         ->  connectToApplicationsUninspected,
       // ^ operator
+      //    ^ function
       //                                    ^ punctuation.delimiter
             bypassRestricted,
+      //    ^ function
       //                    ^ punctuation.delimiter
             bypassPayloadInspection
+      //    ^ function
 
       | attemptConnectToApplicationsInspected @hidden
       // <- operator
@@ -856,8 +991,10 @@ category Networking {
       //                ^ comment
         ->  connectToApplicationsInspected,
       // ^ operator
+      //    ^ function
       //                                  ^ punctuation.delimiter
             bypassRestricted
+      //    ^ function
 
       & connectToApplicationsUninspected @hidden
       // <- operator
@@ -873,11 +1010,13 @@ category Networking {
       //    ^ property
       //                        ^^ punctuation.bracket
       //                          ^ operator
+      //                           ^ functional
       //                                                    ^ punctuation.delimiter
             receiverApplications().networkConnectInspected
       //    ^ property
       //                        ^^ punctuation.bracket
       //                          ^ operator
+      //                           ^ functional
 
       & connectToApplicationsInspected @hidden
       // <- operator
@@ -893,6 +1032,7 @@ category Networking {
       //    ^ property
       //                        ^^ punctuation.bracket
       //                          ^ operator
+      //                           ^ functional
 
       | attemptDeny @hidden
       // <- operator
@@ -905,8 +1045,10 @@ category Networking {
       //                ^ comment
         ->  deny,
       // ^ operator
+      //    ^ function
       //        ^ punctuation.delimiter
             bypassRestricted
+      //    ^ function
 
       & deny {A}
       // <- operator
@@ -923,6 +1065,7 @@ category Networking {
       //    ^ property
       //                   ^^ punctuation.bracket
       //                     ^ operator
+      //                      ^ function
     }
 }
 
