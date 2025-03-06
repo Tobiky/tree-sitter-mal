@@ -102,13 +102,10 @@
 (asset_variable
   id: (identity) @property)
 
-(reaching 
-  reaches: ((identity) @function)+)
-
-(reaching 
-  reaches: ((asset_expr_binop
-              left: (_)
-              right: (identity) @function))+)
+(asset_expr [(identity) @function
+             (asset_expr_binop
+               left: (_)
+               right: (identity) @function)])
 
 ; Miscellaneous
 (comment) @comment
