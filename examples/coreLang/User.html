@@ -17,27 +17,27 @@
     }
   </style>
   <style>
-    .attribute { font-style: italic;color: #af0000; }
-    .variable.parameter { text-decoration: underline;; }
-    .function { color: #005fd7; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .tag { color: #000087; }
-    .string.special { color: #008787; }
-    .comment { font-style: italic;color: #8a8a8a; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
-    .property { color: #af0000; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
     .keyword { color: #5f00d7; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .variable.builtin { font-weight: bold;; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
     .constructor { color: #af8700; }
     .module { color: #af8700; }
-    .string { color: #008700; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .number { font-weight: bold;color: #875f00; }
     .constant { color: #875f00; }
-    .type.builtin { font-weight: bold;color: #005f5f; }
+    .property { color: #af0000; }
+    .string { color: #008700; }
+    .comment { font-style: italic;color: #8a8a8a; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .attribute { font-style: italic;color: #af0000; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .variable.parameter { text-decoration: underline;; }
+    .tag { color: #000087; }
+    .number { font-weight: bold;color: #875f00; }
+    .string.special { color: #008787; }
+    .function { color: #005fd7; }
     .type { color: #005f5f; }
-    .variable.builtin { font-weight: bold;; }
   </style>
 
 </head>
@@ -90,7 +90,7 @@
 </td></tr>
 <tr><td class=line-number>23</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If one credential of that user is compromised there is a probability that all other credentials of that user are also compromised.&quot;</span>
 </td></tr>
-<tr><td class=line-number>24</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  passwordReuseCompromise
+<tr><td class=line-number>24</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>passwordReuseCompromise</span>
 </td></tr>
 <tr><td class=line-number>25</td><td class=line>
 </td></tr>
@@ -98,7 +98,7 @@
 </td></tr>
 <tr><td class=line-number>27</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The user does not utilise removable media and therefore the attack steps associated with it cannot be reached.&quot;</span>
 </td></tr>
-<tr><td class=line-number>28</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulDeliverMaliciousRemovableMedia
+<tr><td class=line-number>28</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>successfulDeliverMaliciousRemovableMedia</span>
 </td></tr>
 <tr><td class=line-number>29</td><td class=line>
 </td></tr>
@@ -106,9 +106,9 @@
 </td></tr>
 <tr><td class=line-number>31</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;The security awareness of the user makes it less likely that social engineering would be successful and reduces the likelihood that the user will engage in unsafe behaviour.&quot;</span>
 </td></tr>
-<tr><td class=line-number>32</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  securityAwarenessBypassed<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>32</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>securityAwarenessBypassed</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>33</td><td class=line>            weakCredentials
+<tr><td class=line-number>33</td><td class=line>            <span style='color: #005fd7'>weakCredentials</span>
 </td></tr>
 <tr><td class=line-number>34</td><td class=line>
 </td></tr>
@@ -116,7 +116,7 @@
 </td></tr>
 <tr><td class=line-number>36</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Security awareness can be bypassed.&quot;</span>
 </td></tr>
-<tr><td class=line-number>37</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  securityAwarenessBypassed
+<tr><td class=line-number>37</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>securityAwarenessBypassed</span>
 </td></tr>
 <tr><td class=line-number>38</td><td class=line>
 </td></tr>
@@ -124,9 +124,9 @@
 </td></tr>
 <tr><td class=line-number>40</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Security awareness is bypassed either because it was not set, the attacker was able to circumvent it through additional effort, or we simply assume that everyone has an off day every now and then.&quot;</span>
 </td></tr>
-<tr><td class=line-number>41</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulSocialEngineering<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>41</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>successfulSocialEngineering</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>42</td><td class=line>            successfulDeliverMaliciousRemovableMedia
+<tr><td class=line-number>42</td><td class=line>            <span style='color: #005fd7'>successfulDeliverMaliciousRemovableMedia</span>
 </td></tr>
 <tr><td class=line-number>43</td><td class=line>
 </td></tr>
@@ -134,7 +134,7 @@
 </td></tr>
 <tr><td class=line-number>45</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;This intermediate attack step is needed in order to block passwordReuseCompromise when no other credential is first compromised.&quot;</span>
 </td></tr>
-<tr><td class=line-number>46</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  passwordReuseCompromise
+<tr><td class=line-number>46</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>passwordReuseCompromise</span>
 </td></tr>
 <tr><td class=line-number>47</td><td class=line>
 </td></tr>
@@ -142,7 +142,7 @@
 </td></tr>
 <tr><td class=line-number>49</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;If one reused credential of that user is compromised then, all other credentials of that user can also be compromised.&quot;</span>
 </td></tr>
-<tr><td class=line-number>50</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>credentials<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptCredentialsReuse
+<tr><td class=line-number>50</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>credentials<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptCredentialsReuse</span>
 </td></tr>
 <tr><td class=line-number>51</td><td class=line>
 </td></tr>
@@ -150,7 +150,7 @@
 </td></tr>
 <tr><td class=line-number>53</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step that defines the strength of all of the Credentials associated with the user. This is inversely proportional with the user&#39;s securityAwareness defense.&quot;</span>
 </td></tr>
-<tr><td class=line-number>54</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>credentials<span style='font-weight: bold;color: #4e4e4e'>.</span>weakCredentials
+<tr><td class=line-number>54</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>credentials<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>weakCredentials</span>
 </td></tr>
 <tr><td class=line-number>55</td><td class=line>
 </td></tr>
@@ -162,9 +162,9 @@
 </td></tr>
 <tr><td class=line-number>59</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;Social engineering is modeled by having the attacker trigger this attack step on the target Users.&quot;</span>
 </td></tr>
-<tr><td class=line-number>60</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulSocialEngineering<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>60</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>successfulSocialEngineering</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>61</td><td class=line>            bypassSecurityAwareness
+<tr><td class=line-number>61</td><td class=line>            <span style='color: #005fd7'>bypassSecurityAwareness</span>
 </td></tr>
 <tr><td class=line-number>62</td><td class=line>
 </td></tr>
@@ -172,7 +172,7 @@
 </td></tr>
 <tr><td class=line-number>64</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
-<tr><td class=line-number>65</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  socialEngineering
+<tr><td class=line-number>65</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>socialEngineering</span>
 </td></tr>
 <tr><td class=line-number>66</td><td class=line>
 </td></tr>
@@ -180,9 +180,9 @@
 </td></tr>
 <tr><td class=line-number>68</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Currently social engineering entails phishing credentials and tricking the user into unsafe actions that expose Applications to the attacker. In the future, other social engineering techniques should be added to this attack step.&quot;</span>
 </td></tr>
-<tr><td class=line-number>69</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  credentialTheft<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>69</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>credentialTheft</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>70</td><td class=line>            unsafeUserActivity
+<tr><td class=line-number>70</td><td class=line>            <span style='color: #005fd7'>unsafeUserActivity</span>
 </td></tr>
 <tr><td class=line-number>71</td><td class=line>
 </td></tr>
@@ -194,9 +194,9 @@
 </td></tr>
 <tr><td class=line-number>75</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;Social engineering is modeled by having the attacker trigger this attack step on hthe target Users.&quot;</span>
 </td></tr>
-<tr><td class=line-number>76</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  successfulDeliverMaliciousRemovableMedia<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>76</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>successfulDeliverMaliciousRemovableMedia</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>77</td><td class=line>            bypassSecurityAwareness
+<tr><td class=line-number>77</td><td class=line>            <span style='color: #005fd7'>bypassSecurityAwareness</span>
 </td></tr>
 <tr><td class=line-number>78</td><td class=line>
 </td></tr>
@@ -204,7 +204,7 @@
 </td></tr>
 <tr><td class=line-number>80</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step to model defenses.&quot;</span>
 </td></tr>
-<tr><td class=line-number>81</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  deliverMaliciousRemovableMedia
+<tr><td class=line-number>81</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>deliverMaliciousRemovableMedia</span>
 </td></tr>
 <tr><td class=line-number>82</td><td class=line>
 </td></tr>
@@ -212,11 +212,11 @@
 </td></tr>
 <tr><td class=line-number>84</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The user is assumed to connect the removable media containing the malicious code to all of the hardware systems that they have access to. Since this is expected to unwittingly happen as part of their normal operations the attack exposes their regular security context.&quot;</span>
 </td></tr>
-<tr><td class=line-number>85</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptAssume<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>85</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAssume</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>86</td><td class=line>            physicalZones<span style='font-weight: bold;color: #4e4e4e'>.</span>hardwareSystems<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptUnsafeUserActivity<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>86</td><td class=line>            physicalZones<span style='font-weight: bold;color: #4e4e4e'>.</span>hardwareSystems<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptUnsafeUserActivity</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>87</td><td class=line>            hardwareSystems<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptUnsafeUserActivity
+<tr><td class=line-number>87</td><td class=line>            hardwareSystems<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptUnsafeUserActivity</span>
 </td></tr>
 <tr><td class=line-number>88</td><td class=line>
 </td></tr>
@@ -226,7 +226,7 @@
 </td></tr>
 <tr><td class=line-number>91</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;Distribution: Bernoulli(0.5) * Exponential(0.1), source: Sommestad (2011) Password authentication attacks: a survey of attacks and when they will succeed, suggest to use Bernoulli(0.05)&quot;</span>
 </td></tr>
-<tr><td class=line-number>92</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>credentials<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptCredentialTheft
+<tr><td class=line-number>92</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>credentials<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptCredentialTheft</span>
 </td></tr>
 <tr><td class=line-number>93</td><td class=line>
 </td></tr>
@@ -236,9 +236,9 @@
 </td></tr>
 <tr><td class=line-number>96</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>modeler info: &quot;If the attacker is not able to reach (or be reached) via any of the Applications this garnered access does not materialise into any actual attack vectors.&quot;</span>
 </td></tr>
-<tr><td class=line-number>97</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptAssume<span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>97</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  userIds<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAssume</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>98</td><td class=line>            userIds<span style='font-weight: bold;color: #4e4e4e'>.</span>attemptUnsafeUserActivity
+<tr><td class=line-number>98</td><td class=line>            userIds<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptUnsafeUserActivity</span>
 </td></tr>
 <tr><td class=line-number>99</td><td class=line>    <span style='color: #4e4e4e'>}</span>
 </td></tr>

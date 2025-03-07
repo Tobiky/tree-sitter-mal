@@ -19,31 +19,31 @@
 [38;5;56mcategory[0m [38;5;136mSystem[0m [38;5;239m{[0m
   [38;5;56masset[0m [38;5;23mNetwork[0m [38;5;239m{[0m
     [1m[38;5;239m|[0m access
-      [1m[38;5;239m->[0m hosts[1m[38;5;239m.[0mconnect
+      [1m[38;5;239m->[0m hosts[1m[38;5;239m.[0m[38;5;26mconnect[0m
   [38;5;239m}[0m
 
   [38;5;56masset[0m [38;5;23mHost[0m [38;5;239m{[0m
     [1m[38;5;239m|[0m connect
-      [1m[38;5;239m->[0m access
+      [1m[38;5;239m->[0m [38;5;26maccess[0m
     [1m[38;5;239m|[0m authenticate
-      [1m[38;5;239m->[0m access
+      [1m[38;5;239m->[0m [38;5;26maccess[0m
     [1m[38;5;239m|[0m guessPassword
-      [1m[38;5;239m->[0m guessedPassword
+      [1m[38;5;239m->[0m [38;5;26mguessedPassword[0m
     [1m[38;5;239m|[0m guessedPassword [38;5;239m[[0m[38;5;26mExponential[0m[38;5;239m([0m[1m[38;5;94m0.02[0m[38;5;239m)[0m[38;5;239m][0m
-      [1m[38;5;239m->[0m authenticate
+      [1m[38;5;239m->[0m [38;5;26mauthenticate[0m
     [1m[38;5;239m&[0m access
   [38;5;239m}[0m
 
   [38;5;56masset[0m [38;5;23mUser[0m [38;5;239m{[0m
     [1m[38;5;239m|[0m attemptPhishing
-      [1m[38;5;239m->[0m phish
+      [1m[38;5;239m->[0m [38;5;26mphish[0m
     [1m[38;5;239m|[0m phish [38;5;239m[[0m[38;5;26mExponential[0m[38;5;239m([0m[1m[38;5;94m0.1[0m[38;5;239m)[0m[38;5;239m][0m
-      [1m[38;5;239m->[0m passwords[1m[38;5;239m.[0mobtain
+      [1m[38;5;239m->[0m passwords[1m[38;5;239m.[0m[38;5;26mobtain[0m
   [38;5;239m}[0m
 
   [38;5;56masset[0m [38;5;23mPassword[0m [38;5;239m{[0m
     [1m[38;5;239m|[0m obtain
-      [1m[38;5;239m->[0m host[1m[38;5;239m.[0mauthenticate
+      [1m[38;5;239m->[0m host[1m[38;5;239m.[0m[38;5;26mauthenticate[0m
   [38;5;239m}[0m
 [38;5;239m}[0m
 
