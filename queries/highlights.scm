@@ -108,6 +108,13 @@
                operator: "."
                right: (identity) @function .)])
 
+(asset_expr_binop
+  left: [(identity) @property
+         (asset_expr_binop)]
+  operator: ((_) @operator (#not-eq? @operator "."))
+  right: [(identity) @property
+         (asset_expr_binop)])
+
 ; Miscellaneous
 (comment) @comment
 (attack_step tag: (identity) @tag)
