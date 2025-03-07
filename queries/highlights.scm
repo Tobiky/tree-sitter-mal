@@ -104,8 +104,9 @@
 
 (asset_expr [(identity) @function
              (asset_expr_binop
-               left: (_)
-               right: (identity) @function)])
+               left: (_)*
+               operator: "."
+               right: (identity) @function .)])
 
 ; Miscellaneous
 (comment) @comment
