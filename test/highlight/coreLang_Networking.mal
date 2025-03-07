@@ -38,45 +38,34 @@ category Networking {
       //  ^ property
       //                             ^ operator
       //                               ^ punctuation.bracket
-      //                                ^ property
       //                                               ^ operator
-      //                                                  ^ property
       //                                                                        ^ punctuation.bracket
       let inboundAllowedConnections = (netConnections \/ ingoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
       //  ^ property
       //                            ^ operator
       //                              ^ punctuation.bracket
-      //                               ^ property
       //                                              ^ operator
-      //                                                 ^ property
       //                                                                       ^ operator
-      //                                                                          ^ property
       //                                                                                                    ^ punctuation.bracket
       let allNetConnections = (netConnections \/ ingoingNetConnections \/ outgoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
       //  ^ property
       //                    ^ operator
       //                      ^ punctuation.bracket
-      //                       ^ property
       //                                      ^ operator
-      //                                         ^ property
       //                                                               ^ operator
-      //                                                                  ^ property
       //                                                                                         ^ operator
-      //                                                                                            ^ property
       //                                                                                                                      ^ punctuation.bracket
       let allowedApplicationConnectionsApplications = (applications \/ allNetConnections().applications)
       // <- keyword
       //  ^ property
       //                                            ^ operator
       //                                              ^ punctuation.bracket
-      //                                               ^ property
       //                                                            ^ operator
       //                                                               ^ property
       //                                                                                ^^ punctuation.bracket
       //                                                                                  ^ operator
-      //                                                                                   ^ property
       //                                                                                               ^ punctuation.bracket
 
       | physicalAccess @entrypoint {C, A}
@@ -322,7 +311,6 @@ category Networking {
       //                                ^ function
       //                                                   ^ punctuation.delimiter
             applications.attemptReverseReach
-      //    ^ property
       //                ^ operator
       //                 ^ function
 
@@ -584,12 +572,10 @@ category Networking {
       //    ^ function
       //             ^ punctuation.delimiter
             transitData.attemptWrite,
-      //    ^ property
       //               ^ operator
       //                ^ function
       //                            ^ punctuation.delimiter
             transitData.attemptApplicationRespondConnect
-      //    ^ property
       //               ^ operator
       //                ^ function
       //                            ^ punctuation.delimiter
@@ -617,7 +603,6 @@ category Networking {
       //          ^ comment
         ->  connectionRules.attemptDeny
       // ^ operator
-      //    ^ property
       //                   ^ operator
       //                    ^ function
 
@@ -636,28 +621,18 @@ category Networking {
         +>  (connectionRules.networks \/ connectionRules.outNetworks \/ connectionRules.inNetworks \/ connectionRules.diodeInNetworks).accessUninspected,
       // ^ operator
       //    ^ punctuation.bracket
-      //     ^ property
       //                    ^ operator
-      //                     ^ property
       //                              ^ operator
-      //                                 ^ property
       //                                                ^ operator
-      //                                                 ^ property
       //                                                             ^ operator
-      //                                                                ^ property
       //                                                                               ^ operator
-      //                                                                                ^ property
       //                                                                                           ^ operator
-      //                                                                                              ^ property
       //                                                                                                             ^ operator
-      //                                                                                                              ^ property
       //                                                                                                                             ^ punctuation.bracket
       //                                                                                                                              ^ operator
       //                                                                                                                                                ^ punctuation.delimiter
             connectionRules.applications.networkConnectUninspected
-      //    ^ property
       //                   ^ operator
-      //                    ^ property
       //                                ^ operator
       //                                 ^ function
       
@@ -683,29 +658,22 @@ category Networking {
       //  ^ property
       //                  ^ operator
       //                    ^ punctuation.bracket
-      //                     ^ property
       //                                  ^ operator
-      //                                    ^ property
       //                                                    ^ operator
-      //                                                       ^ property
       //                                                                      ^ punctuation.bracket
       let senderApplications = (applications \/ outApplications)
       // <- keyword
       //  ^ property
       //                     ^ operator
       //                       ^ punctuation.bracket
-      //                        ^ property
       //                                     ^ operator
-      //                                        ^ property
       //                                                       ^ punctuation.bracket
       let receiverApplications = (applications \/ inApplications)
       // <- keyword
       //  ^ property
       //                       ^ operator
       //                         ^ punctuation.bracket
-      //                          ^ property
       //                                       ^ operator
-      //                                          ^ property
       //                                                        ^ punctuation.bracket
 
       # restricted [Disabled]
@@ -849,9 +817,7 @@ category Networking {
       //                                            ^ punctuation.delimiter
             (networks \/ outNetworks).attemptReverseReach
       //    ^ punctuation.bracket
-      //     ^ property
       //              ^ operator
-      //                 ^ property
       //                            ^ punctuation.bracket
       //                             ^ operator
       //                              ^ function
@@ -954,9 +920,7 @@ category Networking {
       // ^ operator
       //    ^ punctuation.bracket
       //               ^ operator
-      //                  ^ property
       //                              ^ operator
-      //                                 ^ property
       //                                                ^ punctuation.bracket
       //                                                 ^ operator
       //                                                  ^ function
