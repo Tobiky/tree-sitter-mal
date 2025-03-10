@@ -22,7 +22,7 @@
             "named": false
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -32,7 +32,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -93,7 +93,7 @@
           "named": true
         },
         {
-          "type": "identity",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -132,7 +132,7 @@
             "named": true
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -188,7 +188,7 @@
             "named": true
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -228,7 +228,7 @@
             "named": true
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -238,7 +238,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -278,7 +278,7 @@
             "named": true
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -304,7 +304,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -330,7 +330,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -346,7 +346,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -356,7 +356,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -366,7 +366,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -396,7 +396,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -406,7 +406,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -475,7 +475,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -545,7 +545,7 @@
             "named": false
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -581,7 +581,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -649,7 +649,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -705,7 +705,7 @@
         "required": false,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -736,7 +736,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -746,7 +746,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -762,7 +762,7 @@
       "required": true,
       "types": [
         {
-          "type": "identity",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -793,7 +793,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -955,7 +955,7 @@
           "named": true
         },
         {
-          "type": "identity",
+          "type": "identifier",
           "named": true
         },
         {
@@ -994,7 +994,7 @@
             "named": true
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           },
           {
@@ -1054,7 +1054,7 @@
             "named": true
           },
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           },
           {
@@ -1082,7 +1082,7 @@
         "required": true,
         "types": [
           {
-            "type": "identity",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1253,7 +1253,7 @@
     "named": true
   },
   {
-    "type": "identity",
+    "type": "identifier",
     "named": true
   },
   {

@@ -15,7 +15,7 @@ module.exports = grammar({
     $.comment,
   ],
 
-  word: $ => $.identity,
+  word: $ => $.identifier,
 
   conflicts: $ => [
     // FIXME: Conflict at end of association when there shouldn't be one
@@ -55,7 +55,7 @@ module.exports = grammar({
 
     category_declaration: $ => seq(
       'category',
-      field('id', $.identity),
+      field('id', $.identifier),
       field('meta', repeat($.meta)),
       '{',
       field('assets', repeat($.asset_declaration)),
@@ -66,8 +66,8 @@ module.exports = grammar({
     asset_declaration: $ => seq(
       optional(alias('abstract', 'abstract')),
       'asset',
-      field('id', $.identity),
-      field('extends', optional(seq('extends', $.identity))),
+      field('id', $.identifier),
+      field('extends', optional(seq('extends', $.identifier))),
       field('meta', repeat($.meta)),
       '{',
       optional(field('body', $.asset_definition)),
@@ -79,7 +79,7 @@ module.exports = grammar({
     // A varaible within an asset
     asset_variable: $ => seq(
       'let',
-      field('id', $.identity),
+      field('id', $.identifier),
       '=',
       field('value', $.asset_expr),
     ),
@@ -93,8 +93,8 @@ module.exports = grammar({
         'E',
         '!E',
       )),
-      field('id', $.identity),
-      repeat(field('tag', seq('@', $.identity))),
+      field('id', $.identifier),
+      optional(field('tag', seq('@', $.identifier))),
       optional(field('cias', seq(
         '{',
         $.cias,
@@ -115,11 +115,11 @@ module.exports = grammar({
       choice('!', token(prec(1, '//!'))),
       optional(field('name', $.detector_name)),
       field('context', $.detector_context),
-      optional(field('type', $.identity)),
+      optional(field('type', $.identifier)),
       optional(field('ttc', $.ttc)),
     ),
 
-    detector_name: $ => sep1($.identity, '.'),
+    detector_name: $ => sep1($.identifier, '.'),
 
     detector_context: $ => seq(
       '(',
@@ -128,8 +128,8 @@ module.exports = grammar({
     ),
 
     detector_context_asset: $ => seq(
-      field('type', $.identity),
-      field('id', $.identity),
+      field('type', $.identifier),
+      field('id', $.identifier),
     ),
 
     // Precondition for attack steps
@@ -164,12 +164,12 @@ module.exports = grammar({
 
     _ttc_primary: $ => choice(
       $._number,
-      $.identity,
+      $.identifier,
       $.ttc_distribution,
     ),
 
     ttc_distribution: $ => seq(
-      field('id', $.identity),
+      field('id', $.identifier),
       '(',
       field('values', commaSep1($._number)),
       ')',
@@ -207,12 +207,12 @@ module.exports = grammar({
 
 
     _asset_expr_primary: $ => choice(
-      $.identity,
+      $.identifier,
       $.asset_variable_substitution
     ),
 
     asset_variable_substitution: $ => seq(
-      field('id', $.identity),
+      field('id', $.identifier),
       '(',
       ')',
     ),
@@ -220,7 +220,7 @@ module.exports = grammar({
     asset_expr_type: $ => prec.left('binary_exp', seq(
       field('expression', $._inline_asset_expr),
       '[',
-      field('type_id', $.identity),
+      field('type_id', $.identifier),
       ']',
     )),
 
@@ -254,7 +254,7 @@ module.exports = grammar({
     // Define values, i.e. global string constants
     define_declaration: $ => seq(
       '#',
-      field('id', $.identity),
+      field('id', $.identifier),
       ':',
       field('value', $.string)
     ),
@@ -269,15 +269,15 @@ module.exports = grammar({
     ),
 
     association: $ => seq(
-      field('left_id', $.identity),
-      '[', field('left_field_id', $.identity), ']',
+      field('left_id', $.identifier),
+      '[', field('left_field_id', $.identifier), ']',
       field('left_mult', $.multiplicity),
       '<--',
-      field('id', $.identity),
+      field('id', $.identifier),
       '-->',
       field('right_mult', $.multiplicity),
-      '[', field('right_field_id', $.identity), ']',
-      field('right_id', $.identity),
+      '[', field('right_field_id', $.identifier), ']',
+      field('right_id', $.identifier),
       field('meta', repeat($.meta)),
     ),
 
@@ -300,7 +300,7 @@ module.exports = grammar({
 
     // Meta information for category, asset, or otherwise.
     meta: $ => seq(
-      field('id', $.identity),
+      field('id', $.identifier),
       'info',
       ':',
       field('info', alias($.string, $.meta_string)),
@@ -311,7 +311,7 @@ module.exports = grammar({
     _number: $ => choice($.integer, $.float),
     integer: _ => token(/[0-9]+/),
     float: _ => token(/(:?[0-9]+(:?[.][0-9]*)?|[.][0-9]+)/),
-    identity: _ => token(/[a-zA-Z0-9_]+/),
+    identifier: _ => token(/[a-zA-Z0-9_]+/),
 
     star: _ => token('*'),
     cia: _ => token(/[CIA]/)
