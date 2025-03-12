@@ -11,9 +11,9 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)))))
+        id: (identifier)))))
 
 ================================
 Empty Abstract Asset Declaration
@@ -28,9 +28,9 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)))))
+        id: (identifier)))))
 
 =================================
 Empty Extending Asset Declaration
@@ -45,10 +45,10 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
-        extends: (identity)))))
+        id: (identifier)
+        extends: (identifier)))))
 
 ==========================================
 Empty Extending Abstract Asset Declaration
@@ -64,10 +64,10 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
-        extends: (identity)))))
+        id: (identifier)
+        extends: (identifier)))))
 
 ================
 Two Empty Assets
@@ -83,11 +83,11 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity))
+        id: (identifier))
       assets: (asset_declaration
-        id: (identity)))))
+        id: (identifier)))))
 
 ======================================
 Empty Asset Declaration with Meta Info
@@ -105,17 +105,17 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         meta: (meta
-          id: (identity)
+          id: (identifier)
           info: (meta_string))
         meta: (meta
-          id: (identity)
+          id: (identifier)
           info: (meta_string)))
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         meta: (meta
-          id: (identity)
+          id: (identifier)
           info: (meta_string))))))

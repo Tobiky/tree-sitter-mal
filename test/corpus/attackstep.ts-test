@@ -17,20 +17,20 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity))
+            id: (identifier))
           (attack_step
-            id: (identity))
+            id: (identifier))
           (attack_step
-            id: (identity))
+            id: (identifier))
           (attack_step
-            id: (identity))
+            id: (identifier))
           (attack_step
-            id: (identity)))))))
+            id: (identifier)))))))
 
 ====================
 Attack-step with Tag
@@ -47,13 +47,13 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
-            tag: (identity)))))))
+            id: (identifier)
+            tag: (identifier)))))))
 
 ==============================
 Attack-step with Multiple Tags
@@ -98,29 +98,29 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            id: (identifier)
             cias: (cias
               (cia)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             cias: (cias
               (cia)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             cias: (cias
               (cia)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             cias: (cias
               (cia)
               (cia)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             cias: (cias
               (cia)
               (cia))))))))
@@ -151,46 +151,46 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (integer)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
@@ -198,7 +198,7 @@ category Test {
                   left: (integer)
                   right: (integer)))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
@@ -206,7 +206,7 @@ category Test {
                   left: (integer)
                   right: (integer)))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (ttc_binop
@@ -214,20 +214,20 @@ category Test {
                   right: (integer))
                 right: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
-              (identity)))
+              (identifier)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_distribution
-                id: (identity)
+                id: (identifier)
                 values: (integer))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             ttc: (ttc
               (ttc_distribution
-                id: (identity)
+                id: (identifier)
                 values: (integer)
                 values: (integer)))))))))
 
@@ -249,22 +249,22 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            id: (identifier)
             meta: (meta
-              id: (identity)
+              id: (identifier)
               info: (meta_string))
             meta: (meta
-              id: (identity)
+              id: (identifier)
               info: (meta_string)))
           (attack_step
-            id: (identity)
+            id: (identifier)
             meta: (meta
-              id: (identity)
+              id: (identifier)
               info: (meta_string))))))))
 
 =========================
@@ -289,31 +289,31 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
-                (identity))))
+                (identifier))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
-                (identity))
+                (identifier))
               reaches: (asset_expr
-                (identity))))
+                (identifier))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
-                (identity))))
+                (identifier))))
           (attack_step
-            id: (identity)
+            id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
-                (identity))
+                (identifier))
               reaches: (asset_expr
-                (identity)))))))))
+                (identifier)))))))))
