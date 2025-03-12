@@ -84,36 +84,36 @@
 (float) @number.float
 
 ; Semantic objects
-(define_declaration id: (identity) @constant)
-(ttc_distribution id: (identity) @function.builtin)
-(ttc (identity) @type)
-(category_declaration id: (identity) @module)
+(define_declaration id: (identifier) @constant)
+(ttc_distribution id: (identifier) @function.builtin)
+(ttc (identifier) @type)
+(category_declaration id: (identifier) @module)
 (association
-  left_id: (identity) @type
-  left_field_id: (identity) @property
-  right_field_id: (identity) @property
-  right_id: (identity) @type)
+  left_id: (identifier) @type
+  left_field_id: (identifier) @property
+  right_field_id: (identifier) @property
+  right_id: (identifier) @type)
 (asset_declaration
-  [id: (identity)
-   extends: (identity)] @type)
+  [id: (identifier)
+   extends: (identifier)] @type)
 (detector_context_asset
-  type: (identity) @type
-  id: (identity) @property)
+  type: (identifier) @type
+  id: (identifier) @property)
 (asset_variable_substitution
-  id: (identity) @variable)
+  id: (identifier) @variable)
 (asset_variable
-  id: (identity) @variable)
+  id: (identifier) @variable)
 
-(asset_expr (identity) @property)
-(asset_expr [(identity) @function
+(asset_expr (identifier) @property)
+(asset_expr [(identifier) @function
              (asset_expr_binop
                left: (_)*
                operator: "."
-               right: (identity) @function)] .)
+               right: (identifier) @function)] .)
 
 ; Miscellaneous
 (comment) @comment
-(attack_step tag: (identity) @tag
+(attack_step tag: (identifier) @tag
              (#not-match? @tag "hidden|debug|trace"))
-(attack_step tag: (identity) @tag.builtin
+(attack_step tag: (identifier) @tag.builtin
              (#match? @tag.builtin "hidden|debug|trace"))
