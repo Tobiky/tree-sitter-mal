@@ -8,7 +8,6 @@ This example showcases how a visitor pattern can be built to use the MAL parser.
   1. Create a virtual environment `python -m venv venv`
   2. Activate the environment (e.g. `source ./venv/bin/activate`)
   3. Install dependencies `pip install -r requirements.txt`
-5. Navigate back to project root
-6. Build the python dependency using `pip install -e .`
+6. Build the python dependency using `pip install -e ../..` (Path should direct to project root)
 7. (Optional) swap between fast or simple visitor patterns by editing `main.py` imports
 8. Execute the main file `python main.py`
