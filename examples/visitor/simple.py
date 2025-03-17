@@ -28,7 +28,8 @@ class MalCompiler(ParseTreeVisitor):
         key = node.child_by_field_name("id").text
         value = node.child_by_field_name("value").text
 
-        print(f"Found definition -> {key}: '{value}'")
+        # Need to call decode because the text field is a `bytes` type.
+        print(f"Found definition -> {key.decode()}: '{value.decode()}'")
 
         # Iterate children nodes for whatever reason
         # self.skip(node)
