@@ -25,7 +25,7 @@ class MalCompiler(ParseTreeVisitor):
         self.visit(tree.root_node)
 
     def visit_define_declaration(self, node: Node):
-        key = node.child_by_field_name("name").text
+        key = node.child_by_field_name("id").text
         value = node.child_by_field_name("value").text
 
         print(f"Found definition -> {key}: '{value}'")
