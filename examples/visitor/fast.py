@@ -25,9 +25,13 @@ class ParseTreeVisitor:
         return visitor_value
 
     def skip(self, cursor: TreeCursor):
-        self.visit(cursor)
+        visitor_value = self.visit(cursor)
+        if visitor_value:
+            yield visitor_value
         while cursor.goto_next_sibling():
-            self.visit(cursor)
+            visitor_value = self.visit(cursor)
+            if visitor_value:
+                yield visitor_value
 
 
 # Concrete visitor to process function definitions

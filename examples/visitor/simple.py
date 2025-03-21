@@ -15,7 +15,9 @@ class ParseTreeVisitor:
 
     def skip(self, node: Node):
         for child in node.children:
-            self.visit(child)
+            visitor_value = self.visit(child)
+            if visitor_value:
+                yield visitor_value
 
 
 # Concrete visitor to process function definitions
