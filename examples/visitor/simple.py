@@ -37,4 +37,4 @@ class MalCompiler(ParseTreeVisitor):
         # Iterate children nodes for whatever reason
         # self.skip(node)
 
-        return ("defines", {key: value})
+        return ("defines", {key.decode(): value.decode()})

@@ -57,4 +57,4 @@ class MalCompiler(ParseTreeVisitor):
         # Need to call decode because the text field is a `bytes` type.
         print(f"Found definition -> {key.decode()}: '{value.decode()}'")
 
-        return ("defines", {key: value})
+        return ("defines", {key.decode(): value.decode()})
