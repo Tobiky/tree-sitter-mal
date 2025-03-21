@@ -40,6 +40,7 @@ class MalCompiler(ParseTreeVisitor):
         tree = parser.parse(source)
         self.visit(tree.walk())
 
+    # Named visit_{rule name in grammar.js}
     def visit_define_declaration(self, cursor: TreeCursor):
         # '#' (identity) ':' (string)
         # skip '#' node

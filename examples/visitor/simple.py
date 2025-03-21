@@ -26,6 +26,7 @@ class MalCompiler(ParseTreeVisitor):
         tree = parser.parse(source)
         self.visit(tree.root_node)
 
+    # Named visit_{rule name in grammar.js}
     def visit_define_declaration(self, node: Node):
         key = node.child_by_field_name("id").text
         value = node.child_by_field_name("value").text
