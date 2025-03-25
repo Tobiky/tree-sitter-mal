@@ -14,10 +14,17 @@ class ParseTreeVisitor:
         return visitor(node)
 
     def skip(self, node: Node):
+        values = []
         for child in node.children:
-            visitor_value = self.visit(child)
-            if visitor_value:
-                yield visitor_value
+            if visitor_value := self.visit(child):
+                values.append(visitor_value)
+        match len(values):
+            case 0:
+                return None
+            case 1:
+                return values[0]
+            case _:
+                return values
 
 
 # Concrete visitor to process function definitions
