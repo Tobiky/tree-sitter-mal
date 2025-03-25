@@ -1,9 +1,12 @@
 from tree_sitter import Node
+from typing import Tuple
 from lang import PARSER as parser
+
+ASTNode = Tuple[str, object]
 
 
 class ParseTreeVisitor:
-    def visit(self, node: Node):
+    def visit(self, node: Node) -> ASTNode | list[ASTNode] | None:
         # Function name of child class handling the node type
         function_name = f'visit_{node.type}'
         # Default to skip, in case a specific visitor can't be found
@@ -13,7 +16,7 @@ class ParseTreeVisitor:
         # Use visitor implementaiton
         return visitor(node)
 
-    def skip(self, node: Node):
+    def skip(self, node: Node) -> ASTNode | list[ASTNode] | None:
         values = []
         for child in node.children:
             if visitor_value := self.visit(child):
@@ -34,7 +37,7 @@ class MalCompiler(ParseTreeVisitor):
         self.visit(tree.root_node)
 
     # Named visit_{rule name in grammar.js}
-    def visit_define_declaration(self, node: Node):
+    def visit_define_declaration(self, node: Node) -> ASTNode:
         key = node.child_by_field_name("id").text
         value = node.child_by_field_name("value").text
 
