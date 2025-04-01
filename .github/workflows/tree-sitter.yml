@@ -17,6 +17,8 @@ jobs:
 
       - name: Setup environment
         uses: tree-sitter/setup-action@v2
+        with:
+          tree-sitter-ref: 'v0.25.3'
 
       - name: Cache parser build
         id: cache-parser-build
