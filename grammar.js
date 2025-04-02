@@ -94,7 +94,7 @@ module.exports = grammar({
         '!E',
       )),
       field('id', $.identity),
-      optional(field('tag', seq('@', $.identity))),
+      repeat(field('tag', seq('@', $.identity))),
       optional(field('cias', seq(
         '{',
         $.cias,
