@@ -55,6 +55,30 @@ category Test {
             id: (identity)
             tag: (identity)))))))
 
+==============================
+Attack-step with Multiple Tags
+==============================
+
+category Test {
+    asset TestAsset {
+        | step @Tag1 @Tag2
+    }
+}
+
+------------------------------
+
+(source_file
+  (declaration
+    (category_declaration
+      id: (identity)
+      assets: (asset_declaration
+        id: (identity)
+        body: (asset_definition
+          (attack_step
+            id: (identity)
+            tag: (identity)
+            tag: (identity)))))))
+
 =====================
 Attack-step with CIAs
 =====================
