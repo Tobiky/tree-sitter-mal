@@ -83,7 +83,7 @@
 
 ; Semantic objects
 (define_declaration id: (identity) @constant)
-(ttc_distribution id: (identity) @function)
+(ttc_distribution id: (identity) @function.builtin)
 (ttc (identity) @type)
 (category_declaration id: (identity) @module)
 (association
@@ -102,6 +102,7 @@
 (asset_variable
   id: (identity) @property)
 
+(asset_expr (identity) @property)
 (asset_expr [(identity) @function
              (asset_expr_binop
                left: (_)*

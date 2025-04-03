@@ -54,7 +54,7 @@ category System {
     | guessedPassword [Exponential(0.02)]
     // <- operator
     //                ^ punctuation.bracket
-    //                 ^^^^^^^^^^^ function
+    //                 ^^^^^^^^^^^ function.builtin
     //                            ^ punctuation.bracket
     //                             ^^^^ number
     //                                 ^^ punctuation.bracket
@@ -75,7 +75,7 @@ category System {
     | phish [Exponential(0.1)]
     // <- operator
     //      ^ punctuation.bracket
-    //       ^^^^^^^^^^^ function
+    //       ^^^^^^^^^^^ function.builtin
     //                  ^ punctuation.bracket
     //                   ^^^ number
     //                      ^^ punctuation.bracket
