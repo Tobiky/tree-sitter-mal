@@ -54,15 +54,17 @@
 
 
 ; Keywords
+"include" @keyword.import
 [
-  "include"
   "category"
-  "abstract"
   "asset"
+] @keyword.type
+[
+  "abstract"
   "extends"
-  "let"
   "associations"
-] @keyword
+] @keyword.modifier
+"let" @keyword
 
 ; Delimiters
 "," @punctuation.delimiter

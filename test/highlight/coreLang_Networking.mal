@@ -15,11 +15,11 @@
  */
 
 category Networking {
-    // <- keyword
+    // <- keyword.type
     //   ^ module
     //              ^ punctuation.bracket
     asset Network
-    // <- keyword
+    // <- keyword.type
     //    ^ type
       user info: "A network (zone) is a set of network accessible applications and data."
     // ^ comment
@@ -579,8 +579,8 @@ category Networking {
     }
 
     asset RoutingFirewall extends Application
-    // <- keyword
-    //                    ^ keyword
+    // <- keyword.type
+    //                    ^ keyword.modifier
       user info: "A routing firewall specifies a router with firewall capabilities that connects many networks."
     // ^ comment
     //     ^ comment
@@ -637,7 +637,7 @@ category Networking {
     // <- punctuation.bracket
 
     asset ConnectionRule
-    // <- keyword
+    // <- keyword.type
       user info: "This asset is used to model firewall rules between Applications and/or Networks. The association selected (bi/uni-directional) only describes the connection initiation."
     // ^ comment
     //     ^ comment
@@ -1031,7 +1031,7 @@ category Networking {
 }
 
 associations {
-  // <- keyword
+  // <- keyword.modifier
   //         ^ punctuation.bracket
   // ### Networking associations
   RoutingFirewall  [routingFirewalls]  0..1 <-- FirewallConnectionRule --> *    [connectionRules]       ConnectionRule

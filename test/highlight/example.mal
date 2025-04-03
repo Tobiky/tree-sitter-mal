@@ -23,10 +23,10 @@
 //        ^^^^^^^ string
 
 category System {
-// <- keyword
+// <- keyword.type
 //              ^ punctuation.bracket
   asset Network {
-    // <- keyword
+    // <- keyword.type
     //          ^ punctuation.bracket
     | access
     // <- operator
@@ -37,7 +37,7 @@ category System {
   // <- punctuation.bracket
 
   asset Host {
-    // <- keyword
+    // <- keyword.type
     //       ^ punctuation.bracket
     | connect
     // <- operator
@@ -66,7 +66,7 @@ category System {
   // <- punctuation.bracket
 
   asset User {
-    // <- keyword
+    // <- keyword.type
     //       ^ punctuation.bracket
     | attemptPhishing
     // <- operator
@@ -86,7 +86,7 @@ category System {
   // <- punctuation.bracket
 
   asset Password {
-    // <- keyword
+    // <- keyword.type
     //           ^ punctuation.bracket
     | obtain
     // <- operator
@@ -99,7 +99,7 @@ category System {
 // <- punctuation.bracket
 
 associations {
-  // <- keyword
+  // <- keyword.modifier
   //         ^ punctuation.bracket
   Network [networks] * <-- NetworkAccess --> * [hosts] Host
   // <- type
