@@ -79,9 +79,9 @@
 
 [
  (integer)
- (float)
  (star)
 ] @number
+(float) @number.float
 
 ; Semantic objects
 (define_declaration id: (identity) @constant)
