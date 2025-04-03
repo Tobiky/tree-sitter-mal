@@ -9,9 +9,10 @@ class ParseTreeVisitor:
     def visit(self, cursor, params = None):
         function_name = f'visit_{cursor.node.type}' # obtain the appropriate function
         visitor = getattr(self, function_name, self.skip)
-        cursor.goto_first_child() # enter node's children
+        hasChild = cursor.goto_first_child() # enter node's children
         result = visitor(cursor) if not params else visitor(cursor, params)
-        cursor.goto_parent() # leave node's children
+        if hasChild:
+            cursor.goto_parent() # leave node's children
         return result
 
     def visitMal(self, cursor: TreeCursor) -> ASTNode | list[ASTNode] | None:
@@ -286,7 +287,8 @@ class MalCompiler(ParseTreeVisitor):
         while (cursor.node.text.decode() == '@'):
             cursor.goto_next_sibling() # skip '@'
             tags.append(cursor.node.text.decode()) # grab (id)
-            cursor.goto_next_sibling() # move to next symbol
+            if not cursor.goto_next_sibling(): # move to next symbol, break if last
+                break
 
         # process all ( '{' (cias) '}' ) we might have
         risk = None
@@ -296,27 +298,46 @@ class MalCompiler(ParseTreeVisitor):
             cursor.goto_next_sibling() # go to '}' 
             cursor.goto_next_sibling() # and skip it
 
+        ttc = None
         if (cursor.node.type == 'ttc'):
             # TODO
             # visit ttc
             pass
 
+        meta = {}
         while (cursor.node.type == 'meta'):
-            # TODO
-            # visit meta
-            break
+            info = self.visit(cursor)
+            meta[info[0]] = info[1]
+            if not cursor.goto_next_sibling(): # in case there is nothing after the meta
+                break
 
+        detectors = {}
         if (cursor.node.type == 'detector' ):
             # TODO visit detector
             pass
 
+        requires = None
         if (cursor.node.type == 'preconditions' ):
             # TODO visit preconditions
             pass
 
+        reaches = None
         if (cursor.node.type == 'reaches' ):
             # TODO visit reaches
             pass
+
+        ret = {
+            "name":name,
+            "meta": meta,
+            "detectors": detectors,
+            "type":step_type,
+            "tags":tags,
+            "risk": risk,
+            "ttc": ttc,
+            "requires":requires,
+            "reaches": reaches,
+            }
+        return ("step", ret)
 
     def visit_cias(self, cursor: TreeCursor):
         ######################
@@ -329,11 +350,15 @@ class MalCompiler(ParseTreeVisitor):
         }
 
         while True:
-            risk.update(self.visit(cursor))
-            cursor.goto_next_sibling() # go to ','
-            # if we can't go to the next CIA break
-            if not cursor.goto_next_sibling(): 
+            val = self.visit(cursor)
+            risk.update(val)
+
+            ret = cursor.goto_next_sibling()
+            if not ret: # no more ',' -> done
                 break
+
+            # Otherwise, process the next CIA
+            cursor.goto_next_sibling()
 
         return risk
     
