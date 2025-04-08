@@ -109,7 +109,7 @@
              (asset_expr_binop
                left: (_)*
                operator: "."
-               right: (identity) @function .)])
+               right: (identity) @function)] .)
 
 ; Miscellaneous
 (comment) @comment
