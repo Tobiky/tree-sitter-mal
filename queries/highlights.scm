@@ -100,9 +100,9 @@
   type: (identity) @type
   id: (identity) @property)
 (asset_variable_substitution
-  id: (identity) @property)
+  id: (identity) @variable)
 (asset_variable
-  id: (identity) @property)
+  id: (identity) @variable)
 
 (asset_expr (identity) @property)
 (asset_expr [(identity) @function
