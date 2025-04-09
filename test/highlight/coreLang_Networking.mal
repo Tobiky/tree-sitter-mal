@@ -35,14 +35,14 @@ category Networking {
     // <- punctuation.bracket
       let outboundAllowedConnections = (netConnections \/ outgoingNetConnections)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                             ^ operator
       //                               ^ punctuation.bracket
       //                                               ^ operator
       //                                                                        ^ punctuation.bracket
       let inboundAllowedConnections = (netConnections \/ ingoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                            ^ operator
       //                              ^ punctuation.bracket
       //                                              ^ operator
@@ -50,7 +50,7 @@ category Networking {
       //                                                                                                    ^ punctuation.bracket
       let allNetConnections = (netConnections \/ ingoingNetConnections \/ outgoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                    ^ operator
       //                      ^ punctuation.bracket
       //                                      ^ operator
@@ -59,11 +59,11 @@ category Networking {
       //                                                                                                                      ^ punctuation.bracket
       let allowedApplicationConnectionsApplications = (applications \/ allNetConnections().applications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                                            ^ operator
       //                                              ^ punctuation.bracket
       //                                                            ^ operator
-      //                                                               ^ property
+      //                                                               ^ variable
       //                                                                                ^^ punctuation.bracket
       //                                                                                  ^ operator
       //                                                                                               ^ punctuation.bracket
@@ -232,7 +232,7 @@ category Networking {
       //           ^ comment
         ->  outboundAllowedConnections().attemptConnectToApplicationsUninspected,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                              ^^ punctuation.bracket
       //                                ^ operator
       //                                 ^ function
@@ -262,7 +262,7 @@ category Networking {
       //           ^ comment
         ->  outboundAllowedConnections().attemptConnectToApplicationsInspected,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                              ^^ punctuation.bracket
       //                                ^ operator
       //                                 ^ function
@@ -303,7 +303,7 @@ category Networking {
       //                ^ comment
         ->  inboundAllowedConnections().attemptReverseReach,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                             ^^ punctuation.bracket
       //                               ^ operator
       //                                ^ function
@@ -323,13 +323,13 @@ category Networking {
       //                ^ comment
           ->  outboundAllowedConnections().attemptAccessNetworksUninspected,
       //  ^ operator
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
       //                                                                   ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsUninspected,
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
@@ -349,13 +349,13 @@ category Networking {
       //                ^ comment
           ->  outboundAllowedConnections().attemptAccessNetworksInspected,
       //  ^ operator
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
       //                                                                 ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsInspected
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
@@ -372,13 +372,13 @@ category Networking {
       //           ^ comment
         ->  allNetConnections().attemptDeny,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                     ^^ punctuation.bracket
       //                       ^ operator
       //                        ^ function
       //                                   ^ punctuation.delimiter
             allowedApplicationConnectionsApplications().denyFromNetworkingAsset
-      //    ^ property
+      //    ^ variable
       //                                             ^^ punctuation.bracket
       //                                               ^ operator
       //                                                ^ function
@@ -652,7 +652,7 @@ category Networking {
     // <- punctuation.bracket
       let allApplications = (applications \/ inApplications \/ outApplications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                  ^ operator
       //                    ^ punctuation.bracket
       //                                  ^ operator
@@ -660,14 +660,14 @@ category Networking {
       //                                                                      ^ punctuation.bracket
       let senderApplications = (applications \/ outApplications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                     ^ operator
       //                       ^ punctuation.bracket
       //                                     ^ operator
       //                                                       ^ punctuation.bracket
       let receiverApplications = (applications \/ inApplications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                       ^ operator
       //                         ^ punctuation.bracket
       //                                       ^ operator
@@ -807,7 +807,7 @@ category Networking {
       //                ^ comment
         ->  senderApplications().attemptReverseReach,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                      ^^ punctuation.bracket
       //                        ^ operator
       //                         ^ function
@@ -968,13 +968,13 @@ category Networking {
       //                ^ comment
         ->  receiverApplications().networkConnectUninspected,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                        ^^ punctuation.bracket
       //                          ^ operator
       //                           ^ function
       //                                                    ^ punctuation.delimiter
             receiverApplications().networkConnectInspected
-      //    ^ property
+      //    ^ variable
       //                        ^^ punctuation.bracket
       //                          ^ operator
       //                           ^ function
@@ -990,7 +990,7 @@ category Networking {
       //                ^ comment
         ->  receiverApplications().networkConnectInspected
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                        ^^ punctuation.bracket
       //                          ^ operator
       //                           ^ function
@@ -1023,7 +1023,7 @@ category Networking {
       //           ^ comment
         ->  allApplications().denyFromNetworkingAsset
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                   ^^ punctuation.bracket
       //                     ^ operator
       //                      ^ function
