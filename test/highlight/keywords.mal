@@ -1,12 +1,12 @@
 include "./file"
-// <- keyword
+// <- keyword.import
 
 category System {
-// <- keyword
+// <- keyword.type
 //              ^ punctuation.bracket
   asset Network {
     //          ^ punctuation.bracket
-    // <- keyword
+    // <- keyword.type
     let connection = hosts.connect
     // <- keyword
     //                    ^ operator
@@ -14,23 +14,23 @@ category System {
   // <- punctuation.bracket
 
   abstract asset Computer {}
-  // <- keyword
-  //       ^^^^^ keyword
+  // <- keyword.modifier
+  //       ^^^^^ keyword.type
   //                      ^^ punctuation.bracket
 
   abstract asset LocalNetwork extends Network {}
-  // <- keyword
-  //       ^^^^^ keyword
-  //                          ^^^^^^^ keyword
+  // <- keyword.modifier
+  //       ^^^^^ keyword.type
+  //                          ^^^^^^^ keyword.modifier
   //                                          ^^ punctuation.bracket
 
   asset Laptop extends Computer {}
-  // <- keyword
-  //           ^^^^^^^ keyword
+  // <- keyword.type
+  //           ^^^^^^^ keyword.modifier
   //                            ^^ punctuation.bracket
 }
 // <- punctuation.bracket
 
 associations {}
-// <- keyword
+// <- keyword.modifier
 //           ^^ punctuation.bracket

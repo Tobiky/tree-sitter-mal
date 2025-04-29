@@ -17,27 +17,66 @@
     }
   </style>
   <style>
-    .comment { font-style: italic;color: #8a8a8a; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .variable.parameter { text-decoration: underline;; }
-    .operator { font-weight: bold;color: #4e4e4e; }
     .constant { color: #875f00; }
-    .module { color: #af8700; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .string { color: #008700; }
-    .string.special { color: #008787; }
-    .tag { color: #000087; }
-    .type { color: #005f5f; }
+    .operator { font-weight: bold;color: #4e4e4e; }
     .function { color: #005fd7; }
-    .constructor { color: #af8700; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
-    .property { color: #af0000; }
-    .attribute { font-style: italic;color: #af0000; }
+    .module { color: #af8700; }
+    .keyword.directive.define { color: #5f00d7; }
+    .string.documentation { color: #008700; }
+    .attribute.builtin { font-weight: bold;color: #af0000; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .constant.macro { color: #875f00; }
+    .keyword.modifier { color: #5f00d7; }
+    .keyword.repeat { color: #5f00d7; }
     .number { font-weight: bold;color: #875f00; }
+    .boolean { color: #875f00; }
+    .keyword.conditional { color: #5f00d7; }
+    .tag.builtin { color: #000087; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .variable.parameter { text-decoration: underline;; }
+    .function.method { color: #005fd7; }
+    .function.macro { color: #005fd7; }
+    .keyword.conditional.ternary { color: #5f00d7; }
+    .function.call { color: #005fd7; }
+    .module.builtin { color: #af8700; }
+    .attribute { font-style: italic;color: #af0000; }
+    .keyword.operator { color: #5f00d7; }
+    .property { color: #af0000; }
+    .function.method.call { color: #005fd7; }
+    .tag.attribute { color: #000087; }
+    .string.special.symbol { color: #008787; }
+    .keyword.return { color: #5f00d7; }
+    .type.definition { color: #005f5f; }
+    .constructor { color: #af8700; }
+    .string.escape { color: #008700; }
+    .comment { font-style: italic;color: #8a8a8a; }
+    .comment.documentation { color: #8a8a8a; }
+    .comment.note { color: #8a8a8a; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .string.special.url { color: #008787; }
+    .tag.delimiter { color: #000087; }
+    .keyword.exception { color: #5f00d7; }
+    .comment.warning { color: #8a8a8a; }
+    .comment.error { color: #8a8a8a; }
+    .string.regexp { color: #008700; }
     .variable.builtin { font-weight: bold;; }
+    .keyword.coroutine { color: #5f00d7; }
+    .string.special { color: #008787; }
+    .keyword.function { color: #5f00d7; }
+    .keyword.import { color: #5f00d7; }
     .function.builtin { font-weight: bold;color: #005fd7; }
+    .comment.todo { color: #8a8a8a; }
+    .tag { color: #000087; }
+    .string { color: #008700; }
     .keyword { color: #5f00d7; }
     .type.builtin { font-weight: bold;color: #005f5f; }
+    .type { color: #005f5f; }
+    .keyword.type { color: #5f00d7; }
+    .string.special.path { color: #008787; }
+    .keyword.directive { color: #5f00d7; }
+    .number.float { font-weight: bold;color: #875f00; }
+    .keyword.debug { color: #5f00d7; }
+    .punctuation.special { color: #4e4e4e; }
   </style>
 
 </head>
@@ -88,13 +127,13 @@
 </td></tr>
 <tr><td class=line-number>22</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>23</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>outboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>23</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>outboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>24</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>inboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>24</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>inboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>25</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allNetConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>25</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>allNetConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>26</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allowedApplicationConnectionsApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> <span style='color: #af0000'>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>applications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>26</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>allowedApplicationConnectionsApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> <span style=''>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span>applications<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>27</td><td class=line>
 </td></tr>
@@ -198,7 +237,7 @@
 </td></tr>
 <tr><td class=line-number>77</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Uninspected access provides connect to all reachable applications without any restrictions.&quot;</span>
 </td></tr>
-<tr><td class=line-number>78</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsUninspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>78</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>79</td><td class=line>            applications<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -216,7 +255,7 @@
 </td></tr>
 <tr><td class=line-number>86</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;Inspected access provides connect to all reachable applications, but with limitations.&quot;</span>
 </td></tr>
-<tr><td class=line-number>87</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsInspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>87</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsInspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>88</td><td class=line>            applications<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectInspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -240,7 +279,7 @@
 </td></tr>
 <tr><td class=line-number>98</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates toward outgoing or bidirectional communications.&quot;</span>
 </td></tr>
-<tr><td class=line-number>99</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>inboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>99</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>inboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>100</td><td class=line>            applications<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span>
 </td></tr>
@@ -250,9 +289,9 @@
 </td></tr>
 <tr><td class=line-number>103</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;By using the allowed connections (connection rules), uninspected forwarding from one network to another network or applications can happen.&quot;</span>
 </td></tr>
-<tr><td class=line-number>104</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksUninspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>104</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>105</td><td class=line>              <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsUninspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>105</td><td class=line>              <span style=''>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>106</td><td class=line>              <span style='color: #005fd7'>networkForwardingInspected</span>
 </td></tr>
@@ -262,9 +301,9 @@
 </td></tr>
 <tr><td class=line-number>109</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;By using the allowed connections (connection rules), inspected forwarding from one network to another network or applications can happen.&quot;</span>
 </td></tr>
-<tr><td class=line-number>110</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksInspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>110</td><td class=line>          <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksInspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>111</td><td class=line>              <span style='color: #af0000'>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsInspected</span>
+<tr><td class=line-number>111</td><td class=line>              <span style=''>outboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsInspected</span>
 </td></tr>
 <tr><td class=line-number>112</td><td class=line>
 </td></tr>
@@ -272,9 +311,9 @@
 </td></tr>
 <tr><td class=line-number>114</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If a DoS is performed it affects, the applications communicating over the network as well as the connected application.&quot;</span>
 </td></tr>
-<tr><td class=line-number>115</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptDeny</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>115</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>allNetConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptDeny</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>116</td><td class=line>            <span style='color: #af0000'>allowedApplicationConnectionsApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>denyFromNetworkingAsset</span>
+<tr><td class=line-number>116</td><td class=line>            <span style=''>allowedApplicationConnectionsApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>denyFromNetworkingAsset</span>
 </td></tr>
 <tr><td class=line-number>117</td><td class=line>
 </td></tr>
@@ -430,11 +469,11 @@
 </td></tr>
 <tr><td class=line-number>193</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>194</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>194</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>allApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>195</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>senderApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>195</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>senderApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> outApplications<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>196</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>receiverApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>196</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>receiverApplications</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>applications <span style='font-weight: bold;color: #4e4e4e'>\/</span> inApplications<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>197</td><td class=line>
 </td></tr>
@@ -518,7 +557,7 @@
 </td></tr>
 <tr><td class=line-number>237</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates via outgoing or bidirectional communications.&quot;</span>
 </td></tr>
-<tr><td class=line-number>238</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>senderApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>238</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>senderApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>239</td><td class=line>            <span style='color: #4e4e4e'>(</span>networks <span style='font-weight: bold;color: #4e4e4e'>\/</span> outNetworks<span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span>
 </td></tr>
@@ -608,9 +647,9 @@
 </td></tr>
 <tr><td class=line-number>282</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Connect to all the (server) Applications that are associated with this ConnectionRule, without any restriction due to inspection.&quot;</span>
 </td></tr>
-<tr><td class=line-number>283</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectUninspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>283</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>284</td><td class=line>            <span style='color: #af0000'>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectInspected</span>
+<tr><td class=line-number>284</td><td class=line>            <span style=''>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectInspected</span>
 </td></tr>
 <tr><td class=line-number>285</td><td class=line>
 </td></tr>
@@ -618,7 +657,7 @@
 </td></tr>
 <tr><td class=line-number>287</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Connect to all the (server) Applications that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected. This attack step is used to allow legitimate traffic even when payload inspection is enabled on the connection.&quot;</span>
 </td></tr>
-<tr><td class=line-number>288</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectInspected</span>
+<tr><td class=line-number>288</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>receiverApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkConnectInspected</span>
 </td></tr>
 <tr><td class=line-number>289</td><td class=line>
 </td></tr>
@@ -636,7 +675,7 @@
 </td></tr>
 <tr><td class=line-number>296</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>user info: &quot;If a connection rule is denied it affects the applications communicating over it.&quot;</span>
 </td></tr>
-<tr><td class=line-number>297</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>allApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>denyFromNetworkingAsset</span>
+<tr><td class=line-number>297</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>allApplications</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>denyFromNetworkingAsset</span>
 </td></tr>
 <tr><td class=line-number>298</td><td class=line>    <span style='color: #4e4e4e'>}</span>
 </td></tr>

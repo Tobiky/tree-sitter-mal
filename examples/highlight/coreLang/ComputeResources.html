@@ -17,27 +17,66 @@
     }
   </style>
   <style>
-    .type.builtin { font-weight: bold;color: #005f5f; }
-    .string { color: #008700; }
-    .module { color: #af8700; }
-    .keyword { color: #5f00d7; }
-    .variable.builtin { font-weight: bold;; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
+    .comment.note { color: #8a8a8a; }
     .variable.parameter { text-decoration: underline;; }
+    .keyword.import { color: #5f00d7; }
+    .number.float { font-weight: bold;color: #875f00; }
+    .keyword.modifier { color: #5f00d7; }
+    .tag.attribute { color: #000087; }
+    .function.call { color: #005fd7; }
     .comment { font-style: italic;color: #8a8a8a; }
     .attribute { font-style: italic;color: #af0000; }
-    .number { font-weight: bold;color: #875f00; }
+    .keyword.return { color: #5f00d7; }
+    .keyword.conditional { color: #5f00d7; }
+    .string.special.path { color: #008787; }
     .string.special { color: #008787; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .type { color: #005f5f; }
-    .constant { color: #875f00; }
-    .function { color: #005fd7; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .keyword.coroutine { color: #5f00d7; }
     .constructor { color: #af8700; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .property { color: #af0000; }
+    .type.definition { color: #005f5f; }
+    .keyword.operator { color: #5f00d7; }
+    .function.method.call { color: #005fd7; }
+    .attribute.builtin { font-weight: bold;color: #af0000; }
+    .module.builtin { color: #af8700; }
+    .string.special.symbol { color: #008787; }
     .tag { color: #000087; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
+    .comment.error { color: #8a8a8a; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .function.macro { color: #005fd7; }
+    .comment.documentation { color: #8a8a8a; }
+    .keyword.directive { color: #5f00d7; }
+    .variable.builtin { font-weight: bold;; }
+    .string.documentation { color: #008700; }
+    .module { color: #af8700; }
+    .boolean { color: #875f00; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .constant.macro { color: #875f00; }
+    .function { color: #005fd7; }
+    .string.special.url { color: #008787; }
+    .comment.todo { color: #8a8a8a; }
+    .string { color: #008700; }
+    .keyword { color: #5f00d7; }
+    .keyword.directive.define { color: #5f00d7; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .comment.warning { color: #8a8a8a; }
+    .number { font-weight: bold;color: #875f00; }
+    .keyword.conditional.ternary { color: #5f00d7; }
+    .function.method { color: #005fd7; }
+    .property { color: #af0000; }
+    .keyword.repeat { color: #5f00d7; }
+    .string.regexp { color: #008700; }
+    .type { color: #005f5f; }
+    .string.escape { color: #008700; }
+    .keyword.debug { color: #5f00d7; }
+    .keyword.exception { color: #5f00d7; }
+    .constant { color: #875f00; }
+    .keyword.function { color: #5f00d7; }
+    .tag.delimiter { color: #000087; }
+    .punctuation.special { color: #4e4e4e; }
+    .keyword.type { color: #5f00d7; }
+    .tag.builtin { color: #000087; }
   </style>
 
 </head>
@@ -424,13 +463,13 @@
 </td></tr>
 <tr><td class=line-number>190</td><td class=line>    <span style='color: #4e4e4e'>{</span>
 </td></tr>
-<tr><td class=line-number>191</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>allVulnerabilities</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> vulnerabilities <span style='font-weight: bold;color: #4e4e4e'>\/</span> appSoftProduct<span style='font-weight: bold;color: #4e4e4e'>.</span>softProductVulnerabilities
+<tr><td class=line-number>191</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>allVulnerabilities</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> vulnerabilities <span style='font-weight: bold;color: #4e4e4e'>\/</span> appSoftProduct<span style='font-weight: bold;color: #4e4e4e'>.</span>softProductVulnerabilities
 </td></tr>
 <tr><td class=line-number>192</td><td class=line>
 </td></tr>
-<tr><td class=line-number>193</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>outgoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingAppConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>193</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>outgoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> outgoingAppConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>194</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>ingoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingAppConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>194</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>ingoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> ingoingAppConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>195</td><td class=line>
 </td></tr>
@@ -500,7 +539,7 @@
 </td></tr>
 <tr><td class=line-number>228</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;This includes vulnerabilities associated with the SoftwareProduct that this Application is running as well.&quot;</span>
 </td></tr>
-<tr><td class=line-number>229</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAbuse</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>229</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAbuse</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>230</td><td class=line>            <span style='color: #005fd7'>attemptSoftwareProductAbuse</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -538,7 +577,7 @@
 </td></tr>
 <tr><td class=line-number>247</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  networks<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>248</td><td class=line>            <span style='color: #af0000'>ingoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>248</td><td class=line>            <span style=''>ingoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>249</td><td class=line>            appExecutedApps<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptReverseReach</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -564,7 +603,7 @@
 </td></tr>
 <tr><td class=line-number>260</td><td class=line>            <span style='color: #005fd7'>attemptUseVulnerability</span><span style='color: #4e4e4e'>,</span> <span style='font-style: italic;color: #8a8a8a'>// Attempt to exploit all the vulnerabilities associated with the Application</span>
 </td></tr>
-<tr><td class=line-number>261</td><td class=line>            <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>localAccessAchieved</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>261</td><td class=line>            <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>localAccessAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>262</td><td class=line>            <span style='color: #005fd7'>softwareProductVulnerabilityLocalAccessAchieved</span>
 </td></tr>
@@ -576,7 +615,7 @@
 </td></tr>
 <tr><td class=line-number>266</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #005fd7'>attemptUseVulnerability</span><span style='color: #4e4e4e'>,</span> <span style='font-style: italic;color: #8a8a8a'>// Attempt to exploit all the vulnerabilities associated with the Application</span>
 </td></tr>
-<tr><td class=line-number>267</td><td class=line>            <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkAccessAchieved</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>267</td><td class=line>            <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>networkAccessAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>268</td><td class=line>            <span style='color: #005fd7'>softwareProductVulnerabilityNetworkAccessAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -620,13 +659,13 @@
 </td></tr>
 <tr><td class=line-number>288</td><td class=line>            networks<span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>accessInspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>289</td><td class=line>            <span style='color: #af0000'>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsUninspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>289</td><td class=line>            <span style=''>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>290</td><td class=line>            <span style='color: #af0000'>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsInspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>290</td><td class=line>            <span style=''>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptConnectToApplicationsInspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>291</td><td class=line>            <span style='color: #af0000'>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksUninspected</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>291</td><td class=line>            <span style=''>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>292</td><td class=line>            <span style='color: #af0000'>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksInspected</span>
+<tr><td class=line-number>292</td><td class=line>            <span style=''>outgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>attemptAccessNetworksInspected</span>
 </td></tr>
 <tr><td class=line-number>293</td><td class=line>
 </td></tr>
@@ -700,7 +739,7 @@
 </td></tr>
 <tr><td class=line-number>328</td><td class=line>            <span style='color: #005fd7'>networkAccess</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>329</td><td class=line>            <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>highPrivilegesAchieved</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>329</td><td class=line>            <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>highPrivilegesAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>330</td><td class=line>            <span style='color: #005fd7'>softwareProductVulnerabilityHighPrivilegesAchieved</span>
 </td></tr>
@@ -714,7 +753,7 @@
 </td></tr>
 <tr><td class=line-number>335</td><td class=line>            <span style='color: #005fd7'>specificAccessFromNetworkConnection</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>336</td><td class=line>            <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>lowPrivilegesAchieved</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>336</td><td class=line>            <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>lowPrivilegesAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>337</td><td class=line>            <span style='color: #005fd7'>softwareProductVulnerabilityLowPrivilegesAchieved</span>
 </td></tr>
@@ -770,7 +809,7 @@
 </td></tr>
 <tr><td class=line-number>363</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;Intermediate attack step used to propagate physical access throughout application nesting.&quot;</span>
 </td></tr>
-<tr><td class=line-number>364</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>physicalAccessAchieved</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>364</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>physicalAccessAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
 <tr><td class=line-number>365</td><td class=line>            <span style='color: #005fd7'>softwareProductVulnerabilityPhysicalAccessAchieved</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
@@ -808,7 +847,7 @@
 </td></tr>
 <tr><td class=line-number>382</td><td class=line>            <span style='color: #005fd7'>networkConnectUninspected</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>383</td><td class=line>            <span style='color: #af0000'>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>userInteractionAchieved</span>
+<tr><td class=line-number>383</td><td class=line>            <span style=''>allVulnerabilities</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>userInteractionAchieved</span>
 </td></tr>
 <tr><td class=line-number>384</td><td class=line>
 </td></tr>

@@ -17,27 +17,66 @@
     }
   </style>
   <style>
-    .constant.builtin { font-weight: bold;color: #875f00; }
-    .string.special { color: #008787; }
-    .keyword { color: #5f00d7; }
-    .variable.parameter { text-decoration: underline;; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .number { font-weight: bold;color: #875f00; }
-    .attribute { font-style: italic;color: #af0000; }
-    .variable.builtin { font-weight: bold;; }
+    .string.documentation { color: #008700; }
+    .comment.error { color: #8a8a8a; }
+    .keyword.return { color: #5f00d7; }
+    .keyword.debug { color: #5f00d7; }
     .type.builtin { font-weight: bold;color: #005f5f; }
-    .string { color: #008700; }
-    .module { color: #af8700; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .constructor { color: #af8700; }
-    .type { color: #005f5f; }
+    .string.regexp { color: #008700; }
     .tag { color: #000087; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .constant { color: #875f00; }
+    .function.method { color: #005fd7; }
+    .keyword { color: #5f00d7; }
     .function { color: #005fd7; }
-    .comment { font-style: italic;color: #8a8a8a; }
+    .tag.delimiter { color: #000087; }
+    .attribute { font-style: italic;color: #af0000; }
+    .keyword.function { color: #5f00d7; }
+    .keyword.directive.define { color: #5f00d7; }
+    .keyword.repeat { color: #5f00d7; }
+    .tag.attribute { color: #000087; }
+    .module { color: #af8700; }
     .property { color: #af0000; }
+    .function.macro { color: #005fd7; }
+    .string.special.path { color: #008787; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .keyword.operator { color: #5f00d7; }
+    .comment.documentation { color: #8a8a8a; }
+    .boolean { color: #875f00; }
+    .keyword.exception { color: #5f00d7; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .attribute.builtin { font-weight: bold;color: #af0000; }
     .function.builtin { font-weight: bold;color: #005fd7; }
+    .string.special { color: #008787; }
+    .keyword.coroutine { color: #5f00d7; }
+    .constructor { color: #af8700; }
+    .constant.macro { color: #875f00; }
+    .string.special.url { color: #008787; }
+    .comment.note { color: #8a8a8a; }
+    .keyword.conditional.ternary { color: #5f00d7; }
+    .keyword.conditional { color: #5f00d7; }
+    .punctuation.special { color: #4e4e4e; }
+    .string.special.symbol { color: #008787; }
+    .string.escape { color: #008700; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .keyword.modifier { color: #5f00d7; }
+    .keyword.type { color: #5f00d7; }
+    .number { font-weight: bold;color: #875f00; }
+    .comment.warning { color: #8a8a8a; }
+    .constant { color: #875f00; }
+    .comment { font-style: italic;color: #8a8a8a; }
+    .function.call { color: #005fd7; }
+    .keyword.directive { color: #5f00d7; }
+    .tag.builtin { color: #000087; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .type { color: #005f5f; }
+    .number.float { font-weight: bold;color: #875f00; }
+    .variable.parameter { text-decoration: underline;; }
+    .variable.builtin { font-weight: bold;; }
+    .keyword.import { color: #5f00d7; }
+    .comment.todo { color: #8a8a8a; }
+    .string { color: #008700; }
+    .type.definition { color: #005f5f; }
+    .function.method.call { color: #005fd7; }
+    .module.builtin { color: #af8700; }
   </style>
 
 </head>
@@ -254,21 +293,21 @@
 </td></tr>
 <tr><td class=line-number>105</td><td class=line>
 </td></tr>
-<tr><td class=line-number>106</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>senderOutgoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingAppConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>106</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>senderOutgoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> senderApp<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingAppConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>107</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>receiverIngoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingAppConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>107</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>receiverIngoingApplicationConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>appConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> receiverApp<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingAppConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>108</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>transitNetworkInboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>108</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>transitNetworkInboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>ingoingNetConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>diodeIngoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
-<tr><td class=line-number>109</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style='color: #af0000'>transitNetworkOutboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingNetConnections<span style='color: #4e4e4e'>)</span>
+<tr><td class=line-number>109</td><td class=line>      <span style='color: #5f00d7'>let</span> <span style=''>transitNetworkOutboundAllowedConnections</span> <span style='font-weight: bold;color: #4e4e4e'>=</span> <span style='color: #4e4e4e'>(</span>transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>netConnections <span style='font-weight: bold;color: #4e4e4e'>\/</span> transitNetwork<span style='font-weight: bold;color: #4e4e4e'>.</span>outgoingNetConnections<span style='color: #4e4e4e'>)</span>
 </td></tr>
 <tr><td class=line-number>110</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> bypassPayloadInspectionFromEncryptedData <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span>
 </td></tr>
 <tr><td class=line-number>111</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The connection rules that the encrypted data traverse over cannot provide payload inspection since they are assumed to permit encrypted traffic. This implies that the attacker could simply encrypt their own communications to evade inspection.&quot;</span>
 </td></tr>
-<tr><td class=line-number>112</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #4e4e4e'>(</span><span style='color: #af0000'>senderOutgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span> <span style='font-weight: bold;color: #4e4e4e'>/\</span> <span style='color: #af0000'>transitNetworkInboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>payloadInspectionBypassed</span><span style='color: #4e4e4e'>,</span>
+<tr><td class=line-number>112</td><td class=line>        <span style='font-weight: bold;color: #4e4e4e'>-&gt;</span>  <span style='color: #4e4e4e'>(</span><span style=''>senderOutgoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span> <span style='font-weight: bold;color: #4e4e4e'>/\</span> <span style=''>transitNetworkInboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>payloadInspectionBypassed</span><span style='color: #4e4e4e'>,</span>
 </td></tr>
-<tr><td class=line-number>113</td><td class=line>            <span style='color: #4e4e4e'>(</span><span style='color: #af0000'>receiverIngoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span> <span style='font-weight: bold;color: #4e4e4e'>/\</span> <span style='color: #af0000'>transitNetworkOutboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>payloadInspectionBypassed</span>
+<tr><td class=line-number>113</td><td class=line>            <span style='color: #4e4e4e'>(</span><span style=''>receiverIngoingApplicationConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span> <span style='font-weight: bold;color: #4e4e4e'>/\</span> <span style=''>transitNetworkOutboundAllowedConnections</span><span style='color: #4e4e4e'>(</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>)</span><span style='font-weight: bold;color: #4e4e4e'>.</span><span style='color: #005fd7'>payloadInspectionBypassed</span>
 </td></tr>
 <tr><td class=line-number>114</td><td class=line>
 </td></tr>

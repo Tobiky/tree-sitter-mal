@@ -17,27 +17,66 @@
     }
   </style>
   <style>
-    .type.builtin { font-weight: bold;color: #005f5f; }
-    .keyword { color: #5f00d7; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .variable.builtin { font-weight: bold;; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .function.builtin { font-weight: bold;color: #005fd7; }
-    .constructor { color: #af8700; }
-    .module { color: #af8700; }
-    .constant { color: #875f00; }
-    .property { color: #af0000; }
-    .string { color: #008700; }
-    .comment { font-style: italic;color: #8a8a8a; }
-    .punctuation.bracket { color: #4e4e4e; }
-    .attribute { font-style: italic;color: #af0000; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
-    .variable.parameter { text-decoration: underline;; }
-    .tag { color: #000087; }
-    .number { font-weight: bold;color: #875f00; }
     .string.special { color: #008787; }
+    .module.builtin { color: #af8700; }
+    .comment.todo { color: #8a8a8a; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .tag.attribute { color: #000087; }
+    .attribute { font-style: italic;color: #af0000; }
+    .function.builtin { font-weight: bold;color: #005fd7; }
+    .keyword.type { color: #5f00d7; }
+    .string.special.path { color: #008787; }
+    .keyword.conditional.ternary { color: #5f00d7; }
+    .tag.builtin { color: #000087; }
+    .constant { color: #875f00; }
     .function { color: #005fd7; }
+    .type.definition { color: #005f5f; }
+    .number.float { font-weight: bold;color: #875f00; }
+    .punctuation.bracket { color: #4e4e4e; }
+    .keyword.conditional { color: #5f00d7; }
     .type { color: #005f5f; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
+    .property { color: #af0000; }
+    .keyword.debug { color: #5f00d7; }
+    .constructor { color: #af8700; }
+    .string.special.url { color: #008787; }
+    .tag { color: #000087; }
+    .comment { font-style: italic;color: #8a8a8a; }
+    .string.special.symbol { color: #008787; }
+    .punctuation.special { color: #4e4e4e; }
+    .function.method.call { color: #005fd7; }
+    .keyword.operator { color: #5f00d7; }
+    .boolean { color: #875f00; }
+    .keyword.return { color: #5f00d7; }
+    .string.regexp { color: #008700; }
+    .variable.builtin { font-weight: bold;; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .keyword.function { color: #5f00d7; }
+    .function.call { color: #005fd7; }
+    .function.macro { color: #005fd7; }
+    .tag.delimiter { color: #000087; }
+    .constant.macro { color: #875f00; }
+    .string { color: #008700; }
+    .keyword.directive { color: #5f00d7; }
+    .keyword.coroutine { color: #5f00d7; }
+    .keyword.directive.define { color: #5f00d7; }
+    .function.method { color: #005fd7; }
+    .module { color: #af8700; }
+    .keyword.exception { color: #5f00d7; }
+    .keyword.modifier { color: #5f00d7; }
+    .string.escape { color: #008700; }
+    .comment.error { color: #8a8a8a; }
+    .comment.note { color: #8a8a8a; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .attribute.builtin { font-weight: bold;color: #af0000; }
+    .keyword { color: #5f00d7; }
+    .number { font-weight: bold;color: #875f00; }
+    .keyword.import { color: #5f00d7; }
+    .variable.parameter { text-decoration: underline;; }
+    .string.documentation { color: #008700; }
+    .keyword.repeat { color: #5f00d7; }
+    .comment.documentation { color: #8a8a8a; }
+    .comment.warning { color: #8a8a8a; }
   </style>
 
 </head>
@@ -208,7 +247,7 @@
 </td></tr>
 <tr><td class=line-number>82</td><td class=line>
 </td></tr>
-<tr><td class=line-number>83</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.01</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>83</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> deliverMaliciousRemovableMedia <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='font-weight: bold;color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.01</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>84</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The user is assumed to connect the removable media containing the malicious code to all of the hardware systems that they have access to. Since this is expected to unwittingly happen as part of their normal operations the attack exposes their regular security context.&quot;</span>
 </td></tr>
@@ -230,7 +269,7 @@
 </td></tr>
 <tr><td class=line-number>93</td><td class=line>
 </td></tr>
-<tr><td class=line-number>94</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> unsafeUserActivity <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.03</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
+<tr><td class=line-number>94</td><td class=line>      <span style='font-weight: bold;color: #4e4e4e'>|</span> unsafeUserActivity <span style='font-weight: bold;color: #4e4e4e'>@</span><span style='color: #000087'>hidden</span> <span style='color: #4e4e4e'>[</span><span style='font-weight: bold;color: #005fd7'>Exponential</span><span style='color: #4e4e4e'>(</span><span style='font-weight: bold;color: #875f00'>0.03</span><span style='color: #4e4e4e'>)</span><span style='color: #4e4e4e'>]</span>
 </td></tr>
 <tr><td class=line-number>95</td><td class=line>        <span style='font-style: italic;color: #8a8a8a'>developer info: &quot;The user can engage in unsafe behaviour that could allow the attacker to gain access to the applications the user has access to.&quot;</span>
 </td></tr>

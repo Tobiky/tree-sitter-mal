@@ -17,27 +17,66 @@
     }
   </style>
   <style>
-    .constructor { color: #af8700; }
-    .function { color: #005fd7; }
-    .comment { font-style: italic;color: #8a8a8a; }
-    .attribute { font-style: italic;color: #af0000; }
-    .operator { font-weight: bold;color: #4e4e4e; }
-    .number { font-weight: bold;color: #875f00; }
-    .punctuation.delimiter { color: #4e4e4e; }
-    .constant { color: #875f00; }
-    .type { color: #005f5f; }
-    .keyword { color: #5f00d7; }
-    .property { color: #af0000; }
-    .module { color: #af8700; }
-    .string.special { color: #008787; }
-    .constant.builtin { font-weight: bold;color: #875f00; }
     .string { color: #008700; }
-    .type.builtin { font-weight: bold;color: #005f5f; }
-    .variable.builtin { font-weight: bold;; }
-    .variable.parameter { text-decoration: underline;; }
+    .keyword.coroutine { color: #5f00d7; }
+    .punctuation.special { color: #4e4e4e; }
+    .comment { font-style: italic;color: #8a8a8a; }
     .function.builtin { font-weight: bold;color: #005fd7; }
+    .function.call { color: #005fd7; }
+    .comment.todo { color: #8a8a8a; }
+    .number.float { font-weight: bold;color: #875f00; }
+    .keyword.debug { color: #5f00d7; }
+    .keyword.repeat { color: #5f00d7; }
+    .keyword.exception { color: #5f00d7; }
+    .tag.builtin { color: #000087; }
+    .property { color: #af0000; }
+    .type { color: #005f5f; }
+    .boolean { color: #875f00; }
+    .tag.delimiter { color: #000087; }
+    .variable.parameter { text-decoration: underline;; }
+    .keyword.modifier { color: #5f00d7; }
+    .keyword.directive { color: #5f00d7; }
+    .function.method.call { color: #005fd7; }
+    .keyword.import { color: #5f00d7; }
+    .comment.note { color: #8a8a8a; }
+    .constructor { color: #af8700; }
+    .attribute { font-style: italic;color: #af0000; }
+    .attribute.builtin { font-weight: bold;color: #af0000; }
+    .string.special.path { color: #008787; }
+    .string.regexp { color: #008700; }
+    .number { font-weight: bold;color: #875f00; }
+    .keyword.conditional { color: #5f00d7; }
+    .keyword.function { color: #5f00d7; }
+    .punctuation.delimiter { color: #4e4e4e; }
+    .comment.documentation { color: #8a8a8a; }
+    .string.documentation { color: #008700; }
+    .string.special.url { color: #008787; }
+    .constant.builtin { font-weight: bold;color: #875f00; }
+    .function { color: #005fd7; }
+    .comment.warning { color: #8a8a8a; }
+    .keyword.operator { color: #5f00d7; }
+    .keyword.conditional.ternary { color: #5f00d7; }
     .punctuation.bracket { color: #4e4e4e; }
+    .tag.attribute { color: #000087; }
     .tag { color: #000087; }
+    .comment.error { color: #8a8a8a; }
+    .constant.macro { color: #875f00; }
+    .string.special.symbol { color: #008787; }
+    .keyword.return { color: #5f00d7; }
+    .keyword.directive.define { color: #5f00d7; }
+    .constant { color: #875f00; }
+    .function.macro { color: #005fd7; }
+    .string.special { color: #008787; }
+    .operator { font-weight: bold;color: #4e4e4e; }
+    .keyword.type { color: #5f00d7; }
+    .type.definition { color: #005f5f; }
+    .variable.builtin { font-weight: bold;; }
+    .keyword { color: #5f00d7; }
+    .string.escape { color: #008700; }
+    .type.builtin { font-weight: bold;color: #005f5f; }
+    .function.method { color: #005fd7; }
+    .module { color: #af8700; }
+    .module.builtin { color: #af8700; }
   </style>
 
 </head>
@@ -76,17 +115,13 @@
 </td></tr>
 <tr><td class=line-number>16</td><td class=line>
 </td></tr>
-<tr><td class=line-number>17</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;ComputeResources.mal&quot;</span>
+<tr><td class=line-number>17</td><td class=line><span style='font-weight: bold;color: #4e4e4e'>#</span><span style='color: #875f00'>id</span>: <span style='color: #008700'>&quot;org.mal-lang.coreLang&quot;</span>
 </td></tr>
-<tr><td class=line-number>18</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;DataResources.mal&quot;</span>
+<tr><td class=line-number>18</td><td class=line><span style='font-weight: bold;color: #4e4e4e'>#</span><span style='color: #875f00'>version</span>: <span style='color: #008700'>&quot;1.0.0&quot;</span>
 </td></tr>
-<tr><td class=line-number>19</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;IAM.mal&quot;</span>
+<tr><td class=line-number>19</td><td class=line>
 </td></tr>
-<tr><td class=line-number>20</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;User.mal&quot;</span>
-</td></tr>
-<tr><td class=line-number>21</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;Networking.mal&quot;</span>
-</td></tr>
-<tr><td class=line-number>22</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;Vulnerability.mal&quot;</span>
+<tr><td class=line-number>20</td><td class=line><span style='color: #5f00d7'>include</span> <span style='color: #008700'>&quot;coreLang.mal&quot;</span>
 </td></tr>
 </table>
 

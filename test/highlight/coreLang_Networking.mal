@@ -15,11 +15,11 @@
  */
 
 category Networking {
-    // <- keyword
+    // <- keyword.type
     //   ^ module
     //              ^ punctuation.bracket
     asset Network
-    // <- keyword
+    // <- keyword.type
     //    ^ type
       user info: "A network (zone) is a set of network accessible applications and data."
     // ^ comment
@@ -35,14 +35,14 @@ category Networking {
     // <- punctuation.bracket
       let outboundAllowedConnections = (netConnections \/ outgoingNetConnections)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                             ^ operator
       //                               ^ punctuation.bracket
       //                                               ^ operator
       //                                                                        ^ punctuation.bracket
       let inboundAllowedConnections = (netConnections \/ ingoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                            ^ operator
       //                              ^ punctuation.bracket
       //                                              ^ operator
@@ -50,7 +50,7 @@ category Networking {
       //                                                                                                    ^ punctuation.bracket
       let allNetConnections = (netConnections \/ ingoingNetConnections \/ outgoingNetConnections \/ diodeIngoingNetConnections)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                    ^ operator
       //                      ^ punctuation.bracket
       //                                      ^ operator
@@ -59,11 +59,11 @@ category Networking {
       //                                                                                                                      ^ punctuation.bracket
       let allowedApplicationConnectionsApplications = (applications \/ allNetConnections().applications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                                            ^ operator
       //                                              ^ punctuation.bracket
       //                                                            ^ operator
-      //                                                               ^ property
+      //                                                               ^ variable
       //                                                                                ^^ punctuation.bracket
       //                                                                                  ^ operator
       //                                                                                               ^ punctuation.bracket
@@ -153,7 +153,7 @@ category Networking {
       | accessControlBypassed @hidden
       // <- operator
       //                      ^ operator
-      //                       ^ tag
+      //                       ^ tag.builtin
         developer info: "Access control is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
       // ^ comment
       //          ^ comment
@@ -169,7 +169,7 @@ category Networking {
       | attemptAccessUninspectedFromPhysicalAccess @hidden
       // <- operator
       //                                           ^ operator
-      //                                            ^ tag
+      //                                            ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -184,7 +184,7 @@ category Networking {
       | attemptAccessInspectedFromPhysicalAccess @hidden
       // <- operator
       //                                         ^ operator
-      //                                          ^ tag
+      //                                          ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -200,7 +200,7 @@ category Networking {
       & successfulAccessUninspectedFromPhysicalAccess @hidden
       // <- operator
       //                                              ^ operator
-      //                                               ^ tag
+      //                                               ^ tag.builtin
         developer info: "Intermediate attack step to model defenses."
       // ^ comment
       //          ^ comment
@@ -213,7 +213,7 @@ category Networking {
       & successfulAccessInspectedFromPhysicalAccess @hidden
       // <- operator
       //                                            ^ operator
-      //                                             ^ tag
+      //                                             ^ tag.builtin
         developer info: "Intermediate attack step to model defenses."
       // ^ comment
       //          ^ comment
@@ -232,7 +232,7 @@ category Networking {
       //           ^ comment
         ->  outboundAllowedConnections().attemptConnectToApplicationsUninspected,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                              ^^ punctuation.bracket
       //                                ^ operator
       //                                 ^ function
@@ -262,7 +262,7 @@ category Networking {
       //           ^ comment
         ->  outboundAllowedConnections().attemptConnectToApplicationsInspected,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                              ^^ punctuation.bracket
       //                                ^ operator
       //                                 ^ function
@@ -283,7 +283,7 @@ category Networking {
       | attemptReverseReach @hidden
       // <- operator
       //                    ^ operator
-      //                     ^ tag
+      //                     ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses."
       // ^ comment
       //          ^ comment
@@ -295,7 +295,7 @@ category Networking {
       & reverseReach @hidden
       // <- operator
       //             ^ operator
-      //              ^ tag
+      //              ^ tag.builtin
         developer info: "Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates toward outgoing or bidirectional communications."
       // ^ comment
       //          ^ comment
@@ -303,7 +303,7 @@ category Networking {
       //                ^ comment
         ->  inboundAllowedConnections().attemptReverseReach,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                             ^^ punctuation.bracket
       //                               ^ operator
       //                                ^ function
@@ -315,7 +315,7 @@ category Networking {
       | networkForwardingUninspected @hidden
       // <- operator
       //                             ^ operator
-      //                              ^ tag
+      //                              ^ tag.builtin
         developer info: "By using the allowed connections (connection rules), uninspected forwarding from one network to another network or applications can happen."
       // ^ comment
       //          ^ comment
@@ -323,13 +323,13 @@ category Networking {
       //                ^ comment
           ->  outboundAllowedConnections().attemptAccessNetworksUninspected,
       //  ^ operator
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
       //                                                                   ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsUninspected,
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
@@ -341,7 +341,7 @@ category Networking {
       | networkForwardingInspected @hidden
       // <- operator
       //                           ^ operator
-      //                            ^ tag
+      //                            ^ tag.builtin
         developer info: "By using the allowed connections (connection rules), inspected forwarding from one network to another network or applications can happen."
       // ^ comment
       //          ^ comment
@@ -349,13 +349,13 @@ category Networking {
       //                ^ comment
           ->  outboundAllowedConnections().attemptAccessNetworksInspected,
       //  ^ operator
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
       //                                                                 ^ punctuation.delimiter
               outboundAllowedConnections().attemptConnectToApplicationsInspected
-      //      ^ property
+      //      ^ variable
       //                                ^^ punctuation.bracket
       //                                  ^ operator
       //                                   ^ function
@@ -372,13 +372,13 @@ category Networking {
       //           ^ comment
         ->  allNetConnections().attemptDeny,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                     ^^ punctuation.bracket
       //                       ^ operator
       //                        ^ function
       //                                   ^ punctuation.delimiter
             allowedApplicationConnectionsApplications().denyFromNetworkingAsset
-      //    ^ property
+      //    ^ variable
       //                                             ^^ punctuation.bracket
       //                                               ^ operator
       //                                                ^ function
@@ -386,7 +386,7 @@ category Networking {
       | accessNetworkData @hidden
       // <- operator
       //                  ^ operator
-      //                   ^ tag
+      //                   ^ tag.builtin
         developer info: "Access also the data that are network-wide available."
       // ^ comment
       //     ^ comment
@@ -432,7 +432,7 @@ category Networking {
       | eavesdropDefenseBypassed @hidden
       // <- operator
       //                         ^ operator
-      //                          ^ tag
+      //                          ^ tag.builtin
         developer info: "The Eavesdrop defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
       // ^ comment
       //          ^ comment
@@ -445,7 +445,7 @@ category Networking {
       | attemptEavesdrop @hidden
       // <- operator
       //                 ^ operator
-      //                  ^ tag
+      //                  ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -461,7 +461,7 @@ category Networking {
       & successfulEavesdrop @hidden
       // <- operator
       //                    ^ operator
-      //                     ^ tag
+      //                     ^ tag.builtin
         developer info: "Intermediate attack step to model defenses."
       // ^ comment
       //          ^ comment
@@ -514,7 +514,7 @@ category Networking {
       | adversaryInTheMiddleDefenseBypassed @hidden
       // <- operator
       //                                    ^ operator
-      //                                     ^ tag
+      //                                     ^ tag.builtin
         developer info: "The adversary in the middle defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
       // ^ comment
       //          ^ comment
@@ -527,7 +527,7 @@ category Networking {
       | attemptAdversaryInTheMiddle @hidden
       // <- operator
       //                            ^ operator
-      //                             ^ tag
+      //                             ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -542,7 +542,7 @@ category Networking {
       & successfulAdversaryInTheMiddle @hidden
       // <- operator
       //                               ^ operator
-      //                                ^ tag
+      //                                ^ tag.builtin
         developer info: "Intermediate attack step to model defenses."
       // ^ comment
       //          ^ comment
@@ -579,8 +579,8 @@ category Networking {
     }
 
     asset RoutingFirewall extends Application
-    // <- keyword
-    //                    ^ keyword
+    // <- keyword.type
+    //                    ^ keyword.modifier
       user info: "A routing firewall specifies a router with firewall capabilities that connects many networks."
     // ^ comment
     //     ^ comment
@@ -637,7 +637,7 @@ category Networking {
     // <- punctuation.bracket
 
     asset ConnectionRule
-    // <- keyword
+    // <- keyword.type
       user info: "This asset is used to model firewall rules between Applications and/or Networks. The association selected (bi/uni-directional) only describes the connection initiation."
     // ^ comment
     //     ^ comment
@@ -652,7 +652,7 @@ category Networking {
     // <- punctuation.bracket
       let allApplications = (applications \/ inApplications \/ outApplications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                  ^ operator
       //                    ^ punctuation.bracket
       //                                  ^ operator
@@ -660,14 +660,14 @@ category Networking {
       //                                                                      ^ punctuation.bracket
       let senderApplications = (applications \/ outApplications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                     ^ operator
       //                       ^ punctuation.bracket
       //                                     ^ operator
       //                                                       ^ punctuation.bracket
       let receiverApplications = (applications \/ inApplications)
       // <- keyword
-      //  ^ property
+      //  ^ variable
       //                       ^ operator
       //                         ^ punctuation.bracket
       //                                       ^ operator
@@ -704,7 +704,7 @@ category Networking {
       | restrictedBypassed @hidden
       // <- operator
       //                   ^ operator
-      //                    ^ tag
+      //                    ^ tag.builtin
         developer info: "The restricted defense is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
       // ^ comment
       //          ^ comment
@@ -760,7 +760,7 @@ category Networking {
       | payloadInspectionBypassed @hidden
       // <- operator
       //                          ^ operator
-      //                           ^ tag
+      //                           ^ tag.builtin
         developer info: "Payload inspection is bypassed either because it was not set, the attacker was able to circumvent it through additional effort."
       // ^ comment
       //          ^ comment
@@ -780,7 +780,7 @@ category Networking {
       | attemptReverseReach @hidden
       // <- operator
       //                    ^ operator
-      //                     ^ tag
+      //                     ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -799,7 +799,7 @@ category Networking {
       & reverseReach @hidden
       // <- operator
       //             ^ operator
-      //              ^ tag
+      //              ^ tag.builtin
         developer info: "Reverse reach is used to determine whether or not the attacker can be reached by the user. Reverse reach propagates via outgoing or bidirectional communications."
       // ^ comment
       //          ^ comment
@@ -807,7 +807,7 @@ category Networking {
       //                ^ comment
         ->  senderApplications().attemptReverseReach,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                      ^^ punctuation.bracket
       //                        ^ operator
       //                         ^ function
@@ -822,7 +822,7 @@ category Networking {
       | attemptAccessNetworksUninspected @hidden
       // <- operator
       //                                 ^ operator
-      //                                  ^ tag
+      //                                  ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -849,7 +849,7 @@ category Networking {
       | attemptAccessNetworksInspected @hidden
       // <- operator
       //                               ^ operator
-      //                                ^ tag
+      //                                ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -865,7 +865,7 @@ category Networking {
       & successfulAccessNetworksUninspected @hidden
       // <- operator
       //                                    ^ operator
-      //                                     ^ tag
+      //                                     ^ tag.builtin
         developer info: "Intermediate attack step to model defenses."
       // ^ comment
       //          ^ comment
@@ -878,7 +878,7 @@ category Networking {
       & successfulAccessNetworksInspected @hidden
       // <- operator
       //                                  ^ operator
-      //                                   ^ tag
+      //                                   ^ tag.builtin
         developer info: "Intermediate attack step to model defenses."
       // ^ comment
       //          ^ comment
@@ -925,7 +925,7 @@ category Networking {
       | attemptConnectToApplicationsUninspected @hidden
       // <- operator
       //                                        ^ operator
-      //                                         ^ tag
+      //                                         ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -944,7 +944,7 @@ category Networking {
       | attemptConnectToApplicationsInspected @hidden
       // <- operator
       //                                      ^ operator
-      //                                       ^ tag
+      //                                       ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -960,7 +960,7 @@ category Networking {
       & connectToApplicationsUninspected @hidden
       // <- operator
       //                                 ^ operator
-      //                                  ^ tag
+      //                                  ^ tag.builtin
         developer info: "Connect to all the (server) Applications that are associated with this ConnectionRule, without any restriction due to inspection."
       // ^ comment
       //          ^ comment
@@ -968,13 +968,13 @@ category Networking {
       //                ^ comment
         ->  receiverApplications().networkConnectUninspected,
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                        ^^ punctuation.bracket
       //                          ^ operator
       //                           ^ function
       //                                                    ^ punctuation.delimiter
             receiverApplications().networkConnectInspected
-      //    ^ property
+      //    ^ variable
       //                        ^^ punctuation.bracket
       //                          ^ operator
       //                           ^ function
@@ -982,7 +982,7 @@ category Networking {
       & connectToApplicationsInspected @hidden
       // <- operator
       //                               ^ operator
-      //                                ^ tag
+      //                                ^ tag.builtin
         developer info: "Connect to all the (server) Applications that are associated with this ConnectionRule, but taking into account that the traffic payload is being inspected. This attack step is used to allow legitimate traffic even when payload inspection is enabled on the connection."
       // ^ comment
       //          ^ comment
@@ -990,7 +990,7 @@ category Networking {
       //                ^ comment
         ->  receiverApplications().networkConnectInspected
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                        ^^ punctuation.bracket
       //                          ^ operator
       //                           ^ function
@@ -998,7 +998,7 @@ category Networking {
       | attemptDeny @hidden
       // <- operator
       //            ^ operator
-      //             ^ tag
+      //             ^ tag.builtin
         developer info: "Intermediate attack step to allow for defenses and trigger bypasses."
       // ^ comment
       //          ^ comment
@@ -1023,7 +1023,7 @@ category Networking {
       //           ^ comment
         ->  allApplications().denyFromNetworkingAsset
       // ^ operator
-      //    ^ property
+      //    ^ variable
       //                   ^^ punctuation.bracket
       //                     ^ operator
       //                      ^ function
@@ -1031,7 +1031,7 @@ category Networking {
 }
 
 associations {
-  // <- keyword
+  // <- keyword.modifier
   //         ^ punctuation.bracket
   // ### Networking associations
   RoutingFirewall  [routingFirewalls]  0..1 <-- FirewallConnectionRule --> *    [connectionRules]       ConnectionRule
