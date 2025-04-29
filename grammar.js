@@ -171,7 +171,7 @@ module.exports = grammar({
     ttc_distribution: $ => seq(
       field('id', $.identifier),
       '(',
-      field('values', commaSep1($._number)),
+      field('values', optional(commaSep1($._number))),
       ')',
     ),
 

@@ -284,6 +284,8 @@ class MalCompiler(ParseTreeVisitor):
 
         # process all ( '@' (id) ) we might have
         tags = []
+
+        # TODO change grammar to make (@ id)* instead of (@ id)?
         while (cursor.node.text.decode() == '@'):
             cursor.goto_next_sibling() # skip '@'
             tags.append(cursor.node.text.decode()) # grab (id)
@@ -300,9 +302,9 @@ class MalCompiler(ParseTreeVisitor):
 
         ttc = None
         if (cursor.node.type == 'ttc'):
-            # TODO
             # visit ttc
-            pass
+            # TODO
+            ttc = self.visit(cursor)
 
         meta = {}
         while (cursor.node.type == 'meta'):
@@ -361,7 +363,7 @@ class MalCompiler(ParseTreeVisitor):
             cursor.goto_next_sibling()
 
         return risk
-    
+
     def visit_cia(self, cursor: TreeCursor):
         ###############
         # 'C'|'I'|'A' #
@@ -379,4 +381,156 @@ class MalCompiler(ParseTreeVisitor):
         )
 
         return {key: True}
+
+    def visit_ttc(self, cursor: TreeCursor):
+        ##################################
+        # '[' (intermediary_ttc_exp) ']' #
+        ##################################
+
+        # skip '['
+        cursor.goto_next_sibling()
+
+        return self._visit_intermediary_ttc_expr(cursor)
+
+    def _visit_intermediary_ttc_expr(self, cursor: TreeCursor):
+        ###################################################################################################
+        # '(' (intermediary_ttc_expr) ')' | (integer) | (float) | (id) | (ttc_distribution) | (ttc_binop) #
+        ###################################################################################################
+
+        # check if we have '(', in this case it's a parenthesized expression
+        if (cursor.node.text.decode() == '('):
+            cursor.goto_next_sibling() # skip '('
+            return self._visit_intermediary_ttc_expr(cursor) # visit the expression
+
+        # if we have an id, just return it 
+        elif (cursor.node.type == 'identifier'):
+            return cursor.node.text.decode()
+
+        # otherwise visit the node
+        return self.visit(cursor)
+
+    def visit_float(self, cursor: TreeCursor):
+        ret = {"type": "number"}
+        ret["value"] = float(cursor.node.text.decode())
+
+        return ret
+
+    def visit_integer(self, cursor: TreeCursor):
+        ret = {"type": "number"}
+        ret["value"] = float(cursor.node.text.decode())
+
+        return ret
+
+    def visit_ttc_binop(self, cursor: TreeCursor):
+        #########################################################################
+        # (intermediary_ttc_expr) ('+'|'-'|'*'|'/'|'^') (intermediary_ttc_expr) #
+        #########################################################################
+
+        # grab first (intermediary_ttc_expr)
+        lhs = self._visit_intermediary_ttc_expr(cursor)
+        cursor.goto_next_sibling()
+
+        # grab operation type
+        operation = cursor.node.text.decode()
+        operation_type = 'addition' if operation == '+' else \
+                      'subtraction' if operation == '-' else \
+                      'multiplication' if operation == '*' else \
+                      'multiplication' if operation == '/' else \
+                      'exponentiation'
+        cursor.goto_next_sibling()
+
+        # grab second (intermediary_ttc_expr)
+        rhs = self._visit_intermediary_ttc_expr(cursor)
+
+        return {"type":operation_type, "lhs":lhs, "rhs": rhs}
+
+    def visit_ttc_distribution(self, cursor: TreeCursor):
+        ############################################
+        # (id) '(' (number)* ( ',' (number) )* ')' #
+        ############################################
         
+        # grab (id)
+        name = cursor.node.text.decode()
+        cursor.goto_next_sibling()
+        
+        # skip '('
+        cursor.goto_next_sibling()
+        
+        # parse function arguments
+        args = []
+        while (cursor.node.type in ('float', 'integer')):
+            # obtain the number 
+            arg = self.visit(cursor)
+            args.append(arg)
+            # move to next symbol, if it's not a comma then done
+            if (cursor.node.text.decode() != ','):
+                break
+            # otherwise, ignore the comma
+            cursor.goto_next_sibling()
+
+        return {
+                "type": "function",
+                "name": name,
+                "arguments": args
+            }
+
+    '''
+    TODO - grammar might need to be updated
+
+    def visit_preconditions(self, cursor: TreeCursor):
+        #######################################
+        # '<-' (asset_expr) (',' (asset_expr) )* #
+        #######################################
+
+        # Skip '->'
+        cursor.goto_next_sibling()
+        
+        ret = {}
+        ret["overrides"] = True
+        ret["stepExpressions"] = [self.visit(cursor)]
+
+        while (cursor.goto_next_sibling()): # check if we have a ','
+            cursor.goto_next_sibling() # ignore the ','
+            ret["stepExpressions"].append(self.visit(cursor))
+
+        return ret
+    
+    def visit_asset_expr(self,cursor: TreeCursor):
+        return self._intermediary_visit_reaches(cursor)
+
+    def _intermediary_visit_reaches(self, cursor: TreeCursor):
+        #############################################################################################################################################
+        # '(' (_intermediary_visit_reaches) ')' | (id) | (asset_variable_substitution) | (asset_expr_binop) | (asset_expr_unop) | (asset_expr_type) #
+        #############################################################################################################################################
+
+        # The objective of this function is to mimick the _inline_asset_expr
+        # In other words, this function will figure out the type of the node it just received,
+        # pretending that it was an _inline_asset_expr
+
+        ret = {}
+        if (cursor.node.type==identifier):
+            ret["type"] = "field"
+            ret["name"] = cursor.node.text
+        elif (cursor.node.text == '('):
+            ret = self.visit(_intermediary_visit_reaches)
+        else:
+            ret = self.visit(cursor)
+
+        return ret
+
+    def visit_asset_variable_substitution(self, cursor: TreeCursor):
+        ################
+        # (id) '(' ')' #
+        ################
+
+        return {
+            "type": "variable",
+            "name": self.cursor.text
+            }
+
+    def visit_asset_expr_type(self, cursor: TreeCursor):
+        ##############################
+        # (inline_expr) '[' (id) ']' #
+        ##############################
+
+    '''
