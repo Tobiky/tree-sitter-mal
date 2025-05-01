@@ -302,7 +302,6 @@ class MalCompiler(ParseTreeVisitor):
         ttc = None
         if (cursor.node.type == 'ttc'):
             # visit ttc
-            # TODO
             ttc = self.visit(cursor)
             cursor.goto_next_sibling()
 
@@ -321,11 +320,13 @@ class MalCompiler(ParseTreeVisitor):
         requires = None
         if (cursor.node.type == 'preconditions' ):
             requires = self.visit(cursor)
+            cursor.goto_next_sibling()
 
         reaches = None
-        if (cursor.node.type == 'reaches' ):
+        if (cursor.node.type == 'reaching'):
             # TODO visit reaches
-            pass
+            reaches = self.visit(cursor)
+            cursor.goto_next_sibling()
 
         ret = {
             "name":name,
@@ -338,6 +339,7 @@ class MalCompiler(ParseTreeVisitor):
             "requires":requires,
             "reaches": reaches,
             }
+
         return ("step", ret)
 
     def visit_cias(self, cursor: TreeCursor):
@@ -490,7 +492,27 @@ class MalCompiler(ParseTreeVisitor):
             ret["stepExpressions"].append(self.visit(cursor))
 
         return ret
-    
+
+    def visit_reaching(self, cursor: TreeCursor):
+        ################################################
+        # ( '+>' | '->' ) (reaches) ( ',' (reaches) )* #
+        ################################################
+
+        ret = {}
+
+        # Get type of reaches
+        ret["overrides"] = True if cursor.node.text.decode()=='->' else False
+        cursor.goto_next_sibling()
+
+        # Visit the steps
+        ret["stepExpressions"] = [self.visit(cursor)]
+
+        while (cursor.goto_next_sibling()): # check if we have a ','
+            cursor.goto_next_sibling() # ignore the ','
+            ret["stepExpressions"].append(self.visit(cursor))
+
+        return ret
+
     def visit_asset_expr(self,cursor: TreeCursor):
         return self._visit_inline_asset_expr(cursor)
 
@@ -620,13 +642,15 @@ class MalCompiler(ParseTreeVisitor):
         # original node's position and iterate from there until the end of
         # the text.
 
-        original_node_column = original_node.start_point
+        original_node_column = original_node.start_point.column
         tokenStream = parent_node.text
         tokenStream_split = tokenStream[original_node_column:]
         for char in tokenStream_split:
+            char = chr(char)
             if char == '.':
                 return "field"      # Only a field can have attributes
             if char == ',':
                 return "attackStep" # A `,` means we are starting a new reaches
 
         return "attackStep"
+
