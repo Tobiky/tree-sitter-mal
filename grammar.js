@@ -227,9 +227,9 @@ module.exports = grammar({
     asset_expr_binop: $ => choice(
       ...[
         ['\\/', 'binary_plus'],
-        ['/\\', 'binary_mul'],
-        ['-', 'binary_mul'],
-        ['.', 'binary_exp'],
+        ['/\\', 'binary_plus'],
+        ['-', 'binary_plus'],
+        ['.', 'binary_mul'],
       ].map(([operator, precedence, associativity]) =>
         (associativity === 'right' ? prec.right : prec.left)(precedence, seq(
           field('left', $._inline_asset_expr),

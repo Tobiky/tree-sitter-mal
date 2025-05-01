@@ -1,4 +1,4 @@
-from tree_sitter import TreeCursor
+from tree_sitter import TreeCursor, Range
 from typing import Tuple
 from lang import PARSER as parser
 
@@ -98,7 +98,6 @@ class ParseTreeVisitor:
                 return values[0]
             case _:
                 return values
-
 
 # Concrete visitor to process function definitions
 class MalCompiler(ParseTreeVisitor):
@@ -223,7 +222,7 @@ class MalCompiler(ParseTreeVisitor):
         variables, attackSteps = [], []
         if (cursor.node.is_named):
             variables, attackSteps = self.visit(cursor)
-        
+
         return {"name": name,
                 "meta": meta,
                 "category": category,
@@ -305,6 +304,7 @@ class MalCompiler(ParseTreeVisitor):
             # visit ttc
             # TODO
             ttc = self.visit(cursor)
+            cursor.goto_next_sibling()
 
         meta = {}
         while (cursor.node.type == 'meta'):
@@ -320,8 +320,7 @@ class MalCompiler(ParseTreeVisitor):
 
         requires = None
         if (cursor.node.type == 'preconditions' ):
-            # TODO visit preconditions
-            pass
+            requires = self.visit(cursor)
 
         reaches = None
         if (cursor.node.type == 'reaches' ):
@@ -474,15 +473,12 @@ class MalCompiler(ParseTreeVisitor):
                 "arguments": args
             }
 
-    '''
-    TODO - grammar might need to be updated
-
     def visit_preconditions(self, cursor: TreeCursor):
-        #######################################
+        ##########################################
         # '<-' (asset_expr) (',' (asset_expr) )* #
-        #######################################
+        ##########################################
 
-        # Skip '->'
+        # Skip '<-'
         cursor.goto_next_sibling()
         
         ret = {}
@@ -496,11 +492,11 @@ class MalCompiler(ParseTreeVisitor):
         return ret
     
     def visit_asset_expr(self,cursor: TreeCursor):
-        return self._intermediary_visit_reaches(cursor)
+        return self._visit_inline_asset_expr(cursor)
 
-    def _intermediary_visit_reaches(self, cursor: TreeCursor):
+    def _visit_inline_asset_expr(self, cursor: TreeCursor):
         #############################################################################################################################################
-        # '(' (_intermediary_visit_reaches) ')' | (id) | (asset_variable_substitution) | (asset_expr_binop) | (asset_expr_unop) | (asset_expr_type) #
+        # '(' (_inline_asset_expr) ')' | (id) | (asset_variable_substitution) | (asset_expr_binop) | (asset_expr_unop) | (asset_expr_type) #
         #############################################################################################################################################
 
         # The objective of this function is to mimick the _inline_asset_expr
@@ -508,11 +504,13 @@ class MalCompiler(ParseTreeVisitor):
         # pretending that it was an _inline_asset_expr
 
         ret = {}
-        if (cursor.node.type==identifier):
-            ret["type"] = "field"
-            ret["name"] = cursor.node.text
-        elif (cursor.node.text == '('):
-            ret = self.visit(_intermediary_visit_reaches)
+
+        if (cursor.node.type=='identifier'):
+            ret["type"] = self._resolve_part_ID_type(cursor)
+            ret["name"] = cursor.node.text.decode()
+        elif (cursor.node.text.decode() == '('):
+            cursor.goto_next_sibling() # ignore the '('
+            ret = self._visit_inline_asset_expr(cursor)
         else:
             ret = self.visit(cursor)
 
@@ -525,12 +523,110 @@ class MalCompiler(ParseTreeVisitor):
 
         return {
             "type": "variable",
-            "name": self.cursor.text
+            "name": self.cursor.text.decode()
             }
 
     def visit_asset_expr_type(self, cursor: TreeCursor):
-        ##############################
-        # (inline_expr) '[' (id) ']' #
-        ##############################
+        #####################################
+        # (_inline_asset_expr) '[' (id) ']' #
+        #####################################
 
-    '''
+        # On the ANTLR version, we would visit the subtypes from left to right,
+        # so we would have to store them recursively. However, in the TreeSitter
+        # version, we are starting from right to left, so we can just visit
+        # the `lhs` and return the current subtype
+
+        # Visit the inline expr
+        stepExpression = self._visit_inline_asset_expr(cursor)
+        cursor.goto_next_sibling()
+
+        # Skip '['
+        cursor.goto_next_sibling()
+
+        # Get the subType
+        subType = cursor.node.text.decode()
+
+        return {
+                "type": "subType",
+                "subType": subType,
+                "stepExpression": stepExpression
+            }
+
+    def visit_asset_expr_binop(self, cursor: TreeCursor):
+        ########################################################################
+        # (_inline_asset_expr) ( '\/' | '/\' | '-' | '.') (_inline_asset_expr) #
+        ########################################################################
+        
+        # Get the lhs
+        lhs = self._visit_inline_asset_expr(cursor)
+        cursor.goto_next_sibling()
+
+        # Get the type of operation
+        optype = 'collect' if cursor.node.text.decode()=='.'             \
+                 else 'union' if cursor.node.text.decode()=='\\/'        \
+                 else 'intersection' if cursor.node.text.decode()=='/\\' \
+                 else 'difference'
+        cursor.goto_next_sibling()
+
+        # Get the rhs
+        rhs = self._visit_inline_asset_expr(cursor)
+        return {
+            "type": optype,
+            "lhs": lhs,
+            "rhs": rhs
+        }
+
+    def visit_asset_expr_unop(self, cursor: TreeCursor):
+        #############################
+        # (_inline_asset_expr)  '*' #
+        #############################
+        
+        # Get the associated expression
+        expr = self._visit_inline_asset_expr(cursor)
+        cursor.goto_next_sibling()
+
+        return {
+            "type": "transitive",
+            "stepExpression": expr
+        }
+
+    def _resolve_part_ID_type(self, cursor: TreeCursor):
+        # Figure out if we have a `field` or an `attackStep`
+        original_node = cursor.node
+
+        parent_node = original_node.parent
+
+        while parent_node and parent_node.type != 'reaching':
+            # The idea is to go up the tree. If we find a "reaching" node,
+            # we still need to determine if it's a field or a an attackStep
+            parent_node = parent_node.parent
+
+        if not parent_node:
+            # If we never find a "reaching" node, eventually we will go to
+            # the top of the tree, and we won't be able to go further up.
+            # In this case, we originally were in a `let` or `precondition`,
+            # which only accepts fields
+            return "field"
+
+        # We want to know if there is any `.` after the context.
+        # If there is, we have a field (as an attackStep does not
+        # have attributes)
+        #
+        # To do this, we will find the start position of the  the original
+        # node in the text. Each rule matches to one line in the end,
+        # so this node will be in the same row as its parent node and in
+        # a column inside the range of columns of its parent. So, we 
+        # just have to split the whole text of the parent starting at the
+        # original node's position and iterate from there until the end of
+        # the text.
+
+        original_node_column = original_node.start_point
+        tokenStream = parent_node.text
+        tokenStream_split = tokenStream[original_node_column:]
+        for char in tokenStream_split:
+            if char == '.':
+                return "field"      # Only a field can have attributes
+            if char == ',':
+                return "attackStep" # A `,` means we are starting a new reaches
+
+        return "attackStep"
