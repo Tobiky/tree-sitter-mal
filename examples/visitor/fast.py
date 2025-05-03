@@ -218,7 +218,7 @@ class MalCompiler(ParseTreeVisitor):
         # skip '{'
         cursor.goto_next_sibling()
 
-        # TODO visit asset_definition
+        # visit asset_definition
         variables, attackSteps = [], []
         if (cursor.node.is_named):
             variables, attackSteps = self.visit(cursor)
@@ -324,7 +324,6 @@ class MalCompiler(ParseTreeVisitor):
 
         reaches = None
         if (cursor.node.type == 'reaching'):
-            # TODO visit reaches
             reaches = self.visit(cursor)
             cursor.goto_next_sibling()
 
@@ -653,4 +652,164 @@ class MalCompiler(ParseTreeVisitor):
                 return "attackStep" # A `,` means we are starting a new reaches
 
         return "attackStep"
+
+    def visit_associations_declaration(self, cursor: TreeCursor):
+        #########################################
+        # 'associations' '{' (association)* '}' #
+        #########################################
+
+        # skip 'associations'
+        cursor.goto_next_sibling()
+
+        # skip '{'
+        cursor.goto_next_sibling()
+
+        # visit all associations
+        associations = []
+        while cursor.node.text.decode() != '}':
+            associations.append(self.visit(cursor))
+            cursor.goto_next_sibling()
+
+        return ('associations', associations)
+
+    def visit_association(self, cursor: TreeCursor):
+        ##############################################################################################
+        # (id) '[' (id) ']' (multiplicity) '<--' (id) '-->' (multiplicity) '[' (id) ']' (id) (meta)* #
+        ##############################################################################################
+
+        # Get 1st id - left asset
+        left_asset = cursor.node.text.decode()
+        cursor.goto_next_sibling()
+
+        # skip '['
+        cursor.goto_next_sibling()
+
+        # Get 2nd id - left field
+        left_field = cursor.node.text.decode()
+        cursor.goto_next_sibling()
+
+        # skip ']'
+        cursor.goto_next_sibling()
+
+        # Get left multiplicity
+        left_multiplicity = self.visit(cursor)
+        cursor.goto_next_sibling()
+
+        # skip '<--'
+        cursor.goto_next_sibling()
+
+        # Get 3rd id - name of the association
+        name = cursor.node.text.decode()
+        cursor.goto_next_sibling()
+
+        # skip '-->'
+        cursor.goto_next_sibling()
+
+        # Get right multiplicity
+        right_multiplicity = self.visit(cursor)
+        cursor.goto_next_sibling()
+
+        # skip '['
+        cursor.goto_next_sibling()
+
+        # Get 4th id - right field
+        right_field = cursor.node.text.decode()
+        cursor.goto_next_sibling()
+
+        # skip ']'
+        cursor.goto_next_sibling()
+
+        # Get 5th id - right asset
+        right_asset = cursor.node.text.decode()
+
+        # Get all metas
+        meta = {}
+        while cursor.goto_next_sibling():
+            res = self.visit(cursor)
+            meta[res[0]] = res[1]
+
+        association = {
+            "name" : name,
+            "meta" : meta,
+            "leftAsset" : left_asset,
+            "leftField" : left_field,
+            "leftMultiplicity" : left_multiplicity,
+            "rightAsset" : right_asset,
+            "rightField" : right_field,
+            "rightMultiplicity" : right_multiplicity,
+        }
+
+        self._process_multitudes(association)
+
+        return association
+
+    def visit_multiplicity(self, cursor: TreeCursor):
+        ###############################################
+        # (_multiplicity_atom) | (multiplicity_range) #
+        ###############################################
+
+        if cursor.node.type == 'multiplicity_range':
+            return self.visit(cursor)
+
+        # Otherwise we need to visit an intermediary function for 
+        # atomic multiplicity expressions
+        min = self._visit_multiplicity_atom(cursor)
+        return {
+            "min": min,
+            "max": None,
+        }
+
+    def visit_multiplicity_range(self, cursor: TreeCursor):
+        ##################################################
+        # (_multiplicity_atom) '..' (_multiplicity_atom) #
+        ##################################################
+
+        min = self._visit_multiplicity_atom(cursor)
+        cursor.goto_next_sibling()
+
+        # skip '..'
+        cursor.goto_next_sibling()
+
+        max = self._visit_multiplicity_atom(cursor)
+
+        return {
+            "min": min,
+            "max": max,
+        }
+
+    def _visit_multiplicity_atom(self, cursor: TreeCursor):
+        ######################
+        # (integer) | (star) #
+        ######################
+        return cursor.node.text.decode()
+
+    def _process_multitudes(self, association):
+        mult_keys = [
+            # start the multatoms from right to left to make sure the rules
+            # below get applied cleanly
+            "rightMultiplicity.max",
+            "rightMultiplicity.min",
+            "leftMultiplicity.max",
+            "leftMultiplicity.min",
+        ]
+
+        for mult_key in mult_keys:
+            key, subkey = mult_key.split(".")
+
+            # upper limit equals lower limit if not given
+            if subkey == "max" and association[key][subkey] is None:
+                association[key][subkey] = association[key]["min"]
+
+            if association[key][subkey] == "*":
+                # 'any' as lower limit means start from 0
+                if subkey == "min":
+                    association[key][subkey] = 0
+
+                # 'any' as upper limit means not limit
+                else:
+                    association[key][subkey] = None
+
+            # cast numerical strings to integers
+            if (multatom := association[key][subkey]) and multatom.isdigit():
+                association[key][subkey] = int(association[key][subkey])
 
