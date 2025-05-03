@@ -1,11 +1,42 @@
 from tree_sitter import TreeCursor, Range
 from typing import Tuple
+from collections.abc import MutableMapping, MutableSequence
+from pathlib import Path
 from lang import PARSER as parser
 
 ASTNode = Tuple[str, object]
 
 
 class ParseTreeVisitor:
+    def __init__(self):
+        self.current_file: Path = None
+        self.visited_files: set[Path] = set()
+        self.path_stack: list[Path] = []
+
+    def compile(self, malfile: Path | str):
+        current_file = Path(malfile)
+
+        if not current_file.is_absolute() and self.path_stack:
+            # Only for the first file self.path_stack will be empty.
+            current_file = self.path_stack[-1] / current_file
+
+        if current_file in self.visited_files:
+            # Avoid infinite loops due to recursive includes
+            return {}
+
+        self.visited_files.add(current_file)
+        self.path_stack.append(current_file.parent)
+
+        result = None
+        with open(current_file, 'rb') as f:
+            source = f.read()
+            tree = parser.parse(source)
+            result = self.visitMal(tree.walk())
+
+        self.path_stack.pop()
+
+        return result
+
     def visit(self, cursor, params = None):
         function_name = f'visit_{cursor.node.type}' # obtain the appropriate function
         visitor = getattr(self, function_name, self.skip)
@@ -43,6 +74,13 @@ class ParseTreeVisitor:
                 langspec[key].update(value)
             elif key == "associations":
                 langspec[key].extend(value)
+            elif key == "include":
+                included_file = self.compile(value)
+                for k, v in langspec.items():
+                    if isinstance(v, MutableMapping):
+                        langspec[k].update(included_file.get(k, {}))
+                    if isinstance(v, MutableSequence) and k in included_file:
+                        langspec[k].extend(included_file[k])
 
             # Go back to declaration
             cursor.goto_parent()
@@ -101,9 +139,6 @@ class ParseTreeVisitor:
 
 # Concrete visitor to process function definitions
 class MalCompiler(ParseTreeVisitor):
-    def compile(self, source: bytes):
-        tree = parser.parse(source)
-        self.visitMal(tree.walk())
 
     # Named visit_{rule name in grammar.js}
     def visit_define_declaration(self, cursor: TreeCursor) -> ASTNode:
