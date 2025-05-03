@@ -102,7 +102,7 @@ module.exports = grammar({
       ))),
       optional(field('ttc', $.ttc)),
       field('meta', repeat($.meta)),
-      optional(field('detector', $.detector)),
+      optional(field('detector', repeat($.detector))),
       optional(field('preconditions', $.preconditions)),
       optional(field('reaches', $.reaching)),
     ),

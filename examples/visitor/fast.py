@@ -304,9 +304,9 @@ class MalCompiler(ParseTreeVisitor):
         return ("variable", ret)
 
     def visit_attack_step(self, cursor: TreeCursor) -> ASTNode:
-        ###############################################################################################################
+        ##############################################################################################################
         # (step_type) (id) ( '@' (id) )* ( '{' (cias) '}' )?  (ttc)? (meta)* (detector)? (preconditions)? (reaches)? #
-        ###############################################################################################################
+        ##############################################################################################################
 
         # grab (step_type)
         step_type = cursor.node.text.decode()
@@ -348,12 +348,14 @@ class MalCompiler(ParseTreeVisitor):
                 break
 
         detectors = {}
-        if (cursor.node.type == 'detector' ):
-            # TODO visit detector
-            pass
+        while (cursor.node.type == 'detector'):
+            detector = self.visit(cursor)
+            detector[detector['name']] = detector
+            if not cursor.goto_next_sibling(): # in case there is nothing after the meta
+                break
 
         requires = None
-        if (cursor.node.type == 'preconditions' ):
+        if (cursor.node.type == 'preconditions'):
             requires = self.visit(cursor)
             cursor.goto_next_sibling()
 
@@ -375,6 +377,76 @@ class MalCompiler(ParseTreeVisitor):
             }
 
         return ("step", ret)
+
+    def visit_detector(self, cursor: TreeCursor):
+        ####################################################################
+        # ('!' | '//!') (detector_name)? (detector_context) (type)? (ttc)? #
+        ####################################################################
+
+        # skip bang 
+        cursor.goto_next_sibling()
+
+        # grab detector_name
+        detector_name = None
+        if cursor.field_name == 'name':
+            detector_name = cursor.node.text.decode()
+            cursor.goto_next_sibling()
+
+        # grab detector_context
+        detector_context = self.visit(cursor)
+        cursor.goto_next_sibling()
+
+        # grab id
+        detector_type = None
+        if cursor.field_name == 'type':
+            detector_name = cursor.node.text.decode()
+            cursor.goto_next_sibling()
+        
+        # grab ttc
+        detector_ttc = None
+        if cursor.field_name == 'ttc':
+            detector_ttc = self.visit(ttc)
+            cursor.goto_next_sibling()
+
+        return {
+            "name": detector_name,
+            "context": detector_context,
+            "type": detector_type,
+            "tprate": detector_ttc,
+        }
+
+    def visit_detector_context(self, cursor: TreeCursor):
+        ####################################################################
+        # '(' (detector_context_asset) (',' (detector_context_asset))* ')' #
+        ####################################################################
+
+        # skip '('
+        cursor.goto_next_sibling()
+
+        # grab detector_context_asset
+        context = {}
+        label, asset = self.visit(cursor)
+        context[label] = asset
+        cursor.goto_next_sibling()
+
+        while cursor.node.text.decode() != ')':
+            # skip ','
+            cursor.goto_next_sibling()
+            # grab another detector_context_asset
+            label, asset = self.visit(cursor)
+            context[label] = asset
+            cursor.goto_next_sibling()
+
+        return context
+
+    def visit_detector_context_asset(self, cursor: TreeCursor):
+        ###############
+        # (type) (id) #
+        ###############
+        asset = cursor.node.text.decode()
+        label = cursor.node.text.decode()
+
+        return (label, asset)
 
     def visit_cias(self, cursor: TreeCursor):
         ######################
