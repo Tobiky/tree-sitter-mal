@@ -59,6 +59,9 @@ class ParseTreeVisitor:
         cursor.goto_first_child()
 
         while True:
+            while (cursor.node.type == 'comment'):
+                cursor.goto_next_sibling()
+
             # Obtain node type of declaration
             cursor.goto_first_child()
 
@@ -137,6 +140,9 @@ class ParseTreeVisitor:
             case _:
                 return values
 
+    def visit_comment(self, cursor: TreeCursor, params=None):
+        return (None, None)
+
 # Concrete visitor to process function definitions
 class MalCompiler(ParseTreeVisitor):
 
@@ -198,6 +204,16 @@ class MalCompiler(ParseTreeVisitor):
         cursor.goto_next_sibling(), cursor.goto_next_sibling()
 
         return ("categories", ([category], assets))
+
+    def visit_include_declaration(self, cursor: TreeCursor):
+        ####################
+        # 'include' (file) #
+        ####################
+
+        # skip 'include'
+        cursor.goto_next_sibling()
+
+        return ("include", cursor.node.text.decode().strip('"'))
 
     def visit_meta(self, cursor: TreeCursor) -> ASTNode:
         ############################
@@ -297,7 +313,12 @@ class MalCompiler(ParseTreeVisitor):
 
         # grab id
         ret["name"] = cursor.node.text.decode()
-        ret["stepExpression"] = None
+        cursor.goto_next_sibling()
+
+        # skip '='
+        cursor.goto_next_sibling()
+
+        ret["stepExpression"] = self.visit(cursor)
 
         # TODO visit step expression
 
@@ -309,7 +330,12 @@ class MalCompiler(ParseTreeVisitor):
         ##############################################################################################################
 
         # grab (step_type)
-        step_type = cursor.node.text.decode()
+        step_type = 'and' if cursor.node.text.decode() == '&' \
+                    else 'or' if cursor.node.text.decode() == '|' \
+                    else 'defense' if cursor.node.text.decode() == '#' \
+                    else 'exist' if cursor.node.text.decode() == 'E' \
+                    else 'notexist' if cursor.node.text.decode() == '!E' \
+                    else cursor.node.text.decode()
         cursor.goto_next_sibling()
 
         # grab (id)
@@ -511,20 +537,23 @@ class MalCompiler(ParseTreeVisitor):
 
         # if we have an id, just return it 
         elif (cursor.node.type == 'identifier'):
-            return cursor.node.text.decode()
+            text = cursor.node.text.decode()
+            return {
+                "type": "function",
+                "name": text,
+                "arguments": []
+            }
 
         # otherwise visit the node
         return self.visit(cursor)
 
     def visit_float(self, cursor: TreeCursor):
-        ret = {"type": "number"}
-        ret["value"] = float(cursor.node.text.decode())
+        ret = float(cursor.node.text.decode())
 
         return ret
 
     def visit_integer(self, cursor: TreeCursor):
-        ret = {"type": "number"}
-        ret["value"] = float(cursor.node.text.decode())
+        ret = float(cursor.node.text.decode())
 
         return ret
 
@@ -651,7 +680,7 @@ class MalCompiler(ParseTreeVisitor):
 
         return {
             "type": "variable",
-            "name": self.cursor.text.decode()
+            "name": cursor.node.text.decode()
             }
 
     def visit_asset_expr_type(self, cursor: TreeCursor):
@@ -748,11 +777,32 @@ class MalCompiler(ParseTreeVisitor):
         # original node's position and iterate from there until the end of
         # the text.
 
+        # The following logic was implemented to deal with how TreeSitter
+        # deals with indents and new lines
+
+        # We start by obtaining the column where the target node starts,
         original_node_column = original_node.start_point.column
-        tokenStream = parent_node.text
-        tokenStream_split = tokenStream[original_node_column:]
+
+        # We get the parent's text and split it into the original
+        # lines (as written in the code)
+        tokenStream = parent_node.text.decode()
+        tokenStream = tokenStream.split('\n')
+        tokenStream_split = None
+
+        # If the parent and the target are defined in the same line,
+        # then we must remove the start point from the original column,
+        # since TreeSitter deletes the indent
+        if original_node.start_point.row == parent_node.start_point.row:
+            tokenStream_split = tokenStream[0]
+            original_node_column = original_node.start_point.column - parent_node.start_point.column
+        # However, if they are in different rows, the indent must be included,
+        # so we use the same column
+        else:
+            tokenStream_split = tokenStream[original_node.start_point.row-parent_node.start_point.row]
+
+        # Afterwards, we just do the normal checks, knowing what column to start in
+        tokenStream_split = tokenStream_split[original_node_column+len(original_node.text.decode()):]
         for char in tokenStream_split:
-            char = chr(char)
             if char == '.':
                 return "field"      # Only a field can have attributes
             if char == ',':
