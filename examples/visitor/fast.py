@@ -6,6 +6,22 @@ from lang import PARSER as parser
 
 ASTNode = Tuple[str, object]
 
+'''
+This function is crucial to use instead of cursor.goto_sibling()
+
+Although the `comment` node is included as an extra in the
+TreeSitter grammar, it still shows up in the AST.
+For this reason, this function exists to go to the next node,
+while ignoring `comment` node.
+
+It returns a boolean which states if there are any nodes left
+and if the current node is not a comment.
+'''
+def go_to_sibling(cursor: TreeCursor) -> bool:
+    found_sibling = cursor.goto_next_sibling()
+    while cursor.node.type=='comment' and found_sibling:
+        found_sibling = cursor.goto_next_sibling()
+    return found_sibling and cursor.node.type!='comment'
 
 class ParseTreeVisitor:
     def __init__(self):
@@ -60,7 +76,7 @@ class ParseTreeVisitor:
 
         while True:
             while (cursor.node.type == 'comment'):
-                cursor.goto_next_sibling()
+                go_to_sibling(cursor)
 
             # Obtain node type of declaration
             cursor.goto_first_child()
@@ -89,7 +105,7 @@ class ParseTreeVisitor:
             cursor.goto_parent()
 
             # Attempt to move to next declaration. If not possible, done processing
-            if not cursor.goto_next_sibling():
+            if not go_to_sibling(cursor):
                 break
 
         for key in ("categories", "assets", "associations"):
@@ -129,7 +145,7 @@ class ParseTreeVisitor:
         values = []
         if visitor_value := self.visit(cursor):
             values.append(visitor_value)
-        while cursor.goto_next_sibling():
+        while go_to_sibling(cursor):
             if visitor_value := self.visit(cursor):
                 values.append(visitor_value)
         match len(values):
@@ -153,13 +169,13 @@ class MalCompiler(ParseTreeVisitor):
         ###############################
 
         # skip '#' node
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         # grab (identity) node
         key = cursor.node.text
         # next node
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         # skip ':' node
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         # grab (string) node
         value = cursor.node.text
 
@@ -173,11 +189,11 @@ class MalCompiler(ParseTreeVisitor):
         category = {}
 
         # skip 'category'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         # grab (identity) 
         category["name"] = cursor.node.text.decode()
         # next node
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab (meta)
         #
@@ -187,21 +203,21 @@ class MalCompiler(ParseTreeVisitor):
         while (cursor.node.is_named):
             info = self.visit(cursor)
             meta[info[0]] = info[1]
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
         category["meta"] = meta
 
         # skip '{' node 
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab (asset)
         assets = []
         while (cursor.node.is_named):
             asset = self.visit(cursor, category["name"])
             assets.append(asset)
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         # next node and skip '}' node
-        cursor.goto_next_sibling(), cursor.goto_next_sibling()
+        go_to_sibling(cursor), cursor.goto_next_sibling()
 
         return ("categories", ([category], assets))
 
@@ -211,7 +227,7 @@ class MalCompiler(ParseTreeVisitor):
         ####################
 
         # skip 'include'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         return ("include", cursor.node.text.decode().strip('"'))
 
@@ -224,11 +240,11 @@ class MalCompiler(ParseTreeVisitor):
         id = cursor.node.text.decode()
 
         # next node 
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         # skip 'info' node
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         # skip ':' node
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab (string) node
         info_string = cursor.node.text.decode().strip('"')
@@ -243,31 +259,31 @@ class MalCompiler(ParseTreeVisitor):
         # grab (abstract)?
         isAbstract = cursor.node.text.decode() == 'abstract'
         if (isAbstract):
-            cursor.goto_next_sibling() # We must go to 'asset'
+            go_to_sibling(cursor) # We must go to 'asset'
 
         # skip 'asset'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
     
         # grab (id)
         name = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab (extends id)?
         superAsset = None 
         if (cursor.node.text.decode() == 'extends'):
-            cursor.goto_next_sibling() # move to the id 
+            go_to_sibling(cursor) # move to the id 
             superAsset = cursor.node.text.decode() # get the text
-            cursor.goto_next_sibling() # move to the meta
+            go_to_sibling(cursor) # move to the meta
 
         # grab (meta)*
         meta = {}
         while (cursor.node.is_named):
             info = self.visit(cursor)
             meta[info[0]] = info[1]
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         # skip '{'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # visit asset_definition
         variables, attackSteps = [], []
@@ -296,7 +312,7 @@ class MalCompiler(ParseTreeVisitor):
             elif definition=='step':
                 steps.append(result)
 
-            if not cursor.goto_next_sibling():
+            if not go_to_sibling(cursor):
                 break
 
         return (variables, steps)
@@ -309,14 +325,14 @@ class MalCompiler(ParseTreeVisitor):
         ret = {}
 
         # skip 'let'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab id
         ret["name"] = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '='
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         ret["stepExpression"] = self.visit(cursor)
 
@@ -334,61 +350,61 @@ class MalCompiler(ParseTreeVisitor):
                     else 'or' if cursor.node.text.decode() == '|' \
                     else 'defense' if cursor.node.text.decode() == '#' \
                     else 'exist' if cursor.node.text.decode() == 'E' \
-                    else 'notexist' if cursor.node.text.decode() == '!E' \
+                    else 'notExist' if cursor.node.text.decode() == '!E' \
                     else cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab (id)
         name = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # process all ( '@' (id) ) we might have
         tags = []
 
         # TODO change grammar to make (@ id)* instead of (@ id)?
         while (cursor.node.text.decode() == '@'):
-            cursor.goto_next_sibling() # skip '@'
+            go_to_sibling(cursor) # skip '@'
             tags.append(cursor.node.text.decode()) # grab (id)
-            if not cursor.goto_next_sibling(): # move to next symbol, break if last
+            if not go_to_sibling(cursor): # move to next symbol, break if last
                 break
 
         # process all ( '{' (cias) '}' ) we might have
         risk = None
         if (cursor.node.text.decode() == '{'):
-            cursor.goto_next_sibling() # skip '{'
+            go_to_sibling(cursor) # skip '{'
             risk = self.visit(cursor)  # grab (cias)
-            cursor.goto_next_sibling() # go to '}' 
-            cursor.goto_next_sibling() # and skip it
+            go_to_sibling(cursor) # go to '}' 
+            go_to_sibling(cursor) # and skip it
 
         ttc = None
         if (cursor.node.type == 'ttc'):
             # visit ttc
             ttc = self.visit(cursor)
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         meta = {}
         while (cursor.node.type == 'meta'):
             info = self.visit(cursor)
             meta[info[0]] = info[1]
-            if not cursor.goto_next_sibling(): # in case there is nothing after the meta
+            if not go_to_sibling(cursor): # in case there is nothing after the meta
                 break
 
         detectors = {}
         while (cursor.node.type == 'detector'):
             detector = self.visit(cursor)
             detector[detector['name']] = detector
-            if not cursor.goto_next_sibling(): # in case there is nothing after the meta
+            if not go_to_sibling(cursor): # in case there is nothing after the meta
                 break
 
         requires = None
         if (cursor.node.type == 'preconditions'):
             requires = self.visit(cursor)
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         reaches = None
         if (cursor.node.type == 'reaching'):
             reaches = self.visit(cursor)
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         ret = {
             "name":name,
@@ -410,29 +426,29 @@ class MalCompiler(ParseTreeVisitor):
         ####################################################################
 
         # skip bang 
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab detector_name
         detector_name = None
         if cursor.field_name == 'name':
             detector_name = cursor.node.text.decode()
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         # grab detector_context
         detector_context = self.visit(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab id
         detector_type = None
         if cursor.field_name == 'type':
             detector_name = cursor.node.text.decode()
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
         
         # grab ttc
         detector_ttc = None
         if cursor.field_name == 'ttc':
             detector_ttc = self.visit(ttc)
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         return {
             "name": detector_name,
@@ -447,21 +463,21 @@ class MalCompiler(ParseTreeVisitor):
         ####################################################################
 
         # skip '('
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab detector_context_asset
         context = {}
         label, asset = self.visit(cursor)
         context[label] = asset
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         while cursor.node.text.decode() != ')':
             # skip ','
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
             # grab another detector_context_asset
             label, asset = self.visit(cursor)
             context[label] = asset
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         return context
 
@@ -488,12 +504,12 @@ class MalCompiler(ParseTreeVisitor):
             val = self.visit(cursor)
             risk.update(val)
 
-            ret = cursor.goto_next_sibling()
+            ret = go_to_sibling(cursor)
             if not ret: # no more ',' -> done
                 break
 
             # Otherwise, process the next CIA
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         return risk
 
@@ -521,7 +537,7 @@ class MalCompiler(ParseTreeVisitor):
         ##################################
 
         # skip '['
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         return self._visit_intermediary_ttc_expr(cursor)
 
@@ -532,8 +548,11 @@ class MalCompiler(ParseTreeVisitor):
 
         # check if we have '(', in this case it's a parenthesized expression
         if (cursor.node.text.decode() == '('):
-            cursor.goto_next_sibling() # skip '('
-            return self._visit_intermediary_ttc_expr(cursor) # visit the expression
+            go_to_sibling(cursor) # skip '('
+            result = self._visit_intermediary_ttc_expr(cursor) # visit the expression
+            go_to_sibling(cursor) # skip ')'
+            return result
+
 
         # if we have an id, just return it 
         elif (cursor.node.type == 'identifier'):
@@ -564,7 +583,7 @@ class MalCompiler(ParseTreeVisitor):
 
         # grab first (intermediary_ttc_expr)
         lhs = self._visit_intermediary_ttc_expr(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab operation type
         operation = cursor.node.text.decode()
@@ -573,7 +592,7 @@ class MalCompiler(ParseTreeVisitor):
                       'multiplication' if operation == '*' else \
                       'multiplication' if operation == '/' else \
                       'exponentiation'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # grab second (intermediary_ttc_expr)
         rhs = self._visit_intermediary_ttc_expr(cursor)
@@ -587,10 +606,10 @@ class MalCompiler(ParseTreeVisitor):
         
         # grab (id)
         name = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         
         # skip '('
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         
         # parse function arguments
         args = []
@@ -602,7 +621,7 @@ class MalCompiler(ParseTreeVisitor):
             if (cursor.node.text.decode() != ','):
                 break
             # otherwise, ignore the comma
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         return {
                 "type": "function",
@@ -616,14 +635,14 @@ class MalCompiler(ParseTreeVisitor):
         ##########################################
 
         # Skip '<-'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
         
         ret = {}
         ret["overrides"] = True
         ret["stepExpressions"] = [self.visit(cursor)]
 
-        while (cursor.goto_next_sibling()): # check if we have a ','
-            cursor.goto_next_sibling() # ignore the ','
+        while (go_to_sibling(cursor)): # check if we have a ','
+            go_to_sibling(cursor) # ignore the ','
             ret["stepExpressions"].append(self.visit(cursor))
 
         return ret
@@ -637,13 +656,13 @@ class MalCompiler(ParseTreeVisitor):
 
         # Get type of reaches
         ret["overrides"] = True if cursor.node.text.decode()=='->' else False
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Visit the steps
         ret["stepExpressions"] = [self.visit(cursor)]
 
-        while (cursor.goto_next_sibling()): # check if we have a ','
-            cursor.goto_next_sibling() # ignore the ','
+        while (go_to_sibling(cursor)): # check if we have a ','
+            go_to_sibling(cursor) # ignore the ','
             ret["stepExpressions"].append(self.visit(cursor))
 
         return ret
@@ -666,8 +685,9 @@ class MalCompiler(ParseTreeVisitor):
             ret["type"] = self._resolve_part_ID_type(cursor)
             ret["name"] = cursor.node.text.decode()
         elif (cursor.node.text.decode() == '('):
-            cursor.goto_next_sibling() # ignore the '('
+            go_to_sibling(cursor) # ignore the '('
             ret = self._visit_inline_asset_expr(cursor)
+            go_to_sibling(cursor) # ignore the ')'
         else:
             ret = self.visit(cursor)
 
@@ -695,10 +715,10 @@ class MalCompiler(ParseTreeVisitor):
 
         # Visit the inline expr
         stepExpression = self._visit_inline_asset_expr(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Skip '['
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get the subType
         subType = cursor.node.text.decode()
@@ -716,14 +736,14 @@ class MalCompiler(ParseTreeVisitor):
         
         # Get the lhs
         lhs = self._visit_inline_asset_expr(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get the type of operation
         optype = 'collect' if cursor.node.text.decode()=='.'             \
                  else 'union' if cursor.node.text.decode()=='\\/'        \
                  else 'intersection' if cursor.node.text.decode()=='/\\' \
                  else 'difference'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get the rhs
         rhs = self._visit_inline_asset_expr(cursor)
@@ -740,7 +760,7 @@ class MalCompiler(ParseTreeVisitor):
         
         # Get the associated expression
         expr = self._visit_inline_asset_expr(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         return {
             "type": "transitive",
@@ -816,16 +836,16 @@ class MalCompiler(ParseTreeVisitor):
         #########################################
 
         # skip 'associations'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '{'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # visit all associations
         associations = []
         while cursor.node.text.decode() != '}':
             associations.append(self.visit(cursor))
-            cursor.goto_next_sibling()
+            go_to_sibling(cursor)
 
         return ('associations', associations)
 
@@ -836,52 +856,52 @@ class MalCompiler(ParseTreeVisitor):
 
         # Get 1st id - left asset
         left_asset = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '['
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get 2nd id - left field
         left_field = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip ']'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get left multiplicity
         left_multiplicity = self.visit(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '<--'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get 3rd id - name of the association
         name = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '-->'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get right multiplicity
         right_multiplicity = self.visit(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '['
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get 4th id - right field
         right_field = cursor.node.text.decode()
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip ']'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # Get 5th id - right asset
         right_asset = cursor.node.text.decode()
 
         # Get all metas
         meta = {}
-        while cursor.goto_next_sibling():
+        while go_to_sibling(cursor):
             res = self.visit(cursor)
             meta[res[0]] = res[1]
 
@@ -922,10 +942,10 @@ class MalCompiler(ParseTreeVisitor):
         ##################################################
 
         min = self._visit_multiplicity_atom(cursor)
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         # skip '..'
-        cursor.goto_next_sibling()
+        go_to_sibling(cursor)
 
         max = self._visit_multiplicity_atom(cursor)
 
