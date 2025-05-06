@@ -21,4 +21,36 @@ For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-
 
 ### NeoVim Manual Installation
 > [!NOTE]
-> Tested for NeoVim v0.10.4.
+> Tested for NeoVim v0.11.1.
+
+#### Using [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md#adding-parsers)
+
+1. Install the grammar. Simply add the following Lua snippet to your configuration (`init.lua` or respective package config)
+    ```lua
+    local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+    parser_config.mal = {
+      install_info = {
+        url = "https://github.com/Tobiky/tree-sitter-mal", -- local path or git repo
+        files = {"src/parser.c"},
+        branch = "main",
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+      filetype = "mal",
+    }
+    vim.filetype.add({
+        extension = {
+            mal = "mal",
+        },
+    })
+    ```
+2. Install the queries. Find the query installation folder (it will be in your runtime path, `:h rtp`). You can find various locations by using e.g. `find ~ -type d -and -iname "queries"` (**NOTE:** This example only looks at files installed in your home directory). Install the files from `queries` into a directory named after the language (`cp -r queries $NVIM_TREESITTER_QUERIES/mal/`).
+3. Verify that everything is installed by running a healthcheck `:checkhealth nvim-treesitter`, the table will list if the grammar and highlighting has been found.
+4. Configure Nvim to start tree-sitter. Here is an example using auto-commands:
+    ```lua
+    vim.api.nvim_create_autocmd( 'FileType', { pattern = 'mal',
+        callback = function(args)
+            vim.treesitter.start(args.buf, 'mal')
+        end
+    })
+    ```
