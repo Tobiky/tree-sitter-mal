@@ -44,7 +44,7 @@ For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-
         },
     })
     ```
-2. Install the queries. Find the query installation folder (it will be in your runtime path, `:h rtp`). You can find various locations by using e.g. `find ~ -type d -and -iname "queries"` (**NOTE:** This example only looks at files installed in your home directory). Install the files from `queries` into a directory named after the language (`cp -r queries $NVIM_TREESITTER_QUERIES/mal/`).
+2. Install the queries. Find the query installation folder (it will be in your runtime path, `:h rtp`). You can find various locations by using e.g. `find ~ -type d -and -iname "queries"` (**NOTE:** This example only looks at files installed in your home directory). An example of the path can be `$HOME/.local/share/nvim/lazy/nvim-treesitter/` if you are using the Lazy PM. Install the files from `queries` into a directory named after the language (`cp -r queries $NVIM_TREESITTER_QUERIES/mal/`).
 3. Verify that everything is installed by running a healthcheck `:checkhealth nvim-treesitter`, the table will list if the grammar and highlighting has been found.
 4. Configure Nvim to start tree-sitter. Here is an example using auto-commands:
     ```lua
