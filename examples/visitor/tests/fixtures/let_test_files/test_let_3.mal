@@ -1,0 +1,15 @@
+#id: "org.mal-lang.testAnalyzer"
+#version:"0.0.0"
+
+category System {
+    asset Computer {
+        let component = hardware.overheat
+    }
+    asset Hardware {
+        | overheat
+    }
+}
+associations {
+    Computer [host] 1 <-- SpecificHardware --> * [hardware] Hardware
+}
+                                    

@@ -3,11 +3,12 @@ from typing import Tuple
 from collections.abc import MutableMapping, MutableSequence
 from pathlib import Path
 from lang import PARSER as parser
+from mal_analyzer import malAnalyzer
 
 ASTNode = Tuple[str, object]
 
 '''
-This function is crucial to use instead of cursor.goto_sibling()
+This function is crucial to use instead of cursor.goto_next_sibling()
 
 Although the `comment` node is included as an extra in the
 TreeSitter grammar, it still shows up in the AST.
@@ -28,6 +29,7 @@ class ParseTreeVisitor:
         self.current_file: Path = None
         self.visited_files: set[Path] = set()
         self.path_stack: list[Path] = []
+        self.analyzer = malAnalyzer()
 
     def compile(self, malfile: Path | str):
         current_file = Path(malfile)
@@ -47,7 +49,7 @@ class ParseTreeVisitor:
         with open(current_file, 'rb') as f:
             source = f.read()
             tree = parser.parse(source)
-            result = self.visitMal(tree.walk())
+            result = self.visit(tree.walk())
 
         self.path_stack.pop()
 
@@ -58,11 +60,26 @@ class ParseTreeVisitor:
         visitor = getattr(self, function_name, self.skip)
         hasChild = cursor.goto_first_child() # enter node's children
         result = visitor(cursor) if not params else visitor(cursor, params)
+
         if hasChild:
             cursor.goto_parent() # leave node's children
+
+        analyzer_method_name: str = f'check_{cursor.node.type}'
+        analyzer_method: function | None = getattr(self.analyzer, analyzer_method_name, None)
+
+        if analyzer_method:
+            arguments = analyzer_method.__code__.co_argcount
+            if arguments in [2, 3]:
+                {
+                    3: lambda: analyzer_method(cursor.node, result),
+                    2: lambda: analyzer_method(cursor.node)
+                }[arguments]()
+            else:
+                raise ValueError(f'Unexpected number of arguments: {arguments}')
+
         return result
 
-    def visitMal(self, cursor: TreeCursor) -> ASTNode | list[ASTNode] | None:
+    def visit_source_file(self, cursor: TreeCursor) -> ASTNode | list[ASTNode] | None:
         langspec = {
             "formatVersion": "1.0.0",
             "defines": {},
@@ -72,10 +89,8 @@ class ParseTreeVisitor:
         }
 
         # Go to first declaration
-        cursor.goto_first_child()
-
         while True:
-            while (cursor.node.type == 'comment'):
+            if (cursor.node.type == 'comment'):
                 go_to_sibling(cursor)
 
             # Obtain node type of declaration
@@ -117,7 +132,7 @@ class ParseTreeVisitor:
 
         return langspec
 
-    def skip(self, _):
+    def skip(self, _,):
         pass
 
     def _visit(self, cursor: TreeCursor) -> ASTNode | list[ASTNode] | None:
@@ -562,6 +577,13 @@ class MalCompiler(ParseTreeVisitor):
                 "name": text,
                 "arguments": []
             }
+        
+        # if we have a number (integer/float) we need to construct
+        # the dictionary correctly
+        elif (cursor.node.type == 'float' or cursor.node.type=='integer'):
+            ret = {"type": "number"}
+            ret['value'] = self.visit(cursor)
+            return ret
 
         # otherwise visit the node
         return self.visit(cursor)
@@ -590,7 +612,7 @@ class MalCompiler(ParseTreeVisitor):
         operation_type = 'addition' if operation == '+' else \
                       'subtraction' if operation == '-' else \
                       'multiplication' if operation == '*' else \
-                      'multiplication' if operation == '/' else \
+                      'division' if operation == '/' else \
                       'exponentiation'
         go_to_sibling(cursor)
 
@@ -618,6 +640,7 @@ class MalCompiler(ParseTreeVisitor):
             arg = self.visit(cursor)
             args.append(arg)
             # move to next symbol, if it's not a comma then done
+            go_to_sibling(cursor)
             if (cursor.node.text.decode() != ','):
                 break
             # otherwise, ignore the comma
