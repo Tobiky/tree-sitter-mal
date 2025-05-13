@@ -70,14 +70,14 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
-            tag: (identity)
-            tag: (identity)))))))
+            id: (identifier)
+            tag: (identifier)
+            tag: (identifier)))))))
 
 =====================
 Attack-step with CIAs
