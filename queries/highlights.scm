@@ -113,7 +113,7 @@
 
 ; Miscellaneous
 (comment) @comment
-(attack_step tag: (identifier) @tag
+(attack_step (identifier) @tag
              (#not-match? @tag "hidden|debug|trace"))
-(attack_step tag: (identifier) @tag.builtin
+(attack_step (identifier) @tag.builtin
              (#match? @tag.builtin "hidden|debug|trace"))
