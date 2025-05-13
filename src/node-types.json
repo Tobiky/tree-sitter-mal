@@ -461,7 +461,7 @@
         ]
       },
       "detector": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -1089,7 +1089,7 @@
       },
       "values": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": ",",
