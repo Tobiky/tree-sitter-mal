@@ -244,7 +244,11 @@ class MalCompiler(ParseTreeVisitor):
         # skip 'include'
         go_to_sibling(cursor)
 
-        return ("include", cursor.node.text.decode().strip('"'))
+        # grab (file) which is a (string)
+        # '"' are ASCII so they are garantueed to only take one byte in UTF-8 (assumed for .decode)
+        # therefor, we can greedily only take bytes 1:-1
+        # strip surrounding quotes (") by slicing 
+        return ("include", cursor.node.text[1:-1].decode())
 
     def visit_meta(self, cursor: TreeCursor) -> ASTNode:
         ############################
