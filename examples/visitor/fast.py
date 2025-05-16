@@ -361,12 +361,18 @@ class MalCompiler(ParseTreeVisitor):
         ##############################################################################################################
 
         # grab (step_type)
-        step_type = 'and' if cursor.node.text.decode() == '&' \
-                    else 'or' if cursor.node.text.decode() == '|' \
-                    else 'defense' if cursor.node.text.decode() == '#' \
-                    else 'exist' if cursor.node.text.decode() == 'E' \
-                    else 'notExist' if cursor.node.text.decode() == '!E' \
-                    else cursor.node.text.decode()
+        # use raw text bytes to avoid decoding as much as possible
+        step_type_btext = cursor.node.text
+        step_type_bindings = {
+            b'&': 'and',
+            b'|': 'or',
+            b'#': 'defense',
+            b'E': 'exist',
+            b'!E': 'notExist'
+        }
+        # decode value only if its really necessary (no binding found)
+        if (step_type := step_type_bindings.get(step_type_btext)) is None:
+            step_type = step_type_btext.decode()
         go_to_sibling(cursor)
 
         # grab (id)
