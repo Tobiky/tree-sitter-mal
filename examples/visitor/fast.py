@@ -132,7 +132,7 @@ class ParseTreeVisitor:
 
         return langspec
 
-    def skip(self, _,):
+    def skip(self, *args, **kwargs):
         pass
 
     def _visit(self, cursor: TreeCursor) -> ASTNode | list[ASTNode] | None:
