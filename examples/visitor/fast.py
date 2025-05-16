@@ -775,10 +775,14 @@ class MalCompiler(ParseTreeVisitor):
         go_to_sibling(cursor)
 
         # Get the type of operation
-        optype = 'collect' if cursor.node.text.decode()=='.'             \
-                 else 'union' if cursor.node.text.decode()=='\\/'        \
-                 else 'intersection' if cursor.node.text.decode()=='/\\' \
-                 else 'difference'
+        op_btext = cursor.node.text
+        optype_bindings = {
+            b'.': 'collect',
+            b'\\/': 'union',
+            b'/\\': 'intersection',
+            b'-': 'difference',
+        }
+        optype = optype_bindings.get(op_btext)
         go_to_sibling(cursor)
 
         # Get the rhs
