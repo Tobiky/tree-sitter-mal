@@ -383,7 +383,7 @@ class MalCompiler(ParseTreeVisitor):
         tags = []
 
         # TODO change grammar to make (@ id)* instead of (@ id)?
-        while (cursor.node.text.decode() == '@'):
+        while (cursor.node.text == b'@'):
             go_to_sibling(cursor) # skip '@'
             tags.append(cursor.node.text.decode()) # grab (id)
             if not go_to_sibling(cursor): # move to next symbol, break if last
@@ -391,7 +391,7 @@ class MalCompiler(ParseTreeVisitor):
 
         # process all ( '{' (cias) '}' ) we might have
         risk = None
-        if (cursor.node.text.decode() == '{'):
+        if (cursor.node.text == b'{'):
             go_to_sibling(cursor) # skip '{'
             risk = self.visit(cursor)  # grab (cias)
             go_to_sibling(cursor) # go to '}' 
