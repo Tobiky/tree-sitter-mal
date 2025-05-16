@@ -492,7 +492,7 @@ class MalCompiler(ParseTreeVisitor):
         context[label] = asset
         go_to_sibling(cursor)
 
-        while cursor.node.text.decode() != ')':
+        while cursor.node.text != b')':
             # skip ','
             go_to_sibling(cursor)
             # grab another detector_context_asset
