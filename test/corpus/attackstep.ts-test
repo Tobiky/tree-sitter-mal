@@ -22,14 +22,19 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier))
           (attack_step
+            step_type: (step_type)
             id: (identifier))
           (attack_step
+            step_type: (step_type)
             id: (identifier))
           (attack_step
+            step_type: (step_type)
             id: (identifier))
           (attack_step
+            step_type: (step_type)
             id: (identifier)))))))
 
 ====================
@@ -52,6 +57,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             tag: (identifier)))))))
 
@@ -75,6 +81,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             tag: (identifier)
             tag: (identifier)))))))
@@ -103,23 +110,28 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             cias: (cias
               (cia)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             cias: (cias
               (cia)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             cias: (cias
               (cia)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             cias: (cias
               (cia)
               (cia)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             cias: (cias
               (cia)
@@ -156,40 +168,47 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (integer)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
                 left: (integer)
                 right: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
@@ -198,6 +217,7 @@ category Test {
                   left: (integer)
                   right: (integer)))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
@@ -206,6 +226,7 @@ category Test {
                   left: (integer)
                   right: (integer)))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_binop
@@ -214,16 +235,19 @@ category Test {
                   right: (integer))
                 right: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (identifier)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_distribution
                 id: (identifier)
                 values: (integer))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             ttc: (ttc
               (ttc_distribution
@@ -254,6 +278,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             meta: (meta
               id: (identifier)
@@ -262,6 +287,7 @@ category Test {
               id: (identifier)
               info: (meta_string)))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             meta: (meta
               id: (identifier)
@@ -294,11 +320,13 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
                 (identifier))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
@@ -306,11 +334,13 @@ category Test {
               reaches: (asset_expr
                 (identifier))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             reaches: (reaching
               reaches: (asset_expr
                 (identifier))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             reaches: (reaching
               reaches: (asset_expr

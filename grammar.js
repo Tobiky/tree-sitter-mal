@@ -86,13 +86,7 @@ module.exports = grammar({
 
     // Attack step for an asset
     attack_step: $ => seq(
-      field('step_type', choice(
-        '|',
-        '&',
-        '#',
-        'E',
-        '!E',
-      )),
+      field('step_type', $.step_type),
       field('id', $.identifier),
       optional(field('tag', repeat(seq('@', $.identifier)))),
       optional(field('cias', seq(
@@ -106,6 +100,14 @@ module.exports = grammar({
       optional(field('preconditions', $.preconditions)),
       optional(field('reaches', $.reaching)),
     ),
+
+    step_type: $ => token(choice(
+      '|',
+      '&',
+      '#',
+      'E',
+      '!E',
+    )),
 
     cias: $ => commaSep1($.cia),
 

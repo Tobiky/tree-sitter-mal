@@ -21,11 +21,13 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             preconditions: (preconditions
               condition: (asset_expr
                 (identifier))))
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             preconditions: (preconditions
               condition: (asset_expr
@@ -63,6 +65,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             preconditions: (preconditions
               condition: (asset_expr

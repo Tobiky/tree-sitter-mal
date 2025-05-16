@@ -9,48 +9,31 @@
 ] @punctuation.bracket
 
 ; Operators
-(association ["<--" "-->"] @operator)
-
-(ttc_binop
-  [
+([
+  "<--"
+  "-->"
    "+"
    "-"
    "/"
    "^"
-   "*"
-   ] @operator)
-
-(attack_step
-  [
-   "|"
-   "&"
+   (step_type)
+   "="
+   "!"
+   "//!"
+   "<-"
+   "+>"
+   "->"
    "#"
-   "E"
-   "!E"
-   "@"
-   ] @operator)
-
-(asset_variable "=" @operator)
-
-(detector ["!" "//!"] @operator)
-
-(preconditions "<-" @operator)
-
-(reaching ["+>" "->"] @operator)
-
-(define_declaration "#" @operator)
-
-(asset_expr_binop 
-  [
    "\\/"
    "/\\"
    "-"
    "."
-   ] @operator)
+   ".."
+   "@"
+  ] @operator)
 
+(ttc_binop "*" @operator)
 (asset_expr_unop "*" @operator)
-
-(multiplicity_range ".." @operator)
 
 
 ; Keywords

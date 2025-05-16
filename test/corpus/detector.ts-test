@@ -18,6 +18,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             detector: (detector
               context: (detector_context
@@ -48,6 +49,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             detector: (detector
               context: (detector_context
@@ -78,6 +80,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             detector: (detector
               name: (detector_name
@@ -109,6 +112,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             detector: (detector
               context: (detector_context
@@ -137,6 +141,7 @@ category Test {
         id: (identifier)
         body: (asset_definition
           (attack_step
+            step_type: (step_type)
             id: (identifier)
             detector: (detector
               context: (detector_context

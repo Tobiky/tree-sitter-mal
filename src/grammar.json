@@ -283,29 +283,8 @@
           "type": "FIELD",
           "name": "step_type",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "|"
-              },
-              {
-                "type": "STRING",
-                "value": "&"
-              },
-              {
-                "type": "STRING",
-                "value": "#"
-              },
-              {
-                "type": "STRING",
-                "value": "E"
-              },
-              {
-                "type": "STRING",
-                "value": "!E"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "step_type"
           }
         },
         {
@@ -452,6 +431,34 @@
           ]
         }
       ]
+    },
+    "step_type": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "|"
+          },
+          {
+            "type": "STRING",
+            "value": "&"
+          },
+          {
+            "type": "STRING",
+            "value": "#"
+          },
+          {
+            "type": "STRING",
+            "value": "E"
+          },
+          {
+            "type": "STRING",
+            "value": "!E"
+          }
+        ]
+      }
     },
     "cias": {
       "type": "SEQ",

@@ -515,24 +515,8 @@
         "required": true,
         "types": [
           {
-            "type": "!E",
-            "named": false
-          },
-          {
-            "type": "#",
-            "named": false
-          },
-          {
-            "type": "&",
-            "named": false
-          },
-          {
-            "type": "E",
-            "named": false
-          },
-          {
-            "type": "|",
-            "named": false
+            "type": "step_type",
+            "named": true
           }
         ]
       },
@@ -1112,15 +1096,7 @@
     "named": false
   },
   {
-    "type": "!E",
-    "named": false
-  },
-  {
     "type": "#",
-    "named": false
-  },
-  {
-    "type": "&",
     "named": false
   },
   {
@@ -1200,10 +1176,6 @@
     "named": false
   },
   {
-    "type": "E",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -1277,15 +1249,15 @@
     "named": true
   },
   {
+    "type": "step_type",
+    "named": true
+  },
+  {
     "type": "string",
     "named": true
   },
   {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "|",
     "named": false
   },
   {
