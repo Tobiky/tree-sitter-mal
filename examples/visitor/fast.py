@@ -654,7 +654,7 @@ class MalCompiler(ParseTreeVisitor):
             args.append(arg)
             # move to next symbol, if it's not a comma then done
             go_to_sibling(cursor)
-            if (cursor.node.text.decode() != ','):
+            if (cursor.node.text != b','):
                 break
             # otherwise, ignore the comma
             go_to_sibling(cursor)
