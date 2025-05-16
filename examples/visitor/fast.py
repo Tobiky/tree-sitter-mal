@@ -618,12 +618,15 @@ class MalCompiler(ParseTreeVisitor):
         go_to_sibling(cursor)
 
         # grab operation type
-        operation = cursor.node.text.decode()
-        operation_type = 'addition' if operation == '+' else \
-                      'subtraction' if operation == '-' else \
-                      'multiplication' if operation == '*' else \
-                      'division' if operation == '/' else \
-                      'exponentiation'
+        operation = cursor.node.text
+        operation_type_bindings = {
+            b'+': 'addition',
+            b'-': 'subtraction',
+            b'*': 'multiplication',
+            b'/': 'division',
+            b'^': 'exponentiation',
+        }
+        operation_type = operation_type_bindings.get(operation)
         go_to_sibling(cursor)
 
         # grab second (intermediary_ttc_expr)
