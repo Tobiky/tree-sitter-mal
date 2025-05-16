@@ -545,17 +545,14 @@ class MalCompiler(ParseTreeVisitor):
         ###############
         # 'C'|'I'|'A' #
         ###############
-        cia = cursor.node.text.decode()
-
-        key = (
-            "isConfidentiality"
-            if cia == 'C'
-            else "isIntegrity"
-            if cia == 'I'
-            else "isAvailability"
-            if cia == 'A'
-            else None
-        )
+        
+        cia_btext = cursor.node.text
+        cia_bindings = {
+            b'C': 'isConfidentiality',
+            b'I': 'isIntegrity',
+            b'A': 'isAvailability',
+        }
+        key = cia_bindings.get(cia_btext)
 
         return {key: True}
 
