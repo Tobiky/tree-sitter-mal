@@ -572,7 +572,7 @@ class MalCompiler(ParseTreeVisitor):
         ###################################################################################################
 
         # check if we have '(', in this case it's a parenthesized expression
-        if (cursor.node.text.decode() == '('):
+        if (cursor.node.text == b'('):
             go_to_sibling(cursor) # skip '('
             result = self._visit_intermediary_ttc_expr(cursor) # visit the expression
             go_to_sibling(cursor) # skip ')'
