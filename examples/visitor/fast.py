@@ -691,7 +691,7 @@ class MalCompiler(ParseTreeVisitor):
         ret = {}
 
         # Get type of reaches
-        ret["overrides"] = True if cursor.node.text.decode()=='->' else False
+        ret["overrides"] = cursor.node.text == b'->'
         go_to_sibling(cursor)
 
         # Visit the steps
