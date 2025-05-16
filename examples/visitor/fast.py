@@ -272,7 +272,7 @@ class MalCompiler(ParseTreeVisitor):
         ##############################################################################
         
         # grab (abstract)?
-        isAbstract = cursor.node.text.decode() == 'abstract'
+        isAbstract = cursor.node.text == b'abstract'
         if (isAbstract):
             go_to_sibling(cursor) # We must go to 'asset'
 
@@ -285,7 +285,7 @@ class MalCompiler(ParseTreeVisitor):
 
         # grab (extends id)?
         superAsset = None 
-        if (cursor.node.text.decode() == 'extends'):
+        if (cursor.node.text == b'extends'):
             go_to_sibling(cursor) # move to the id 
             superAsset = cursor.node.text.decode() # get the text
             go_to_sibling(cursor) # move to the meta
