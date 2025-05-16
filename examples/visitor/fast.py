@@ -262,7 +262,10 @@ class MalCompiler(ParseTreeVisitor):
         go_to_sibling(cursor)
 
         # grab (string) node
-        info_string = cursor.node.text.decode().strip('"')
+        # '"' are ASCII so they are garantueed to only take one byte in UTF-8 (assumed for .decode)
+        # therefor, we can greedily only take bytes 1:-1
+        # strip surrounding quotes (") by slicing 
+        info_string = cursor.node.text[1:-1].decode()
 
         return (id, info_string)
 
