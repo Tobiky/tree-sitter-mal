@@ -883,7 +883,7 @@ class MalCompiler(ParseTreeVisitor):
 
         # visit all associations
         associations = []
-        while cursor.node.text.decode() != '}':
+        while cursor.node.text != b'}':
             associations.append(self.visit(cursor))
             go_to_sibling(cursor)
 
