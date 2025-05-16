@@ -599,12 +599,12 @@ class MalCompiler(ParseTreeVisitor):
         return self.visit(cursor)
 
     def visit_float(self, cursor: TreeCursor):
-        ret = float(cursor.node.text.decode())
+        ret = float(cursor.node.text)
 
         return ret
 
     def visit_integer(self, cursor: TreeCursor):
-        ret = float(cursor.node.text.decode())
+        ret = float(cursor.node.text)
 
         return ret
 
