@@ -13,20 +13,21 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            step_type: (step_type)
+            id: (identifier)
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity))
+                  type: (identifier)
+                  id: (identifier))
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity))))))))))
+                  type: (identifier)
+                  id: (identifier))))))))))
 
 ==========================
 Commented Minimal Detector
@@ -43,20 +44,21 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            step_type: (step_type)
+            id: (identifier)
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity))
+                  type: (identifier)
+                  id: (identifier))
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity))))))))))
+                  type: (identifier)
+                  id: (identifier))))))))))
 
 ===========================
 Detector with Detector Name
@@ -73,21 +75,22 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            step_type: (step_type)
+            id: (identifier)
             detector: (detector
               name: (detector_name
-                (identity)
-                (identity)
-                (identity))
+                (identifier)
+                (identifier)
+                (identifier))
               context: (detector_context
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity))))))))))
+                  type: (identifier)
+                  id: (identifier))))))))))
 
 ===========================
 Detector with Detector Type
@@ -104,18 +107,19 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            step_type: (step_type)
+            id: (identifier)
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity)))
-              type: (identity))))))))
+                  type: (identifier)
+                  id: (identifier)))
+              type: (identifier))))))))
 
 =================
 Detector with TTC
@@ -132,16 +136,17 @@ category Test {
 (source_file
   (declaration
     (category_declaration
-      id: (identity)
+      id: (identifier)
       assets: (asset_declaration
-        id: (identity)
+        id: (identifier)
         body: (asset_definition
           (attack_step
-            id: (identity)
+            step_type: (step_type)
+            id: (identifier)
             detector: (detector
               context: (detector_context
                 (detector_context_asset
-                  type: (identity)
-                  id: (identity)))
+                  type: (identifier)
+                  id: (identifier)))
               ttc: (ttc
                 (integer)))))))))

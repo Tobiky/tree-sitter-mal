@@ -9,7 +9,7 @@ Define Declaration
 (source_file
   (declaration
     (define_declaration
-      id: (identity)
+      id: (identifier)
       value: (string))))
 
 ===========================
@@ -25,15 +25,15 @@ Multiple Define Declaration
 (source_file
   (declaration
     (define_declaration
-      id: (identity)
+      id: (identifier)
       value: (string)))
   (declaration
     (define_declaration
-      id: (identity)
+      id: (identifier)
       value: (string)))
   (declaration
     (define_declaration
-      id: (identity)
+      id: (identifier)
       value: (string))))
 
 =============================================
