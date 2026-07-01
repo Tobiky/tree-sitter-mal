@@ -1,13 +1,23 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "mal",
   "word": "identifier",
   "rules": {
     "source_file": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "declaration"
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "declaration"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_specification"
+        }
+      ]
     },
     "comment": {
       "type": "TOKEN",
@@ -1823,6 +1833,1334 @@
         "type": "PATTERN",
         "value": "[CIA]"
       }
+    },
+    "dyn_specification": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_expression"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_associations"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_expression": {
+      "type": "SYMBOL",
+      "name": "dyn_resource"
+    },
+    "dyn_resource": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_header"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_info"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_actionspace"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "dyn_header": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "abstract"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "asset"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "extends"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dyn_name"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_name": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "dyn_identifier"
+    },
+    "dyn_info": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "dyn_info_entry"
+      }
+    },
+    "dyn_info_entry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_info_type"
+        },
+        {
+          "type": "STRING",
+          "value": "info"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "dyn_info_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_user_info"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_dev_info"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_mod_info"
+        }
+      ]
+    },
+    "dyn_user_info": {
+      "type": "STRING",
+      "value": "user"
+    },
+    "dyn_dev_info": {
+      "type": "STRING",
+      "value": "developer"
+    },
+    "dyn_mod_info": {
+      "type": "STRING",
+      "value": "modeler"
+    },
+    "dyn_actionspace": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "dyn_action"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "dyn_evaluation"
+          }
+        ]
+      }
+    },
+    "dyn_action": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_attack"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dyn_defense"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_label"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_repeatable"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_probability"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_info"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_actions"
+          }
+        }
+      ]
+    },
+    "dyn_attack": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "|"
+          },
+          {
+            "type": "STRING",
+            "value": "&"
+          },
+          {
+            "type": "STRING",
+            "value": "E"
+          },
+          {
+            "type": "STRING",
+            "value": "!E"
+          }
+        ]
+      }
+    },
+    "dyn_defense": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "#"
+      }
+    },
+    "dyn_label": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "dyn_identifier"
+    },
+    "dyn_repeatable": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "repeat"
+          },
+          {
+            "type": "STRING",
+            "value": "once"
+          }
+        ]
+      }
+    },
+    "dyn_probability": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "dyn_identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "("
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "float"
+                        },
+                        {
+                          "type": "REPEAT",
+                          "content": {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": ","
+                              },
+                              {
+                                "type": "SYMBOL",
+                                "name": "float"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "STRING",
+                  "value": ")"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "dyn_evaluation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_condition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_label"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_probability"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_info"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_requires"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_actions"
+          }
+        }
+      ]
+    },
+    "dyn_condition": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "if"
+          },
+          {
+            "type": "STRING",
+            "value": "unless"
+          }
+        ]
+      }
+    },
+    "dyn_requires": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<-"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_cond_sentence"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "dyn_cond_sentence"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dyn_cond_sentence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_precondition"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_precondition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_role"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_cast"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_substitution"
+        }
+      ]
+    },
+    "dyn_actions": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_static"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_dynamic"
+        }
+      ]
+    },
+    "dyn_static": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "->"
+            },
+            {
+              "type": "STRING",
+              "value": "+>"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_static_sentence"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "dyn_static_sentence"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dyn_static_sentence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_label"
+        }
+      ]
+    },
+    "dyn_dynamic": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_arrange"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_modify"
+        }
+      ]
+    },
+    "dyn_arrange": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_add"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_remove"
+        }
+      ]
+    },
+    "dyn_add": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "A>"
+              },
+              {
+                "type": "STRING",
+                "value": "+A>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_add_sentence"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "dyn_add_sentence"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dyn_add_sentence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_left_add"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_right_add"
+        }
+      ]
+    },
+    "dyn_left_add": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_operand"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_right_add": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_edge_ops"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_operand"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_remove": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "R>"
+              },
+              {
+                "type": "STRING",
+                "value": "+R>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_remove_sentence"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "dyn_remove_sentence"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dyn_remove_sentence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_left_remove"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_right_remove"
+        }
+      ]
+    },
+    "dyn_left_remove": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_operand"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_right_remove": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_edge_ops"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_operand"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_modify": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "M>"
+              },
+              {
+                "type": "STRING",
+                "value": "+M>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_modify_sentence"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "dyn_modify_sentence"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dyn_modify_sentence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "dyn_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_probability"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        }
+      ]
+    },
+    "dyn_frgmt_or_sub": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_frgmt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_substitution"
+        }
+      ]
+    },
+    "dyn_frgmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_recursive"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_corporeal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dyn_ephemeral"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_collect_ops"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dyn_set_ops"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_corporeal": {
+      "type": "SYMBOL",
+      "name": "dyn_role"
+    },
+    "dyn_ephemeral": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_frgmt_or_sub"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
+    "dyn_role": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "dyn_identifier"
+    },
+    "dyn_cast": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_asset"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "dyn_asset": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "dyn_identifier"
+    },
+    "dyn_operand": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "dyn_identifier"
+    },
+    "dyn_substitution": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_macro_name"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cast"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "dyn_collect_ops"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dyn_set_ops"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_macro_name": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "dyn_identifier"
+    },
+    "dyn_edge_ops": {
+      "type": "STRING",
+      "value": "~"
+    },
+    "dyn_collect_ops": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_collect"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_recursive"
+        }
+      ]
+    },
+    "dyn_collect": {
+      "type": "STRING",
+      "value": "."
+    },
+    "dyn_recursive": {
+      "type": "STRING",
+      "value": "*"
+    },
+    "dyn_set_ops": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "\\/"
+          },
+          {
+            "type": "STRING",
+            "value": "/\\"
+          },
+          {
+            "type": "STRING",
+            "value": "-"
+          }
+        ]
+      }
+    },
+    "dyn_associations": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "associations"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dyn_association"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "dyn_association": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_name"
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_role"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_cardinality"
+        },
+        {
+          "type": "STRING",
+          "value": "<--"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "dyn_identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "-->"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_cardinality"
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_role"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_info"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "dyn_cardinality": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cardinal"
+            },
+            {
+              "type": "STRING",
+              "value": ".."
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dyn_cardinal"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dyn_cardinal"
+        }
+      ]
+    },
+    "dyn_cardinal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "dyn_asterisk"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        }
+      ]
+    },
+    "dyn_asterisk": {
+      "type": "STRING",
+      "value": "*"
     }
   },
   "extras": [
@@ -1838,6 +3176,25 @@
   "conflicts": [
     [
       "association"
+    ],
+    [
+      "dyn_role",
+      "dyn_operand"
+    ],
+    [
+      "dyn_role",
+      "dyn_modify_sentence"
+    ],
+    [
+      "dyn_corporeal",
+      "dyn_precondition"
+    ],
+    [
+      "dyn_frgmt_or_sub",
+      "dyn_precondition"
+    ],
+    [
+      "dyn_substitution"
     ]
   ],
   "precedences": [
@@ -1858,6 +3215,6 @@
   ],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-
