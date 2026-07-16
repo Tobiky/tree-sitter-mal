@@ -22,7 +22,7 @@
             "named": true
           },
           {
-            "type": "edge",
+            "type": "assoc_op",
             "named": true
           }
         ]
@@ -37,11 +37,11 @@
           "named": true
         },
         {
-          "type": "dynamic_separator",
+          "type": "assoc_op",
           "named": true
         },
         {
-          "type": "edge",
+          "type": "dynamic_separator",
           "named": true
         },
         {
@@ -318,17 +318,17 @@
             "named": true
           }
         ]
+      },
+      "type_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "cast",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -640,22 +640,6 @@
         "types": [
           {
             "type": "ttc",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "cast",
-    "named": true,
-    "fields": {
-      "type_id": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
             "named": true
           }
         ]
@@ -1069,7 +1053,7 @@
             "named": true
           },
           {
-            "type": "edge",
+            "type": "assoc_op",
             "named": true
           }
         ]
@@ -1084,11 +1068,11 @@
           "named": true
         },
         {
-          "type": "dynamic_separator",
+          "type": "assoc_op",
           "named": true
         },
         {
-          "type": "edge",
+          "type": "dynamic_separator",
           "named": true
         },
         {
@@ -1593,6 +1577,10 @@
     "named": false
   },
   {
+    "type": "assoc_op",
+    "named": true
+  },
+  {
     "type": "associations",
     "named": false
   },
@@ -1608,10 +1596,6 @@
     "type": "comment",
     "named": true,
     "extra": true
-  },
-  {
-    "type": "edge",
-    "named": true
   },
   {
     "type": "effect",

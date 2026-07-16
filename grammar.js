@@ -284,15 +284,11 @@ module.exports = grammar({
       ')',
     ),
 
-    cast: $ => seq(
+    asset_expr_type: $ => prec.left('binary_exp', seq(
+      field('expression', $._inline_asset_expr),
       '[',
       field('type_id', $.identifier),
       ']',
-    ),
-
-    asset_expr_type: $ => prec.left('binary_exp', seq(
-      field('expression', $._inline_asset_expr),
-      $.cast
     )),
 
     asset_expr_binop: $ => choice(
@@ -342,7 +338,7 @@ module.exports = grammar({
     // Expressions to define modifications to relations between assets
     dynamic_separator: $ => '/',
     hold: $ => '^',
-    edge: $ => '~',
+    assoc_op: $ => '~',
     // self_ref: $ => 'self',
     // amount: $ => seq(':', $.multiplicity),
 
@@ -373,10 +369,10 @@ module.exports = grammar({
     a_sentence: $ => seq(
       field('base', $.asset_expr),
       $.dynamic_separator,
-      field('target', seq(optional($.edge), $.asset_expr)),
+      field('target', seq(optional($.assoc_op), $.asset_expr)),
       repeat(seq(
         $.hold,
-        seq(optional($.edge), $.asset_expr),
+        seq(optional($.assoc_op), $.asset_expr),
       )),
     ),
     // a_base: $ => repeat1(seq(
@@ -389,7 +385,7 @@ module.exports = grammar({
     //   optional($.amount)
     // )),
     // a_target: $ => repeat1(seq(
-    //   optional($.edge),
+    //   optional($.assoc_op),
     //   $.fragment,
     //   $.operand,
     //   optional($.cast),
@@ -399,10 +395,10 @@ module.exports = grammar({
     r_sentence: $ => seq(
       field('base', $.asset_expr),
       $.dynamic_separator,
-      field('target', seq(optional($.edge), $.asset_expr)),
+      field('target', seq(optional($.assoc_op), $.asset_expr)),
       repeat(seq(
         $.hold,
-        seq(optional($.edge), $.asset_expr),
+        seq(optional($.assoc_op), $.asset_expr),
       )),
     ),
     // r_base: $ => repeat1(seq(
@@ -415,7 +411,7 @@ module.exports = grammar({
     //   optional($.amount)
     // )),
     // r_target: $ => repeat1(seq(
-    //   optional($.edge),
+    //   optional($.assoc_op),
     //   $.fragment,
     //   choice(
     //     $.operand,

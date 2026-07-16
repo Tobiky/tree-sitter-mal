@@ -1481,27 +1481,6 @@
         }
       ]
     },
-    "cast": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "["
-        },
-        {
-          "type": "FIELD",
-          "name": "type_id",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "]"
-        }
-      ]
-    },
     "asset_expr_type": {
       "type": "PREC_LEFT",
       "value": "binary_exp",
@@ -1517,8 +1496,20 @@
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "cast"
+            "type": "STRING",
+            "value": "["
+          },
+          {
+            "type": "FIELD",
+            "name": "type_id",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "]"
           }
         ]
       }
@@ -1749,7 +1740,7 @@
       "type": "STRING",
       "value": "^"
     },
-    "edge": {
+    "assoc_op": {
       "type": "STRING",
       "value": "~"
     },
@@ -1779,7 +1770,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "edge"
+                    "name": "assoc_op"
                   },
                   {
                     "type": "BLANK"
@@ -1810,7 +1801,7 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "edge"
+                        "name": "assoc_op"
                       },
                       {
                         "type": "BLANK"
@@ -1854,7 +1845,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "edge"
+                    "name": "assoc_op"
                   },
                   {
                     "type": "BLANK"
@@ -1885,7 +1876,7 @@
                     "members": [
                       {
                         "type": "SYMBOL",
-                        "name": "edge"
+                        "name": "assoc_op"
                       },
                       {
                         "type": "BLANK"

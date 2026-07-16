@@ -5,7 +5,7 @@ category WiperLang {
   asset Device extends Host {
       | infect
           A> self / malware[Wiper]   // Add Malware vertex
-          //-> malware.activate
+          -> malware.activate
   }
 
   abstract asset Malware {
