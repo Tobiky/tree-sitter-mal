@@ -1,5 +1,91 @@
 [
   {
+    "type": "a_sentence",
+    "named": true,
+    "fields": {
+      "base": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "asset_expr",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "asset_expr",
+            "named": true
+          },
+          {
+            "type": "edge",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "asset_expr",
+          "named": true
+        },
+        {
+          "type": "dynamic_separator",
+          "named": true
+        },
+        {
+          "type": "edge",
+          "named": true
+        },
+        {
+          "type": "hold",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "add_reaching",
+    "named": true,
+    "fields": {
+      "dyn_reaches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "a_sentence",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+A>",
+            "named": false
+          },
+          {
+            "type": "A>",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "asset_declaration",
     "named": true,
     "fields": {
@@ -232,17 +318,17 @@
             "named": true
           }
         ]
-      },
-      "type_id": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "cast",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -511,9 +597,13 @@
         ]
       },
       "reaches": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "dyn_reaching",
+            "named": true
+          },
           {
             "type": "reaching",
             "named": true
@@ -550,6 +640,22 @@
         "types": [
           {
             "type": "ttc",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cast",
+    "named": true,
+    "fields": {
+      "type_id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
             "named": true
           }
         ]
@@ -763,46 +869,7 @@
     }
   },
   {
-    "type": "dyn_action",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_actions",
-          "named": true
-        },
-        {
-          "type": "dyn_attack",
-          "named": true
-        },
-        {
-          "type": "dyn_defense",
-          "named": true
-        },
-        {
-          "type": "dyn_info",
-          "named": true
-        },
-        {
-          "type": "dyn_label",
-          "named": true
-        },
-        {
-          "type": "dyn_probability",
-          "named": true
-        },
-        {
-          "type": "dyn_repeatable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_actions",
+    "type": "dyn_reaching",
     "named": true,
     "fields": {},
     "children": {
@@ -810,891 +877,20 @@
       "required": true,
       "types": [
         {
-          "type": "dyn_dynamic",
+          "type": "add_reaching",
           "named": true
         },
         {
-          "type": "dyn_static",
+          "type": "remove_reaching",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "dyn_actionspace",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_action",
-          "named": true
-        },
-        {
-          "type": "dyn_evaluation",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_add",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_add_sentence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_add_sentence",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_left_add",
-          "named": true
-        },
-        {
-          "type": "dyn_right_add",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_arrange",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_add",
-          "named": true
-        },
-        {
-          "type": "dyn_remove",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_asset",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_association",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cardinality",
-          "named": true
-        },
-        {
-          "type": "dyn_identifier",
-          "named": true
-        },
-        {
-          "type": "dyn_info",
-          "named": true
-        },
-        {
-          "type": "dyn_name",
-          "named": true
-        },
-        {
-          "type": "dyn_role",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_associations",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "dyn_association",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_asterisk",
+    "type": "dynamic_separator",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "dyn_cardinal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_asterisk",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_cardinality",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cardinal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_cast",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_asset",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_collect",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "dyn_collect_ops",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_collect",
-          "named": true
-        },
-        {
-          "type": "dyn_recursive",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_cond_sentence",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_precondition",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_corporeal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_role",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_defense",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "dyn_dynamic",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_arrange",
-          "named": true
-        },
-        {
-          "type": "dyn_modify",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_ephemeral",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_evaluation",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_actions",
-          "named": true
-        },
-        {
-          "type": "dyn_condition",
-          "named": true
-        },
-        {
-          "type": "dyn_info",
-          "named": true
-        },
-        {
-          "type": "dyn_label",
-          "named": true
-        },
-        {
-          "type": "dyn_probability",
-          "named": true
-        },
-        {
-          "type": "dyn_requires",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_resource",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_frgmt",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_collect_ops",
-          "named": true
-        },
-        {
-          "type": "dyn_corporeal",
-          "named": true
-        },
-        {
-          "type": "dyn_ephemeral",
-          "named": true
-        },
-        {
-          "type": "dyn_recursive",
-          "named": true
-        },
-        {
-          "type": "dyn_set_ops",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_frgmt_or_sub",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_frgmt",
-          "named": true
-        },
-        {
-          "type": "dyn_substitution",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_header",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_info",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_info_entry",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_info_entry",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_info_type",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_info_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_dev_info",
-          "named": true
-        },
-        {
-          "type": "dyn_mod_info",
-          "named": true
-        },
-        {
-          "type": "dyn_user_info",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_label",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_left_add",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_left_remove",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_macro_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_modify",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_modify_sentence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_modify_sentence",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_identifier",
-          "named": true
-        },
-        {
-          "type": "dyn_probability",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_name",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_precondition",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_role",
-          "named": true
-        },
-        {
-          "type": "dyn_substitution",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_probability",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_recursive",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "dyn_remove",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_remove_sentence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_remove_sentence",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_left_remove",
-          "named": true
-        },
-        {
-          "type": "dyn_right_remove",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_requires",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cond_sentence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_resource",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_actionspace",
-          "named": true
-        },
-        {
-          "type": "dyn_header",
-          "named": true
-        },
-        {
-          "type": "dyn_info",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_right_add",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_edge_ops",
-          "named": true
-        },
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_right_remove",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_edge_ops",
-          "named": true
-        },
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_role",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_specification",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_associations",
-          "named": true
-        },
-        {
-          "type": "dyn_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_static",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_static_sentence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_static_sentence",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_frgmt_or_sub",
-          "named": true
-        },
-        {
-          "type": "dyn_label",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dyn_substitution",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "dyn_cast",
-          "named": true
-        },
-        {
-          "type": "dyn_collect_ops",
-          "named": true
-        },
-        {
-          "type": "dyn_macro_name",
-          "named": true
-        },
-        {
-          "type": "dyn_set_ops",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "fpr_only",
@@ -1725,6 +921,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "hold",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "include_declaration",
@@ -1846,6 +1047,58 @@
     }
   },
   {
+    "type": "r_sentence",
+    "named": true,
+    "fields": {
+      "base": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "asset_expr",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "asset_expr",
+            "named": true
+          },
+          {
+            "type": "edge",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "asset_expr",
+          "named": true
+        },
+        {
+          "type": "dynamic_separator",
+          "named": true
+        },
+        {
+          "type": "edge",
+          "named": true
+        },
+        {
+          "type": "hold",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "reaching",
     "named": true,
     "fields": {
@@ -1880,6 +1133,40 @@
     }
   },
   {
+    "type": "remove_reaching",
+    "named": true,
+    "fields": {
+      "dyn_reaches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "r_sentence",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+R>",
+            "named": false
+          },
+          {
+            "type": "R>",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -1890,10 +1177,6 @@
       "types": [
         {
           "type": "declaration",
-          "named": true
-        },
-        {
-          "type": "dyn_specification",
           "named": true
         }
       ]
@@ -2210,6 +1493,14 @@
     "named": false
   },
   {
+    "type": "+A>",
+    "named": false
+  },
+  {
+    "type": "+R>",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
@@ -2250,10 +1541,6 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
     "type": "<-",
     "named": false
   },
@@ -2266,11 +1553,15 @@
     "named": false
   },
   {
-    "type": ">",
+    "type": "@",
     "named": false
   },
   {
-    "type": "@",
+    "type": "A>",
+    "named": false
+  },
+  {
+    "type": "R>",
     "named": false
   },
   {
@@ -2319,39 +1610,7 @@
     "extra": true
   },
   {
-    "type": "dyn_attack",
-    "named": true
-  },
-  {
-    "type": "dyn_condition",
-    "named": true
-  },
-  {
-    "type": "dyn_dev_info",
-    "named": true
-  },
-  {
-    "type": "dyn_edge_ops",
-    "named": true
-  },
-  {
-    "type": "dyn_identifier",
-    "named": true
-  },
-  {
-    "type": "dyn_mod_info",
-    "named": true
-  },
-  {
-    "type": "dyn_repeatable",
-    "named": true
-  },
-  {
-    "type": "dyn_set_ops",
-    "named": true
-  },
-  {
-    "type": "dyn_user_info",
+    "type": "edge",
     "named": true
   },
   {

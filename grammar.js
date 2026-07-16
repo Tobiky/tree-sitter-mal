@@ -19,13 +19,7 @@ module.exports = grammar({
 
   conflicts: $ => [
     // FIXME: Conflict at end of association when there shouldn't be one
-    [$.association],
-    // DynaMAL: identifier could reduce to dyn_role (in frgmt) or dyn_operand (end of left/right)
-    [$.dyn_role, $.dyn_operand],
-    [$.dyn_role, $.dyn_modify_sentence],
-    [$.dyn_corporeal, $.dyn_precondition],
-    [$.dyn_frgmt_or_sub, $.dyn_precondition],
-    [$.dyn_substitution],
+    [$.association]
   ],
 
   precedences: $ => [
@@ -33,10 +27,7 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => choice(
-      repeat($.declaration),
-      $.dyn_specification,
-    ),
+    source_file: $ => repeat($.declaration),
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     // Additionally, set 0 precidence so behavior can be overwritten when necessary.
@@ -108,7 +99,10 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
       optional(field('detector', repeat($.detector))),
       optional(field('preconditions', $.preconditions)),
-      optional(field('reaches', $.reaching)),
+      optional(field('reaches', choice(
+        seq($.reaching, optional($.dyn_reaching)),
+        seq($.dyn_reaching, optional($.reaching)),
+      ))),
     ),
 
     step_type: $ => token(choice(
@@ -205,6 +199,18 @@ module.exports = grammar({
         field('reaches', commaSep1($.asset_expr))
     ),
 
+    dyn_reaching: $ => choice(
+      $.add_reaching,
+      $.remove_reaching,
+    ),
+    add_reaching: $ => seq(
+        field('operator', choice('+A>', 'A>')),
+        field('dyn_reaches', commaSep1($.a_sentence)),
+    ),
+    remove_reaching: $ => seq(
+        field('operator', choice('+R>', 'R>')),
+        field('dyn_reaches', commaSep1($.r_sentence)),
+    ),
 
     // Time-To-Compromise probabilty distributions
     ttc: $ => seq(
@@ -278,11 +284,15 @@ module.exports = grammar({
       ')',
     ),
 
-    asset_expr_type: $ => prec.left('binary_exp', seq(
-      field('expression', $._inline_asset_expr),
+    cast: $ => seq(
       '[',
       field('type_id', $.identifier),
       ']',
+    ),
+
+    asset_expr_type: $ => prec.left('binary_exp', seq(
+      field('expression', $._inline_asset_expr),
+      $.cast
     )),
 
     asset_expr_binop: $ => choice(
@@ -311,6 +321,109 @@ module.exports = grammar({
         )),
       )
     ),
+
+    // Multiplicity of an association, * for unbounded, range for bounded, and integer for exact.
+    multiplicity: $ => choice(
+      $._multiplicity_atom,
+      $.multiplicity_range,
+    ),
+
+    _multiplicity_atom: $ => choice(
+      $.integer,
+      $.star,
+    ),
+
+    multiplicity_range: $ => seq(
+      field('start', $._multiplicity_atom),
+      '..',
+      field('end', $._multiplicity_atom),
+    ),
+
+    // Expressions to define modifications to relations between assets
+    dynamic_separator: $ => '/',
+    hold: $ => '^',
+    edge: $ => '~',
+    // self_ref: $ => 'self',
+    // amount: $ => seq(':', $.multiplicity),
+
+    // // DynaMAL definitions: Overlaps with regular MAL step definitions
+    // set_ops: $ => choice(
+    //   '\\/',
+    //   '/\\',
+    //   '-',
+    // ),
+    // collect_ops: $ => '.',
+
+    // operand: $ =>choice(
+    //   $.identifier,
+    //   // $.self_ref,
+    //   $.asset_variable_substitution
+    // ),
+
+    // fragment: $ => seq(
+    //   field('role', $.identifier),
+    //   optional($.cast),
+    //   choice(
+    //     $.collect_ops,
+    //     $.set_ops
+    //   )
+    // ),
+    // // DynaMAL definitions end
+
+    a_sentence: $ => seq(
+      field('base', $.asset_expr),
+      $.dynamic_separator,
+      field('target', seq(optional($.edge), $.asset_expr)),
+      repeat(seq(
+        $.hold,
+        seq(optional($.edge), $.asset_expr),
+      )),
+    ),
+    // a_base: $ => repeat1(seq(
+    //   $.fragment,
+    //   choice(
+    //     $.operand,
+    //     $.self_ref
+    //   ),
+    //   optional($.cast),
+    //   optional($.amount)
+    // )),
+    // a_target: $ => repeat1(seq(
+    //   optional($.edge),
+    //   $.fragment,
+    //   $.operand,
+    //   optional($.cast),
+    //   optional($.amount)
+    // )),
+
+    r_sentence: $ => seq(
+      field('base', $.asset_expr),
+      $.dynamic_separator,
+      field('target', seq(optional($.edge), $.asset_expr)),
+      repeat(seq(
+        $.hold,
+        seq(optional($.edge), $.asset_expr),
+      )),
+    ),
+    // r_base: $ => repeat1(seq(
+    //   $.fragment,
+    //   choice(
+    //     $.operand,
+    //     $.self_ref
+    //   ),
+    //   optional($.cast),
+    //   optional($.amount)
+    // )),
+    // r_target: $ => repeat1(seq(
+    //   optional($.edge),
+    //   $.fragment,
+    //   choice(
+    //     $.operand,
+    //     $.self_ref
+    //   ),
+    //   optional($.cast),
+    //   optional($.amount)
+    // )),
 
     // Define values, i.e. global string constants
     define_declaration: $ => seq(
@@ -342,23 +455,6 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
     ),
 
-    // Multiplicity of an association, * for unbounded, range for bounded, and integer for exact.
-    multiplicity: $ => choice(
-      $._multiplicity_atom,
-      $.multiplicity_range,
-    ),
-
-    _multiplicity_atom: $ => choice(
-      $.integer,
-      $.star,
-    ),
-
-    multiplicity_range: $ => seq(
-      field('start', $._multiplicity_atom),
-      '..',
-      field('end', $._multiplicity_atom),
-    ),
-
     // Meta information for category, asset, or otherwise.
     meta: $ => seq(
       field('id', $.identifier),
@@ -375,271 +471,8 @@ module.exports = grammar({
     identifier: _ => token(/[a-zA-Z0-9_]+/),
 
     star: _ => token('*'),
-    cia: _ => token(/[CIA]/),
+    cia: _ => token(/[CIA]/)
 
-    // ===========================================================
-    // DynaMAL grammar rules
-    // All identifier nodes are alias($.identifier, $.dyn_identifier) so that
-    // they share the 'identifier' token pattern (the word token) without
-    // introducing a conflicting duplicate token rule.
-    // ===========================================================
-
-    dyn_specification: $ => seq(
-      repeat1($.dyn_expression),
-      optional($.dyn_associations),
-    ),
-
-    dyn_expression: $ => $.dyn_resource,
-
-    dyn_resource: $ => seq(
-      $.dyn_header,
-      optional($.dyn_info),
-      '{',
-      optional($.dyn_actionspace),
-      '}',
-    ),
-
-    dyn_header: $ => seq(
-      optional('abstract'),
-      'asset',
-      $.dyn_name,
-      optional(seq('extends', $.dyn_name)),
-    ),
-
-    dyn_name: $ => alias($.identifier, $.dyn_identifier),
-
-    // info block: repeat1 so the node only appears when at least one entry exists
-    dyn_info: $ => repeat1($.dyn_info_entry),
-
-    dyn_info_entry: $ => seq(
-      $.dyn_info_type,
-      'info',
-      ':',
-      $.string,
-    ),
-
-    dyn_info_type: $ => choice(
-      $.dyn_user_info,
-      $.dyn_dev_info,
-      $.dyn_mod_info,
-    ),
-
-    dyn_user_info: _ => 'user',
-    dyn_dev_info: _ => 'developer',
-    dyn_mod_info: _ => 'modeler',
-
-    dyn_actionspace: $ => repeat1(choice(
-      $.dyn_action,
-      $.dyn_evaluation,
-    )),
-
-    dyn_action: $ => seq(
-      choice($.dyn_attack, $.dyn_defense),
-      $.dyn_label,
-      optional($.dyn_repeatable),
-      optional($.dyn_probability),
-      optional($.dyn_info),
-      repeat($.dyn_actions),
-    ),
-
-    dyn_attack: _ => token(choice('|', '&', 'E', '!E')),
-    dyn_defense: _ => token('#'),
-
-    dyn_label: $ => alias($.identifier, $.dyn_identifier),
-
-    dyn_repeatable: _ => token(choice('repeat', 'once')),
-
-    dyn_probability: $ => seq(
-      '[',
-      alias($.identifier, $.dyn_identifier),
-      optional(seq('(', optional(commaSep1($.float)), ')')),
-      ']',
-    ),
-
-    dyn_evaluation: $ => seq(
-      $.dyn_condition,
-      $.dyn_label,
-      optional($.dyn_probability),
-      optional($.dyn_info),
-      $.dyn_requires,
-      repeat1($.dyn_actions),
-    ),
-
-    dyn_condition: _ => token(choice('if', 'unless')),
-
-    dyn_requires: $ => seq(
-      '<-',
-      $.dyn_cond_sentence,
-      repeat(seq(',', $.dyn_cond_sentence)),
-    ),
-
-    dyn_cond_sentence: $ => seq(
-      repeat($.dyn_frgmt_or_sub),
-      $.dyn_precondition,
-      optional($.dyn_cast),
-    ),
-
-    dyn_precondition: $ => choice(
-      $.dyn_role,
-      $.dyn_cast,
-      $.dyn_substitution,
-    ),
-
-    dyn_actions: $ => choice($.dyn_static, $.dyn_dynamic),
-
-    dyn_static: $ => seq(
-      choice('->', '+>'),
-      $.dyn_static_sentence,
-      repeat(seq(',', $.dyn_static_sentence)),
-    ),
-
-    dyn_static_sentence: $ => seq(
-      repeat($.dyn_frgmt_or_sub),
-      $.dyn_label,
-    ),
-
-    dyn_dynamic: $ => choice($.dyn_arrange, $.dyn_modify),
-
-    dyn_arrange: $ => choice($.dyn_add, $.dyn_remove),
-
-    dyn_add: $ => seq(
-      token(choice('A>', '+A>')),
-      $.dyn_add_sentence,
-      repeat(seq(',', $.dyn_add_sentence)),
-    ),
-
-    dyn_add_sentence: $ => seq(
-      $.dyn_left_add,
-      '/',
-      $.dyn_right_add,
-    ),
-
-    dyn_left_add: $ => seq(
-      repeat($.dyn_frgmt_or_sub),
-      $.dyn_operand,
-      optional($.dyn_cast),
-    ),
-
-    dyn_right_add: $ => seq(
-      optional($.dyn_edge_ops),
-      repeat($.dyn_frgmt_or_sub),
-      $.dyn_operand,
-      optional($.dyn_cast),
-    ),
-
-    dyn_remove: $ => seq(
-      token(choice('R>', '+R>')),
-      $.dyn_remove_sentence,
-      repeat(seq(',', $.dyn_remove_sentence)),
-    ),
-
-    dyn_remove_sentence: $ => seq(
-      $.dyn_left_remove,
-      '/',
-      $.dyn_right_remove,
-    ),
-
-    dyn_left_remove: $ => seq(
-      repeat($.dyn_frgmt_or_sub),
-      $.dyn_operand,
-      optional($.dyn_cast),
-    ),
-
-    dyn_right_remove: $ => seq(
-      optional($.dyn_edge_ops),
-      repeat($.dyn_frgmt_or_sub),
-      $.dyn_operand,
-      optional($.dyn_cast),
-    ),
-
-    dyn_modify: $ => seq(
-      token(choice('M>', '+M>')),
-      $.dyn_modify_sentence,
-      repeat(seq(',', $.dyn_modify_sentence)),
-    ),
-
-    dyn_modify_sentence: $ => seq(
-      repeat($.dyn_frgmt_or_sub),
-      alias($.identifier, $.dyn_identifier),
-      $.dyn_probability,
-      ',',
-    ),
-
-    // Fragment-or-substitution: a path segment ending with a collect/set operator
-    dyn_frgmt_or_sub: $ => choice(
-      $.dyn_frgmt,
-      $.dyn_substitution,
-    ),
-
-    dyn_frgmt: $ => seq(
-      optional($.dyn_recursive),
-      choice($.dyn_corporeal, $.dyn_ephemeral),
-      optional($.dyn_cast),
-      choice($.dyn_collect_ops, $.dyn_set_ops),
-    ),
-
-    dyn_corporeal: $ => $.dyn_role,
-
-    dyn_ephemeral: $ => seq('<', repeat1($.dyn_frgmt_or_sub), '>'),
-
-    dyn_role: $ => alias($.identifier, $.dyn_identifier),
-
-    dyn_cast: $ => seq('[', $.dyn_asset, ']'),
-
-    dyn_asset: $ => alias($.identifier, $.dyn_identifier),
-
-    dyn_operand: $ => alias($.identifier, $.dyn_identifier),
-
-    dyn_substitution: $ => seq(
-      $.dyn_macro_name,
-      '(',
-      ')',
-      optional($.dyn_cast),
-      optional(choice($.dyn_collect_ops, $.dyn_set_ops)),
-    ),
-
-    dyn_macro_name: $ => alias($.identifier, $.dyn_identifier),
-
-    dyn_edge_ops: _ => '~',
-
-    dyn_collect_ops: $ => choice($.dyn_collect, $.dyn_recursive),
-    dyn_collect: _ => '.',
-    dyn_recursive: _ => '*',
-
-    dyn_set_ops: _ => token(choice('\\/', '/\\', '-')),
-
-    dyn_associations: $ => seq(
-      'associations',
-      '{',
-      repeat($.dyn_association),
-      '}',
-    ),
-
-    dyn_association: $ => seq(
-      $.dyn_name,
-      '[', $.dyn_role, ']',
-      $.dyn_cardinality,
-      '<--', alias($.identifier, $.dyn_identifier), '-->',
-      $.dyn_cardinality,
-      '[', $.dyn_role, ']',
-      $.dyn_name,
-      optional($.dyn_info),
-    ),
-
-    dyn_cardinality: $ => choice(
-      seq($.dyn_cardinal, '..', $.dyn_cardinal),
-      $.dyn_cardinal,
-    ),
-
-    dyn_cardinal: $ => choice(
-      $.dyn_asterisk,
-      $.integer,
-    ),
-
-    dyn_asterisk: _ => '*',
-
-    // dyn_identifier is not defined as a standalone rule; it is produced only
-    // via alias($.identifier, $.dyn_identifier) at each usage site above.
   },
 });
 

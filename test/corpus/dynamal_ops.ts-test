@@ -2,7 +2,9 @@
 DynaMAL ADD (A>)
 ================
 
-asset A user info: "x" {
+asset A 
+user info: "x" 
+{
   | step A> self/children[B]
 }
 

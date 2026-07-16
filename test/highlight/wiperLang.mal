@@ -1,0 +1,107 @@
+#id: "wiperlang"
+// <- operator
+//   ^ constant
+//     ^^^^^^^^^^ string
+#version: "1.0"
+// <- operator
+//   ^ constant
+//     ^^^^^ string
+
+category WiperLang {
+// <- keyword.type
+//        ^ module
+	asset Internet {}
+	// <- keyword.type
+	//      ^ type
+	abstract asset Host {}
+	// <- keyword.modifier
+	//        ^ keyword.type
+	//              ^ type
+	asset C2Server extends Host {}
+	// <- keyword.type
+	//      ^ type
+	//               ^ keyword.modifier
+	//                       ^ type
+	asset Device extends Host {
+	// <- keyword.type
+	//      ^ type
+	//             ^ keyword.modifier
+	//                     ^ type
+		| infect
+		A> self / malware[Wiper]   // Add Malware vertex
+		-> malware.activate
+	}
+
+	abstract asset Malware {
+	// <- keyword.modifier
+	//        ^ keyword.type
+	//              ^ type
+		| activate
+		-> trigger
+		| trigger
+	}
+
+	asset Wiper extends Malware {
+	// <- keyword.type
+	//      ^ type
+	//            ^ keyword.modifier
+	//                    ^ type
+		| activate
+		+> exfiltrate, propagate
+		| exfiltrate
+		A> victim.data /                       // Link data
+		~victim.inet.hosts[C2Server].data // to C2
+		| propagate
+		A> victim.sendTo / malware[Wiper]
+		-> victim.sendTo.malware[Wiper].activate
+		| trigger
+		R> victim / malware ^ ~data
+		// Retain victim, then self-destruct + wipe
+	}
+
+	asset Data {}
+	// <- keyword.type
+	//      ^ type
+}
+
+associations {
+	// <- keyword.modifier
+	Internet [inet] 1 <-- contains --> * [hosts] Host
+	// <- type
+	//        ^ property
+	//              ^ number
+	//                ^^^ operator
+	//                    ^ property
+	//                             ^^^ operator
+	//                                 ^ number
+	//                                   ^ punctuation.bracket
+	//                                    ^ property
+	//                                             ^ type
+	Host [receiveFrom] * <-- neighbor --> * [sendTo] Host
+	// <- type
+	//    ^ property
+	//                 ^ number
+	//                   ^^^ operator
+	//                       ^ operator
+	//                               ^ number
+	//                                  ^ property
+	//                                            ^ type
+	Host [node] 1 <-- store --> * [data] Data
+	// <- type
+	//    ^ property
+	//          ^ number
+	//            ^^^ operator
+	//                ^ operator
+	//                        ^ number
+	//                           ^ property
+	//                                   ^ type
+	Host [victim] 1 <-- infect --> * [malware] Malware
+	// <- type
+	//    ^ property
+	//            ^ number
+	//              ^^^ operator
+	//                  ^ operator
+	//                          ^ number
+	//                             ^ property
+	//                                      ^ type
+}
