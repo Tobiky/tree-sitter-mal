@@ -1,16 +1,10 @@
 category WiperLang {
-    // <- keyword.type
-    //   ^ module
-    //              ^ punctuation.bracket
+// <- keyword.type
+//       ^ module
   asset Internet {}
   // <- keyword.type
   //    ^ type
-  //	         ^ punctuation.bracket
-  //	          ^ punctuation.bracket
   abstract asset Host {}
-  // <- keyword.type
-  //       ^ keyword.type
-  //             ^ type
   asset C2Server extends Host {}
   asset Device extends Host {
       | infect
