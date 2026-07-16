@@ -342,30 +342,6 @@ module.exports = grammar({
     // self_ref: $ => 'self',
     // amount: $ => seq(':', $.multiplicity),
 
-    // // DynaMAL definitions: Overlaps with regular MAL step definitions
-    // set_ops: $ => choice(
-    //   '\\/',
-    //   '/\\',
-    //   '-',
-    // ),
-    // collect_ops: $ => '.',
-
-    // operand: $ =>choice(
-    //   $.identifier,
-    //   // $.self_ref,
-    //   $.asset_variable_substitution
-    // ),
-
-    // fragment: $ => seq(
-    //   field('role', $.identifier),
-    //   optional($.cast),
-    //   choice(
-    //     $.collect_ops,
-    //     $.set_ops
-    //   )
-    // ),
-    // // DynaMAL definitions end
-
     a_sentence: $ => seq(
       field('base', $.asset_expr),
       $.dynamic_separator,
@@ -375,22 +351,6 @@ module.exports = grammar({
         seq(optional($.assoc_op), $.asset_expr),
       )),
     ),
-    // a_base: $ => repeat1(seq(
-    //   $.fragment,
-    //   choice(
-    //     $.operand,
-    //     $.self_ref
-    //   ),
-    //   optional($.cast),
-    //   optional($.amount)
-    // )),
-    // a_target: $ => repeat1(seq(
-    //   optional($.assoc_op),
-    //   $.fragment,
-    //   $.operand,
-    //   optional($.cast),
-    //   optional($.amount)
-    // )),
 
     r_sentence: $ => seq(
       field('base', $.asset_expr),
@@ -401,25 +361,6 @@ module.exports = grammar({
         seq(optional($.assoc_op), $.asset_expr),
       )),
     ),
-    // r_base: $ => repeat1(seq(
-    //   $.fragment,
-    //   choice(
-    //     $.operand,
-    //     $.self_ref
-    //   ),
-    //   optional($.cast),
-    //   optional($.amount)
-    // )),
-    // r_target: $ => repeat1(seq(
-    //   optional($.assoc_op),
-    //   $.fragment,
-    //   choice(
-    //     $.operand,
-    //     $.self_ref
-    //   ),
-    //   optional($.cast),
-    //   optional($.amount)
-    // )),
 
     // Define values, i.e. global string constants
     define_declaration: $ => seq(
