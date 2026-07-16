@@ -1,91 +1,5 @@
 [
   {
-    "type": "a_sentence",
-    "named": true,
-    "fields": {
-      "base": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "asset_expr",
-            "named": true
-          }
-        ]
-      },
-      "target": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "asset_expr",
-            "named": true
-          },
-          {
-            "type": "assoc_op",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "asset_expr",
-          "named": true
-        },
-        {
-          "type": "assoc_op",
-          "named": true
-        },
-        {
-          "type": "dynamic_separator",
-          "named": true
-        },
-        {
-          "type": "hold",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "add_reaching",
-    "named": true,
-    "fields": {
-      "dyn_reaches": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "a_sentence",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "+A>",
-            "named": false
-          },
-          {
-            "type": "A>",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "asset_declaration",
     "named": true,
     "fields": {
@@ -855,17 +769,92 @@
   {
     "type": "dyn_reaching",
     "named": true,
-    "fields": {},
+    "fields": {
+      "dyn_reaches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "dyn_sentence",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+A>",
+            "named": false
+          },
+          {
+            "type": "+R>",
+            "named": false
+          },
+          {
+            "type": "A>",
+            "named": false
+          },
+          {
+            "type": "R>",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "dyn_sentence",
+    "named": true,
+    "fields": {
+      "base": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "asset_expr",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "asset_expr",
+            "named": true
+          },
+          {
+            "type": "assoc_op",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "add_reaching",
+          "type": "asset_expr",
           "named": true
         },
         {
-          "type": "remove_reaching",
+          "type": "assoc_op",
+          "named": true
+        },
+        {
+          "type": "dynamic_separator",
+          "named": true
+        },
+        {
+          "type": "hold",
           "named": true
         }
       ]
@@ -1031,58 +1020,6 @@
     }
   },
   {
-    "type": "r_sentence",
-    "named": true,
-    "fields": {
-      "base": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "asset_expr",
-            "named": true
-          }
-        ]
-      },
-      "target": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "asset_expr",
-            "named": true
-          },
-          {
-            "type": "assoc_op",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "asset_expr",
-          "named": true
-        },
-        {
-          "type": "assoc_op",
-          "named": true
-        },
-        {
-          "type": "dynamic_separator",
-          "named": true
-        },
-        {
-          "type": "hold",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "reaching",
     "named": true,
     "fields": {
@@ -1111,40 +1048,6 @@
           {
             "type": "asset_expr",
             "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "remove_reaching",
-    "named": true,
-    "fields": {
-      "dyn_reaches": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "r_sentence",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "+R>",
-            "named": false
-          },
-          {
-            "type": "R>",
-            "named": false
           }
         ]
       }

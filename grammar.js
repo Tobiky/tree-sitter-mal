@@ -23,7 +23,7 @@ module.exports = grammar({
   ],
 
   precedences: $ => [
-    [ 'binary_exp', 'binary_mul', 'binary_plus', ]
+    ['binary_exp', 'binary_mul', 'binary_plus',]
   ],
 
   rules: {
@@ -189,27 +189,19 @@ module.exports = grammar({
 
     // Precondition for attack steps
     preconditions: $ => seq(
-      '<-', 
+      '<-',
       field('condition', commaSep1($.asset_expr))
     ),
 
     // Inheritence or lead to/from other identities for attack steps
     reaching: $ => seq(
-        field('operator', choice('+>', '->')),
-        field('reaches', commaSep1($.asset_expr))
+      field('operator', choice('+>', '->')),
+      field('reaches', commaSep1($.asset_expr))
     ),
 
-    dyn_reaching: $ => choice(
-      $.add_reaching,
-      $.remove_reaching,
-    ),
-    add_reaching: $ => seq(
-        field('operator', choice('+A>', 'A>')),
-        field('dyn_reaches', commaSep1($.a_sentence)),
-    ),
-    remove_reaching: $ => seq(
-        field('operator', choice('+R>', 'R>')),
-        field('dyn_reaches', commaSep1($.r_sentence)),
+    dyn_reaching: $ => seq(
+      field('operator', choice('+A>', 'A>', '+R>', 'R>')),
+      field('dyn_reaches', commaSep1($.dyn_sentence)),
     ),
 
     // Time-To-Compromise probabilty distributions
@@ -265,7 +257,7 @@ module.exports = grammar({
     // the grammar logic is placed inside this inline node
     _inline_asset_expr: $ => choice(
       // alias to ._ to inline
-      seq('(', $._inline_asset_expr, ')', ),
+      seq('(', $._inline_asset_expr, ')',),
       $._asset_expr_primary,
       $.asset_expr_binop,
       $.asset_expr_unop,
@@ -342,17 +334,7 @@ module.exports = grammar({
     // self_ref: $ => 'self',
     // amount: $ => seq(':', $.multiplicity),
 
-    a_sentence: $ => seq(
-      field('base', $.asset_expr),
-      $.dynamic_separator,
-      field('target', seq(optional($.assoc_op), $.asset_expr)),
-      repeat(seq(
-        $.hold,
-        seq(optional($.assoc_op), $.asset_expr),
-      )),
-    ),
-
-    r_sentence: $ => seq(
+    dyn_sentence: $ => seq(
       field('base', $.asset_expr),
       $.dynamic_separator,
       field('target', seq(optional($.assoc_op), $.asset_expr)),

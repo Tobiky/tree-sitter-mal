@@ -995,19 +995,6 @@
       ]
     },
     "dyn_reaching": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "add_reaching"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "remove_reaching"
-        }
-      ]
-    },
-    "add_reaching": {
       "type": "SEQ",
       "members": [
         {
@@ -1023,50 +1010,7 @@
               {
                 "type": "STRING",
                 "value": "A>"
-              }
-            ]
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "dyn_reaches",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "a_sentence"
               },
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": ","
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "a_sentence"
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "remove_reaching": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "operator",
-          "content": {
-            "type": "CHOICE",
-            "members": [
               {
                 "type": "STRING",
                 "value": "+R>"
@@ -1086,7 +1030,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "r_sentence"
+                "name": "dyn_sentence"
               },
               {
                 "type": "REPEAT",
@@ -1099,7 +1043,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "r_sentence"
+                      "name": "dyn_sentence"
                     }
                   ]
                 }
@@ -1744,82 +1688,7 @@
       "type": "STRING",
       "value": "~"
     },
-    "a_sentence": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "base",
-          "content": {
-            "type": "SYMBOL",
-            "name": "asset_expr"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "dynamic_separator"
-        },
-        {
-          "type": "FIELD",
-          "name": "target",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "assoc_op"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "asset_expr"
-              }
-            ]
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "hold"
-              },
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "assoc_op"
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "asset_expr"
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "r_sentence": {
+    "dyn_sentence": {
       "type": "SEQ",
       "members": [
         {
