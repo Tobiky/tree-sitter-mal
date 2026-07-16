@@ -1688,6 +1688,27 @@
       "type": "STRING",
       "value": "~"
     },
+    "assoc_and_asset_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "assoc_op"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "asset_expr"
+        }
+      ]
+    },
     "dyn_sentence": {
       "type": "SEQ",
       "members": [
@@ -1704,29 +1725,8 @@
           "name": "dynamic_separator"
         },
         {
-          "type": "FIELD",
-          "name": "target",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "assoc_op"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
-                "type": "SYMBOL",
-                "name": "asset_expr"
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "assoc_and_asset_expr"
         },
         {
           "type": "REPEAT",
@@ -1738,25 +1738,8 @@
                 "name": "hold"
               },
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "assoc_op"
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "asset_expr"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "assoc_and_asset_expr"
               }
             ]
           }

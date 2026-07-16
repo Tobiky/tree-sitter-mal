@@ -338,6 +338,25 @@
     }
   },
   {
+    "type": "assoc_and_asset_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "asset_expr",
+          "named": true
+        },
+        {
+          "type": "assoc_op",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "association",
     "named": true,
     "fields": {
@@ -821,20 +840,6 @@
             "named": true
           }
         ]
-      },
-      "target": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "asset_expr",
-            "named": true
-          },
-          {
-            "type": "assoc_op",
-            "named": true
-          }
-        ]
       }
     },
     "children": {
@@ -842,11 +847,7 @@
       "required": true,
       "types": [
         {
-          "type": "asset_expr",
-          "named": true
-        },
-        {
-          "type": "assoc_op",
+          "type": "assoc_and_asset_expr",
           "named": true
         },
         {

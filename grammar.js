@@ -331,16 +331,18 @@ module.exports = grammar({
     dynamic_separator: $ => '/',
     hold: $ => '^',
     assoc_op: $ => '~',
-    // self_ref: $ => 'self',
-    // amount: $ => seq(':', $.multiplicity),
+
+    assoc_and_asset_expr: $ => seq(
+      optional($.assoc_op), $.asset_expr
+    ),
 
     dyn_sentence: $ => seq(
       field('base', $.asset_expr),
       $.dynamic_separator,
-      field('target', seq(optional($.assoc_op), $.asset_expr)),
+      $.assoc_and_asset_expr,
       repeat(seq(
         $.hold,
-        seq(optional($.assoc_op), $.asset_expr),
+        $.assoc_and_asset_expr,
       )),
     ),
 
