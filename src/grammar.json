@@ -440,46 +440,219 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "SEQ",
+                    "type": "CHOICE",
                     "members": [
                       {
-                        "type": "SYMBOL",
-                        "name": "reaching"
-                      },
-                      {
-                        "type": "CHOICE",
+                        "type": "SEQ",
                         "members": [
                           {
                             "type": "SYMBOL",
-                            "name": "dyn_reaching"
-                          },
-                          {
-                            "type": "BLANK"
+                            "name": "reaching"
                           }
                         ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "dyn_reaching"
                       },
                       {
-                        "type": "CHOICE",
+                        "type": "SEQ",
                         "members": [
                           {
                             "type": "SYMBOL",
                             "name": "reaching"
                           },
                           {
-                            "type": "BLANK"
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
                           }
                         ]
                       }
                     ]
+                  },
+                  {
+                    "type": "BLANK"
                   }
                 ]
               }
@@ -994,7 +1167,7 @@
         }
       ]
     },
-    "dyn_reaching": {
+    "append_reaching": {
       "type": "SEQ",
       "members": [
         {
@@ -1010,7 +1183,50 @@
               {
                 "type": "STRING",
                 "value": "A>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "reaches",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "dyn_sentence"
               },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dyn_sentence"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "remove_reaching": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "operator",
+          "content": {
+            "type": "CHOICE",
+            "members": [
               {
                 "type": "STRING",
                 "value": "+R>"
@@ -1024,7 +1240,7 @@
         },
         {
           "type": "FIELD",
-          "name": "dyn_reaches",
+          "name": "reaches",
           "content": {
             "type": "SEQ",
             "members": [

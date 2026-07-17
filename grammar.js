@@ -99,10 +99,7 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
       optional(field('detector', repeat($.detector))),
       optional(field('preconditions', $.preconditions)),
-      optional(field('reaches', choice(
-        seq($.reaching, optional($.dyn_reaching)),
-        seq($.dyn_reaching, optional($.reaching)),
-      ))),
+      optional(field('reaches', unorderedOptionals($.reaching, $.append_reaching, $.remove_reaching))),
     ),
 
     step_type: $ => token(choice(
@@ -199,9 +196,14 @@ module.exports = grammar({
       field('reaches', commaSep1($.asset_expr))
     ),
 
-    dyn_reaching: $ => seq(
-      field('operator', choice('+A>', 'A>', '+R>', 'R>')),
-      field('dyn_reaches', commaSep1($.dyn_sentence)),
+    append_reaching: $ => seq(
+      field('operator', choice('+A>', 'A>')),
+      field('reaches', commaSep1($.dyn_sentence)),
+    ),
+
+    remove_reaching: $ => seq(
+      field('operator', choice('+R>', 'R>')),
+      field('reaches', commaSep1($.dyn_sentence)),
     ),
 
     // Time-To-Compromise probabilty distributions
@@ -418,4 +420,38 @@ function sep1(rule, token) {
  */
 function commaSep1(rule) {
   return sep1(rule, ',');
+}
+
+/**
+ * Matches each supplied rules zero or one time, in any order.
+ *
+ * @param {...Rule} rules
+ * @returns {Rule}
+ */
+function unorderedOptionals(...rules) {
+  const alternatives = /** @type {Rule[]} */ ([]);
+
+  /**
+   * @param {Rule[]} prefix
+   * @param {Rule[]} remaining
+   */
+  function generate(prefix, remaining) {
+    if (prefix.length > 0) {
+      alternatives.push(seq(...prefix));
+    }
+
+    for (let i = 0; i < remaining.length; i++) {
+      generate(
+        [...prefix, remaining[i]],
+        [
+          ...remaining.slice(0, i),
+          ...remaining.slice(i + 1),
+        ],
+      );
+    }
+  }
+
+  generate([], rules);
+
+  return optional(choice(...alternatives));
 }

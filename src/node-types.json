@@ -1,5 +1,39 @@
 [
   {
+    "type": "append_reaching",
+    "named": true,
+    "fields": {
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+A>",
+            "named": false
+          },
+          {
+            "type": "A>",
+            "named": false
+          }
+        ]
+      },
+      "reaches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "dyn_sentence",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "asset_declaration",
     "named": true,
     "fields": {
@@ -534,11 +568,15 @@
         "required": false,
         "types": [
           {
-            "type": "dyn_reaching",
+            "type": "append_reaching",
             "named": true
           },
           {
             "type": "reaching",
+            "named": true
+          },
+          {
+            "type": "remove_reaching",
             "named": true
           }
         ]
@@ -786,48 +824,6 @@
     }
   },
   {
-    "type": "dyn_reaching",
-    "named": true,
-    "fields": {
-      "dyn_reaches": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "dyn_sentence",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "+A>",
-            "named": false
-          },
-          {
-            "type": "+R>",
-            "named": false
-          },
-          {
-            "type": "A>",
-            "named": false
-          },
-          {
-            "type": "R>",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "dyn_sentence",
     "named": true,
     "fields": {
@@ -1048,6 +1044,40 @@
           },
           {
             "type": "asset_expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "remove_reaching",
+    "named": true,
+    "fields": {
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "+R>",
+            "named": false
+          },
+          {
+            "type": "R>",
+            "named": false
+          }
+        ]
+      },
+      "reaches": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "dyn_sentence",
             "named": true
           }
         ]
