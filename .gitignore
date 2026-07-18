@@ -39,3 +39,6 @@ __pycache__/
 *.tar.gz
 *.tgz
 *.zip
+
+# Agents
+.claude
