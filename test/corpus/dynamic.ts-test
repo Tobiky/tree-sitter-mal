@@ -27,13 +27,13 @@ associations {
           (attack_step
             step_type: (step_type)
             id: (identifier)
-            reaches: (dyn_reaching
-              (add_reaching
-                dyn_reaches: (a_sentence
-                  base: (asset_expr
-                    (identifier))
-                  (dynamic_separator)
-                  target: (asset_expr
+            reaches: (append_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (asset_expr
                     (asset_expr_type
                       expression: (identifier)
                       type_id: (identifier)))))))))
@@ -92,13 +92,13 @@ associations {
           (attack_step
             step_type: (step_type)
             id: (identifier)
-            reaches: (dyn_reaching
-              (remove_reaching
-                dyn_reaches: (r_sentence
-                  base: (asset_expr
-                    (identifier))
-                  (dynamic_separator)
-                  target: (asset_expr
+            reaches: (remove_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (asset_expr
                     (asset_expr_type
                       expression: (identifier)
                       type_id: (identifier)))))))))
@@ -157,13 +157,13 @@ associations {
           (attack_step
             step_type: (step_type)
             id: (identifier)
-            reaches: (dyn_reaching
-              (add_reaching
-                dyn_reaches: (a_sentence
-                  base: (asset_expr
-                    (identifier))
-                  (dynamic_separator)
-                  target: (asset_expr
+            reaches: (append_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (asset_expr
                     (asset_expr_type
                       expression: (identifier)
                       type_id: (identifier)))))))))
@@ -222,13 +222,13 @@ associations {
           (attack_step
             step_type: (step_type)
             id: (identifier)
-            reaches: (dyn_reaching
-              (remove_reaching
-                dyn_reaches: (r_sentence
-                  base: (asset_expr
-                    (identifier))
-                  (dynamic_separator)
-                  target: (asset_expr
+            reaches: (remove_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (asset_expr
                     (asset_expr_type
                       expression: (identifier)
                       type_id: (identifier)))))))))
@@ -288,14 +288,14 @@ associations {
           (attack_step
             step_type: (step_type)
             id: (identifier)
-            reaches: (dyn_reaching
-              (add_reaching
-                dyn_reaches: (a_sentence
-                  base: (asset_expr
-                    (identifier))
-                  (dynamic_separator)
-                  target: (assoc_op)
-                  target: (asset_expr
+            reaches: (append_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (assoc_op)
+                  (asset_expr
                     (asset_expr_type
                       expression: (identifier)
                       type_id: (identifier)))))))))
