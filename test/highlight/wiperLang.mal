@@ -1,45 +1,185 @@
 category WiperLang {
 // <- keyword.type
 //       ^ module
+//                 ^ punctuation.bracket
   asset Internet {}
   // <- keyword.type
   //    ^ type
+  //             ^^ punctuation.bracket
   abstract asset Host {}
+  // <- keyword.modifier
+  //       ^^^^^ keyword.type
+  //             ^^^^ type
+  //                  ^^ punctuation.bracket
   asset C2Server extends Host {}
+  // <- keyword.type
+  //    ^^^^^^^^ type
+  //             ^^^^^^^ keyword.modifier
+  //                     ^^^^ type
+  //                          ^^ punctuation.bracket
   asset Device extends Host {
+  // <- keyword.type
+  //    ^^^^^^ type
+  //           ^^^^^^^ keyword.modifier
+  //                   ^^^^ type
+  //                        ^ punctuation.bracket
       | infect
+      // <- operator
+      //^^^^^^ tag
           A> self / malware[Wiper]   // Add Malware vertex
+          // ^^^^ function
+          //      ^ operator
+          //               ^ punctuation.bracket
+          //                     ^ punctuation.bracket
+          //                         ^^^^^^^^^^^^^^^^^^^^^ comment
           -> malware.activate
+          // <- operator
+          //        ^ operator
+          //         ^^^^^^^^ function
   }
+  // <- punctuation.bracket
 
   abstract asset Malware {
+  // <- keyword.modifier
+  //       ^^^^^ keyword.type
+  //             ^^^^^^^ type
+  //                     ^ punctuation.bracket
       | activate
+      // <- operator
+      //^^^^^^^^ tag
           -> trigger
+          // <- operator
+          // ^^^^^^^ function
       | trigger
+      // <- operator
+      //^^^^^^^ tag
   }
+  // <- punctuation.bracket
 
   asset Wiper extends Malware {
+  // <- keyword.type
+  //    ^^^^^ type
+  //          ^^^^^^^ keyword.modifier
+  //                  ^^^^^^^ type
+  //                          ^ punctuation.bracket
       | activate
+      // <- operator
+      //^^^^^^^^ tag
           +> exfiltrate, propagate
+          // <- operator
+          // ^^^^^^^^^^ function
+          //           ^ punctuation.delimiter
+          //             ^^^^^^^^^ function
       | exfiltrate
+      // <- operator
+      //^^^^^^^^^^ tag
           A> victim.data /                       // Link data
+          //       ^ operator
+          //        ^^^^ function
+          //             ^ operator
+          //                                     ^^^^^^^^^^^^ comment
           ~victim.inet.hosts[C2Server].data // to C2
+          //     ^ operator
+          //          ^ operator
+          //                ^ punctuation.bracket
+          //                         ^ punctuation.bracket
+          //                          ^ operator
+          //                           ^^^^ function
+          //                                ^^^^^^^^ comment
       | propagate
+      // <- operator
+      //^^^^^^^^^ tag
           A> victim.sendTo / malware[Wiper]
+          //       ^ operator
+          //        ^^^^^^ function
+          //               ^ operator
+          //                        ^ punctuation.bracket
+          //                              ^ punctuation.bracket
           -> victim.sendTo.malware[Wiper].activate
+          // <- operator
+          //       ^ operator
+          //              ^ operator
+          //                      ^ punctuation.bracket
+          //                            ^ punctuation.bracket
+          //                             ^ operator
+          //                              ^^^^^^^^ function
       | trigger
+      // <- operator
+      //^^^^^^^ tag
           R> victim / malware ^ ~data
+          // ^^^^^^ function
+          //        ^ operator
+          //          ^^^^^^^ function
+          //                  ^ operator
+          //                     ^^^^ function
           // Retain victim, then self-destruct + wipe
+          // <- comment
   }
+  // <- punctuation.bracket
 
   asset Data {}
+  // <- keyword.type
+  //    ^^^^ type
+  //         ^^ punctuation.bracket
 
 
 }
+// <- punctuation.bracket
 
 associations {
+// <- keyword.modifier
+//           ^ punctuation.bracket
     Internet [inet] 1 <-- contains --> * [hosts] Host
+    // <- type
+    //       ^ punctuation.bracket
+    //        ^^^^ property
+    //            ^ punctuation.bracket
+    //              ^ number
+    //                ^^^ operator
+    //                             ^^^ operator
+    //                                 ^ number
+    //                                   ^ punctuation.bracket
+    //                                    ^^^^^ property
+    //                                         ^ punctuation.bracket
+    //                                           ^^^^ type
     Host [receiveFrom] * <-- neighbor --> * [sendTo] Host
+    // <- type
+    //   ^ punctuation.bracket
+    //    ^^^^^^^^^^^ property
+    //               ^ punctuation.bracket
+    //                 ^ number
+    //                   ^^^ operator
+    //                                ^^^ operator
+    //                                    ^ number
+    //                                      ^ punctuation.bracket
+    //                                       ^^^^^^ property
+    //                                             ^ punctuation.bracket
+    //                                               ^^^^ type
     Host [node] 1 <-- store --> * [data] Data
+    // <- type
+    //   ^ punctuation.bracket
+    //    ^^^^ property
+    //        ^ punctuation.bracket
+    //          ^ number
+    //            ^^^ operator
+    //                      ^^^ operator
+    //                          ^ number
+    //                            ^ punctuation.bracket
+    //                             ^^^^ property
+    //                                 ^ punctuation.bracket
+    //                                   ^^^^ type
     Host [victim] 1 <-- infect --> * [malware] Malware
+    // <- type
+    //   ^ punctuation.bracket
+    //    ^^^^^^ property
+    //          ^ punctuation.bracket
+    //            ^ number
+    //              ^^^ operator
+    //                         ^^^ operator
+    //                             ^ number
+    //                               ^ punctuation.bracket
+    //                                ^^^^^^^ property
+    //                                       ^ punctuation.bracket
+    //                                         ^^^^^^^ type
 }
+// <- punctuation.bracket
