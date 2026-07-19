@@ -13,7 +13,10 @@ classifiers = [
   "Topic :: Text Processing :: Linguistic",
   "Typing :: Typed",
 ]
-authors = [{ name = "Andreas Hammarstrand", email = "andreas.hammarstrand@gmail.com" }]
+authors = [
+  { name = "Andreas Hammarstrand", email = "andreas.hammarstrand@gmail.com" },
+  { name = "Sandor Berglund", email = "sandorb@kth.se" },
+]
 requires-python = ">=3.9"
 license.text = "MIT"
 readme = "README.md"

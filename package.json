@@ -8,6 +8,12 @@
     "name": "Andreas Hammarstrand",
     "email": "andreas.hammarstrand@gmail.com"
   },
+  "contributors": [
+    {
+      "name": "Sandor Berglund",
+      "email": "sandorb@kth.se"
+    }
+  ],
   "main": "bindings/node",
   "types": "bindings/node",
   "keywords": [
