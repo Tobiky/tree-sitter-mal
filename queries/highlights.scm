@@ -93,12 +93,39 @@
 (asset_variable
   id: (identifier) @variable)
 
-(asset_expr (identifier) @property)
-(asset_expr [(identifier) @function
-             (asset_expr_binop
-               left: (_)*
-               operator: "."
-               right: (identifier) @function)] .)
+; Property/function semantics for asset_expr only apply in static contexts
+; (preconditions, static reaching via -> / +>, detector contexts, variable
+; assignment). DynaMAL dynamic-reaching sentences (dyn_sentence /
+; assoc_and_asset_expr, used by A>/+A>/R>/+R>) are intentionally excluded so
+; their identifiers are left unhighlighted at this level.
+[
+  (preconditions (asset_expr (identifier) @property))
+  (reaching (asset_expr (identifier) @property))
+  (asset_variable value: (asset_expr (identifier) @property))
+  (detector_context_reference ctx_step: (asset_expr (identifier) @property))
+]
+[
+  (preconditions (asset_expr [(identifier) @function
+               (asset_expr_binop
+                 left: (_)*
+                 operator: "."
+                 right: (identifier) @function)] .))
+  (reaching (asset_expr [(identifier) @function
+               (asset_expr_binop
+                 left: (_)*
+                 operator: "."
+                 right: (identifier) @function)] .))
+  (asset_variable value: (asset_expr [(identifier) @function
+               (asset_expr_binop
+                 left: (_)*
+                 operator: "."
+                 right: (identifier) @function)] .))
+  (detector_context_reference ctx_step: (asset_expr [(identifier) @function
+               (asset_expr_binop
+                 left: (_)*
+                 operator: "."
+                 right: (identifier) @function)] .))
+]
 
 ; Miscellaneous
 (comment) @comment
