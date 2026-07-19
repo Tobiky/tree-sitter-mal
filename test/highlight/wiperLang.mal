@@ -27,6 +27,7 @@ category WiperLang {
       // <- operator
       //^^^^^^ tag
           A> self / malware[Wiper]   // Add Malware vertex
+          // <- operator
           // ^^^^ function
           //      ^ operator
           //               ^ punctuation.bracket
@@ -74,11 +75,13 @@ category WiperLang {
       // <- operator
       //^^^^^^^^^^ tag
           A> victim.data /                       // Link data
+          // <- operator
           //       ^ operator
           //        ^^^^ function
           //             ^ operator
           //                                     ^^^^^^^^^^^^ comment
           ~victim.inet.hosts[C2Server].data // to C2
+          // <- operator
           //     ^ operator
           //          ^ operator
           //                ^ punctuation.bracket
@@ -90,6 +93,7 @@ category WiperLang {
       // <- operator
       //^^^^^^^^^ tag
           A> victim.sendTo / malware[Wiper]
+          // <- operator
           //       ^ operator
           //        ^^^^^^ function
           //               ^ operator
@@ -107,10 +111,12 @@ category WiperLang {
       // <- operator
       //^^^^^^^ tag
           R> victim / malware ^ ~data
+          // <- operator
           // ^^^^^^ function
           //        ^ operator
           //          ^^^^^^^ function
           //                  ^ operator
+          //                    ^ operator
           //                     ^^^^ function
           // Retain victim, then self-destruct + wipe
           // <- comment
