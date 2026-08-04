@@ -41,6 +41,7 @@ For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-
     vim.filetype.add({
         extension = {
             mal = "mal",
+            dmal = "mal",
         },
     })
     ```
