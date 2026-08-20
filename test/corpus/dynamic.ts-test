@@ -325,3 +325,143 @@ associations {
           (star))
         right_field_id: (identifier)
         right_id: (identifier)))))
+==================================
+DynaMAL ADD with Multiplicity (A>)
+==================================
+
+category Test {
+  asset A
+  {
+    | step A> self/children[B]:3
+  }
+  asset B {}
+  asset C {}
+}
+associations {
+  A [children] * <-- rel --> * [parent] B
+  A [siblings] * <-- sib --> * [siblings] C
+}
+
+----------------------------------
+
+(source_file
+  (declaration
+    (category_declaration
+      id: (identifier)
+      assets: (asset_declaration
+        id: (identifier)
+        body: (asset_definition
+          (attack_step
+            step_type: (step_type)
+            id: (identifier)
+            reaches: (append_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (asset_expr
+                    (asset_expr_multiplicity
+                      expression: (asset_expr_type
+                        expression: (identifier)
+                        type_id: (identifier))
+                      multiplicity: (multiplicity
+                        (integer))))))))))
+      assets: (asset_declaration
+        id: (identifier))
+      assets: (asset_declaration
+        id: (identifier))))
+  (declaration
+    (associations_declaration
+      (association
+        left_id: (identifier)
+        left_field_id: (identifier)
+        left_mult: (multiplicity
+          (star))
+        id: (identifier)
+        right_mult: (multiplicity
+          (star))
+        right_field_id: (identifier)
+        right_id: (identifier))
+      (association
+        left_id: (identifier)
+        left_field_id: (identifier)
+        left_mult: (multiplicity
+          (star))
+        id: (identifier)
+        right_mult: (multiplicity
+          (star))
+        right_field_id: (identifier)
+        right_id: (identifier)))))
+
+==================================================
+DynaMAL REMOVE with Multiplicity Range (R>, tilde)
+==================================================
+
+category Test {
+  asset A
+  {
+    | step R> self/ ~children[B]:1..5
+  }
+  asset B {}
+  asset C {}
+}
+associations {
+  A [children] * <-- rel --> * [parent] B
+  A [siblings] * <-- sib --> * [siblings] C
+}
+
+--------------------------------------------------
+
+(source_file
+  (declaration
+    (category_declaration
+      id: (identifier)
+      assets: (asset_declaration
+        id: (identifier)
+        body: (asset_definition
+          (attack_step
+            step_type: (step_type)
+            id: (identifier)
+            reaches: (remove_reaching
+              reaches: (dyn_sentence
+                base: (asset_expr
+                  (identifier))
+                (dynamic_separator)
+                (assoc_and_asset_expr
+                  (assoc_op)
+                  (asset_expr
+                    (asset_expr_multiplicity
+                      expression: (asset_expr_type
+                        expression: (identifier)
+                        type_id: (identifier))
+                      multiplicity: (multiplicity
+                        (multiplicity_range
+                          start: (integer)
+                          end: (integer)))))))))))
+      assets: (asset_declaration
+        id: (identifier))
+      assets: (asset_declaration
+        id: (identifier))))
+  (declaration
+    (associations_declaration
+      (association
+        left_id: (identifier)
+        left_field_id: (identifier)
+        left_mult: (multiplicity
+          (star))
+        id: (identifier)
+        right_mult: (multiplicity
+          (star))
+        right_field_id: (identifier)
+        right_id: (identifier))
+      (association
+        left_id: (identifier)
+        left_field_id: (identifier)
+        left_mult: (multiplicity
+          (star))
+        id: (identifier)
+        right_mult: (multiplicity
+          (star))
+        right_field_id: (identifier)
+        right_id: (identifier)))))

@@ -1604,6 +1604,10 @@
         {
           "type": "SYMBOL",
           "name": "asset_expr_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "asset_expr_multiplicity"
         }
       ]
     },
@@ -1670,6 +1674,35 @@
           {
             "type": "STRING",
             "value": "]"
+          }
+        ]
+      }
+    },
+    "asset_expr_multiplicity": {
+      "type": "PREC_LEFT",
+      "value": "binary_exp",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "expression",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_inline_asset_expr"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": ":"
+          },
+          {
+            "type": "FIELD",
+            "name": "multiplicity",
+            "content": {
+              "type": "SYMBOL",
+              "name": "multiplicity"
+            }
           }
         ]
       }

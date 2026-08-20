@@ -265,6 +265,7 @@ module.exports = grammar({
       $.asset_expr_binop,
       $.asset_expr_unop,
       $.asset_expr_type,
+      $.asset_expr_multiplicity,
     ),
 
 
@@ -284,6 +285,13 @@ module.exports = grammar({
       '[',
       field('type_id', $.identifier),
       ']',
+    )),
+
+    // Cardinality qualifier on a reaching/add/remove target, e.g. target[Type]:3, target:1..5, target:*
+    asset_expr_multiplicity: $ => prec.left('binary_exp', seq(
+      field('expression', $._inline_asset_expr),
+      ':',
+      field('multiplicity', $.multiplicity),
     )),
 
     asset_expr_binop: $ => choice(

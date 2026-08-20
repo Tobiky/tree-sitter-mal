@@ -115,6 +115,10 @@
           "named": true
         },
         {
+          "type": "asset_expr_multiplicity",
+          "named": true
+        },
+        {
           "type": "asset_expr_type",
           "named": true
         },
@@ -151,6 +155,10 @@
           },
           {
             "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_multiplicity",
             "named": true
           },
           {
@@ -210,6 +218,10 @@
             "named": true
           },
           {
+            "type": "asset_expr_multiplicity",
+            "named": true
+          },
+          {
             "type": "asset_expr_type",
             "named": true
           },
@@ -223,6 +235,60 @@
           },
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "asset_expr_multiplicity",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_multiplicity",
+            "named": true
+          },
+          {
+            "type": "asset_expr_type",
+            "named": true
+          },
+          {
+            "type": "asset_expr_unop",
+            "named": true
+          },
+          {
+            "type": "asset_variable_substitution",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "multiplicity": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "multiplicity",
             "named": true
           }
         ]
@@ -247,6 +313,10 @@
           },
           {
             "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_multiplicity",
             "named": true
           },
           {
@@ -297,6 +367,10 @@
           },
           {
             "type": "asset_expr_binop",
+            "named": true
+          },
+          {
+            "type": "asset_expr_multiplicity",
             "named": true
           },
           {
