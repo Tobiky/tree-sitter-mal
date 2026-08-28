@@ -1,6 +1,7 @@
 /**
  * @file IT systems are growing in complexity and the threat from cyberattacks is increasing. Threat modeling is a process that can be used to analyze potential attacks to IT systems in order to facilitate secure design. Meta Attack Language (MAL) is a threat modeling language framework for the creation of domain specific languages (DSL). MAL is developed at KTH Royal Institute of Technology.
  * @author Andreas Hammarstrand <andreas.hammarstrand@gmail.com>
+ * @author Sandor Berglund <sandorb@kth.se>
  * @license MIT
  */
 
@@ -23,7 +24,7 @@ module.exports = grammar({
   ],
 
   precedences: $ => [
-    [ 'binary_exp', 'binary_mul', 'binary_plus', ]
+    ['binary_exp', 'binary_mul', 'binary_plus',]
   ],
 
   rules: {
@@ -99,7 +100,7 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
       optional(field('detector', repeat($.detector))),
       optional(field('preconditions', $.preconditions)),
-      optional(field('reaches', $.reaching)),
+      optional(field('reaches', unorderedOptionals($.reaching, $.append_reaching, $.remove_reaching))),
     ),
 
     step_type: $ => token(choice(
@@ -186,16 +187,25 @@ module.exports = grammar({
 
     // Precondition for attack steps
     preconditions: $ => seq(
-      '<-', 
+      '<-',
       field('condition', commaSep1($.asset_expr))
     ),
 
     // Inheritence or lead to/from other identities for attack steps
     reaching: $ => seq(
-        field('operator', choice('+>', '->')),
-        field('reaches', commaSep1($.asset_expr))
+      field('operator', choice('+>', '->')),
+      field('reaches', commaSep1($.asset_expr))
     ),
 
+    append_reaching: $ => seq(
+      field('operator', choice('+A>', 'A>')),
+      field('reaches', commaSep1($.dyn_sentence)),
+    ),
+
+    remove_reaching: $ => seq(
+      field('operator', choice('+R>', 'R>')),
+      field('reaches', commaSep1($.dyn_sentence)),
+    ),
 
     // Time-To-Compromise probabilty distributions
     ttc: $ => seq(
@@ -250,11 +260,12 @@ module.exports = grammar({
     // the grammar logic is placed inside this inline node
     _inline_asset_expr: $ => choice(
       // alias to ._ to inline
-      seq('(', $._inline_asset_expr, ')', ),
+      seq('(', $._inline_asset_expr, ')',),
       $._asset_expr_primary,
       $.asset_expr_binop,
       $.asset_expr_unop,
       $.asset_expr_type,
+      $.asset_expr_multiplicity,
     ),
 
 
@@ -274,6 +285,13 @@ module.exports = grammar({
       '[',
       field('type_id', $.identifier),
       ']',
+    )),
+
+    // Cardinality qualifier on a reaching/add/remove target, e.g. target[Type]:3, target:1..5, target:*
+    asset_expr_multiplicity: $ => prec.left('binary_exp', seq(
+      field('expression', $._inline_asset_expr),
+      ':',
+      field('multiplicity', $.multiplicity),
     )),
 
     asset_expr_binop: $ => choice(
@@ -301,6 +319,42 @@ module.exports = grammar({
           field('operator', operator),
         )),
       )
+    ),
+
+    // Multiplicity of an association, * for unbounded, range for bounded, and integer for exact.
+    multiplicity: $ => choice(
+      $._multiplicity_atom,
+      $.multiplicity_range,
+    ),
+
+    _multiplicity_atom: $ => choice(
+      $.integer,
+      $.star,
+    ),
+
+    multiplicity_range: $ => seq(
+      field('start', $._multiplicity_atom),
+      '..',
+      field('end', $._multiplicity_atom),
+    ),
+
+    // Expressions to define modifications to relations between assets
+    dynamic_separator: $ => '/',
+    hold: $ => '^',
+    assoc_op: $ => '~',
+
+    assoc_and_asset_expr: $ => seq(
+      optional($.assoc_op), $.asset_expr
+    ),
+
+    dyn_sentence: $ => seq(
+      field('base', $.asset_expr),
+      $.dynamic_separator,
+      $.assoc_and_asset_expr,
+      repeat(seq(
+        $.hold,
+        $.assoc_and_asset_expr,
+      )),
     ),
 
     // Define values, i.e. global string constants
@@ -333,23 +387,6 @@ module.exports = grammar({
       field('meta', repeat($.meta)),
     ),
 
-    // Multiplicity of an association, * for unbounded, range for bounded, and integer for exact.
-    multiplicity: $ => choice(
-      $._multiplicity_atom,
-      $.multiplicity_range,
-    ),
-
-    _multiplicity_atom: $ => choice(
-      $.integer,
-      $.star,
-    ),
-
-    multiplicity_range: $ => seq(
-      field('start', $._multiplicity_atom),
-      '..',
-      field('end', $._multiplicity_atom),
-    ),
-
     // Meta information for category, asset, or otherwise.
     meta: $ => seq(
       field('id', $.identifier),
@@ -367,6 +404,7 @@ module.exports = grammar({
 
     star: _ => token('*'),
     cia: _ => token(/[CIA]/)
+
   },
 });
 
@@ -391,4 +429,38 @@ function sep1(rule, token) {
  */
 function commaSep1(rule) {
   return sep1(rule, ',');
+}
+
+/**
+ * Matches each supplied rules zero or one time, in any order.
+ *
+ * @param {...Rule} rules
+ * @returns {Rule}
+ */
+function unorderedOptionals(...rules) {
+  const alternatives = /** @type {Rule[]} */ ([]);
+
+  /**
+   * @param {Rule[]} prefix
+   * @param {Rule[]} remaining
+   */
+  function generate(prefix, remaining) {
+    if (prefix.length > 0) {
+      alternatives.push(seq(...prefix));
+    }
+
+    for (let i = 0; i < remaining.length; i++) {
+      generate(
+        [...prefix, remaining[i]],
+        [
+          ...remaining.slice(0, i),
+          ...remaining.slice(i + 1),
+        ],
+      );
+    }
+  }
+
+  generate([], rules);
+
+  return optional(choice(...alternatives));
 }

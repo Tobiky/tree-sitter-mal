@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "mal",
   "word": "identifier",
   "rules": {
@@ -436,8 +437,224 @@
               "type": "FIELD",
               "name": "reaches",
               "content": {
-                "type": "SYMBOL",
-                "name": "reaching"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "remove_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "append_reaching"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "reaching"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               }
             },
             {
@@ -950,6 +1167,108 @@
         }
       ]
     },
+    "append_reaching": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "operator",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "+A>"
+              },
+              {
+                "type": "STRING",
+                "value": "A>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "reaches",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "dyn_sentence"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dyn_sentence"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "remove_reaching": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "operator",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "+R>"
+              },
+              {
+                "type": "STRING",
+                "value": "R>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "reaches",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "dyn_sentence"
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "dyn_sentence"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
     "ttc": {
       "type": "SEQ",
       "members": [
@@ -1285,6 +1604,10 @@
         {
           "type": "SYMBOL",
           "name": "asset_expr_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "asset_expr_multiplicity"
         }
       ]
     },
@@ -1351,6 +1674,35 @@
           {
             "type": "STRING",
             "value": "]"
+          }
+        ]
+      }
+    },
+    "asset_expr_multiplicity": {
+      "type": "PREC_LEFT",
+      "value": "binary_exp",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "expression",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_inline_asset_expr"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": ":"
+          },
+          {
+            "type": "FIELD",
+            "name": "multiplicity",
+            "content": {
+              "type": "SYMBOL",
+              "name": "multiplicity"
+            }
           }
         ]
       }
@@ -1522,6 +1874,127 @@
         }
       ]
     },
+    "multiplicity": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_multiplicity_atom"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "multiplicity_range"
+        }
+      ]
+    },
+    "_multiplicity_atom": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "star"
+        }
+      ]
+    },
+    "multiplicity_range": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "start",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_multiplicity_atom"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ".."
+        },
+        {
+          "type": "FIELD",
+          "name": "end",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_multiplicity_atom"
+          }
+        }
+      ]
+    },
+    "dynamic_separator": {
+      "type": "STRING",
+      "value": "/"
+    },
+    "hold": {
+      "type": "STRING",
+      "value": "^"
+    },
+    "assoc_op": {
+      "type": "STRING",
+      "value": "~"
+    },
+    "assoc_and_asset_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "assoc_op"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "asset_expr"
+        }
+      ]
+    },
+    "dyn_sentence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "base",
+          "content": {
+            "type": "SYMBOL",
+            "name": "asset_expr"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dynamic_separator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "assoc_and_asset_expr"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "hold"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "assoc_and_asset_expr"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "define_declaration": {
       "type": "SEQ",
       "members": [
@@ -1671,57 +2144,6 @@
         }
       ]
     },
-    "multiplicity": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_multiplicity_atom"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "multiplicity_range"
-        }
-      ]
-    },
-    "_multiplicity_atom": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "integer"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "star"
-        }
-      ]
-    },
-    "multiplicity_range": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "start",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_multiplicity_atom"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ".."
-        },
-        {
-          "type": "FIELD",
-          "name": "end",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_multiplicity_atom"
-          }
-        }
-      ]
-    },
     "meta": {
       "type": "SEQ",
       "members": [
@@ -1858,6 +2280,6 @@
   ],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-

@@ -19,6 +19,13 @@ To use the highlight through the command line, make sure you have a [config file
 
 For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-sitter/cli/index.html) and the [tree-sitter-mal Wiki](https://github.com/mal-lang/tree-sitter-mal/wiki).
 
+### Playground
+
+You can play around with the grammar and see the parse tree in your browser using the [tree-sitter playground](https://tree-sitter.github.io/tree-sitter/7-playground.html). To start it, run:
+```bash
+tree-sitter build --wasm;tree-sitter playground
+```
+
 ### NeoVim Manual Installation
 > [!NOTE]
 > Tested for NeoVim v0.11.1.
@@ -41,6 +48,7 @@ For more commands see [tree sitter CLI docs](https://tree-sitter.github.io/tree-
     vim.filetype.add({
         extension = {
             mal = "mal",
+            dmal = "mal",
         },
     })
     ```
